@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, Event, NavigationEnd } from "@angular/router";
+import { AllModulesService } from 'src/app/m-share/all-modules.service';
 declare var $;
 @Component({
   selector: 'app-nav',
@@ -25,24 +26,8 @@ export class NavComponent implements OnInit {
 
   constructor(
     private router: Router,
+    private allModulesService: AllModulesService
   ) {
-
-    this.members = [
-      {active: 'Mike Litorus', count: 3},
-      {name: 'John Doe', count: 3},
-      {name: 'Richard Miles', count: 0},
-      {name: 'John Smith', count: 7},
-      {name: 'Mike Litorus', count: 9}
-    ];
-    this.groups = {
-      active: '',
-      total: [
-        'general',
-        'video responsive survey',
-        '500rs',
-        'warehouse'
-      ]
-    };
 
     this.router.events.subscribe((event: Event) => {
       if (event instanceof NavigationEnd) {
@@ -67,6 +52,11 @@ export class NavComponent implements OnInit {
       }
     });
 
+    this.groups = { ...this.allModulesService.groups };
+    console.log(this.groups);
+    this.members = { ...this.allModulesService.members };
+    console.log(this.members );
+
   }
 
   ngOnInit(): void {
@@ -88,9 +78,8 @@ export class NavComponent implements OnInit {
     });
   }
 
-  setActive(member): void {
-    console.log(member);
-
+  setActive(member) {
+    this.allModulesService.members.active = member;
   }
 
 }

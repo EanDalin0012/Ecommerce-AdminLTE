@@ -1,0 +1,4 @@
+a:not([href]):not([class]) {
+  color: white;
+  text-decoration: none;
+}
