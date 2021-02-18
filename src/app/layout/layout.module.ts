@@ -1,17 +1,27 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { LayoutComponent } from './layout/layout.component';
 import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 import { NavComponent } from './nav/nav.component';
-import { LayoutBlankComponent } from './layout-blank/layout-blank.component';
-
-
-
+import { PerfectScrollbarModule } from 'ngx-perfect-scrollbar';
+import { FormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
 @NgModule({
-  declarations: [LayoutComponent, HeaderComponent, FooterComponent, NavComponent],
+  declarations: [
+     HeaderComponent,
+     FooterComponent,
+     NavComponent
+    ],
   imports: [
-    CommonModule
+    CommonModule,
+    PerfectScrollbarModule,
+    FormsModule,
+    HttpClientModule,
+  ],
+  exports: [
+    HeaderComponent,
+     FooterComponent,
+     NavComponent
   ]
 })
 export class LayoutModule { }
