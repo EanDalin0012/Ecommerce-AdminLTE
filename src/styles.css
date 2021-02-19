@@ -4275,7 +4275,7 @@ input.inp_cal:focus {
     position: fixed;
     left: 0;
     top: 0;
-    width: 100%;
+    width: 90%;
     /*min-width:1270px;*/
     height: 100%;
     overflow: auto;
@@ -4367,10 +4367,11 @@ input.inp_cal:focus {
 .pop_header .btn_popclose {
     position: absolute;
     right: 0;
-    top: 0;
+    top: 5px;
     width: 66px;
     height: 100%;
     text-indent: -999em;
+    border: none;
 }
 
 .pop_header.w {
@@ -5162,7 +5163,7 @@ kendo-dialog:focus {
     position: fixed;
     left: 0;
     top: 0;
-    width: 90%;
+    width: 90% !important;
     float: left;
     margin-left: 5%;
     height: 100%;

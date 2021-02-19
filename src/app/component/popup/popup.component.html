@@ -29,12 +29,15 @@
 
 
         <div class="c_btn">
-            <div class="add-close  btn-css margin-right-btn-clos" (click)="close()">
-                <span>CLOSE</span>
-            </div>
-            <div class="iam-btn-container mbr_introContent" style="display: inline-block;">
-                <button class="iam-button save">SAVE</button>
-            </div>
+          <button (click)="close()" class="k-button btn-w100px-h35px font-khmer-cursive"  kendoButton [attr.look]="'outline'">
+            <span class="k-icon k-i-close-circle k-i-x-circle margin-top-1px font-size-20px"></span>
+            <span class="margin-top-5px margin-left-5px">Close</span>
+          </button>
+
+          <button class="k-button btn-w100px-h35px font-khmer-cursive"  kendoButton [attr.look]="'outline'">
+              <span class="k-icon k-i-download margin-top-1px font-size-20px"></span>
+              <span class="margin-top-5px margin-left-5px">Save</span>
+          </button>
         </div>
     </div>
 </div>
