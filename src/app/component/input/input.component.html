@@ -1,1 +1,14 @@
-<p>input works!</p>
+<div class="form-group form-focus">
+  <div class="cal-icon">
+      <input #enterYourIdHere class="form-control floating datetimepicker" bsDatepicker type="text"
+          [attr.bsConfig]="{ dateInputFormat: 'DD-MM-YYYY',  returnFocusToInput: true }"
+          (bsValueChange)="searchByFrom($event)">
+  </div>
+  <label class="focus-label">From</label>
+</div>
+
+<ng2-flatpickr placeholder="Pick a date!" formControlName="formControlName"></ng2-flatpickr>
+
+
+
+

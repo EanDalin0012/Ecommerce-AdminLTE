@@ -1,6 +1,7 @@
+
 import { Component, OnInit } from '@angular/core';
 import { Router, Event, NavigationEnd } from "@angular/router";
-import { AllModulesService } from 'src/app/m-share/all-modules.service';
+import { AllModulesService } from '../../m-share/all-modules.service';
 declare var $;
 @Component({
   selector: 'app-nav',

@@ -1,1 +1,60 @@
-<p>invoices works!</p>
+
+  <div class="card card-table flex-fill">
+      <div class="card-header">
+          <h3 class="card-title mb-0">Invoices</h3>
+      </div>
+      <div class="card-body">
+          <div class="table-responsive">
+              <table class="table table-nowrap custom-table mb-0">
+                  <thead>
+                      <tr>
+                          <th>Invoice ID</th>
+                          <th>Client</th>
+                          <th>Due Date</th>
+                          <th>Total</th>
+                          <th>Status</th>
+                      </tr>
+                  </thead>
+                  <tbody>
+                      <tr>
+                          <td><a routerLink="/accounts/invoice-view">#INV-0001</a></td>
+                          <td>
+                              <h2><a>Global Technologies</a></h2>
+                          </td>
+                          <td>11 Mar 2019</td>
+                          <td>$380</td>
+                          <td>
+                              <span class="badge bg-inverse-warning">Partially Paid</span>
+                          </td>
+                      </tr>
+                      <tr>
+                          <td><a routerLink="/accounts/invoice-view">#INV-0002</a></td>
+                          <td>
+                              <h2><a>Delta Infotech</a></h2>
+                          </td>
+                          <td>8 Feb 2019</td>
+                          <td>$500</td>
+                          <td>
+                              <span class="badge bg-inverse-success">Paid</span>
+                          </td>
+                      </tr>
+                      <tr>
+                          <td><a routerLink="/accounts/invoice-view">#INV-0003</a></td>
+                          <td>
+                              <h2><a>Cream Inc</a></h2>
+                          </td>
+                          <td>23 Jan 2019</td>
+                          <td>$60</td>
+                          <td>
+                              <span class="badge bg-inverse-danger">Unpaid</span>
+                          </td>
+                      </tr>
+                  </tbody>
+              </table>
+          </div>
+      </div>
+      <div class="card-footer">
+          <a href="invoices.html">View all invoices</a>
+      </div>
+  </div>
+
