@@ -17,19 +17,6 @@ body {
     -webkit-text-size-adjust: none;
 }
 
-html {
-    font: normal 16px 'Noto Sans', 'Noto Sans Khmer', 'Verdana', 'Geneva', 'Tahoma', 'sans-serif', 'Khmer', cursive;
-}
-
-body {
-    min-height: 100%;
-    color: #000;
-    letter-spacing: -.05em;
-    background: #f3f6fa;
-    word-wrap: normal;
-    word-break: keep-all;
-}
-
 body::-webkit-scrollbar {
     width: 0.25rem;
 }
@@ -40,89 +27,6 @@ body::-webkit-scrollbar-track {
 
 body::-webkit-scrollbar-thumb {
     background: #444;
-}
-
-img {
-    border: none;
-}
-
-p,
-ul,
-li,
-ol,
-h1,
-h2,
-h3,
-h4,
-h5,
-h6,
-dl,
-dt,
-dd,
-em,
-figure {
-    margin: 0;
-    padding: 0;
-}
-
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-    font-weight: 900;
-    font-size: 1em;
-}
-
-li {
-    list-style: none;
-}
-
-fieldset {
-    margin: 0;
-    padding: 0;
-    border: none;
-}
-
-legend {
-    position: absolute;
-    left: -1000px;
-    top: -1000px;
-    height: 0;
-    font-size: 0;
-    line-height: 0;
-    visibility: hidden;
-}
-
-a {
-    margin: 0;
-    color: #000;
-    text-decoration: none;
-    outline: none;
-    cursor: pointer;
-}
-
-table {
-    width: 100%;
-    border-collapse: collapse;
-    font-size: 1em;
-}
-
-table caption {
-    display: none;
-    position: absolute;
-    left: -999px;
-    height: 0;
-    font-size: 0;
-    line-height: 0;
-    visibility: hidden;
-    overflow: hidden;
-}
-
-table td,
-table th {
-    padding: 0;
 }
 
 button {
@@ -413,7 +317,7 @@ select:only-child {
 }
 
 select:focus {
-    border: 2px solid #3f496d !important;
+    border-bottom: 2px solid #3f496d !important;
     border-radius: 4px;
     box-sizing: border-box;
     padding-left: 10px;
@@ -523,11 +427,6 @@ em {
 sub {
     font-weight: normal;
     vertical-align: middle;
-}
-
-img {
-    max-width: 60%;
-    vertical-align: top;
 }
 
 input[type=number]::-webkit-inner-spin-button,
@@ -640,40 +539,6 @@ kendo-pdf-export {
     font-size: 0;
     overflow: hidden;
     visibility: hidden;
-}
-
-.layer_back {
-    position: fixed;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    background: #000;
-    opacity: 0.6;
-    z-index: 500;
-}
-
-.nodata {
-    font-size: 1.5rem;
-    color: #766e69;
-    line-height: 150%;
-    text-align: center;
-    z-index: 10;
-}
-
-.nodata.floating {
-    position: fixed;
-    left: 0;
-    top: 50%;
-    right: 0;
-    -webkit-transform: translateY(-50%);
-    transform: translateY(-50%);
-}
-
-.ellipsis {
-    text-overflow: ellipsis;
-    white-space: nowrap;
-    overflow: hidden;
 }
 
 .rbtnWrap {
@@ -847,12 +712,6 @@ kendo-pdf-export {
 .utility .btns button {
     display: inline-block;
     margin-left: -4px;
-}
-
-.btn_util_noti {
-    position: relative;
-    width: 47px;
-    background: url("assets/images/ico_noti.png") no-repeat center center;
 }
 
 .btn_util_noti .count {
@@ -1121,43 +980,6 @@ iframe {
     border-top: 1px solid #eeeff1;
 }
 
-.copyright {
-    margin-top: 5px;
-    font-size: .8125rem;
-    color: #18191b;
-    opacity: .5;
-}
-
-.copyrightWrap .follow {
-    position: absolute;
-    right: 30px;
-    top: 50%;
-    margin-top: -15px;
-}
-
-.copyrightWrap .facebook {
-    position: relative;
-    float: left;
-    height: 28px;
-    margin: 1px 12px 0 0;
-    padding: 5px 42px 5px 10px;
-    font-weight: 300;
-    font-size: .875rem;
-    line-height: 18px;
-    border-right: 1px solid #eeeff1;
-}
-
-.copyrightWrap .facebook:after {
-    content: "";
-    position: absolute;
-    right: 10px;
-    top: 50%;
-    width: 24px;
-    height: 24px;
-    margin-top: -12px;
-    background: url("assets/images/ico_facebook.png") no-repeat right center;
-}
-
 
 /*** contents area ***/
 
@@ -1228,17 +1050,6 @@ iframe {
     height: 16px;
     margin-top: -8px;
     background: #c5cbd7;
-}
-
-.btn_livechat.fix {
-    position: fixed;
-    right: 5px;
-    bottom: 184px;
-    width: 66px;
-    height: 67px;
-    text-indent: -999em;
-    background: url("assets/images/btn_livechat_fix.png") no-repeat center center;
-    z-index: 100;
 }
 
 .btn_livechat.fix:after {
@@ -5520,63 +5331,6 @@ kendo-dialog:focus {
     min-height: 1302.2px;
     height: 100vh;
     background-color: #eaeff8;
-}
-
-.export {
-    width: 155px;
-    margin: 0 auto 9px;
-    border-color: #008cff;
-    color: #575757;
-}
-
-.pdf {
-    background: url("assets/images/file.svg") no-repeat left center;
-    background-size: 15%;
-    background-position-x: 3px;
-    padding: 2px !important;
-}
-
-.excel {
-    background-clip: padding-box;
-    border-radius: 2px;
-    padding: 4px 8px;
-    box-sizing: border-box;
-    border-width: 1px;
-    border-style: solid;
-    font-size: 14px;
-    line-height: 1.4285714286;
-    font-family: inherit;
-    text-align: center;
-    text-decoration: none;
-    white-space: nowrap;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    vertical-align: middle;
-    -webkit-user-select: none;
-    -ms-user-select: none;
-    -moz-user-select: none;
-    user-select: none;
-    cursor: pointer;
-    outline: none;
-    -webkit-appearance: none;
-    position: relative;
-    width: 155px;
-    margin-right: 15px;
-    background: url("assets/images/icon-excel.svg") no-repeat left center;
-    background-size: 15%;
-    background-position-x: 3px;
-    border-color: currentColor;
-    color: #212529;
-}
-
-.pdf:hover {
-    border-color: rgba(0, 0, 0, 0.15);
-    color: #656565;
-    background: url("assets/images/file.svg") no-repeat left center !important;
-    background-size: 15% !important;
-    border-color: #008cff;
-    color: #575757;
 }
 
 .uploadi-img ul.k-upload-files {
@@ -15427,30 +15181,6 @@ ul.comment-list li ul.children {
     body {
         font-size: 0.875rem;
     }
-    h1,
-    .h1 {
-        font-size: 2rem;
-    }
-    h2,
-    .h2 {
-        font-size: 1.75rem;
-    }
-    h3,
-    .h3 {
-        font-size: 1.375rem;
-    }
-    h4,
-    .h4 {
-        font-size: 1rem;
-    }
-    h5,
-    .h5 {
-        font-size: 0.9375rem;
-    }
-    h6,
-    .h6 {
-        font-size: 0.75rem;
-    }
     .page-title,
     .dash-widget-info>h3,
     .account-title {
@@ -15574,66 +15304,6 @@ ul.comment-list li ul.children {
     .nav-tabs.nav-justified {
         border-bottom: 1px solid #ddd;
     }
-    .nav-tabs.nav-justified>li>a.active,
-    .nav-tabs.nav-justified>li>a.active:hover,
-    .nav-tabs.nav-justified>li>a.active:focus {
-        border-color: transparent transparent transparent #667eea;
-        border-left-width: 2px;
-    }
-    .nav-tabs {
-        border-bottom: 0;
-        position: relative;
-        background-color: #fff;
-        padding: 5px 0;
-        border: 1px solid #ddd;
-        border-radius: 3px;
-    }
-    .nav-tabs .nav-item {
-        margin-bottom: 0;
-    }
-    .nav-tabs>li>a {
-        border-width: 2px;
-        border-left-color: transparent;
-    }
-    .nav-tabs .nav-link {
-        border-width: 2px;
-    }
-    .nav-tabs>li>a:hover,
-    .nav-tabs>li>a:focus {
-        background-color: #fafafa;
-    }
-    .nav-tabs .nav-item.show .nav-link,
-    .nav-tabs .nav-link.active,
-    .nav-tabs>li>a.active,
-    .nav-tabs>li>a.active:hover,
-    .nav-tabs>li>a.active:focus {
-        background-color: #f5f5f5;
-        border-color: transparent transparent transparent #667eea;
-        border-left-width: 2px;
-    }
-    .nav-tabs>li.open:not(.active)>a,
-    .nav-tabs>li.open:not(.active)>a:hover,
-    .nav-tabs>li.open:not(.active)>a:focus {
-        background-color: #fafafa;
-    }
-    .nav-tabs.nav-tabs-solid {
-        padding: 5px;
-    }
-    .nav-tabs.nav-tabs-solid.nav-tabs-rounded {
-        border-radius: 5px;
-    }
-    .nav-tabs.nav-tabs-solid>li>a {
-        border-left-width: 0!important;
-    }
-    .nav-tabs-justified {
-        border-bottom: 1px solid #ddd;
-    }
-    .nav-tabs-justified>li>a.active,
-    .nav-tabs-justified>li>a.active:hover,
-    .nav-tabs-justified>li>a.active:focus {
-        border-width: 0 0 0 2px;
-        border-left-color: #667eea;
-    }
     .my-video ul li {
         width: 80px;
     }
@@ -15707,38 +15377,6 @@ ul.comment-list li ul.children {
     .upload-text {
         font-size: 18px;
     }
-    .call-duration {
-        display: block;
-        margin-top: 0;
-        margin-bottom: 10px;
-        position: inherit;
-    }
-    .end-call {
-        margin-top: 10px;
-        position: inherit;
-    }
-    .chat-panel .chats {
-        padding: 15px 0;
-    }
-    .chat-right .chat-content {
-        max-width: 90%;
-    }
-    .chat-right .chat-body {
-        padding-left: 0;
-        padding-right: 0;
-    }
-    .chat-left .chat-content {
-        max-width: 90%;
-    }
-    .chat-left .chat-body {
-        padding-left: 0;
-        padding-right: 0;
-    }
-    .chat-avatar .avatar {
-        height: 20px;
-        line-height: 20px;
-        width: 20px;
-    }
     .account-box {
         width: 100%;
         margin-bottom: 20px;
@@ -15805,6 +15443,25 @@ ul.comment-list li ul.children {
         font-size: 14px;
         min-width: inherit;
     }
+}
+
+.d-flex {
+    display: block !important;
+}
+
+
+/* /////////////////////////////////////////////////////////////////////////// */
+
+
+/* /////////////////////////////////////////////////////////////////////////// */
+
+.page-header .breadcrumb {
+    display: none;
+}
+
+.add-btn {
+    font-size: 14px;
+    min-width: inherit;
 }
 
 .d-flex {
