@@ -14,6 +14,7 @@ import { MShareModule } from '../m-share/m-share.module';
 import { PickListModule } from 'primeng/picklist';
 import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
 import { ProfileComponent } from './profile/profile.component';
+import { PopupComponent } from './popup/popup.component';
 @NgModule({
   declarations: [
     GridComponent,
@@ -23,7 +24,8 @@ import { ProfileComponent } from './profile/profile.component';
     PaymentsComponent,
     ClientsComponent,
     RecentProjectsComponent,
-    ProfileComponent
+    ProfileComponent,
+    PopupComponent
   ],
   imports: [
     CommonModule,

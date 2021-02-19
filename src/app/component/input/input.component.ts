@@ -2,6 +2,9 @@ import { DatePipe } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { FlatpickrOptions } from 'ng2-flatpickr';
 import { Event } from '@angular/router';
+import { ModalService } from 'src/app/m-share/service/modal.service';
+import { ButtonRoles } from '../../m-share/constants/common.const';
+import { PopupComponent } from '../popup/popup.component';
 declare const $: any;
 @Component({
   selector: 'app-input',
@@ -13,7 +16,9 @@ export class InputComponent implements OnInit {
   public pipe = new DatePipe("en-US");
   public rows = [];
   public srch = [];
-  constructor() { }
+  constructor(
+    private modalService: ModalService,
+  ) { }
    exampleOptions: FlatpickrOptions = {
     defaultDate: '2017-03-15'
   };
@@ -47,5 +52,20 @@ export class InputComponent implements OnInit {
 
   searchName(event: any): void {
     console.log(event.target.value);
+  }
+
+  popUp(): void {
+
+  }
+
+  add() {
+    this.modalService.open({
+      content: PopupComponent,
+      callback: response => {
+        if(response.close === ButtonRoles.save) {
+          console.log(response);
+        }
+      }
+    });
   }
 }

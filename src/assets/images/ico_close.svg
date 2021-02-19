@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24" height="24" viewBox="0 0 24 24">
+  <defs>
+    <clipPath id="clip-path">
+      <rect width="24" height="24" fill="none"/>
+    </clipPath>
+  </defs>
+  <g id="ico_close" clip-path="url(#clip-path)">
+    <rect id="Rectangle_179" data-name="Rectangle 179" width="24" height="24" fill="none"/>
+    <path id="ico_close-2" data-name="ico_close" d="M19.443,3.542,18.194,2.293,10.868,9.619,3.542,2.293,2.293,3.542l7.326,7.326L2.293,18.194l1.249,1.249,7.326-7.326,7.326,7.326,1.249-1.249-7.326-7.326Z" transform="translate(1.136 1.136)" fill="#231f20" opacity="0.6"/>
+  </g>
+</svg>

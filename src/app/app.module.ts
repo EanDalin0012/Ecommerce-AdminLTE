@@ -14,6 +14,14 @@ import {PerfectScrollbarModule} from 'ngx-perfect-scrollbar';
 import { InMemoryWebApiModule } from 'angular-in-memory-web-api';
 import { FormsModule } from '@angular/forms';
 import { MShareModule } from './m-share/m-share.module';
+import { ButtonsModule } from '@progress/kendo-angular-buttons';
+import { DialogsModule } from '@progress/kendo-angular-dialog';
+import { TranslateHttpLoader } from '@ngx-translate/http-loader';
+import { HttpClient } from '@angular/common/http';
+import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
+export function createTranslateLoader(http: HttpClient) {
+  return new TranslateHttpLoader(http, './assets/i18n/', '.json');
+}
 @NgModule({
   declarations: [
     AppComponent,
@@ -30,6 +38,7 @@ import { MShareModule } from './m-share/m-share.module';
     MShareModule,
     InMemoryWebApiModule.forRoot(AllModulesData),
     PerfectScrollbarModule,
+    MShareModule.forRoot(),
     ToastrModule.forRoot(
       {
         timeOut: 1500,
@@ -37,6 +46,15 @@ import { MShareModule } from './m-share/m-share.module';
         preventDuplicates: true,
       }
     ),
+    TranslateModule.forRoot({
+      loader: {
+        provide: TranslateLoader,
+        useFactory: (createTranslateLoader),
+        deps: [HttpClient]
+      },
+    }),
+    ButtonsModule,
+    DialogsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
