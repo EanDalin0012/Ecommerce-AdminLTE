@@ -8,8 +8,11 @@ import { InvoicesComponent } from './invoices/invoices.component';
 import { PaymentsComponent } from './payments/payments.component';
 import { ClientsComponent } from './clients/clients.component';
 import { RecentProjectsComponent } from './recent-projects/recent-projects.component';
-import { Ng2FlatpickrModule } from 'ng2-flatpickr';
 import { DataTablesModule } from 'angular-datatables';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { MShareModule } from '../m-share/m-share.module';
+import { PickListModule } from 'primeng/picklist';
+import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
 @NgModule({
   declarations: [
     GridComponent,
@@ -23,8 +26,13 @@ import { DataTablesModule } from 'angular-datatables';
   imports: [
     CommonModule,
     ComponentRoutingModule,
-    Ng2FlatpickrModule,
-    DataTablesModule,
+    CommonModule,
+    FormsModule,
+    MShareModule,
+    ReactiveFormsModule,
+    PickListModule,
+    BsDatepickerModule.forRoot(),
+    DataTablesModule
 
   ],
   exports: [

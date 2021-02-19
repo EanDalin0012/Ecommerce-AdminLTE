@@ -39,8 +39,8 @@ export class NavComponent implements OnInit {
         this.urlComplete.subUrl = url[2];
         this.urlComplete.childUrl = url[3];
         if (url[1] === '') {
-          this.urlComplete.mainUrl = 'dashboard';
-          this.urlComplete.subUrl = 'admin';
+          this.urlComplete.mainUrl = 'main';
+          this.urlComplete.subUrl = 'main';
         }
 
         if (url[2] === 'chat' || url[2] === 'calls') {

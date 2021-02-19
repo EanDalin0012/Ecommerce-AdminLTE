@@ -1,3 +1,4 @@
+import { InputComponent } from './component/input/input.component';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { LayoutComponent } from './layout/layout/layout.component';
@@ -18,6 +19,7 @@ const routes: Routes = [
       }
     ]
   },
+  {path: 'input', component: InputComponent},
   {path: 'login', component: LayoutBlankComponent, loadChildren: './login/login.module#LoginModule'},
 
   // { path: '**', component: Error404Component },
