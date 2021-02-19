@@ -1,14 +1,50 @@
-<div class="form-group form-focus">
-  <div class="cal-icon">
-      <input #enterYourIdHere class="form-control floating datetimepicker" bsDatepicker type="text"
-          [attr.bsConfig]="{ dateInputFormat: 'DD-MM-YYYY',  returnFocusToInput: true }"
-          (bsValueChange)="searchByFrom($event)">
-  </div>
-  <label class="focus-label">From</label>
+<div class="row" style="margin-top: 20px;">
+    <div class="col-md-6 d-flex">
+        <div class="form-group form-focus">
+            <div class="cal-icon">
+                <input #enterYourIdHere class="form-control floating datetimepicker" bsDatepicker type="text" [attr.bsConfig]="{ dateInputFormat: 'DD-MM-YYYY',  returnFocusToInput: true }" (bsValueChange)="searchByFrom($event)">
+            </div>
+            <label class="focus-label">From</label>
+        </div>
+
+        <div class="form-group form-focus select-focus">
+            <select class="select floating form-control">
+              <option>-</option>
+              <option>Jan</option>
+              <option>Feb</option>
+              <option>Mar</option>
+              <option>Apr</option>
+              <option>May</option>
+              <option>Jun</option>
+              <option>Jul</option>
+              <option>Aug</option>
+              <option>Sep</option>
+              <option>Oct</option>
+              <option>Nov</option>
+              <option>Dec</option>
+          </select>
+            <label class="focus-label">Select Month</label>
+        </div>
+
+        <div class="form-group form-focus select-focus">
+            <select class="select floating form-control" (input)="searchType($event)">
+              <option> -- Select -- </option>
+              <option>Casual Leave</option>
+              <option>Medical Leave</option>
+              <option>Loss of Pay</option>
+          </select>
+            <label class="focus-label">Leave Type</label>
+        </div>
+
+    </div>
+
+    <div class="col-md-5 d-flex">
+        <div class="form-group form-focus">
+            <input type="text" class="form-control floating" (input)="searchName($event)">
+            <label class="focus-label">Employee Name</label>
+        </div>
+    </div>
+    <div class="staff-msg">
+        <a class="btn btn-custom" routerLink="index">Send
+          Message</a></div>
 </div>
-
-<ng2-flatpickr placeholder="Pick a date!" formControlName="formControlName"></ng2-flatpickr>
-
-
-
-

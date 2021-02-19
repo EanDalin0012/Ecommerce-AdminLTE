@@ -13,6 +13,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MShareModule } from '../m-share/m-share.module';
 import { PickListModule } from 'primeng/picklist';
 import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
+import { ProfileComponent } from './profile/profile.component';
 @NgModule({
   declarations: [
     GridComponent,
@@ -21,7 +22,8 @@ import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
     InvoicesComponent,
     PaymentsComponent,
     ClientsComponent,
-    RecentProjectsComponent
+    RecentProjectsComponent,
+    ProfileComponent
   ],
   imports: [
     CommonModule,

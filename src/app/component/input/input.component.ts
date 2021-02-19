@@ -1,6 +1,7 @@
 import { DatePipe } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { FlatpickrOptions } from 'ng2-flatpickr';
+import { Event } from '@angular/router';
 declare const $: any;
 @Component({
   selector: 'app-input',
@@ -24,6 +25,7 @@ export class InputComponent implements OnInit {
   //search by purchase
   searchByFrom(val) {
     let mySimpleFormat = this.pipe.transform(val, "dd-MM-yyyy");
+    console.log(mySimpleFormat);
     this.rows.splice(0, this.rows.length);
     let temp = this.srch.filter(function (d) {
       return d.from.indexOf(mySimpleFormat) !== -1 || !mySimpleFormat;
@@ -36,5 +38,14 @@ export class InputComponent implements OnInit {
           .toggleClass("focused", e.type === "focus" || this.value.length > 0);
       })
       .trigger("blur");
+  }
+
+  //search by status
+  searchType(val: any): void {
+    console.log(val);
+  }
+
+  searchName(event: any): void {
+    console.log(event.target.value);
   }
 }

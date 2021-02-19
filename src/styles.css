@@ -9677,3 +9677,7 @@ ul.comment-list li ul.children {
         min-width: inherit;
     }
 }
+
+.d-flex {
+    display: block !important;
+}
