@@ -17,8 +17,10 @@ import { MShareModule } from './m-share/m-share.module';
 import { ButtonsModule } from '@progress/kendo-angular-buttons';
 import { DialogsModule } from '@progress/kendo-angular-dialog';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
+import { UploadModule } from '@progress/kendo-angular-upload';
+
 export function createTranslateLoader(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
 }
@@ -55,6 +57,8 @@ export function createTranslateLoader(http: HttpClient) {
     }),
     ButtonsModule,
     DialogsModule,
+    UploadModule,
+    HttpClientModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -29,18 +29,6 @@ body::-webkit-scrollbar-thumb {
     background: #444;
 }
 
-button {
-    margin: 0;
-    padding: 0;
-    font: normal 1em 'Noto Sans', 'Noto Sans Khmer', 'Verdana', 'Geneva', 'Tahoma', 'sans-serif';
-    color: #000;
-    vertical-align: middle;
-    background: 0;
-    border: none;
-    overflow: visible;
-    cursor: pointer;
-}
-
 button:focus {
     outline: none;
     -webkit-tap-highlight-color: rgba(0, 0, 0, 0.2);
@@ -62,14 +50,11 @@ input[type=color],
 input[type=file],
 .k-textbox {
     background-color: rgb(232, 240, 254);
-    /* background:#eff2f5; */
     display: inline-block;
-    /* height: 40px; */
     margin: 0;
     padding: 3px 12px;
     font-weight: normal;
     font-size: 1rem;
-    font-family: 'Noto Sans', 'Noto Sans Khmer', 'Verdana', 'Geneva', 'Tahoma', 'sans-serif';
     color: #000;
     vertical-align: middle;
     border: none;
@@ -283,7 +268,6 @@ select {
     padding: 0 35px 3px 12px;
     font-style: normal;
     font-size: 1rem;
-    font-family: 'Noto Sans', 'Noto Sans Khmer', 'Verdana', 'Geneva', 'Tahoma', 'sans-serif';
     color: #000;
     vertical-align: middle;
     text-overflow: ellipsis;
@@ -300,6 +284,7 @@ select {
     -webkit-box-sizing: border-box;
     -moz-box-sizing: border-box;
     box-sizing: border-box;
+    background-color: rgb(232, 240, 254) !important;
 }
 
 select::-ms-expand {
@@ -748,31 +733,6 @@ kendo-pdf-export {
     background: none;
 }
 
-.change_lang .cur button {
-    position: absolute;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    text-indent: -999em;
-    opacity: 0;
-    z-index: 2;
-}
-
-.lang_list {
-    position: absolute;
-    left: 9px;
-    top: 28px;
-    min-width: 100px;
-    height: 0;
-    padding: 0 12px;
-    background: #fff;
-    box-shadow: 0 3px 4px rgba(111, 115, 120, .57);
-    overflow: hidden;
-    opacity: 0;
-    transition: opacity .3s linear;
-}
-
 .change_lang.ui_drop_open .cur:after {
     -webkit-transform: rotate(180deg);
     -moz-transform: rotate(180deg);
@@ -786,26 +746,6 @@ kendo-pdf-export {
     padding: 8px 12px;
     opacity: 1;
     z-index: 500;
-}
-
-.lang_list li {
-    position: relative;
-    padding: 4px 0;
-    font-weight: bold;
-    font-size: .875rem;
-    color: #18191b;
-}
-
-.lang_list li:before {
-    content: "";
-    position: absolute;
-    left: 0;
-    top: 50%;
-    width: 22px;
-    height: 20px;
-    margin-top: -10px;
-    background-repeat: no-repeat;
-    background-position: left center;
 }
 
 .lang_list label {
@@ -5214,49 +5154,6 @@ kendo-dialog:focus {
     background-position-x: 5px;
 }
 
-.mbr_introContent .iam-button {
-    display: block;
-    margin: 0 auto 9px;
-    min-width: 200px;
-    border-color: #008cff;
-    color: #575757;
-    background-size: 35px;
-    margin-top: 25px;
-}
-
-.iam-button {
-    min-width: 150px;
-    min-height: 40px;
-    padding: 7px 45px 6px;
-    margin-right: 16px;
-    background: 0 0;
-    border: 1px solid #e1e1e1;
-    border-radius: 42px;
-    font-weight: 700;
-    line-height: 1.2;
-    letter-spacing: .01em;
-    word-break: break-all;
-    position: relative;
-    display: inline-block;
-    cursor: pointer;
-    vertical-align: middle;
-    font-style: inherit;
-    font-variant: inherit;
-    font-family: inherit;
-    text-decoration: none;
-    text-align: center;
-    box-sizing: border-box;
-    align-items: center;
-    -webkit-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    user-select: none;
-    word-break: keep-all;
-    word-wrap: break-word;
-    font-size: 0.9375rem;
-    color: #000;
-}
-
 .k-dialog-wrapper {
     align-items: normal !important;
 }
@@ -5272,15 +5169,12 @@ kendo-dialog:focus {
     overflow: auto;
 }
 
-.active-input {
-    border-bottom: 2px solid #1428a0 !important;
-}
 
 .in_box .btn_del {
     position: absolute;
     display: block;
-    right: 20px;
-    top: 29px;
+    right: 15px;
+    top: 32px;
     width: 25px;
     height: 25px;
     text-indent: -999em;
@@ -5363,22 +5257,6 @@ kendo-upload div:nth-child(0) {
     margin-top: -4px;
 }
 
-
-/* .k-upload .k-action-buttons .k-upload-selected {
-    margin-top: 7px;
-    width: 200px;
-    border-color: #008cff !important;
-    background-image: url("assets/images/icon-upload.svg") !important;
-    background-size: 15% !important;
-    background-position-x: 3px;
-    background-repeat: no-repeat !important;
-    background-position-x: 5px !important;
-    background-position-y: 5px !important;
-} */
-
-
-/* add testing */
-
 .contentsWrap {
     overflow-y: scroll;
     /*  height: 95vh; */
@@ -5417,12 +5295,6 @@ kendo-upload div:nth-child(0) {
     float: left;
 }
 
-.login-box-body,
-.register-box-body {
-    border-radius: 1px;
-    -webkit-box-shadow: 0 3px 5px rgb(78 113 182 / 26%);
-    box-shadow: 0 3px 5px rgb(78 113 182 / 26%);
-}
 
 .display-block,
 .display_block {
@@ -5478,11 +5350,6 @@ kendo-upload div:nth-child(0) {
     color: #000000 !important;
 }
 
-.pop-confirm-btn>div kendo-dialog-actions>button:nth-child(1) {
-    border: 1px solid red !important;
-    color: red !important;
-    box-shadow: 0 0px 0px rgb(0 0 0 / 28%) !important;
-}
 
 .k-stepper .k-step-label .k-step-text {
     max-width: calc(11em - 20px) !important;
@@ -5537,23 +5404,6 @@ body::-webkit-resizer {
     background: rgb(9 30 66 / 30%);
 }
 
-
-/* .k-grid-content::-webkit-scrollbar-track {
-    background: rgb(9 30 66 / 30%);
-}
-
-.k-grid-content::-webkit-scrollbar {
-    width: 0.25rem;
-} */
-
-
-/* .k-grid-content::-webkit-scrollbar-button {
-    width: 0.25rem;
-}
-
-.k-grid-content::-webkit-scrollbar {
-    width: 0.25rem;
-} */
 
 .k-button.k-primary:hover {
     background: #8d8478;
@@ -5630,29 +5480,6 @@ input::placeholder {
 
 .kendo-fileselect-t ul li {
     overflow: hidden;
-}
-
-.chipe-00 {
-    overflow: hidden;
-    padding: 10px 15px;
-    height: 23px;
-    border-radius: 12px;
-    position: relative;
-    /* box-sizing: border-box; */
-    border-width: 1px;
-    border-style: solid;
-    display: -ms-inline-flexbox;
-    display: inline-flex;
-    -ms-flex-align: center;
-    align-items: center;
-    -ms-flex-pack: center;
-    /* justify-content: center; */
-    font-size: 14px;
-    cursor: pointer;
-    -webkit-user-select: none;
-    -ms-user-select: none;
-    user-select: none;
-    margin-right: 10px;
 }
 
 .btn-w100px-h35px {
@@ -5785,9 +5612,6 @@ i {
 }
 
 .pop-dialog-confirm div kendo-dialog-actions button.k-button:nth-child(2):hover {
-    /* background-image: url('assets/images/check-circle-solid.svg') !important;
-    background-repeat: no-repeat !important; */
-    /* background-size: 25% !important; */
     background-color: #c1c7d0 !important;
     color: #030303!important;
     text-align: right !important;
@@ -5861,20 +5685,6 @@ input[type=file],
     z-index: 999999999999999 !important;
     min-width: auto !important;
     min-height: auto !important;
-}
-
-.button-notification {
-    padding: 10px 5px;
-    color: #313536;
-    z-index: 9999999999999999999999999;
-}
-
-.notification-profile {
-    bottom: 100px;
-}
-
-.right0px {
-    right: 0px !important;
 }
 
 
@@ -15473,3 +15283,41 @@ ul.comment-list li ul.children {
 
 
 /* /////////////////////////////////////////////////////////////////////////// */
+
+button {
+  height: 35px !important;
+}
+
+.k-button {
+  border-color: #212529 !important;
+  transition: color 0.2s ease-in-out, background-color 0.2s ease-in-out, border-color 0.2s ease-in-out, box-shadow 0.2s ease-in-out !important;
+  color: #212529 !important;
+  background: white !important;
+}
+
+.k-button:hover {
+  border-color: #212529 !important;
+  color: #ffffff !important;
+  background-color: #212529 !important;
+  background-image: none !important;
+}
+
+/* button:hover {
+  border-color: #212529 !important;
+  color: #ffffff i !important;
+  background-color: #212529 i !important;
+  background-image: none;
+} */
+
+.form-control:focus {
+  color: #495057 !important;
+  background-color: rgb(232, 240, 254) !important;
+}
+
+.form-control {
+  height: calc(1.5em + .75rem + 2px) !important;
+}
+
+.active-input {
+  border-bottom: 2px solid #0026b0 !important;
+}

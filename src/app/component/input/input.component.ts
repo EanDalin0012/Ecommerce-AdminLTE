@@ -5,6 +5,9 @@ import { Event } from '@angular/router';
 import { ModalService } from 'src/app/m-share/service/modal.service';
 import { ButtonRoles } from '../../m-share/constants/common.const';
 import { PopupComponent } from '../popup/popup.component';
+import { FileRestrictions, FileState, SelectEvent } from '@progress/kendo-angular-upload';
+import * as moment from 'moment';
+import { Base64ImageModel } from '../../m-share/model/image-base64';
 declare const $: any;
 @Component({
   selector: 'app-input',
@@ -16,6 +19,15 @@ export class InputComponent implements OnInit {
   public pipe = new DatePipe("en-US");
   public rows = [];
   public srch = [];
+  input: string;
+  selected: string;
+  // kendo
+  public imagePreviews: any[] = [];
+  public fileRestrictions: FileRestrictions = {
+    allowedExtensions: ['.jpg', '.png']
+  };
+  imageUploaded: boolean;
+  // end kendo
   constructor(
     private modalService: ModalService,
   ) { }
@@ -68,4 +80,81 @@ export class InputComponent implements OnInit {
       }
     });
   }
+
+  selectChangeHandler(event: any): void {
+    this.selected = event.target.value;
+    console.log(this.selected);
+    if (this.selected === '-- Select --') {
+      this.selected = undefined;
+    }
+  }
+
+  // file select function
+  public selectEventHandler(e: SelectEvent): void {
+    this.imageUploaded = false;
+    this.imagePreviews = [];
+    const that = this;
+    e.files.forEach((file) => {
+    if (!file.validationErrors) {
+        const reader = new FileReader();
+        reader.onload = function (ev) {
+        const image = {
+            src: ev.target['result']+"",
+            uid: file.uid,
+            id: file.uid + '-' + moment().format('YYYYMMDDhhmmss'),
+            name: file.name,
+            size: file.size,
+            type: file.rawFile.type,
+            extension: file.extension
+        };
+        that.imagePreviews.unshift(image);
+
+        };
+        reader.readAsDataURL(file.rawFile);
+    }
+    });
+  }
+
+  public showButton(state: FileState): boolean {
+    return (state === FileState.Selected) ? true : false;
+  }
+
+  public remove(fileSelect, uid: string): void {
+    this.imageUploaded = false;
+    fileSelect.removeFileByUid(uid);
+    if (this.imagePreviews.length > 0) {
+      this.imagePreviews.forEach((element,index) =>{
+        if (element.uid === uid) {
+            this.imagePreviews.splice(index, 1);
+        }
+      });
+    }
+  }
+
+  upload(state: any): void {
+    if(this.imagePreviews.length > 0) {
+      this.imagePreviews.forEach(element =>{
+        if(element.uid === state) {
+            const splitted = element.src.split(',');
+            const base64WriteImage = new Base64ImageModel();
+            if (splitted[1]) {
+               base64WriteImage.id         = element.id;
+               base64WriteImage.base64     = splitted[1];
+               base64WriteImage.fileName  = element.name;
+               base64WriteImage.fileType  = element.type;
+               base64WriteImage.fileSize  = element.size + '';
+               base64WriteImage.fileExtension = element.extension;
+               console.log(base64WriteImage);
+              //  this.uploadService.upload(base64WriteImage).then(resp => {
+              //    if(resp === true) {
+              //      this.resource_img_id = base64WriteImage.id;
+              //      this.image_uploaded = true;
+              //    }
+              // });
+             }
+        }
+      });
+    }
+  }
+
 }
