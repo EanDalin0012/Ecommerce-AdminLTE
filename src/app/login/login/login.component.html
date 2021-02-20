@@ -1,47 +1,41 @@
-<div class="account-content">
-  <a routerLink = "/login/joblist" class="btn btn-primary apply-btn">Apply Job</a>
-  <div class="container">
+<div class="login-box">
+  <div class="login-logo">
+      <a href="#" class="font-khmer-cursive"><b>Admin</b>LTE</a>
+  </div>
 
-      <!-- Account Logo -->
-      <div class="account-logo">
-          <a href="javascript:"><img src="assets/img/logo2.png" alt="Dreamguy's Technologies"></a>
+  <div class="login-box-body">
+      <p class="login-box-msg font-khmer-cursive"><b>Sign in to start your session</b></p>
+
+
+      <div class="form-group has-feedback">
+          <input type="text" class="form-control font-khmer-cursive" placeholder="Email" [(ngModel)]="userName" (keypress)="enterLoginHandler($event)" (keydown)="tapfocus($event)">
+          <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
       </div>
-      <!-- /Account Logo -->
 
-      <div class="account-box">
-          <div class="account-wrapper">
-              <h3 class="account-title">Login</h3>
-              <p class="account-subtitle">Access to our dashboard</p>
+      <div class="form-group has-feedback">
+          <input class="form-control" placeholder="Password" type="password" [(ngModel)]="password" (keypress)="enterLoginHandler($event)" #passwordElement>
+          <span class="glyphicon glyphicon-lock form-control-feedback"></span>
+      </div>
 
-              <!-- Account Form -->
-              <form>
-                  <div class="form-group">
-                      <label>Email Address</label>
-                      <input class="form-control" type="text">
-                  </div>
-                  <div class="form-group">
-                      <div class="row">
-                          <div class="col">
-                              <label>Password</label>
-                          </div>
-                          <div class="col-auto">
-                              <a class="text-muted" routerLink = "/login/forgot">
-                                  Forgot password?
-                              </a>
-                          </div>
-                      </div>
-                      <input class="form-control" type="password">
-                  </div>
-                  <div class="form-group text-center">
-                      <button class="btn btn-primary account-btn" type="button">Login</button>
-                  </div>
-                  <div class="account-footer">
-                      <p>Don't have an account yet? <a routerLink = "/login/register">Register</a></p>
-                  </div>
-              </form>
-              <!-- /Account Form -->
+      <div class="row">
+          <div class="col-xs-6">
 
+              <div class="checkbox icheck">
+                  <label (click)="remember()">
+                      <span [ngClass]="{'k-i-close-circle red': !rememberMe, 'k-i-check-circle ic': rememberMe}" class="k-icon" style="margin: -3px 0px 0px 0px;"></span>
+                       <span style="margin: 0px 1px 0px 5px;" class="font-khmer-cursive">Remember Me</span>
+                  </label>
+              </div>
+          </div>
+
+          <div class="col-xs-4 l cu" style="margin-right: -12px;" (click) ="Login()">
+              <button class="k-button btn-w100px-h35px font-khmer-cursive btn-add-00">
+                  <span class="k-icon k-i-login"></span>
+                  <span style="margin-left: 5px;">{{'Login.Button.Login' | translate}}</span>
+              </button>
           </div>
       </div>
+
+      <span class="fi-expand-down"></span>
   </div>
 </div>

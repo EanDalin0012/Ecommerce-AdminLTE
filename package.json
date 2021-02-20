@@ -65,6 +65,7 @@
     "ng2-search-filter": "^0.5.1",
     "ngx-bootstrap": "^5.6.2",
     "ngx-date-picker": "0.0.24",
+    "ngx-device-detector": "^2.0.5",
     "ngx-filepond": "^6.0.0",
     "ngx-mask": "^11.1.4",
     "ngx-perfect-scrollbar": "^10.1.0",
@@ -75,6 +76,8 @@
     "primeng": "^10.0.3",
     "raphael": "^2.3.0",
     "rxjs": "~6.6.0",
+    "rxjs-compat": "^6.6.3",
+    "rxjs-observable": "0.0.7",
     "tslib": "^2.0.0",
     "zone.js": "~0.11.3"
   },

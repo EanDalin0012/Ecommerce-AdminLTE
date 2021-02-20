@@ -1,0 +1,21 @@
+{
+  "Common": {
+    "Label": {
+      "label1":"label1"
+    },
+    "Button": {
+      "Button": "Button"
+    },
+    "Message": {
+      "Message":"Message"
+    }
+  },
+  "Login": {
+    "Label": {
+      "Login":"Login"
+    },
+    "Button": {
+      "Login":"Login"
+    }
+  }
+}

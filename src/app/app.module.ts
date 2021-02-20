@@ -12,17 +12,15 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AllModulesData } from 'src/assets/all-modules-data/all-modules-data';
 import {PerfectScrollbarModule} from 'ngx-perfect-scrollbar';
 import { InMemoryWebApiModule } from 'angular-in-memory-web-api';
-import { FormsModule } from '@angular/forms';
 import { MShareModule } from './m-share/m-share.module';
-import { ButtonsModule } from '@progress/kendo-angular-buttons';
-import { DialogsModule } from '@progress/kendo-angular-dialog';
+import {HTTP_INTERCEPTORS } from '@angular/common/http';
+import { AuthInterceptor } from './m-share/service/auth-interceptor.service';
+import { HttpClientModule, HttpClient } from "@angular/common/http";
+import { TranslateModule, TranslateLoader } from "@ngx-translate/core";
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
-import { HttpClient, HttpClientModule } from '@angular/common/http';
-import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
-import { UploadModule } from '@progress/kendo-angular-upload';
 
-export function createTranslateLoader(http: HttpClient) {
-  return new TranslateHttpLoader(http, './assets/i18n/', '.json');
+export function createTranslateLoader(http: HttpClient): TranslateHttpLoader  {
+  return new TranslateHttpLoader(http);
 }
 @NgModule({
   declarations: [
@@ -31,23 +29,14 @@ export function createTranslateLoader(http: HttpClient) {
     LayoutComponent
   ],
   imports: [
-    FormsModule,
     BrowserModule,
-    BrowserAnimationsModule,
+    HttpClientModule,
     AppRoutingModule,
     LayoutModule,
     DataTablesModule,
-    MShareModule,
-    InMemoryWebApiModule.forRoot(AllModulesData),
+    // InMemoryWebApiModule.forRoot(AllModulesData),
     PerfectScrollbarModule,
     MShareModule.forRoot(),
-    ToastrModule.forRoot(
-      {
-        timeOut: 1500,
-        positionClass: 'toast-bottom-right',
-        preventDuplicates: true,
-      }
-    ),
     TranslateModule.forRoot({
       loader: {
         provide: TranslateLoader,
@@ -55,12 +44,22 @@ export function createTranslateLoader(http: HttpClient) {
         deps: [HttpClient]
       },
     }),
-    ButtonsModule,
-    DialogsModule,
-    UploadModule,
-    HttpClientModule,
+    ToastrModule.forRoot(
+      {
+        timeOut: 1500,
+        positionClass: 'toast-bottom-right',
+        preventDuplicates: true,
+      }
+    ),
+    BrowserAnimationsModule,
   ],
-  providers: [],
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: AuthInterceptor,
+      multi: true
+    }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

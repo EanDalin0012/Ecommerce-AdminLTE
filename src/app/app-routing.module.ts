@@ -19,7 +19,6 @@ const routes: Routes = [
       }
     ]
   },
-  {path: 'input', component: InputComponent},
   {path: 'login', component: LayoutBlankComponent, loadChildren: './login/login.module#LoginModule'},
 
   // { path: '**', component: Error404Component },
