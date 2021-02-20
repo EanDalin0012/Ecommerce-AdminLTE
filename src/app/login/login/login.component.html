@@ -18,22 +18,20 @@
       </div>
 
       <div class="row">
-          <div class="col-xs-6">
-
-              <div class="checkbox icheck">
-                  <label (click)="remember()">
+          <div class="form-group col-md-12" style = "padding-right: 0px;">
+                  <label class = "pointer_cursor" (click)="remember()">
                       <span [ngClass]="{'k-i-close-circle red': !rememberMe, 'k-i-check-circle ic': rememberMe}" class="k-icon" style="margin: -3px 0px 0px 0px;"></span>
                        <span style="margin: 0px 1px 0px 5px;" class="font-khmer-cursive">Remember Me</span>
                   </label>
-              </div>
+
+                <button style ="margin-right: 0;" class="k-button btn-w100px-h35px font-khmer-cursive btn-add-00 l" (click) ="Login()">
+                    <span class="k-icon k-i-login"></span>
+                    <span style="margin-left: 5px;">{{'Login.Button.Login' | translate}}</span>
+                </button>
+
           </div>
 
-          <div class="col-xs-4 l cu" style="margin-right: -12px;" (click) ="Login()">
-              <button class="k-button btn-w100px-h35px font-khmer-cursive btn-add-00">
-                  <span class="k-icon k-i-login"></span>
-                  <span style="margin-left: 5px;">{{'Login.Button.Login' | translate}}</span>
-              </button>
-          </div>
+
       </div>
 
       <span class="fi-expand-down"></span>

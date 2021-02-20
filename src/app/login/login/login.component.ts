@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Utils } from 'src/app/m-share/utils/utils.static';
 
 @Component({
   selector: 'app-login',
@@ -34,6 +35,11 @@ export class LoginComponent implements OnInit {
   }
 
   remember(): void {
-
+    this.rememberMe = !this.rememberMe;
+    Utils.setSecureStorage('remember_me', this.rememberMe);
+    Utils.removeSecureStorage('user_id');
+    if (this.rememberMe) {
+      Utils.setSecureStorage('user_id', this.userName)
+    }
   }
 }
