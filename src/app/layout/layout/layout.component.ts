@@ -19,7 +19,7 @@ export class LayoutComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.router.navigateByUrl('/main/component');
+    // this.router.navigateByUrl('/main/component');
   }
 
   getScreenHeight() {

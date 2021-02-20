@@ -38,3 +38,8 @@ export enum LocalStorage {
   LAST_TIME_CHECK_NOTIFICATION = 'theLastTimeCheckNotification',
   Authorization   = 'Authorization'
 }
+
+// TODO: auth.service will be update this code.
+export enum AESInfo {
+  store = 'AES_INFO'
+}

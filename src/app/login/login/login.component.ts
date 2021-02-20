@@ -1,37 +1,77 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnDestroy, OnInit, ViewChild } from '@angular/core';
+import { Authentcation } from 'src/app/m-share/model/authentcation';
 import { Utils } from 'src/app/m-share/utils/utils.static';
-
+import { AuthenticationService } from '../../m-share/service/authentication.service';
+declare var $;
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css']
 })
-export class LoginComponent implements OnInit {
+export class LoginComponent implements OnInit, OnDestroy {
 
   userName: string;
   password: string;
   rememberMe = false;
+  @ViewChild('passwordElement') passwordElement: ElementRef;
 
-  constructor() { }
+  constructor( private authentcationService: AuthenticationService) { }
 
   ngOnInit(): void {
+    this.password = 'admin1234';
+    this.userName = 'admin';
+    $('body').addClass('hold-transition login-page');
+    $(() => {
+      $('input').iCheck({
+        checkboxClass: 'icheckbox_square-blue',
+        radioClass: 'iradio_square-blue',
+        increaseArea: '20%' /* optional */
+      });
+    });
+    this.rememberMe = Utils.getSecureStorage('remember_me');
+    if (this.rememberMe === true) {
+      this.userName = Utils.getSecureStorage('user_id');
+    }
+    console.log('remember_me', this.rememberMe);
   }
 
-  Login(): void {
+  ngOnDestroy(): void {
+    $('body').removeClass('hold-transition login-page');
+  }
 
+  login(): void {
+    if (this.rememberMe) {
+      Utils.setSecureStorage('user_id', this.rememberMe)
+    }
+
+    const authenticationObj: Authentcation = {
+      user_name: this.userName,
+      password: this.password
+    };
+    this.authentcationService.login(authenticationObj);
   }
 
   enterLoginHandler(event: any): void {
-    console.log(event);
+    if (event.keyCode === 13 && this.userName !== '' && this.password !== '') {
+      this.login();
+    } else if (event.keyCode === 13 && this.userName !== '') {
+      this.passwordElement.nativeElement.focus();
+    }
   }
 
   tapfocus(event: any): void {
-    console.log(event);
+    const element = event.srcElement.nextElementSibling;
+    if (event.keyCode === 9) {
+      element.focus();
+    }
 
   }
 
   clickRememberMe(): void {
-
+    if (this.userName !== '') {
+      Utils.setSecureStorage('remember_me', this.rememberMe);
+      Utils.setSecureStorage('user_id', this.userName)
+    }
   }
 
   remember(): void {
