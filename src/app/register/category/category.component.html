@@ -3,9 +3,9 @@
       <div class="page_title">
         <div class="breadcrumb">
             <div class="page_navi">
-                <span class="font-khmer-cursive">{{'Registerr.LABEL.Register' | translate}}</span>
+                <span class="font-khmer-cursive">{{'Common.Label.Register' | translate}}</span>
             </div>
-            <h1 class="margin-00"><span class="font-khmer-cursive">{{'RegiCate.LABEL.Tittle' | translate}}</span></h1>
+            <h3 class="margin-00"><span class="font-khmer-cursive">{{'Category.Label.Category' | translate}}</span></h3>
         </div>
     </div>
 
@@ -14,7 +14,7 @@
   <div class="container01">
 
       <div class="col-md-12" style="margin-bottom: 15px; padding: 0px;">
-          <strong>{{'COMMON.LABEL.ITEMS' | translate: {'value': totalRecord} }}</strong>
+          <strong>{{'Common.Label.Items' | translate: {'value': totalRecord} }}</strong>
       </div>
 
       <div>
@@ -36,12 +36,12 @@
 
                       <div class="form-group col-md-4">
 
-                            <button kendoGridPDFCommand class="k-button font-khmer-cursive btn-add-00 export-word" >
-                                <span class="font-size-15">{{'COMMON.BUTTON.EXPORT_PDF' | translate}}</span>
+                            <button kendoGridPDFCommand class="k-button font-khmer-cursive btn-add-00 export-word float-right margin-left-10px" >
+                                <span class="font-size-15">{{'Common.Button.ExcelPDF' | translate}}</span>
                             </button>
 
-                            <button kendoGridExcelCommand class="k-button font-khmer-cursive btn-add-00 export-word" (click)="excelExportExcel(excelexport)" >
-                              <span class="font-size-15" >{{'COMMON.BUTTON.EXPORT_EXCEL' | translate}}</span>
+                            <button kendoGridExcelCommand class="k-button font-khmer-cursive btn-add-00 export-word float-right" (click)="excelExportExcel(excelexport)" >
+                              <span class="font-size-15" >{{'Common.Button.ExcelExport' | translate}}</span>
                           </button>
 
                       </div>
@@ -50,23 +50,23 @@
 
               <kendo-grid-checkbox-column class="cen" [width]="45" [resizable]="false" [columnMenu]="true" showSelectAll="true"></kendo-grid-checkbox-column>
 
-              <kendo-grid-column width="50" class="cen" [sortable]="false" field="no" title="{{'COMMON.LABEL.NO' | translate}}">
+              <kendo-grid-column width="50" class="cen" [sortable]="false" field="no" title="{{'Common.Label.No' | translate}}">
                   <ng-template kendoGridCellTemplate let-dataItem let-rowIndex="rowIndex">
                       <p>{{rowIndex + 1}}</p>
                   </ng-template>
               </kendo-grid-column>
 
-              <kendo-grid-column width="150" class="subj" field="name" title="{{'RegiCate.LABEL.Name' | translate}}"></kendo-grid-column>
-              <kendo-grid-column width="190" class="subj" field="description" title="{{'RegiCate.LABEL.Description' | translate}}"></kendo-grid-column>
-              <kendo-grid-column width="190" class="subj font-khmer-cursive" field="create_by" title="{{'COMMON.LABEL.Create_By' | translate}}"></kendo-grid-column>
-              <kendo-grid-column width="190" class="subj font-khmer-cursive" field="modify_by" title="{{'COMMON.LABEL.Modify_By' | translate}}"></kendo-grid-column>
+              <kendo-grid-column width="150" class="subj" field="name" title="{{'Category.Label.Name' | translate}}"></kendo-grid-column>
+              <kendo-grid-column width="190" class="subj" field="description" title="{{'Category.Label.Description' | translate}}"></kendo-grid-column>
+              <kendo-grid-column width="190" class="subj font-khmer-cursive" field="create_by" title="{{'Common.Label.CreateBy' | translate}}"></kendo-grid-column>
+              <kendo-grid-column width="190" class="subj font-khmer-cursive" field="modify_by" title="{{'Common.Label.ModifyBy' | translate}}"></kendo-grid-column>
 
 
-              <kendo-grid-column width="100" class="cen" [sortable]="false" field="edit" title="{{'COMMON.BUTTON.EDIT' | translate}}">
+              <kendo-grid-column width="50" class="cen" [sortable]="false" field="edit" title="{{'Common.Button.Edit' | translate}}">
                   <ng-template kendoGridCellTemplate let-dataItem let-rowIndex="rowIndex">
-                      <button class="k-button btn-w100px-h35px font-khmer-cursive btn-add-00 v-card-identy k-float-left" (click)="edit(dataItem)">
+                      <button class="k-button k-button-edit btn-w100px-h35px font-khmer-cursive btn-add-00 v-card-identy k-float-left" (click)="edit(dataItem)">
                           <span class="k-icon k-i-track-changes i-font"></span>
-                          <span style="margin-left: 5px;">edit</span>
+                          <!-- <span style="margin-left: 5px;">edit</span> -->
                       </button>
                   </ng-template>
               </kendo-grid-column>
@@ -87,9 +87,9 @@
 
               <!-- excele -->
               <kendo-excelexport [data]="data" fileName="categories.xlsx" #excelexport>
-                  <kendo-excelexport-column field="id" title="{{'COMMON.LABEL.NO' | translate}}"></kendo-excelexport-column>
-                  <kendo-excelexport-column field="name" title="{{'RegiCate.LABEL.Name' | translate}}"></kendo-excelexport-column>
-                  <kendo-excelexport-column field="description" title="{{'RegiCate.LABEL.Description' | translate}}" [width]="350"></kendo-excelexport-column>
+                  <kendo-excelexport-column field="id" title="{{'Common.Label.No' | translate}}"></kendo-excelexport-column>
+                  <kendo-excelexport-column field="name" title="{{'Category.Label.Name' | translate}}"></kendo-excelexport-column>
+                  <kendo-excelexport-column field="description" title="{{'Category.Label.Description' | translate}}" [width]="350"></kendo-excelexport-column>
               </kendo-excelexport>
 
           </kendo-grid>
@@ -100,7 +100,7 @@
         <div class="col-md-3">
           <button class="k-button btn-w100px-h35px font-khmer-cursive btn-add-00 border-color-red" (click)="delete()">
             <span class="k-icon k-i-minus-circle color-red"></span>
-            <span class="border-color-red color-red margin-left-5px">{{'COMMON.BUTTON.DELETE' | translate}}</span>
+            <span class="border-color-red color-red margin-left-5px">{{'Common.Button.Delete' | translate}}</span>
         </button>
         </div>
 
@@ -108,7 +108,7 @@
           <div class="c_btn">
             <button class="k-button btn-w100px-h35px font-khmer-cursive btn-add-00" (click)="inquiry()">
                 <span class="k-icon k-i-plus-circle "></span>
-                <span class="margin-left-5px">{{'COMMON.BUTTON.ADD_NEW' | translate}}</span>
+                <span class="margin-left-5px">{{'Common.Button.New' | translate}}</span>
             </button>
 
         </div>

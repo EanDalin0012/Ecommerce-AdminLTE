@@ -5,7 +5,7 @@ import { LayoutComponent } from './layout/layout/layout.component';
 import { LayoutBlankComponent } from './layout/layout-blank/layout-blank.component';
 
 const routes: Routes = [
-  {path: '', redirectTo: '/main', pathMatch: 'full'},
+  {path: '', redirectTo: '/login', pathMatch: 'full'},
   {
     path: 'main', component: LayoutComponent,
     children: [

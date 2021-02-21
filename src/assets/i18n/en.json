@@ -1,10 +1,18 @@
 {
   "Common": {
     "Label": {
-      "label1":"label1"
+      "Register":"Register",
+      "Items": "Items: {{value}}",
+      "No":"No",
+      "CreateBy":"Create By",
+      "ModifyBy":"Modify By"
     },
     "Button": {
-      "Button": "Button"
+      "ExcelExport": "Excel Export",
+      "ExcelPDF": "Excel PDF",
+      "Edit": "edit",
+      "New": "New",
+      "Delete":"Delete"
     },
     "Message": {
       "Message":"Message"
@@ -16,6 +24,13 @@
     },
     "Button": {
       "Login":"Login"
+    }
+  },
+  "Category": {
+    "Label": {
+      "Category":"Category",
+      "Name":"Name",
+      "Description":"Description"
     }
   }
 }

@@ -1544,12 +1544,15 @@ table.dataTable thead > tr > td.sorting {
 .page-wrapper {
 	left: 0;
 	margin-left: 230px;
-	padding-top: 60px;
+	padding-top: 60px !important;
+  height: 100% !important;
 	position: relative;
 	transition: all 0.2s ease-in-out;
+  background-color: #eaeff8;
 }
 .page-wrapper .content {
 	padding: 30px;
+  background-color: #eaeff8;
 }
 .page-header {
 	margin-bottom: 1.875rem;
@@ -8581,18 +8584,13 @@ input:focus, textarea:focus, select:focus {
 }
 
 .contentsWrap {
-  max-height: 85vh;
   overflow-y: scroll;
   padding: 1px 15px 15px 15px;
 }
 
 .container01 {
-  padding: 10px 24px;
-}
-
-.container01 {
   margin: 10px 0;
-  padding: 25px 24px;
+  padding: 15px 24px;
   background: #fff;
   border-radius: 4px;
   box-shadow: 0 3px 5px rgb(197 197 197 / 45%);
@@ -8702,4 +8700,84 @@ body::-webkit-scrollbar-thumb {
 
 .margin-left-5px {
   margin-left: 5px;
+}
+
+.page_navi>* {
+  display: inline-block;
+  color: rgba(14, 29, 74, .7);
+}
+
+.page_navi>*:after {
+  content: ">";
+  width: 8px;
+  height: 1em;
+  margin: 0 6px 0 10px;
+  color: rgba(0, 0, 0, 0);
+  text-indent: -999em;
+  background: url("assets/images/ico_rarrow02.png") no-repeat center center;
+}
+
+.page_title {
+  position: relative;
+  margin: 15px 0 12px;
+}
+.page_title {
+  position: relative;
+  margin: 15px 0 12px;
+}
+
+.breadcrumb {
+  background-color: #ffffff;
+  margin-bottom: 10px;
+  line-height: 30px;
+  overflow: hidden;
+}
+
+.k-button-edit {
+  min-width: 20px;
+  width: 20px;
+  min-height: 20px;
+  height: 25px;
+}
+
+.cen {
+  text-align: center !important;
+}
+
+.k-grid-header .k-header.cen>.k-link {
+  text-align: center;
+}
+
+
+.table01 thead th, .k-grid-header thead th {
+  height: 40px;
+  padding: 10px 6px;
+  font-weight: normal;
+  text-align: center;
+  vertical-align: middle;
+  border: none;
+}
+
+.k-virtual-content::-webkit-scrollbar-thumb {
+  background: #444 !important;
+}
+
+.table_control {
+    padding: 10px 0;
+    position: relative;
+    border-bottom: 1px solid #e4e2de;
+}
+
+.margin-left-10px{
+  margin-left: 10px;
+}
+
+
+.table01 thead tr, .k-grid-header thead tr {
+  border-bottom: 1px solid #a69c90;
+  background: #e8e3de;
+}
+
+.breadcrumb {
+  padding: 5px 5px 0px 15px;
 }

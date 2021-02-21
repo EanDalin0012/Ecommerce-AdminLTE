@@ -115,7 +115,7 @@ export class AuthInterceptor implements HttpInterceptor {
       console.log(typeof error.status + ' : ' + error.statusText);
       environment.production ? (() => '')() : console.log(error.name + ' : ' + error.message);
 
-      return Observable.of(new HttpResponse({body: { header: {result: false, resultCode: httpErrorCode }, body: {}} }));
+      return Observable.of(new HttpResponse({body: { result: {result: false, resultCode: httpErrorCode }, body: {}} }));
     }) as any;
   }
 
