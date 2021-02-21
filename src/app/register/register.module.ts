@@ -12,13 +12,39 @@ import { ProductDetailEditComponent } from './product-detail-edit/product-detail
 import { VendorComponent } from './vendor/vendor.component';
 import { VendorAddComponent } from './vendor-add/vendor-add.component';
 import { VendorEditComponent } from './vendor-edit/vendor-edit.component';
+import { RegisterRoutingModule } from './register-routing.module';
+import { MShareModule } from '../m-share/m-share.module';
+import { KendoModule } from '../m-share/kendo/kendo.module';
 
 
 
 @NgModule({
-  declarations: [CategoryComponent, CategoryAddComponent, CategoryEditComponent, ProductComponent, ProductAddComponent, ProductEditComponent, ProductDetailComponent, ProductDetailAddComponent, ProductDetailEditComponent, VendorComponent, VendorAddComponent, VendorEditComponent],
+  declarations: [
+    CategoryComponent,
+    CategoryAddComponent,
+    CategoryEditComponent,
+    ProductComponent,
+    ProductAddComponent,
+    ProductEditComponent,
+    ProductDetailComponent,
+    ProductDetailAddComponent,
+    ProductDetailEditComponent,
+    VendorComponent,
+    VendorAddComponent,
+    VendorEditComponent
+  ],
   imports: [
-    CommonModule
+    CommonModule,
+    RegisterRoutingModule,
+    MShareModule,
+    KendoModule,
+    // BsDatepickerModule.forRoot(),
+    // DataTablesModule
   ]
 })
-export class RegisterModule { }
+export class RegisterModule {
+  constructor() {
+    console.log('RegisterModule work');
+
+  }
+ }

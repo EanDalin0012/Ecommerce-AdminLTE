@@ -169,7 +169,7 @@ export class HttpService {
           this.message(result.error.message);
           reject();
         } else {
-          resolve(decryptData);
+          resolve(decryptData.body);
         }
 
       });

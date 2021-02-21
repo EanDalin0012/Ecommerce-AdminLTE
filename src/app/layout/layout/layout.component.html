@@ -1,6 +1,6 @@
 <app-nav></app-nav>
 <app-header></app-header>
-<div class="page-wrapper content-wrapper" (resized)="onResize($event)" [ngStyle]="{ 'height' : innerHeight }">
+<div class="page-wrapper content-wrapper" (resized)="onResize($event)" [ngStyle]="{ 'height' : innerHeight }" style = "padding: 75px 15px 0px 15px;">
     <router-outlet></router-outlet>
     <div kendoDialogContainer></div>
 </div>

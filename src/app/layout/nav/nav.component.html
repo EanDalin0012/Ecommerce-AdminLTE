@@ -7,22 +7,43 @@
                   <li class="menu-title">
                       <span>Main</span>
                   </li>
-                  <li class="submenu" [ngClass]="{ 'active' : urlComplete.mainUrl === 'main' }">
+
+                  <li class="submenu" [ngClass]="{ 'active' : urlComplete.mainUrl === 'dashboard' }">
                       <a href="javascript:" [ngClass]="{ 'subdrop' : urlComplete.mainUrl === 'dashboard' }">
                           <i class="la la-dashboard"></i>
                           <span>Dashboard</span>
                           <span class="menu-arrow"></span>
                       </a>
-                      <ul style="display: none;"
-                          [ngStyle]="{ 'display' : urlComplete.mainUrl === 'dashboard' ? 'block' : 'none' }">
-                          <li routerLink="/dashboard/admin"><a
-                                  [ngClass]="{ 'active' : urlComplete.subUrl === 'admin' }" href="javascript:">Admin
-                                  Dashboard</a></li>
-                          <li routerLink="/dashboard/employee"><a
-                                  [ngClass]="{ 'active' : urlComplete.subUrl === 'employee' }"
-                                  href="javascript:">Employee Dashboard</a></li>
+                      <ul style="display: none;" [ngStyle]="{ 'display' : urlComplete.mainUrl === 'dashboard' ? 'block' : 'none' }">
+                          <li (click)="openPage('adminDashboard')">
+                            <a [ngClass]="{ 'active' : urlComplete.subUrl === 'admin' }" href="javascript:">Admin Dashboard</a>
+                          </li>
+                          <li (click)="openPage('componentInput')">
+                            <a [ngClass]="{ 'active' : urlComplete.subUrl === 'employee' }" href="javascript:">Employee Dashboard</a>
+                          </li>
                       </ul>
                   </li>
+
+                  <li class="submenu" [ngClass]="{ 'active' : urlComplete.mainUrl === 'register' }">
+                    <a href="javascript:" [ngClass]="{ 'subdrop' : urlComplete.mainUrl === 'register' }">
+                        <i class="la la-dashboard"></i>
+                        <span>Register</span>
+                        <span class="menu-arrow"></span>
+                    </a>
+                    <ul style="display: none;" [ngStyle]="{ 'display' : urlComplete.mainUrl === 'register' ? 'block' : 'none' }">
+                        <li (click)="openPage('category')">
+                          <a [ngClass]="{ 'active' : urlComplete.subUrl === 'category' }" href="javascript:">Category</a>
+                        </li>
+                        <li (click)="openPage('vendor')">
+                          <a [ngClass]="{ 'active' : urlComplete.subUrl === 'vendor' }" href="javascript:">Vendor</a>
+                        </li>
+
+                        <li (click)="openPage('product')">
+                          <a [ngClass]="{ 'active' : urlComplete.subUrl === 'product' }" href="javascript:">Product</a>
+                        </li>
+                    </ul>
+                </li>
+
                   <li class="submenu" [ngClass]="{ 'active' : urlComplete.mainUrl === 'apps' }">
                       <a href="javascript:" [ngClass]="{ 'subdrop' : urlComplete.mainUrl === 'apps' }">
                           <i class="la la-cube"></i>

@@ -16,6 +16,10 @@ const routes: Routes = [
       {
         path: 'component',
         loadChildren: './component/component.module#ComponentModule'
+      },
+      {
+        path: 'register',
+        loadChildren: './register/register.module#RegisterModule'
       }
     ]
   },

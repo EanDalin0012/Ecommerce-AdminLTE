@@ -6,10 +6,14 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./grid.component.css']
 })
 export class GridComponent implements OnInit {
-
+  public dtOptions: DataTables.Settings = {};
   constructor() { }
 
   ngOnInit(): void {
+    this.dtOptions = {
+      // ... skipped ...
+      dom: 'lrtip'
+   }
   }
 
 }

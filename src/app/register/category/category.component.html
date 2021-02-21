@@ -1,1 +1,119 @@
-<p>category works!</p>
+<div class="contentsWrap contentsWrap01">
+  <div class="page_title">
+      <div class="page_title">
+        <div class="breadcrumb">
+            <div class="page_navi">
+                <span class="font-khmer-cursive">{{'Registerr.LABEL.Register' | translate}}</span>
+            </div>
+            <h1 class="margin-00"><span class="font-khmer-cursive">{{'RegiCate.LABEL.Tittle' | translate}}</span></h1>
+        </div>
+    </div>
+
+  </div>
+
+  <div class="container01">
+
+      <div class="col-md-12" style="margin-bottom: 15px; padding: 0px;">
+          <strong>{{'COMMON.LABEL.ITEMS' | translate: {'value': totalRecord} }}</strong>
+      </div>
+
+      <div>
+
+          <kendo-grid scrollable="virtual" [data]="gridView" [selectable]="selectableSettings" [sortable]="true" [sort]="sort" (sortChange)="sortChange($event)" [pageSize]="pageSize" [rowClass]="rowCallback" [skip]="skip" [kendoGridBinding]="categorylist" [pageable]="{
+          buttonCount: buttonCount,
+          info: info,
+          type: type,
+          pageSizes: pageSizes,
+          previousNext: previousNext}" [height]="500" kendoGridSelectBy="id" [scrollable]="'true'" (pageChange)="pageChange($event)" class="table01 overflow-x" [selectedKeys]="mySelection">
+              <ng-template kendoGridToolbarTemplate>
+                  <div class="form-row" style="width: 100%; border-left: none !important;">
+                      <div class="form-group col-md-8">
+                          <input type="text" style="height: 34px;" [ngClass]="search? 'active-input' : ''" class="form-control" [(ngModel)]="search" (input)="searchChange($event)" placeholder="Please enter suplier name...">
+                          <div class="in_box">
+                              <button type="button" style="top: 5px;" [ngClass]="search? 'btn_del' : ''" (click)="deleteTextSearch()" tabindex=-1 class="btn" tabindex=-1 tabindex=-1></button>
+                          </div>
+                      </div>
+
+                      <div class="form-group col-md-4">
+
+                            <button kendoGridPDFCommand class="k-button font-khmer-cursive btn-add-00 export-word" >
+                                <span class="font-size-15">{{'COMMON.BUTTON.EXPORT_PDF' | translate}}</span>
+                            </button>
+
+                            <button kendoGridExcelCommand class="k-button font-khmer-cursive btn-add-00 export-word" (click)="excelExportExcel(excelexport)" >
+                              <span class="font-size-15" >{{'COMMON.BUTTON.EXPORT_EXCEL' | translate}}</span>
+                          </button>
+
+                      </div>
+                  </div>
+              </ng-template>
+
+              <kendo-grid-checkbox-column class="cen" [width]="45" [resizable]="false" [columnMenu]="true" showSelectAll="true"></kendo-grid-checkbox-column>
+
+              <kendo-grid-column width="50" class="cen" [sortable]="false" field="no" title="{{'COMMON.LABEL.NO' | translate}}">
+                  <ng-template kendoGridCellTemplate let-dataItem let-rowIndex="rowIndex">
+                      <p>{{rowIndex + 1}}</p>
+                  </ng-template>
+              </kendo-grid-column>
+
+              <kendo-grid-column width="150" class="subj" field="name" title="{{'RegiCate.LABEL.Name' | translate}}"></kendo-grid-column>
+              <kendo-grid-column width="190" class="subj" field="description" title="{{'RegiCate.LABEL.Description' | translate}}"></kendo-grid-column>
+              <kendo-grid-column width="190" class="subj font-khmer-cursive" field="create_by" title="{{'COMMON.LABEL.Create_By' | translate}}"></kendo-grid-column>
+              <kendo-grid-column width="190" class="subj font-khmer-cursive" field="modify_by" title="{{'COMMON.LABEL.Modify_By' | translate}}"></kendo-grid-column>
+
+
+              <kendo-grid-column width="100" class="cen" [sortable]="false" field="edit" title="{{'COMMON.BUTTON.EDIT' | translate}}">
+                  <ng-template kendoGridCellTemplate let-dataItem let-rowIndex="rowIndex">
+                      <button class="k-button btn-w100px-h35px font-khmer-cursive btn-add-00 v-card-identy k-float-left" (click)="edit(dataItem)">
+                          <span class="k-icon k-i-track-changes i-font"></span>
+                          <span style="margin-left: 5px;">edit</span>
+                      </button>
+                  </ng-template>
+              </kendo-grid-column>
+
+              <kendo-grid-pdf fileName="categories.pdf" [allPages]="true" paperSize="A3" [repeatHeaders]="true" [landscape]="true">
+                  <kendo-grid-pdf-margin top="2cm" left="1cm" right="1cm" bottom="2cm"></kendo-grid-pdf-margin>
+                  <ng-template kendoGridPDFTemplate let-pageNum="pageNum" let-totalPages="totalPages">
+                      <div class="page-template">
+                          <div class="header">
+                              <div style="float: right">Page {{ pageNum }} of {{ totalPages }}</div>
+                          </div>
+                          <div class="footer">
+                              Page {{ pageNum }} of {{ totalPages }}
+                          </div>
+                      </div>
+                  </ng-template>
+              </kendo-grid-pdf>
+
+              <!-- excele -->
+              <kendo-excelexport [data]="data" fileName="categories.xlsx" #excelexport>
+                  <kendo-excelexport-column field="id" title="{{'COMMON.LABEL.NO' | translate}}"></kendo-excelexport-column>
+                  <kendo-excelexport-column field="name" title="{{'RegiCate.LABEL.Name' | translate}}"></kendo-excelexport-column>
+                  <kendo-excelexport-column field="description" title="{{'RegiCate.LABEL.Description' | translate}}" [width]="350"></kendo-excelexport-column>
+              </kendo-excelexport>
+
+          </kendo-grid>
+      </div>
+
+      <div class="table_control">
+
+        <div class="col-md-3">
+          <button class="k-button btn-w100px-h35px font-khmer-cursive btn-add-00 border-color-red" (click)="delete()">
+            <span class="k-icon k-i-minus-circle color-red"></span>
+            <span class="border-color-red color-red margin-left-5px">{{'COMMON.BUTTON.DELETE' | translate}}</span>
+        </button>
+        </div>
+
+
+          <div class="c_btn">
+            <button class="k-button btn-w100px-h35px font-khmer-cursive btn-add-00" (click)="inquiry()">
+                <span class="k-icon k-i-plus-circle "></span>
+                <span class="margin-left-5px">{{'COMMON.BUTTON.ADD_NEW' | translate}}</span>
+            </button>
+
+        </div>
+
+      </div>
+
+  </div>
+</div>

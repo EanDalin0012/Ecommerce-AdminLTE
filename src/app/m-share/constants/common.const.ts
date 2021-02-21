@@ -43,3 +43,12 @@ export enum LocalStorage {
 export enum AESInfo {
   store = 'AES_INFO'
 }
+
+export enum UrlCode {
+  'category'            = 'category',
+  'vendor'              = 'vendor',
+  'product'             = 'product',
+  'componentInput'      = '',
+  'adminDashboard'      = 'index'
+
+}

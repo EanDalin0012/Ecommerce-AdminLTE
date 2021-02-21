@@ -32,12 +32,11 @@ import { PopupComponent } from './popup/popup.component';
     ComponentRoutingModule,
     CommonModule,
     FormsModule,
-    MShareModule,
     ReactiveFormsModule,
     PickListModule,
     BsDatepickerModule.forRoot(),
-    DataTablesModule
-
+    DataTablesModule,
+    MShareModule
   ],
   exports: [
     InvoicesComponent,

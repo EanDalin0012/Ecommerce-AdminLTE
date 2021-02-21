@@ -8,6 +8,7 @@ import { PopupComponent } from '../popup/popup.component';
 import { FileRestrictions, FileState, SelectEvent } from '@progress/kendo-angular-upload';
 import * as moment from 'moment';
 import { Base64ImageModel } from '../../m-share/model/image-base64';
+import { SubscribeMessageService } from '../../m-share/service/subscribe-message.service';
 declare const $: any;
 @Component({
   selector: 'app-input',
@@ -30,13 +31,17 @@ export class InputComponent implements OnInit {
   // end kendo
   constructor(
     private modalService: ModalService,
+    private subscribeMessageService: SubscribeMessageService
   ) { }
    exampleOptions: FlatpickrOptions = {
     defaultDate: '2017-03-15'
   };
 
   ngOnInit(): void {
+    const url = (window.location.href).split('/');
+    console.log(url);
 
+    this.subscribeMessageService.visitMessage(url[4]);
   }
 
   //search by purchase
