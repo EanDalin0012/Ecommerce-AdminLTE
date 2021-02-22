@@ -73,7 +73,7 @@ export class ModalService {
      */
     $('kendo-dialog').addClass(modalClass);
     $('kendo-dialog').addClass('addAlert');
-    $('.addAlert').eq(-1).addClass('addAlertCender');
+    $('.addAlert').eq(-1).addClass('addAlertCender message-alert');
     $('.addAlertCender').find('kendo-dialog-actions').addClass('alert-btn');
     dialog.result.subscribe((res) => {
       if (res instanceof DialogCloseResult) {

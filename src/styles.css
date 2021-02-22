@@ -8518,7 +8518,7 @@ input:focus, textarea:focus, select:focus {
   align-items: normal !important;
 }
 
-.addAlertCender div:nth-child(2) {
+.message-alert div:nth-child(2) {
   margin: auto;
   width: auto;
 }
@@ -8758,8 +8758,8 @@ body::-webkit-scrollbar-thumb {
   border: none;
 }
 
-.k-virtual-content::-webkit-scrollbar-thumb {
-  background: #444 !important;
+.k-grid-content::-webkit-scrollbar-thumb {
+  background: red !important;
 }
 
 .table_control {
@@ -8782,3 +8782,91 @@ body::-webkit-scrollbar-thumb {
   padding: 5px 5px 0px 15px;
 }
 
+
+/* .k-grid-toolbar {
+  height: 140px;
+  background: red;
+} */
+
+
+.k-pager-wrap {
+  padding: 5px 0 !important;
+  position: relative !important;
+  display: block !important;
+  text-align: center;
+  background: none;
+}
+
+.k-pager-wrap>* {
+  display: inline-block !important;
+  float: none;
+  margin: 0 -2px;
+  vertical-align: top;
+}
+
+.k-pager-wrap .k-pager-numbers {
+  border: 1px solid #d9dfe4;
+}
+
+.k-pager-info {
+  margin-top: 5px !important;
+}
+
+.k-grid th, .k-grid td {
+  padding: 5px 12px !important;
+}
+
+.table01 tbody tr {
+  border-bottom: 1px solid #cac5be;
+}
+
+.k-pager-wrap .k-pager-sizes select {
+  padding: 0 30px 0 0;
+  border-bottom: 1px solid #afa79d;
+  border-radius: 0;
+}
+
+.k-dropdown .k-dropdown-wrap, .k-dropdowntree .k-dropdown-wrap {
+    border-top: none !important;
+    border-left: none !important;
+    border-right: none !important;
+    border-bottom: 1px solid #3f496d !important;
+}
+
+.k-pager-numbers .k-link.k-state-selected {
+  background-color: #3f496d !important;
+  color: white !important;
+  border-bottom: 2px solid #3f496d !important;
+}
+
+.in_box .btn_del {
+  position: absolute;
+  display: block;
+  right: 20px;
+  top: 33px;
+  width: 25px;
+  height: 25px;
+  text-indent: -999em;
+  background: url("assets/images/btn_close.png") no-repeat center center;
+  background-size: 12px;
+}
+
+.k-dialog-close {
+  align-self: flex-end;
+  width: 20px;
+  padding: 0 !important;
+  min-width: 35px;
+}
+
+.message-alert div kendo-dialog-titlebar{
+  background: #222d32 !important;
+  padding: 5px 5px 5px 16px;
+}
+
+.message-alert div kendo-dialog-titlebar div.k-dialog-actions a span{
+  color: white !important;
+}
+
+.message-alert kendo-dialog-actions button {
+  float: right;
+}

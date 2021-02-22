@@ -12,6 +12,8 @@ import { orderBy, SortDescriptor } from '@progress/kendo-data-query';
 import { GridDataResult, PageChangeEvent, RowClassArgs, SelectableSettings } from '@progress/kendo-angular-grid';
 import { Title } from '@angular/platform-browser';
 import { ModalService } from '../../m-share/service/modal.service';
+import { CategoryAddComponent } from '../category-add/category-add.component';
+import { ButtonRoles } from '../../m-share/constants/common.const';
 declare const $: any;
 @Component({
   selector: 'app-category',
@@ -232,5 +234,15 @@ export class CategoryComponent implements OnInit {
 
   }
 
+  add(): void {
+    this.modalService.open({
+      content: CategoryAddComponent,
+      callback: response => {
+        if(response.close === ButtonRoles.save) {
+          console.log(response);
+        }
+      }
+    });
+  }
 }
 

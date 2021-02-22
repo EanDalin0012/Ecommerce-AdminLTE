@@ -52,3 +52,8 @@ export enum UrlCode {
   'adminDashboard'      = 'index'
 
 }
+
+export enum ResponseStatus {
+  Y = 'Y',
+  N = 'N'
+}
