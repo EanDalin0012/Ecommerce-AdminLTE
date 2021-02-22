@@ -99,19 +99,23 @@ export class HttpService {
             Utils.setSecureStorage(AESInfo.store, newAesInfo);
             $('body').addClass('loaded');
             $('div.loading').addClass('none');
-            const result = res as any;
-            if (result) {
-              const responseData = JSON.parse(result);
+
+            const responseDataFromServer = res as any;
+            // interceptor ready alert message mean that error 401
+            if (responseDataFromServer.result === false) {
+              return;
+            } else {
+              console.log(res);
+              const responseData = JSON.parse(responseDataFromServer);
               const rawData = responseData.body;
               const decryptData = JSON.parse(this.cryptoService.decrypt(String(rawData)));
-              if (decryptData.error != null) {
+              console.log(decryptData);
+              if ( decryptData.error != null && decryptData.error.code === 'N') {
+                this.message(decryptData.error.message);
                 reject();
-                this.message(result.error.message);
               } else {
-                resolve(decryptData);
+                resolve(decryptData.body);
               }
-            } else {
-              reject();
             }
         }, error => {
           console.log(error);
@@ -159,19 +163,21 @@ export class HttpService {
 
         $('body').addClass('loaded');
         $('div.loading').addClass('none');
-        const result = rest as any;
-        console.log(rest);
-        const responseData = JSON.parse(result);
-        const rawData = responseData.body;
-        const decryptData = JSON.parse(this.cryptoService.decrypt(String(rawData)));
-
-        if (decryptData.error != null) {
-          this.message(result.error.message);
-          reject();
+        const responseDataFromServer = rest as any;
+        // interceptor ready alert message mean that error 401
+        if (responseDataFromServer.result === false) {
+          return;
         } else {
-          resolve(decryptData.body);
+          const responseData = JSON.parse(responseDataFromServer);
+          const rawData = responseData.body;
+          const decryptData = JSON.parse(this.cryptoService.decrypt(String(rawData)));
+          if (decryptData.error && decryptData.error.code === 'N') {
+            this.message(responseDataFromServer.error.message);
+            reject();
+          } else {
+            resolve(decryptData.body);
+          }
         }
-
       });
     });
   }

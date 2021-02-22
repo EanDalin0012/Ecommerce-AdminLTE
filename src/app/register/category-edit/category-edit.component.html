@@ -1,1 +1,48 @@
-<p>category-edit works!</p>
+<div class="contentsWrap">
+  <div class="container01">
+      <div class="web_container">
+          <!-- header -->
+          <div class="pop_header">
+              <h4>{{'Category.Label.UpdateCategory' | translate}}</h4>
+              <button type="button" tabindex=-1 class="btn_popclose" (click)="close()"><span>close</span></button>
+          </div>
+          <!-- //header -->
+          <div class="web_Wrap" style="white-space: normal;">
+
+              <div class="row">
+                  <div class="form-group col-md-6">
+                      <label for="inputPassword4">Name</label>
+                      <input type="text" [ngClass]="name? 'active-input' : ''" class="form-control" [(ngModel)]="name" placeholder="{{'Category.Placeholder.EnterCategoryName' | translate}}">
+                      <div class="in_box">
+                          <button (click)="undefinedValue('name')" type="button" [ngClass]="name? 'btn_del' : ''" tabindex=-1 class="btn" tabindex=-1 tabindex=-1></button>
+                      </div>
+                  </div>
+
+
+                  <div class="form-group col-md-6">
+                    <label for="inputPassword4">Description</label>
+                    <input type="text" [ngClass]="description? 'active-input' : ''" class="form-control" [(ngModel)]="description" placeholder="{{'Common.Placeholder.EnterDescription' | translate}}">
+                    <div class="in_box">
+                        <button (click)="undefinedValue('description')" type="button" [ngClass]="description? 'btn_del' : ''" tabindex=-1 class="btn" tabindex=-1 tabindex=-1></button>
+                    </div>
+                </div>
+
+              </div>
+
+          </div>
+
+      </div>
+
+      <div class="c_btn">
+        <button (click)="close()" class="k-button btn-w100px-h35px font-khmer-cursive button-close"  kendoButton [attr.look]="'outline'">
+          <span class="k-icon k-i-close-circle k-i-x-circle margin-top-1px font-size-20px"></span>
+          <span class="margin-top-2px">{{'Common.Button.Close'|translate}}</span>
+        </button>
+
+        <button class="k-button btn-w100px-h35px font-khmer-cursive button-save"  kendoButton [attr.look]="'outline'" (click)="edit()">
+            <span class="k-icon k-i-download margin-top-1px font-size-20px"></span>
+            <span class="margin-top-5px margin-left-5px">{{'Common.Button.Update'|translate}}</span>
+        </button>
+      </div>
+  </div>
+</div>

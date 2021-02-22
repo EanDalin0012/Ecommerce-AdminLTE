@@ -1,13 +1,123 @@
-<div class="row" style="margin-top: 20px;">
-    <div class="col-md-6 d-flex">
-        <div class="form-group form-focus">
-            <div class="cal-icon">
-                <input #enterYourIdHere class="form-control floating datetimepicker" bsDatepicker type="text" [attr.bsConfig]="{ dateInputFormat: 'DD-MM-YYYY',  returnFocusToInput: true }" (bsValueChange)="searchByFrom($event)">
+
+<div class ="row">
+
+<div class="col-md-6 text-center">
+  <div class="card">
+      <div class="card-body">
+          <h3 class="card-title">Sales Overview</h3>
+
+          <div class="form-row col-md-12">
+            <input type="text" class="form-control floating" (input)="searchName($event)">
+          </div>
+
+          <div class="form-row col-md-12">
+            <label>Name</label>
+            <input type="text" [ngClass]="input? 'active-input' : ''" class="form-control" [(ngModel)]="input" placeholder="Name">
+            <div class="in_box">
+                <button type="button" [ngClass]="input? 'btn_del' : ''" tabindex=-1 class="btn" tabindex=-1 tabindex=-1></button>
             </div>
-            <label class="focus-label">From</label>
+          </div>
+
+          <!-- select -->
+
+          <div class="form-row col-md-12">
+            <label>Select</label>
+            <select class="select floating form-control" [ngClass]="selected? 'active-input' : ''" (change)="selectChangeHandler($event)">
+              <option> -- Select -- </option>
+              <option>Casual Leave</option>
+              <option>Medical Leave</option>
+              <option>Loss of Pay</option>
+            </select>
+          </div>
+
+          <br>
+          <div class="form-row col-md-12">
+            <div class="cal-icon">
+              <input #enterYourIdHere class="form-control floating datetimepicker" bsDatepicker type="text" [attr.bsConfig]="{ dateInputFormat: 'DD-MM-YYYY',  returnFocusToInput: true }" (bsValueChange)="searchByFrom($event)">
+          </div>
+          </div>
+          <br>
+
+          <div class="form-row col-md-12">
+            <kendo-datepicker [format]="'dd/MM/yyyy'" [topView]="'year'" [navigation]="false" [value]="value" required>
+            </kendo-datepicker>
+          </div>
+
+          <br>
+
+          <div class="form-row col-md-12">
+            <kendo-dropdownlist [data]="countryList" [filterable]="true" [textField]="'name'" [valueField]="'countryCode'" [kendoDropDownFilter]="filterSettings" [popupSettings]="{ popupClass: 'search_filter_pop' }" [(ngModel)]="country" [ngModelOptions]="{standalone:
+              true}" [defaultItem]="defaultCountry" (valueChange)="setBankName(country)" class="active-input">
+                  <ng-template kendoDropDownListValueTemplate let-dataItem>
+                      <span class="template">{{ dataItem.name}}</span>
+                  </ng-template>
+                  <ng-template kendoDropDownListItemTemplate let-dataItem>
+                      <span class="template">{{ dataItem.name}}</span>
+                  </ng-template>
+              </kendo-dropdownlist>
+          </div>
+
+
+
+          <button class="k-button btn-w100px-h35px font-khmer-cursive button-save"  kendoButton [attr.look]="'outline'">
+            <span class="k-icon k-i-download margin-top-1px font-size-20px"></span>
+            <span class="margin-top-5px margin-left-5px">{{'Common.Button.Save'|translate}}</span>
+        </button>
+
+      </div>
+  </div>
+</div>
+
+
+<div class="col-md-6 text-center">
+  <div class="card">
+      <div class="card-body">
+          <h3 class="card-title">Sales Overview</h3>
+          <div class="form-group form-group-last col-md-12">
+            <label class="font-khmer-cursive">File</label>
+            <kendo-fileselect
+            [restrictions]="fileRestrictions"
+            [multiple] = "false"
+            class="font-khmer-cursive kendo-fileselect-t"
+            (select)="selectEventHandler($event)"
+                    #myFileSelect="kendoFileSelect">
+                    <ng-template kendoFileSelectFileTemplate let-files let-state="state">
+                        <div class="font-khmer-cursive">Name: {{files[0].name}} <strong class="chipe-00">Size: {{files[0].size}} bytes</strong></div>
+                        <button [ngClass]="{right0px: imageUploaded == true}" class="k-button"  style="position: absolute; right: 6.2em; height: 30px;" *ngIf="showButton(state)"  kendoButton (click)="remove(myFileSelect, files[0].uid)" [attr.icon]="'x'" [attr.look]="'outline'">Remove</button>
+                        <button *ngIf="!imageUploaded" class="k-button"  style="position: absolute; right: .2em; height: 30px;"  kendoButton (click)="upload(files[0].uid);" [attr.icon]="'upload'" [attr.look]="'outline'">Upload</button>
+                    </ng-template>
+            </kendo-fileselect>
+
+
+            <div *ngIf="imagePreviews.length" class="img-preview example-config">
+                <h3 class="font-khmer-cursive">Preview selected images</h3>
+                <img *ngFor="let image of imagePreviews"
+                [src]="image.src"
+                alt="image preview"
+                style="width: 200px; margin: 10px;" />
+            </div>
         </div>
 
-        <div class="form-group form-focus select-focus">
+      </div>
+  </div>
+</div>
+</div>
+
+<div class="col-md-6 text-center">
+  <div class="card">
+      <div class="card-body">
+          <h3 class="card-title">Sales Overview</h3>
+
+          <div class="form-row">
+            <div class="form-group form-focus col-md-12">
+              <div class="cal-icon">
+                  <input #enterYourIdHere class="form-control floating datetimepicker" bsDatepicker type="text" [attr.bsConfig]="{ dateInputFormat: 'DD-MM-YYYY',  returnFocusToInput: true }" (bsValueChange)="searchByFrom($event)">
+              </div>
+              <label class="focus-label">From</label>
+            </div>
+          </div>
+
+          <div class="form-group form-focus select-focus">
             <select class="select floating form-control">
               <option>-</option>
               <option>Jan</option>
@@ -27,89 +137,24 @@
         </div>
 
         <div class="form-group form-focus select-focus">
-            <select class="select floating form-control" (input)="searchType($event)">
-              <option> -- Select -- </option>
-              <option>Casual Leave</option>
-              <option>Medical Leave</option>
-              <option>Loss of Pay</option>
-          </select>
-            <label class="focus-label">Leave Type</label>
-        </div>
-
-        <button class="k-button btn-w100px-h35px font-khmer-cursive btn-add-00">
-          <span class="k-icon k-i-login"></span>
-          <span style="margin-left: 5px;">Login</span>
-        </button>
-
-        <div class="staff-msg">
-          <a class="btn btn-custom" routerLink="index">Send Message</a>
-        </div>
-        <div class="staff-msg">
-            <a class="btn btn-custom" (click)="add()">Pop Up</a>
-        </div>
-
-    </div>
-
-    <div class="col-md-5 d-flex" style = "background: white;">
-        <div class="form-group" style = "margin-top: 20px;">
-          <input type="text" class="form-control floating" (input)="searchName($event)">
-        </div>
-
-        <div class="form-row">
-          <div class="form-group col-md-12">
-              <label>Name</label>
-              <input type="text" [ngClass]="input? 'active-input' : ''" class="form-control" [(ngModel)]="input" placeholder="Name">
-              <div class="in_box">
-                  <button type="button" [ngClass]="input? 'btn_del' : ''" tabindex=-1 class="btn" tabindex=-1 tabindex=-1></button>
-              </div>
-          </div>
-        </div>
-
-        <div class="form-group">
-          <label>Select</label>
-          <select class="select floating form-control" [ngClass]="selected? 'active-input' : ''" (change)="selectChangeHandler($event)">
+          <select class="select floating form-control" (input)="searchType($event)">
             <option> -- Select -- </option>
             <option>Casual Leave</option>
             <option>Medical Leave</option>
             <option>Loss of Pay</option>
         </select>
+          <label class="focus-label">Leave Type</label>
       </div>
 
-    </div>
+      <button #anchor (click)="onToggle()" class="k-button">{{toggleText}} Popup</button>
+        <kendo-popup [anchor]="anchor" class="wrapper" *ngIf="show">
+          <div class="dropdown dropdown-action">
+            <a class="action-icon dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><i class="material-icons">more_vert</i></a>
+            <a class="action-icon dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><i class="material-icons">more_vert</i></a>
 
+        </div>
+        </kendo-popup>
 
-    <div class="col-md-6 d-flex" style = "background: white;">
-<!-- Kendo update -->
-<div class="form-row">
-  <div class="form-group form-group-last col-md-12">
-      <label class="font-khmer-cursive">File</label>
-
-      <kendo-fileselect
-      [restrictions]="fileRestrictions"
-      [multiple] = "false"
-      class="font-khmer-cursive kendo-fileselect-t"
-      (select)="selectEventHandler($event)"
-              #myFileSelect="kendoFileSelect">
-              <ng-template kendoFileSelectFileTemplate let-files let-state="state">
-                  <div class="font-khmer-cursive">Name: {{files[0].name}} <strong class="chipe-00">Size: {{files[0].size}} bytes</strong></div>
-                  <button [ngClass]="{right0px: imageUploaded == true}" class="k-button"  style="position: absolute; right: 6.2em; height: 30px;" *ngIf="showButton(state)"  kendoButton (click)="remove(myFileSelect, files[0].uid)" [attr.icon]="'x'" [attr.look]="'outline'">Remove</button>
-                  <button *ngIf="!imageUploaded" class="k-button"  style="position: absolute; right: .2em; height: 30px;"  kendoButton (click)="upload(files[0].uid);" [attr.icon]="'upload'" [attr.look]="'outline'">Upload</button>
-              </ng-template>
-      </kendo-fileselect>
-
-
-      <div *ngIf="imagePreviews.length" class="img-preview example-config">
-          <h3 class="font-khmer-cursive">Preview selected images</h3>
-          <img *ngFor="let image of imagePreviews"
-          [src]="image.src"
-          alt="image preview"
-          style="width: 200px; margin: 10px;" />
       </div>
-
-
   </div>
-</div>
-
-    </div>
-
 </div>

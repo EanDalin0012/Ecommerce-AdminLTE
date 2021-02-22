@@ -9,6 +9,8 @@ import { FileRestrictions, FileState, SelectEvent } from '@progress/kendo-angula
 import * as moment from 'moment';
 import { Base64ImageModel } from '../../m-share/model/image-base64';
 import { SubscribeMessageService } from '../../m-share/service/subscribe-message.service';
+import { Country, CountryData } from './data';
+import { DropDownFilterSettings } from '@progress/kendo-angular-dropdowns';
 declare const $: any;
 @Component({
   selector: 'app-input',
@@ -29,6 +31,18 @@ export class InputComponent implements OnInit {
   };
   imageUploaded: boolean;
   // end kendo
+  value: Date = new Date();
+  countryList: Country[];
+  defaultCountry = { id: '', name: 'Select', countryCode: '', isEnabled: '' };
+  country: Country;
+  filterSettings: DropDownFilterSettings = {
+    caseSensitive: false,
+    operator: 'startsWith'
+  };
+
+  public toggleText = 'Show';
+    public show = false;
+
   constructor(
     private modalService: ModalService,
     private subscribeMessageService: SubscribeMessageService
@@ -42,6 +56,7 @@ export class InputComponent implements OnInit {
     console.log(url);
 
     this.subscribeMessageService.visitMessage(url[4]);
+    this.countryList = CountryData;
   }
 
   //search by purchase
@@ -160,6 +175,15 @@ export class InputComponent implements OnInit {
         }
       });
     }
+  }
+
+  setBankName(country: any): void {
+    console.log(country);
+  }
+
+  onToggle(): void {
+    this.show = !this.show;
+    this.toggleText = this.show ? 'Hide' : 'Show';
   }
 
 }

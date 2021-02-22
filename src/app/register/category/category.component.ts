@@ -1,11 +1,5 @@
-import { Component, OnInit, ViewChild, OnDestroy } from '@angular/core';
-import { DataTableDirective } from "angular-datatables";
-import { Subject } from 'rxjs';
+import { Component, OnInit } from '@angular/core';
 import { SubscribeMessageService } from '../../m-share/service/subscribe-message.service';
-import { DatePipe } from '@angular/common';
-import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { AllModulesService } from '../../m-share/all-modules.service';
-import { ToastrService } from 'ngx-toastr';
 import { HttpService } from '../../m-share/service/http.service';
 import { Category } from 'src/app/m-share/model/category';
 import { orderBy, SortDescriptor } from '@progress/kendo-data-query';
@@ -13,7 +7,11 @@ import { GridDataResult, PageChangeEvent, RowClassArgs, SelectableSettings } fro
 import { Title } from '@angular/platform-browser';
 import { ModalService } from '../../m-share/service/modal.service';
 import { CategoryAddComponent } from '../category-add/category-add.component';
-import { ButtonRoles } from '../../m-share/constants/common.const';
+import { ButtonRoles, ResponseStatus } from '../../m-share/constants/common.const';
+import { CategoryEditComponent } from '../category-edit/category-edit.component';
+import { Message } from '../../m-share/model/message';
+import { ID } from '../../m-share/model/id';
+import { TranslateService } from '@ngx-translate/core';
 declare const $: any;
 @Component({
   selector: 'app-category',
@@ -28,9 +26,6 @@ export class CategoryComponent implements OnInit {
   type: 'numeric' | 'input' = 'numeric';
   previousNext = false;
   pageSizes: any[] = [10, 20, 30, 50, 100];
-  group: any[] = [{
-    field: ''
-  }];
   multiple = false;
   allowUnsort = true;
   height = 'auto';
@@ -53,7 +48,7 @@ export class CategoryComponent implements OnInit {
 
   totalRecord = 0;
   categorylist = new Array<Category>();
-  obj_Id_model_list = [];
+  itemsID = new Array<ID>();
   public data  = Array<Category>();
   menu = '';
 
@@ -62,6 +57,7 @@ export class CategoryComponent implements OnInit {
     private httpService: HttpService,
     private titleService: Title,
     private modalService: ModalService,
+    private translate: TranslateService
     ) {
       this.titleService.setTitle('Category');
       this.setSelectableSettings();
@@ -77,8 +73,8 @@ export class CategoryComponent implements OnInit {
     const api = '/api/category/v1/list';
     this.httpService.Get(api).then(resp => {
       const response   = resp as any;
+      console.log(response);
       if (response) {
-
         this.categorylist = response;
         this.data          = response;
         this.gridData      = this.categorylist;
@@ -190,31 +186,31 @@ export class CategoryComponent implements OnInit {
             }
           }
 
-          this.obj_Id_model_list.push({
-            id: element + ''
+          this.itemsID.push({
+            id: element
           });
 
           ++i;
       });
 
       this.modalService.confirm({
-        title: 'Delete Item(s)',
-        content: 'Your select item(s) is: ' + name,
-        lBtn: {btnText: 'Close'},
-        rBtn: {btnText: 'Confirm'},
+        title: this.translate.instant('Common.Label.DeleteItems'),
+        content:  this.translate.instant('Common.Label.YourSelectedItems', {value: name}),
+        lBtn: {btnText: this.translate.instant('Common.Button.Close')},
+        rBtn: {btnText: this.translate.instant('Common.Button.Confirm'),},
         modalClass: ['pop-confirm-btn dialog-confirm'],
         callback: response => {
           console.log('response', response);
           if (response.text === 'Confirm') {
-            // this.doDelete();
+            this.doDelete();
           }
         }
       });
     } else {
       this.modalService.alert({
-        title: 'Delete Item(s)',
+        title: this.translate.instant('Common.Label.DeleteItems'),
         content: '<h2>Please select Item(s) that you want to delete.</h2>',
-        btnText: 'Confirm',
+        btnText: this.translate.instant('Common.Button.Confirm'),
         callback: response => {}
       });
     }
@@ -230,17 +226,40 @@ export class CategoryComponent implements OnInit {
     return name;
   }
 
-  edit(event: any): void {
-
+  edit(dataItems: any): void {
+    this.modalService.open({
+      content: CategoryEditComponent,
+      message: dataItems,
+      callback: response => {
+        if (response.close === ButtonRoles.edit) {
+          this.inquiry();
+        }
+      }
+    });
   }
 
   add(): void {
     this.modalService.open({
       content: CategoryAddComponent,
       callback: response => {
-        if(response.close === ButtonRoles.save) {
-          console.log(response);
+        if (response.close === ButtonRoles.save) {
+          this.inquiry();
         }
+      }
+    });
+  }
+
+
+  doDelete(): void {
+    const data = {
+      body: this.itemsID
+    };
+    console.log( );
+    const api = '/api/category/v1/delete';
+    this.httpService.Post(api, data).then(resp => {
+      const response   = resp as Message;
+      if (response.status === ResponseStatus.Y) {
+       this.inquiry();
       }
     });
   }

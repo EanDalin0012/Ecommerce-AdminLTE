@@ -8754,7 +8754,7 @@ body::-webkit-scrollbar-thumb {
   padding: 10px 6px;
   font-weight: normal;
   text-align: center;
-  vertical-align: middle;
+  vertical-align: middle !important;
   border: none;
 }
 
@@ -8843,7 +8843,7 @@ body::-webkit-scrollbar-thumb {
   position: absolute;
   display: block;
   right: 20px;
-  top: 33px;
+  top: 32px;
   width: 25px;
   height: 25px;
   text-indent: -999em;
@@ -8869,4 +8869,376 @@ body::-webkit-scrollbar-thumb {
 
 .message-alert kendo-dialog-actions button {
   float: right;
+}
+
+.pop_header h4 {
+  margin-bottom: 0px;
+    margin-top: 5px;
+}
+
+.web_Wrap {
+  margin-top: 40px;
+}
+
+.dialog-confirm {
+  position: fixed;
+  left: 0px;
+  top: 0px;
+  min-width: 25%;
+  float: left;
+  margin-left: 35%;
+  height: 100%;
+  width: auto !important;
+  overflow: auto;
+}
+
+
+.dialog-confirm kendo-dialog-actions button:nth-child(2){
+  margin-left: 15px !important;
+}
+
+
+.loading {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  font-size: .75rem;
+  color: #fff;
+  text-align: center;
+  background: rgba(0, 0, 0, .7);
+  z-index: 999999;
+}
+
+.loading {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  font-size: .75rem;
+  color: #fff;
+  text-align: center;
+  background: rgba(0, 0, 0, .7);
+  z-index: 999999;
+}
+
+.loading>*:first-child {
+  position: absolute;
+  left: 10%;
+  top: 50%;
+  width: 80%;
+  padding-top: 56px;
+  background: url("assets/images/ico_loading.gif") no-repeat center top;
+  -webkit-transform: translateY(-50%);
+  -moz-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+  background-size: 5%;
+}
+
+.loading strong {
+  display: block;
+  font-size: .875rem;
+}
+
+.loading.st02 {
+  color: #000;
+  background: none;
+}
+
+.contentsWrap .loading {
+  z-index: 150;
+}
+
+body>.loading {
+  position: fixed;
+}
+
+/* .dialog-confirm kendo-dialog-actions button:nth-child(1){
+  float: right;
+} */
+
+.none {
+  display: none !important;
+}
+
+.loading>*:first-child {
+  position: absolute;
+  left: 10%;
+  top: 50%;
+  width: 80%;
+  padding-top: 56px;
+  background: url("assets/images/ico_loading.gif") no-repeat center top;
+  -webkit-transform: translateY(-50%);
+  -moz-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+  background-size: 5%;
+}
+
+
+.k-combobox {
+  height: 40px;
+  color: #000;
+  background: #eff2f5;
+  border: none;
+  border-radius: 4px;
+}
+
+.k-combobox .k-dropdown-wrap,
+.k-dropdown .k-dropdown-wrap {
+  margin: 0;
+  color: #000;
+  background: none !important;
+  border: none !important;
+  box-shadow: none !important;
+}
+
+.k-combobox .k-searchbar {
+  margin: 0;
+}
+
+.k-combobox .k-input,
+.k-dropdown .k-dropdown-wrap .k-input {
+  height: 100%;
+  font-size: 1rem;
+  border-radius: 4px;
+}
+
+.k-combobox .k-input:focus {
+  border: none;
+}
+
+.k-combobox .k-searchbar .k-clear-value {
+  top: 0;
+  width: 18px;
+  height: 100%;
+  text-indent: -999em;
+  background: url("assets/images/btn_del03.png") no-repeat center center;
+}
+
+.k-combobox .k-select {
+  width: 35px;
+  text-indent: -9999em;
+  background: url("assets/images/select_arrow.png") no-repeat right center;
+}
+
+.k-combobox .k-dropdown-wrap:hover .k-select {
+  background: url("assets/images/select_arrow.png") no-repeat right center;
+}
+
+.k-popup {
+  background: #fff;
+}
+
+.k-dropdown {
+  height: 40px;
+  color: #000;
+  background: rgb(232, 240, 254);
+  border: none;
+  border-radius: 4px;
+}
+
+.k-dropdown:only-child {
+  width: 100%;
+}
+
+.k-dropdown .k-dropdown-wrap,
+.k-dropdown .k-dropdown-wrap.k-state-focused {
+  color: #000;
+  background: none;
+  box-shadow: none;
+  border: none;
+}
+
+.k-dropdown .k-dropdown-wrap.k-state-focused {
+  border-bottom: 2px solid #3f496d !important;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+.k-dropdown .k-dropdown-wrap:hover {
+  background: none;
+}
+
+.k-dropdown-wrap>.k-input {
+  height: 100%;
+  padding-left: 12px;
+}
+
+.k-dropdown-wrap .k-select {
+  background: url("assets/images/select_arrow.png") no-repeat right center;
+}
+
+.k-dropdown-wrap .k-select .k-icon {
+  opacity: 0;
+}
+
+.k-dropdown.select02 {
+  background: none;
+  border-bottom: 1px solid #7a6d5c;
+  border-radius: 0;
+}
+
+.k-dropdown.select02 .k-dropdown-wrap.k-state-focused {
+  box-shadow: none;
+}
+
+.k-dropdown.select02 .k-select {
+  width: 25px;
+  background: url("assets/images/ico_down01.png") no-repeat right center !important;
+}
+
+.k-dropdown.select02 .k-searchbar .k-clear-value {
+  right: 25px;
+}
+
+.k-dropdown.select02 .k-input {
+  padding-left: 0;
+  border: none;
+  border-radius: 0;
+}
+
+.k-dropdown.select02 .k-input:focus {
+  border: none;
+  padding: 4px 24px 4px 0;
+}
+
+
+
+input.inp_cal {
+  padding-right: 35px;
+  background-image: url("assets/images/ico_calendar01.png");
+  background-repeat: no-repeat;
+  background-position: right center;
+}
+
+input.inp_cal:focus {
+  padding-right: 33px !important;
+  background-position: right -2px center;
+}
+
+.k-datepicker:only-child {
+  width: 100%;
+}
+
+.k-datepicker .k-picker-wrap {
+  border: none;
+  box-shadow: none;
+}
+
+.k-dateinput {
+  margin: 0 !important;
+}
+
+.k-dateinput .k-dateinput-wrap {
+  background: #eff2f5;
+  border-radius: 4px 0 0 4px;
+}
+
+.k-dateinput-wrap .k-input {
+  height: 40px;
+  padding: 4px 12px;
+}
+
+.k-dateinput-wrap .k-input:focus {
+  padding: 0 10px;
+}
+
+.k-datepicker .k-select,
+.k-datepicker .k-state-focused .k-select {
+  width: 40px;
+  background: #eff2f5 url("assets/images/ico_calendar01.png") no-repeat right center !important;
+  border-radius: 0 4px 4px 0;
+}
+
+.k-datepicker .k-select .k-icon {
+  opacity: 0 !important;
+}
+
+.k-calendar-infinite .k-calendar-view {
+  width: 366px;
+  min-height: 350px !important;
+  padding: 0 24px;
+}
+
+.k-calendar-header {
+  font-size: 1.125rem;
+  color: #000;
+}
+
+.k-calendar .k-calendar-header .k-title {
+  padding: 4px 15px 4px 15px;
+  background: url("assets/images/ico_down05.png") no-repeat right center !important;
+}
+
+.k-calendar .k-footer .k-nav-today:hover,
+.k-calendar .k-calendar-header .k-today:hover {
+  font-weight: 700;
+}
+
+.k-calendar th {
+  font-size: .875rem;
+  color: #020219;
+  line-height: 1.5;
+}
+
+.k-calendar .k-content th {
+  padding-left: 15px;
+  color: #020219;
+}
+
+.k-calendar .k-calendar-monthview td:first-child {
+  color: #ff464d;
+}
+
+.k-calendar .k-calendar-monthview td:last-child {
+  color: #1d6cde;
+}
+
+.k-calendar .k-calendar-monthview .k-link {
+  width: 53px;
+  height: 42px;
+}
+
+.k-calendar .k-calendar-monthview .k-today {
+  font-weight: 700;
+  color: #7a6d5c;
+}
+
+.k-calendar .k-calendar-monthview .k-today:hover {
+  font-weight: 700;
+  color: #7a6d5c;
+}
+
+.k-calendar .k-footer .k-nav-today,
+.k-calendar .k-calendar-header .k-today {
+  font-size: .875rem;
+  color: #514432;
+}
+
+.k-calendar .k-state-selected .k-link {
+  background: #7a6d5c;
+  border-radius: 20px;
+}
+
+.calendar_footer {
+  padding: 20px;
+  text-align: center;
+  background: #fff;
+}
+
+.calendar_footer button {
+  min-width: 128px;
+}
+
+.k-datepicker .k-select, .k-datetimepicker .k-select, .k-timepicker .k-select {
+  border-width: 0;
+  width: 40px !important;
+}
+
+.cal-icon:after {
+  top: 6px;
 }

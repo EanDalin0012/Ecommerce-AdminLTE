@@ -19,12 +19,27 @@
 
       <div>
 
-          <kendo-grid scrollable="virtual" [data]="gridView" [selectable]="selectableSettings" [sortable]="true" [sort]="sort" (sortChange)="sortChange($event)" [pageSize]="pageSize" [rowClass]="rowCallback" [skip]="skip" [kendoGridBinding]="categorylist" [pageable]="{
-          buttonCount: buttonCount,
-          info: info,
-          type: type,
-          pageSizes: pageSizes,
-          previousNext: previousNext}" [height]="500" kendoGridSelectBy="id" [scrollable]="'true'" (pageChange)="pageChange($event)" class="table01 overflow-x" [selectedKeys]="mySelection">
+          <kendo-grid
+          [kendoGridBinding]="categorylist"
+          kendoGridSelectBy="id"
+          [selectedKeys]="mySelection"
+          [pageSize]="pageSize"
+          [rowClass]="rowCallback"
+          [skip]="skip"
+          [pageable]="true"
+          [sortable]="true"
+          [groupable]="false"
+          [reorderable]="true"
+          [resizable]="true"
+          [pageable]="{
+            buttonCount: buttonCount,
+            info: info,
+            type: type,
+            pageSizes: pageSizes,
+            previousNext: previousNext}"
+            (pageChange)="pageChange($event)"
+          [height]="480"
+          >
               <ng-template kendoGridToolbarTemplate>
                   <div class="form-row" style="width: 100%; border-left: none !important;">
                       <div class="form-group col-md-8">

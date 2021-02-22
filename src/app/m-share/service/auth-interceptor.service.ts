@@ -28,7 +28,8 @@ export class AuthInterceptor implements HttpInterceptor {
  constructor(
     private translate: TranslateService,
     private modal: ModalService,
-    private modalService: ModalService
+    private modalService: ModalService,
+    private router: Router
   ) {
 
   }
@@ -83,13 +84,15 @@ export class AuthInterceptor implements HttpInterceptor {
     ).catch((error) => {
       console.log('error', error);
       if ( Number(error.status) === 401) {
-        // this.router.navigate(['/login']);
         this.modalService.alert({
           title: error.error.error,
           content:  '<p>' + error.error.error_description + '</p>',
           modalClass: ['message-alert testing, open-alert'],
           btnText: 'Confirm',
           callback: (res) => {
+            if (res) {
+              this.router.navigate(['/login']);
+            }
           }
         });
       }

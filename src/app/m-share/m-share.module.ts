@@ -20,7 +20,7 @@ import { ExcelExportModule } from '@progress/kendo-angular-excel-export';
 import { GaugesModule } from '@progress/kendo-angular-gauges';
 import { ArcGaugeModule } from '@progress/kendo-angular-gauges';
 import { RadialGaugeModule } from '@progress/kendo-angular-gauges';
-import { GridModule, PDFModule  } from '@progress/kendo-angular-grid';
+import { ExcelModule, GridModule, PDFModule  } from '@progress/kendo-angular-grid';
 import { IndicatorsModule } from '@progress/kendo-angular-indicators';
 import { InputsModule } from '@progress/kendo-angular-inputs';
 import { ColorPickerModule } from '@progress/kendo-angular-inputs';
@@ -109,6 +109,7 @@ import { FileSelectModule } from '@progress/kendo-angular-upload';
     FileSelectModule,
     UploadsModule,
     PDFModule,
+    ExcelModule,
     // End Kendo
     CustomDatePipe
 

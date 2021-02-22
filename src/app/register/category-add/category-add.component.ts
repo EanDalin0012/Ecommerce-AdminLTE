@@ -7,6 +7,7 @@ import { SubscribeMessageService } from '../../m-share/service/subscribe-message
 import { TranslateService } from '@ngx-translate/core';
 import { Category } from '../../m-share/model/category';
 import { Message } from '../../m-share/model/message';
+import { element } from 'protractor';
 
 @Component({
   selector: 'app-category-add',
@@ -36,7 +37,7 @@ export class CategoryAddComponent implements OnInit {
       const api = '/api/category/v1/save';
       this.httpService.Post(api, category).then(response => {
         const responseData = response as Message;
-        if ( responseData && responseData.resultCode === ResponseStatus.Y) {
+        if ( responseData && responseData.status === ResponseStatus.Y) {
           this.modal.close( {close: ButtonRoles.save});
         }
       });
@@ -46,7 +47,7 @@ export class CategoryAddComponent implements OnInit {
   isValid(): boolean {
     if (!this.name || this.name && this.name.trim() === ''
         || this.name && this.name === null) {
-          const message = 'Category Name is empty || null';
+          const message = this.translate.instant('Category.Message.NameIsEmpty');
           this.modalService.alert({
             title: 'Validation',
             content:  '<p>' + message + '</p>',
@@ -63,5 +64,16 @@ export class CategoryAddComponent implements OnInit {
 
   close(): void {
     this.modal.close( {close: ButtonRoles.close});
+  }
+
+  undefinedValue(element: string): void {
+    switch (element) {
+      case 'name':
+        this.name = undefined;
+        break;
+      case 'description':
+        this.description = undefined;
+        break;
+    }
   }
 }

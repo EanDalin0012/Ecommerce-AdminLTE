@@ -5,17 +5,27 @@
       "Items": "Items: {{value}}",
       "No":"No",
       "CreateBy":"Create By",
-      "ModifyBy":"Modify By"
+      "ModifyBy":"Modify By",
+      "Edit": "edit",
+      "'DeleteItems":"'Delete Item(s)",
+      "YourSelectedItems":"Your selected item(s) is : {{value}}"
     },
     "Button": {
       "ExcelExport": "Excel Export",
       "ExcelPDF": "Excel PDF",
-      "Edit": "edit",
+      "Edit": "Edit",
       "New": "New",
-      "Delete":"Delete"
+      "Delete":"Delete",
+      "Save":"Save",
+      "Update":"Update",
+      "Close":"Close",
+      "Confirm":"Confirm"
     },
     "Message": {
       "Message":"Message"
+    },
+    "Placeholder":{
+      "EnterDescription":"Enter description ..."
     }
   },
   "Login": {
@@ -29,8 +39,17 @@
   "Category": {
     "Label": {
       "Category":"Category",
+      "AddNewCategory":"Add New Category",
+      "UpdateCategory":"Update Category",
       "Name":"Name",
       "Description":"Description"
+    },
+    "Message": {
+      "NameIsEmpty":"Category name is empty || null"
+    },
+    "Placeholder":{
+      "EnterCategoryName":"Enter category name ..."
     }
   }
+
 }

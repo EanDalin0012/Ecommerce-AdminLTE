@@ -1,4 +1,4 @@
 export class Message {
-  resultCode: string;
+  status: string;
   message: string;
 }

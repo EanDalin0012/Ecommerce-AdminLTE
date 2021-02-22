@@ -6,7 +6,7 @@ import { ModalDataService } from '../component/modal-data.service';
 import { TranslateService } from '@ngx-translate/core';
 import { ModalComponent } from '../component/modal/modal.component';
 import { ModalStoreKey } from '../constants/common.const';
-
+import * as $ from 'jquery';
 @Injectable({
   providedIn: MShareModule
 })
