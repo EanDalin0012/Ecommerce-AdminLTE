@@ -38,16 +38,16 @@ export class CategoryComponent implements OnInit {
   gridData: any[];
   checkboxOnly = false;
   mode = 'multiple';
-  gridheight = screen.height * 0.5;
+  gridHeight = screen.height * 0.5;
   selectedCallback = (args) => args.dataItem;
   selectableSettings: SelectableSettings;
   skip = 0;
   pageSize = 10;
   mySelection: any[] = [];
-// end declear grid
+// end Declaring grid
 
   totalRecord = 0;
-  categorylist = new Array<Category>();
+  categories = new Array<Category>();
   itemsID = new Array<ID>();
   public data  = Array<Category>();
   menu = '';
@@ -75,10 +75,10 @@ export class CategoryComponent implements OnInit {
       const response   = resp as any;
       console.log(response);
       if (response) {
-        this.categorylist = response;
+        this.categories = response;
         this.data          = response;
-        this.gridData      = this.categorylist;
-        this.loadingData(this.categorylist);
+        this.gridData      = this.categories;
+        this.loadingData(this.categories);
       }
     });
   }
@@ -139,7 +139,7 @@ export class CategoryComponent implements OnInit {
   searchChange(event): void {
     if (event) {
       console.log(event.target.value);
-      const resultSearch  = this.categorylist.filter( data => data.name.toLowerCase().includes(event.target.value));
+      const resultSearch  = this.categories.filter( data => data.name.toLowerCase().includes(event.target.value));
       this.totalRecord    = resultSearch.length;
       this.loadingData(resultSearch);
     }
@@ -148,7 +148,7 @@ export class CategoryComponent implements OnInit {
 
   deleteTextSearch(): void {
     this.search = undefined;
-    this.loadingData(this.categorylist);
+    this.loadingData(this.categories);
   }
 
   excelExportExcel(component): void {
@@ -197,7 +197,7 @@ export class CategoryComponent implements OnInit {
         title: this.translate.instant('Common.Label.DeleteItems'),
         content:  this.translate.instant('Common.Label.YourSelectedItems', {value: name}),
         lBtn: {btnText: this.translate.instant('Common.Button.Close')},
-        rBtn: {btnText: this.translate.instant('Common.Button.Confirm'),},
+        rBtn: {btnText: this.translate.instant('Common.Button.Confirm')},
         modalClass: ['pop-confirm-btn dialog-confirm'],
         callback: response => {
           console.log('response', response);
@@ -218,7 +218,7 @@ export class CategoryComponent implements OnInit {
 
   getNameById(val: number): string {
     let name = '';
-    this.categorylist.forEach(element => {
+    this.categories.forEach(element => {
       if (element.id === val) {
         name = element.name ; // + '(' + element.id + ')';
       }

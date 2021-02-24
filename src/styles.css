@@ -9242,3 +9242,48 @@ input.inp_cal:focus {
 .cal-icon:after {
   top: 6px;
 }
+
+
+.k-grid tr {
+  padding: .75rem;
+  vertical-align: top;
+  border-top: 1px solid #dee2e6;
+}
+
+.k-grid-table tbody tr {
+  color: #333;
+}
+
+.k-grid-draggable-header {
+  color: #333 !important;
+}
+
+.display-block {
+  display: block !important;
+}
+
+.z-index-99 {
+  z-index: 99 !important;
+}
+
+.position-fixed {
+  position: fixed !important;
+}
+.transform-none {
+  transform: none !important;
+}
+
+
+table.dataTable {
+  /* margin-bottom: 15px !important;
+  margin-top: 15px !important;
+  display: block;
+  width: 100% !important;
+  overflow: hidden; */
+}
+
+/* .custom-table tbody {
+  overflow: scroll;
+    height: 500px;
+    display: block;
+} */

@@ -5,7 +5,7 @@ import { ModalComponent } from './component/modal/modal.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { TranslateModule } from '@ngx-translate/core';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { ButtonModule } from '@progress/kendo-angular-buttons';
+import { ButtonModule, ButtonsModule } from '@progress/kendo-angular-buttons';
 import { ButtonGroupModule } from '@progress/kendo-angular-buttons';
 import { ChartModule } from '@progress/kendo-angular-charts';
 import { SparklineModule } from '@progress/kendo-angular-charts';
@@ -110,6 +110,7 @@ import { FileSelectModule } from '@progress/kendo-angular-upload';
     UploadsModule,
     PDFModule,
     ExcelModule,
+    ButtonsModule,
     // End Kendo
     CustomDatePipe
 

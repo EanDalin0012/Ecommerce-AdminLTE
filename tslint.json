@@ -45,15 +45,21 @@
       140
     ],
     "member-ordering": [
-      true,
+      false,
       {
-        "order": [
-          "static-field",
-          "instance-field",
-          "static-method",
-          "instance-method"
-        ]
-      }
+      "alphabetize": true,
+      "order": [
+        "public-static-field",
+        "public-instance-field",
+        "public-constructor",
+        "private-static-field",
+        "private-instance-field",
+        "private-constructor",
+        "public-instance-method",
+        "protected-instance-method",
+        "private-instance-method"
+      ]
+    }
     ],
     "no-console": [
       true,

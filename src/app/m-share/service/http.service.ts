@@ -168,6 +168,8 @@ export class HttpService {
         if (responseDataFromServer.result === false) {
           return;
         } else {
+          console.log(responseDataFromServer);
+
           const responseData = JSON.parse(responseDataFromServer);
           const rawData = responseData.body;
           const decryptData = JSON.parse(this.cryptoService.decrypt(String(rawData)));

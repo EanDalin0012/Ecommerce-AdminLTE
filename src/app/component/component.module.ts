@@ -36,7 +36,8 @@ import { PopupComponent } from './popup/popup.component';
     PickListModule,
     BsDatepickerModule.forRoot(),
     DataTablesModule,
-    MShareModule
+    MShareModule,
+    ReactiveFormsModule,
   ],
   exports: [
     InvoicesComponent,

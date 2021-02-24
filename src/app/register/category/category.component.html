@@ -20,7 +20,7 @@
       <div>
 
           <kendo-grid
-          [kendoGridBinding]="categorylist"
+          [kendoGridBinding]="categories"
           kendoGridSelectBy="id"
           [selectedKeys]="mySelection"
           [pageSize]="pageSize"
@@ -38,7 +38,7 @@
             pageSizes: pageSizes,
             previousNext: previousNext}"
             (pageChange)="pageChange($event)"
-          [height]="480"
+          [height]="gridHeight"
           >
               <ng-template kendoGridToolbarTemplate>
                   <div class="form-row" style="width: 100%; border-left: none !important;">

@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { NgModule, ElementRef } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { CategoryComponent } from './category/category.component';
 import { CategoryAddComponent } from './category-add/category-add.component';
@@ -15,6 +15,10 @@ import { VendorEditComponent } from './vendor-edit/vendor-edit.component';
 import { RegisterRoutingModule } from './register-routing.module';
 import { MShareModule } from '../m-share/m-share.module';
 import { KendoModule } from '../m-share/kendo/kendo.module';
+import { POPUP_CONTAINER } from '@progress/kendo-angular-popup';
+import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
+import { DataTablesModule } from 'angular-datatables';
+import { PickListModule } from 'primeng/picklist';
 
 
 
@@ -37,9 +41,17 @@ import { KendoModule } from '../m-share/kendo/kendo.module';
     CommonModule,
     RegisterRoutingModule,
     MShareModule,
-    KendoModule,
-    // BsDatepickerModule.forRoot(),
-    // DataTablesModule
+    PickListModule,
+    BsDatepickerModule.forRoot(),
+    DataTablesModule,
+  ],
+  providers: [
+    {
+      provide: POPUP_CONTAINER,
+      useFactory: () => {
+         return { nativeElement: document.body } as ElementRef;
+      }
+    }
   ]
 })
 export class RegisterModule {

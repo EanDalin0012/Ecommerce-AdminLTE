@@ -48,15 +48,13 @@
                             "src/assets/kendo-theme/default-4.24.0/all.css"
                         ],
                         "scripts": [
-                            "src/assets/js/jquery-3.2.1.min.js",
-                            "src/assets/js/popper.min.js",
-                            "src/assets/js/bootstrap.min.js",
-                            "src/assets/js/jquery.dataTables.min.js",
-                            "node_modules/raphael/raphael.js",
-                            "node_modules/morris.js/morris.js",
-                            "src/assets/js/dataTables.bootstrap4.min.js",
-                            "src/assets/js/jquery-3.2.1.min.js",
-                            "src/assets/js/app.js"
+                          "node_modules/jquery/dist/jquery.min.js",
+                          "node_modules/popper.js/dist/umd/popper.min.js",
+                          "node_modules/bootstrap/dist/js/bootstrap.min.js",
+                          "node_modules/datatables.net/js/jquery.dataTables.js",
+                          "node_modules/raphael/raphael.js",
+                          "node_modules/morris.js/morris.js",
+                          "src/assets/js/app.js"
                         ]
                     },
                     "configurations": {

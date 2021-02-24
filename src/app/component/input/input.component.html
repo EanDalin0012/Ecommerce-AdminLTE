@@ -147,13 +147,12 @@
       </div>
 
       <button #anchor (click)="onToggle()" class="k-button">{{toggleText}} Popup</button>
-        <kendo-popup [anchor]="anchor" class="wrapper" *ngIf="show">
-          <div class="dropdown dropdown-action">
-            <a class="action-icon dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><i class="material-icons">more_vert</i></a>
-            <a class="action-icon dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><i class="material-icons">more_vert</i></a>
-
+      <kendo-popup [anchor]="anchor" class="wrapper" *ngIf="show">
+        <div class="dropdown dropdown-action">
+          <a class="action-icon dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><i class="material-icons">more_vert</i></a>
+          <a class="action-icon dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><i class="material-icons">more_vert</i></a>
         </div>
-        </kendo-popup>
+      </kendo-popup>
 
       </div>
   </div>
