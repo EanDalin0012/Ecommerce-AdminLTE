@@ -19,197 +19,128 @@
 
       <div>
 
-            <!-- Page Content -->
-<div class="content container-fluid">
+          <kendo-grid
+          [kendoGridBinding]="categories"
+          kendoGridSelectBy="id"
+          [selectedKeys]="mySelection"
+          [pageSize]="pageSize"
+          [rowClass]="rowCallback"
+          [skip]="skip"
+          [pageable]="true"
+          [sortable]="true"
+          [groupable]="false"
+          [reorderable]="true"
+          [resizable]="true"
+          [pageable]="{
+            buttonCount: buttonCount,
+            info: info,
+            type: type,
+            pageSizes: pageSizes,
+            previousNext: previousNext}"
+            (pageChange)="pageChange($event)"
+          [height]="gridHeight"
+          >
+              <ng-template kendoGridToolbarTemplate>
+                  <div class="form-row" style="width: 100%; border-left: none !important;">
+                      <div class="form-group col-md-8">
+                          <input type="text" style="height: 34px;" [ngClass]="search? 'active-input' : ''" class="form-control" [(ngModel)]="search" (input)="searchChange($event)" placeholder="Please enter suplier name...">
+                          <div class="in_box">
+                              <button type="button" style="top: 5px;" [ngClass]="search? 'btn_del' : ''" (click)="deleteTextSearch()" tabindex=-1 class="btn" tabindex=-1 tabindex=-1></button>
+                          </div>
+                      </div>
 
-  <!-- Page Header -->
-  <div class="page-header">
-      <div class="row align-items-center">
-          <div class="col">
-              <h3 class="page-title">Leaves</h3>
-              <ul class="breadcrumb">
-                  <li class="breadcrumb-item"><a href="index.html">Dashboard</a></li>
-                  <li class="breadcrumb-item active">Leaves</li>
-              </ul>
-          </div>
-          <div class="col-auto float-right ml-auto">
-              <a class="btn add-btn" data-toggle="modal" data-target="#add_leave"><i class="fa fa-plus"></i>
-                  Add Leave</a>
-          </div>
-      </div>
-  </div>
-  <!-- /Page Header -->
+                      <div class="form-group col-md-4">
 
-  <!-- Leave Statistics -->
-  <div class="row">
-      <div class="col-md-3">
-          <div class="stats-info">
-              <h6>Today Presents</h6>
-              <h4>12 / 5</h4>
-          </div>
-      </div>
-      <div class="col-md-3">
-          <div class="stats-info">
-              <h6>Planned Leaves</h6>
-              <h4>8 <span>Today</span></h4>
-          </div>
-      </div>
-      <div class="col-md-3">
-          <div class="stats-info">
-              <h6>Unplanned Leaves</h6>
-              <h4>1 <span>Today</span></h4>
-          </div>
-      </div>
-      <div class="col-md-3">
-          <div class="stats-info">
-              <h6>Pending Requests</h6>
-              <h4>12</h4>
-          </div>
-      </div>
-  </div>
-  <!-- /Leave Statistics -->
+                            <button kendoGridPDFCommand class="k-button font-khmer-cursive btn-add-00 export-word float-right margin-left-10px" >
+                                <span class="font-size-15">{{'Common.Button.ExcelPDF' | translate}}</span>
+                            </button>
 
-  <!-- Search Filter -->
-  <div class="row filter-row">
-      <div class="col-sm-6 col-md-3 col-lg-3 col-xl-2 col-12">
-          <div class="form-group form-focus">
-              <input type="text" class="form-control floating" (input)="searchName($event.target.value)">
-              <label class="focus-label">Employee Name</label>
-          </div>
-      </div>
-      <div class="col-sm-6 col-md-3 col-lg-3 col-xl-2 col-12">
-          <div class="form-group form-focus select-focus">
-              <select class="select floating form-control" (input)="searchType($event.target.value)">
-                  <option> -- Select -- </option>
-                  <option>Casual Leave</option>
-                  <option>Medical Leave</option>
-                  <option>Loss of Pay</option>
-              </select>
-              <label class="focus-label">Leave Type</label>
-          </div>
-      </div>
-      <div class="col-sm-6 col-md-3 col-lg-3 col-xl-2 col-12">
-          <div class="form-group form-focus select-focus">
-              <select class="select floating form-control" (input)="searchStatus($event.target.value)">
-                  <option> -- Select -- </option>
-                  <option> Pending </option>
-                  <option> Approved </option>
-                  <option> Rejected </option>
-              </select>
-              <label class="focus-label">Leave Status</label>
-          </div>
-      </div>
-      <div class="col-sm-6 col-md-3 col-lg-3 col-xl-2 col-12">
-          <div class="form-group form-focus">
-              <div class="cal-icon">
-                  <input class="form-control floating datetimepicker" bsDatepicker type="text"
-                      [bsConfig]="{ dateInputFormat: 'DD-MM-YYYY',  returnFocusToInput: true }"
-                      (bsValueChange)="searchByFrom($event)">
-              </div>
-              <label class="focus-label">From</label>
-          </div>
-      </div>
-      <div class="col-sm-6 col-md-3 col-lg-3 col-xl-2 col-12">
-          <div class="form-group form-focus">
-              <div class="cal-icon">
-                  <input class="form-control floating datetimepicker" bsDatepicker type="text"
-                      [bsConfig]="{ dateInputFormat: 'DD-MM-YYYY',  returnFocusToInput: true }"
-                      (bsValueChange)="searchByTo($event)">
-              </div>
-              <label class="focus-label">To</label>
-          </div>
-      </div>
-      <div class="col-sm-6 col-md-3 col-lg-3 col-xl-2 col-12">
-          <a class="btn btn-success btn-block"> Search </a>
-      </div>
-  </div>
-  <!-- /Search Filter -->
+                            <button kendoGridExcelCommand class="k-button font-khmer-cursive btn-add-00 export-word float-right" (click)="excelExportExcel(excelexport)" >
+                              <span class="font-size-15" >{{'Common.Button.ExcelExport' | translate}}</span>
+                          </button>
 
-  <div class="row">
-      <div class="col-md-12">
-          <div class="table-responsive">
-              <table datatable [dtOptions]="dtOptions" id="datatable"
-                  class="table table-striped custom-table mb-0 datatable">
-                  <thead>
-                      <tr>
-                          <th>Id</th>
-                          <th>Images</th>
-                          <th>Category</th>
-                          <th>Name</th>
-                          <th>description</th>
-                          <th>mobile Show</th>
-                          <th>web Show</th>
-                          <th>createBy</th>
-                          <th>modifyBy</th>
-                          <th>Status</th>
-                          <th class="text-right">Actions</th>
-                      </tr>
-                  </thead>
-                  <tbody>
-                      <tr *ngFor="let row of productDetails; let i = index">
+                      </div>
+                  </div>
+              </ng-template>
 
-                          <td width = "20">{{row.id}}</td>
-                          <td>
-                            <h2 class="table-avatar">
-                                <a routerLink="/employees/employeeprofile" class="avatar">
-                                  <img alt="" [src]="url + row.resourceImgId">
-                                </a>
-                            </h2>
-                        </td>
-                          <td>{{row.catgoryName}}</td>
-                          <td>{{row.name}}</td>
-                          <td>{{row.description}}</td>
-                          <td>{{row.mobileShow }}</td>
-                          <td>{{row.webShow}}</td>
-                          <td>{{row.createBy}}</td>
-                          <td>{{row.modifyBy}}</td>
-                          <td class="text-center">
-                              <div class="dropdown action-label">
-                                  <a class="btn btn-white btn-sm btn-rounded dropdown-toggle" data-toggle="dropdown"
-                                      aria-expanded="false">
-                                      <i class="fa fa-dot-circle-o text-purple"></i>
-                                      {{'New' || statusValue}}
-                                  </a>
-                                  <div class="dropdown-menu dropdown-menu-right">
-                                      <a class="dropdown-item" (click)="getStatus('New')"><i
-                                              class="fa fa-dot-circle-o text-purple"></i>
-                                          New</a>
-                                      <a class="dropdown-item" (click)="getStatus('Pending')"><i
-                                              class="fa fa-dot-circle-o text-danger"></i>
-                                          Pending</a>
-                                      <a class="dropdown-item" (click)="getStatus('Approved')"><i
-                                              class="fa fa-dot-circle-o text-success"></i> Approved</a>
-                                      <a class="dropdown-item" (click)="getStatus('Declined')"><i
-                                              class="fa fa-dot-circle-o text-danger"></i>
-                                          Declined</a>
-                                  </div>
-                              </div>
-                          </td>
-                          <td class="text-right">
-                              <div class="dropdown dropdown-action">
-                                  <a class="action-icon dropdown-toggle" data-toggle="dropdown"
-                                      aria-expanded="false"><i class="material-icons">more_vert</i></a>
-                                  <div class="dropdown-menu dropdown-menu-right">
-                                      <a class="dropdown-item" data-toggle="modal" data-target="#edit_leave"><i class="fa fa-pencil m-r-5"></i> Edit</a>
-                                      <a class="dropdown-item" data-toggle="modal" data-target="#delete_approve"><i class="fa fa-trash-o m-r-5"></i> Delete</a>
-                                  </div>
-                              </div>
-                          </td>
-                      </tr>
-                  </tbody>
-              </table>
-          </div>
-      </div>
-  </div>
-</div>
-<!-- /Page Content -->
+              <kendo-grid-column width="50" class="cen" [sortable]="false" field="edit" title="{{'Common.Button.Edit' | translate}}">
+                <ng-template kendoGridCellTemplate let-dataItem let-rowIndex="rowIndex">
+                  <div class="dropdown dropdown-action">
+                    <a class="action-icon dropdown-toggle" data-toggle="dropdown"
+                        aria-expanded="false"><i class="material-icons">more_vert</i></a>
+                    <div class="dropdown-menu dropdown-menu-right">
+                        <a class="dropdown-item" data-toggle="modal" data-target="#edit_leave"
+                            ><i class="fa fa-pencil m-r-5"></i> Edit</a>
+                        <a class="dropdown-item" data-toggle="modal" data-target="#delete_approve"
+                            ><i class="fa fa-trash-o m-r-5"></i> Delete</a>
+                    </div>
+                </div>
+              </ng-template>
+              </kendo-grid-column>
 
+              <kendo-grid-checkbox-column class="cen" [width]="45" [resizable]="false" [columnMenu]="true" showSelectAll="true"></kendo-grid-checkbox-column>
+
+              <kendo-grid-column width="50" class="cen" [sortable]="false" field="no" title="{{'Common.Label.No' | translate}}">
+                  <ng-template kendoGridCellTemplate let-dataItem let-rowIndex="rowIndex">
+                      <p>{{rowIndex + 1}}</p>
+                  </ng-template>
+              </kendo-grid-column>
+
+              <kendo-grid-column width="150" class="subj" field="name" title="{{'Category.Label.Name' | translate}}"></kendo-grid-column>
+
+              <kendo-grid-column width="190" class="subj" field="description" title="{{'Category.Label.Description' | translate}}"></kendo-grid-column>
+              <kendo-grid-column width="190" class="subj" field="description" title="{{'Category.Label.Description' | translate}}"></kendo-grid-column>
+
+              <kendo-grid-column width="190" class="subj" field="description" title="{{'Category.Label.Description' | translate}}"></kendo-grid-column>
+              <kendo-grid-column width="190" class="subj" field="description" title="{{'Category.Label.Description' | translate}}"></kendo-grid-column>
+
+
+              <kendo-grid-column width="190" class="subj" field="description" title="{{'Category.Label.Description' | translate}}"></kendo-grid-column>
+              <kendo-grid-column width="190" class="subj" field="description" title="{{'Category.Label.Description' | translate}}"></kendo-grid-column>
+
+              <kendo-grid-column width="190" class="subj font-khmer-cursive" field="create_by" title="{{'Common.Label.CreateBy' | translate}}"></kendo-grid-column>
+              <kendo-grid-column width="190" class="subj font-khmer-cursive" field="modify_by" title="{{'Common.Label.ModifyBy' | translate}}"></kendo-grid-column>
+
+
+              <kendo-grid-column width="50" class="cen" [sortable]="false" field="edit" title="{{'Common.Button.Edit' | translate}}">
+                  <ng-template kendoGridCellTemplate let-dataItem let-rowIndex="rowIndex">
+                      <button class="k-button k-button-edit btn-w100px-h35px font-khmer-cursive btn-add-00 v-card-identy k-float-left" (click)="edit(dataItem)">
+                          <span class="k-icon k-i-track-changes i-font"></span>
+                          <!-- <span style="margin-left: 5px;">edit</span> -->
+                      </button>
+                  </ng-template>
+              </kendo-grid-column>
+
+
+
+              <kendo-grid-pdf fileName="categories.pdf" [allPages]="true" paperSize="A3" [repeatHeaders]="true" [landscape]="true">
+                  <kendo-grid-pdf-margin top="2cm" left="1cm" right="1cm" bottom="2cm"></kendo-grid-pdf-margin>
+                  <ng-template kendoGridPDFTemplate let-pageNum="pageNum" let-totalPages="totalPages">
+                      <div class="page-template">
+                          <div class="header">
+                              <div style="float: right">Page {{ pageNum }} of {{ totalPages }}</div>
+                          </div>
+                          <div class="footer">
+                              Page {{ pageNum }} of {{ totalPages }}
+                          </div>
+                      </div>
+                  </ng-template>
+              </kendo-grid-pdf>
+
+              <!-- excele -->
+              <kendo-excelexport [data]="data" fileName="categories.xlsx" #excelexport>
+                  <kendo-excelexport-column field="id" title="{{'Common.Label.No' | translate}}"></kendo-excelexport-column>
+                  <kendo-excelexport-column field="name" title="{{'Category.Label.Name' | translate}}"></kendo-excelexport-column>
+                  <kendo-excelexport-column field="description" title="{{'Category.Label.Description' | translate}}" [width]="350"></kendo-excelexport-column>
+              </kendo-excelexport>
+
+          </kendo-grid>
       </div>
 
       <div class="table_control">
 
         <div class="col-md-3">
-          <button class="k-button btn-w100px-h35px font-khmer-cursive btn-add-00 border-color-red">
+          <button class="k-button btn-w100px-h35px font-khmer-cursive btn-add-00 border-color-red" (click)="delete()">
             <span class="k-icon k-i-minus-circle color-red"></span>
             <span class="border-color-red color-red margin-left-5px">{{'Common.Button.Delete' | translate}}</span>
         </button>
@@ -217,7 +148,7 @@
 
 
           <div class="c_btn">
-            <button class="k-button btn-w100px-h35px font-khmer-cursive btn-add-00">
+            <button class="k-button btn-w100px-h35px font-khmer-cursive btn-add-00" (click)="add()">
                 <span class="k-icon k-i-plus-circle "></span>
                 <span class="margin-left-5px">{{'Common.Button.New' | translate}}</span>
             </button>

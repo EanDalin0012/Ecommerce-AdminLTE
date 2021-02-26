@@ -1,0 +1,133 @@
+<div class="contentsWrap contentsWrap01">
+  <div class="page_title">
+      <div class="page_title">
+        <div class="breadcrumb">
+            <div class="page_navi">
+                <span class="font-khmer-cursive">{{'Common.Label.Register' | translate}}</span>
+            </div>
+            <h3 class="margin-00"><span class="font-khmer-cursive">{{'Category.Label.Category' | translate}}</span></h3>
+        </div>
+    </div>
+
+  </div>
+
+  <div class="container01">
+
+      <div class="col-md-12" style="margin-bottom: 15px; padding: 0px;">
+          <strong>{{'Common.Label.Items' | translate: {'value': lstLeave ? lstLeave.length: 0 } }}</strong>
+      </div>
+
+      <div>
+
+<!-- Page Content -->
+<div class="content container-fluid">
+
+  <div class="row">
+      <div class="col-md-12">
+          <div class="table-responsive">
+
+
+              <div class="form-row col-md-4" style ="background-color: white; float: right; height: 75px;">
+                <label>Search</label>
+                <input type="text" [ngClass]="searchInput? 'active-input' : ''" class="form-control" (input)="searchName($event.target.value)">
+                <div class="in_box">
+                    <button type="button" [ngClass]="searchInput? 'btn_del' : ''" tabindex=-1 class="btn" tabindex=-1 tabindex=-1></button>
+                </div>
+              </div>
+
+              <table datatable [dtOptions]="dtOptions" [dtTrigger]="dtTrigger" id="datatable"
+                  class="table table-striped custom-table mb-0 datatable">
+                  <thead>
+                      <tr>
+                          <th>ID</th>
+                          <th>Category Name</th>
+                          <th>Name</th>
+                          <th>web Show</th>
+                          <th>mobile Show</th>
+                          <th>description</th>
+                          <th class="text-center">Status</th>
+                          <th class="text-right">Actions</th>
+                      </tr>
+                  </thead>
+                  <tbody>
+                      <tr *ngFor="let row of lstLeave;let i = index">
+                        <td style = "width: 5%; text-align: center;">{{row.id}}</td>
+                          <td style = "width: 15%; text-align: center;">{{row.catgoryName}}</td>
+                          <td style = "width: 15%; text-align: center;">{{row.name }}</td>
+                          <td style = "width: 15%; text-align: center;">{{row.webShow}}</td>
+                          <td style = "width: 15%; text-align: center;">{{row.mobileShow}}</td>
+                          <td style = "width: 10%; text-align: center;">{{row.description}}</td>
+                          <td class="text-center" style = "width: 10%; text-align: center;">
+                              <div class="dropdown action-label">
+                                  <a class="btn btn-white btn-sm btn-rounded dropdown-toggle" data-toggle="dropdown"
+                                      aria-expanded="false">
+                                      <i class="fa fa-dot-circle-o text-purple"></i>{{'New' || statusValue}}
+                                  </a>
+                                  <div class="dropdown-menu dropdown-menu-right">
+                                      <a class="dropdown-item" (click)="getStatus('New')"><i
+                                              class="fa fa-dot-circle-o text-purple"></i>
+                                          New</a>
+                                      <a class="dropdown-item" (click)="getStatus('Pending')"><i
+                                              class="fa fa-dot-circle-o text-danger"></i>
+                                          Pending</a>
+                                      <a class="dropdown-item" (click)="getStatus('Approved')"><i
+                                              class="fa fa-dot-circle-o text-success"></i> Approved</a>
+                                      <a class="dropdown-item" (click)="getStatus('Declined')"><i
+                                              class="fa fa-dot-circle-o text-danger"></i>
+                                          Declined</a>
+                                  </div>
+                              </div>
+                          </td>
+                          <td class="text-right" style = "width: 10%; text-align: center;">
+                              <div class="dropdown dropdown-action">
+                                  <a class="action-icon dropdown-toggle" data-toggle="dropdown"
+                                      aria-expanded="false"><i class="material-icons">more_vert</i></a>
+                                  <div class="dropdown-menu dropdown-menu-right">
+                                      <a class="dropdown-item" data-toggle="modal" data-target="#edit_leave"
+                                          ><i class="fa fa-pencil m-r-5"></i> Edit</a>
+                                      <a class="dropdown-item" data-toggle="modal" data-target="#delete_approve"
+                                          ><i class="fa fa-trash-o m-r-5"></i> Delete</a>
+                                  </div>
+                              </div>
+                          </td>
+                      </tr>
+                  </tbody>
+              </table>
+          </div>
+      </div>
+  </div>
+</div>
+<!-- /Page Content -->
+
+
+
+
+      </div>
+
+      <div class="table_control">
+
+
+          <button class="k-button btn-w100px-h35px font-khmer-cursive btn-add-00 border-color-red" style = "margin-right: 15px;">
+            <span class="k-icon k-i-file-excel color-red"></span>
+            <span class="border-color-red color-red margin-left-5px">{{'Common.Button.ExcelExport' | translate}}</span>
+           </button>
+
+          <button class="k-button btn-w100px-h35px font-khmer-cursive btn-add-00 border-color-red">
+            <span class="k-icon k-i-file-pdf color-red"></span>
+            <span class="border-color-red color-red margin-left-5px">{{'Common.Button.ExcelPDF' | translate}}</span>
+           </button>
+
+
+
+          <div class="c_btn">
+            <button class="k-button btn-w100px-h35px font-khmer-cursive btn-add-00">
+                <span class="k-icon k-i-plus-circle "></span>
+                <span class="margin-left-5px">{{'Common.Button.New' | translate}}</span>
+            </button>
+
+        </div>
+
+      </div>
+
+  </div>
+</div>

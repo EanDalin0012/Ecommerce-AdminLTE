@@ -1551,7 +1551,7 @@ table.dataTable thead > tr > td.sorting {
   background-color: #eaeff8;
 }
 .page-wrapper .content {
-	padding: 30px;
+  padding: 10px 10px 0 10px;
   background-color: #eaeff8;
 }
 .page-header {
@@ -9282,8 +9282,117 @@ table.dataTable {
   overflow: hidden; */
 }
 
-/* .custom-table tbody {
-  overflow: scroll;
-    height: 500px;
+.custom-table tbody, .custom-table tbody{
+    width: 100%;
     display: block;
+}
+.custom-table tbody{
+  height: 400px;
+  display: block;
+  overflow: auto;
+}
+
+.dataTables_paginate span a {
+  margin: 0px 5px 0px 5px;
+  border: 2px solid;
+  padding: 2px 5px 2px 4px;
+  cursor: pointer;
+  border-radius: 4px;
+}
+
+.table-responsive {
+  overflow: hidden;
+}
+.dataTables_info{
+  float: left;
+}
+.custom-table {
+  min-height: 500px;
+  display: block;
+  overflow: auto;
+}
+
+.dataTables_length label select {
+  border-color: #212529 !important;
+    color: #212529 !important;
+    background-color: #ffffff !important;
+    background-image: none !important;
+    height: 30px;
+    border-radius: 3px;
+}
+
+.custom-table tbody::-webkit-scrollbar {
+  width: 0.50rem;
+}
+
+.custom-table tbody::-webkit-scrollbar-track {
+  background: #f3f6fa;
+  border-radius: 10px;
+}
+
+.custom-table tbody::-webkit-scrollbar-thumb {
+  background: #444;
+  border-radius: 10px;
+}
+
+.custom-table tbody::-webkit-scrollbar-thumb:hover {
+  background: #a69c90;
+}
+
+.dataTables_wrapper {
+  background: white;
+}
+div.dataTables_paginate {
+	width: 50%;
+    float: right;
+}
+
+.dataTables_info {
+	padding-bottom: 0.85em;
+}
+
+.dataTables_length label {
+  margin: 20px 0 0 20px;
+}
+
+.action::before, .action::after {
+  content: "" !important;
+}
+
+.custom-table tbody tr td{
+  overflow: hidden !important;
+  text-overflow: clip !important;
+}
+
+.k-grid th, .k-grid td {
+  overflow: revert !important;
+}
+
+
+.k-grid-content::-webkit-scrollbar {
+  width: 0.50rem;
+}
+
+.k-grid-content::-webkit-scrollbar-track {
+  background: #f3f6fa !important;
+  border-radius: 10px;
+}
+
+.k-grid-content::-webkit-scrollbar-thumb {
+  background: #444 !important;
+  border-radius: 10px;
+}
+
+.k-grid-content::-webkit-scrollbar-thumb:hover {
+  background: #a69c90 !important;
+}
+/*
+.k-grid-content::-webkit-scrollbar-thumb:horizontal {
+  width: 12px !important;
+  height: 12px !important;
+  background-color: #0A4C95 !important;
 } */
+
+.k-grid-content {
+  overflow: scroll;
+}

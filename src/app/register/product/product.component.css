@@ -1,0 +1,19 @@
+.in_box .btn_del {
+  top: 40px;
+}
+.dataTables_wrapper {
+  background-color: white;
+}
+.page-wrapper .content {
+  padding: 30px;
+  background-color: white;
+}
+
+
+/* .custom-table tr th{
+  max-width: 10% !important;
+  min-width: 10% !important;
+  width: 10% !important;
+  overflow: hidden !important;
+  text-overflow: clip !important;
+} */

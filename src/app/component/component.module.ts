@@ -15,6 +15,7 @@ import { PickListModule } from 'primeng/picklist';
 import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
 import { ProfileComponent } from './profile/profile.component';
 import { PopupComponent } from './popup/popup.component';
+import { Grid1Component } from './grid1/grid1.component';
 @NgModule({
   declarations: [
     GridComponent,
@@ -25,7 +26,8 @@ import { PopupComponent } from './popup/popup.component';
     ClientsComponent,
     RecentProjectsComponent,
     ProfileComponent,
-    PopupComponent
+    PopupComponent,
+    Grid1Component
   ],
   imports: [
     CommonModule,

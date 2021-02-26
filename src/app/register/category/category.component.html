@@ -63,6 +63,21 @@
                   </div>
               </ng-template>
 
+              <kendo-grid-column width="50" class="cen" [sortable]="false" field="edit" title="{{'Common.Button.Edit' | translate}}">
+                <ng-template kendoGridCellTemplate let-dataItem let-rowIndex="rowIndex">
+                  <div class="dropdown dropdown-action">
+                    <a class="action-icon dropdown-toggle" data-toggle="dropdown"
+                        aria-expanded="false"><i class="material-icons">more_vert</i></a>
+                    <div class="dropdown-menu dropdown-menu-right">
+                        <a class="dropdown-item" data-toggle="modal" data-target="#edit_leave"
+                            ><i class="fa fa-pencil m-r-5"></i> Edit</a>
+                        <a class="dropdown-item" data-toggle="modal" data-target="#delete_approve"
+                            ><i class="fa fa-trash-o m-r-5"></i> Delete</a>
+                    </div>
+                </div>
+              </ng-template>
+              </kendo-grid-column>
+
               <kendo-grid-checkbox-column class="cen" [width]="45" [resizable]="false" [columnMenu]="true" showSelectAll="true"></kendo-grid-checkbox-column>
 
               <kendo-grid-column width="50" class="cen" [sortable]="false" field="no" title="{{'Common.Label.No' | translate}}">
@@ -85,6 +100,8 @@
                       </button>
                   </ng-template>
               </kendo-grid-column>
+
+
 
               <kendo-grid-pdf fileName="categories.pdf" [allPages]="true" paperSize="A3" [repeatHeaders]="true" [landscape]="true">
                   <kendo-grid-pdf-margin top="2cm" left="1cm" right="1cm" bottom="2cm"></kendo-grid-pdf-margin>

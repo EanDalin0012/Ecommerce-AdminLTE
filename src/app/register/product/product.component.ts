@@ -1,22 +1,18 @@
-import { Component, Inject, OnInit, TemplateRef, ViewContainerRef  } from '@angular/core';
-import { SubscribeMessageService } from '../../m-share/service/subscribe-message.service';
-import { SelectableSettings, GridDataResult, RowClassArgs, PageChangeEvent } from '@progress/kendo-angular-grid';
-import { ProductDetail } from '../../m-share/model/product-detail';
-import { ID } from 'src/app/m-share/model/id';
+import { SubscribeMessageService } from './../../m-share/service/subscribe-message.service';
+import { Component, OnInit } from "@angular/core";
 import { HttpService } from '../../m-share/service/http.service';
-import { Title } from '@angular/platform-browser';
-import { ModalService } from '../../m-share/service/modal.service';
-import { TranslateService } from '@ngx-translate/core';
-import { orderBy, SortDescriptor } from '@progress/kendo-data-query';
 import { ResponseStatus, ButtonRoles } from '../../m-share/constants/common.const';
 import { Message } from '../../m-share/model/message';
 import { ProductAddComponent } from '../product-add/product-add.component';
-import { PopupService, PopupRef, POPUP_CONTAINER } from '@progress/kendo-angular-popup';
-import { Subject } from 'rxjs';
-import { DatePipe } from "@angular/common";
-import { DataTableDirective } from "angular-datatables";
-import { products } from '../../component/input/data';
-import { environment } from 'src/environments/environment';
+import { ProductEditComponent } from '../product-edit/product-edit.component';
+import { orderBy, SortDescriptor } from '@progress/kendo-data-query';
+import { RowClassArgs, SelectableSettings, GridDataResult } from '@progress/kendo-angular-grid';
+import { PageChangeEvent } from '@progress/kendo-angular-dropdowns/dist/es2015/common/models/page-change-event';
+import { Title } from '@angular/platform-browser';
+import { ModalService } from '../../m-share/service/modal.service';
+import { TranslateService } from '@ngx-translate/core';
+import { Category } from '../../m-share/model/category';
+import { ID } from '../../m-share/model/id';
 declare const $: any;
 @Component({
   selector: 'app-product',
@@ -24,313 +20,250 @@ declare const $: any;
   styleUrls: ['./product.component.css']
 })
 export class ProductComponent implements OnInit {
-
-  // data table
-  public pipe = new DatePipe("en-US");
-  chartData;
-  chartOptions;
-  lineData;
-  lineOption;
-  barColors = {
-    a: '#007bff',
-    b: '#6610f2',
-  };
-  lineColors = {
-    a: '#007bff',
-    b: '#6610f2',
-  };
+  // start Declaration grid
+  info = true;
+  buttonCount = 5;
+  type: 'numeric' | 'input' = 'numeric';
+  previousNext = false;
+  pageSizes: any[] = [10, 20, 30, 50, 100];
+  multiple = false;
+  allowUnsort = true;
+  height = 'auto';
+  search: string;
+  sort: SortDescriptor[] = [{
+    field: 'id',
+    dir: 'asc'
+  }];
+  gridView: GridDataResult;
+  gridData: any[];
+  checkboxOnly = false;
+  mode = 'multiple';
+  gridHeight = screen.height * 0.5;
+  selectedCallback = (args) => args.dataItem;
+  selectableSettings: SelectableSettings;
+  skip = 0;
+  pageSize = 10;
+  mySelection: any[] = [];
+// end Declaring grid
 
   totalRecord = 0;
-  public dtOptions: DataTables.Settings = {};
-  lstLeave: any[];
-  public rows = [];
-  public srch = [];
-  public statusValue;
-  url: string;
-  productDetails = new Array<ProductDetail>();
-  // end Declaring variable
+  categories = new Array<Category>();
+  itemsID = new Array<ID>();
+  public data  = Array<Category>();
+  menu = '';
 
   constructor(
     private subscribeMessageService: SubscribeMessageService,
     private httpService: HttpService,
-  ) {
-    this.url = environment.serverURL;
-   }
+    private titleService: Title,
+    private modalService: ModalService,
+    private translate: TranslateService
+    ) {
+      this.titleService.setTitle('Category');
+      this.setSelectableSettings();
+    }
 
   ngOnInit(): void {
     const url = (window.location.href).split('/');
-    console.log('url', url);
     this.subscribeMessageService.visitMessage(url[5]);
-
-    // for floating label
-    $(".floating")
-      .on("focus blur", function (e) {
-        $(this)
-          .parents(".form-focus")
-          .toggleClass("focused", e.type === "focus" || this.value.length > 0);
-      })
-      .trigger("blur");
     this.inquiry();
-    // this.loadLeaves();
-
   }
 
-  // declear function
   inquiry(): void {
-    const api = '/api/product/v1/list';
-    this.httpService.Get(api).then(response => {
+    const api = '/api/category/v1/list';
+    this.httpService.Get(api).then(resp => {
+      const response   = resp as any;
+      console.log(response);
       if (response) {
-        this.productDetails = response;
-        console.log('response', this.productDetails);
-        this.rows = this.productDetails;
-        this.srch = [...this.rows];
+        this.categories = response;
+        this.data          = response;
+        this.gridData      = this.categories;
+        this.loadingData(this.categories);
       }
     });
   }
 
-  // // Get leave  Api Call
-  // loadLeaves() {
-  //     this.lstLeave = employeeleaves;
-  //     this.rows = this.lstLeave;
-  //     // this.srch = [...this.rows];
-  // }
+  // Declaration  function gride
+  setSelectableSettings(): void {
+    this.selectableSettings = {
+        checkboxOnly: this.checkboxOnly,
+        mode: 'multiple'
+    };
+  }
 
-  //search by name
-  searchName(val): void {
-    this.rows.splice(0, this.rows.length);
-    let temp = this.srch.filter(function (d) {
-      val = val.toLowerCase();
-      return d.employeeName.toLowerCase().indexOf(val) !== -1 || !val;
+  loadingData(data: any): void {
+    if (data) {
+      this.gridView = {
+        data: orderBy(data.slice(this.skip, this.skip + this.pageSize), this.sort),
+        total: data.length
+      };
+    }
+    this.totalRecord = data.length;
+  }
+
+  loadData(): void {
+    this.gridView = {
+      data: orderBy(this.gridData.slice(this.skip, this.skip + this.pageSize), this.sort),
+      total: this.gridData.length
+    };
+  }
+
+  pageChange({ skip, take }: PageChangeEvent): void {
+    this.skip = skip;
+    this.pageSize = take;
+    this.paging();
+  }
+
+  public rowCallback = (context: RowClassArgs) => {
+      switch (context.dataItem.serviceStatusDesc) {
+        case 'Deactivated':
+          return {dormant: true};
+        default:
+          return {};
+       }
+  }
+
+  private paging(): void {
+    this.gridView = {
+      data: this.gridData.slice(this.skip, this.skip + this.pageSize),
+      total: this.gridData.length
+    };
+  }
+
+  sortChange(sort: SortDescriptor[]): void {
+    this.sort = sort;
+    this.loadData();
+  }
+  // end gride function
+
+  searchChange(event): void {
+    if (event) {
+      console.log(event.target.value);
+      const resultSearch  = this.categories.filter( data => data.name.toLowerCase().includes(event.target.value));
+      this.totalRecord    = resultSearch.length;
+      this.categories     = resultSearch;
+      this.loadingData(resultSearch);
+    }
+  }
+
+
+  deleteTextSearch(): void {
+    this.search = undefined;
+    this.loadingData(this.categories);
+  }
+
+  excelExportExcel(component): void {
+    const options = component.workbookOptions();
+    const rows = options.sheets[0].rows;
+    console.log(rows);
+
+    let altIdx = 0;
+    rows.forEach((row) => {
+        if (row.type === 'data') {
+            if (altIdx % 2 !== 0) {
+                row.cells.forEach((cell) => {
+                    cell.background = '#aabbcc';
+                });
+            }
+            altIdx++;
+        }
     });
-    this.rows.push(...temp);
+
+    component.save(options);
   }
 
-  //search by status
-  searchType(val): void {
-    this.rows.splice(0, this.rows.length);
-    let temp = this.srch.filter(function (d) {
-      val = val.toLowerCase();
-      return d.leaveType.toLowerCase().indexOf(val) !== -1 || !val;
+
+  delete(): void {
+    if (this.mySelection.length > 0) {
+      let name = '';
+      let i = 0;
+      this.mySelection.forEach(element => {
+          const mainCategoryName = this.getNameById(element);
+          if (mainCategoryName !== '') {
+            if (i === this.mySelection.length - 1) {
+              name += mainCategoryName;
+            } else {
+              name += mainCategoryName  + ', ';
+            }
+          }
+
+          this.itemsID.push({
+            id: element
+          });
+
+          ++i;
+      });
+
+      this.modalService.confirm({
+        title: this.translate.instant('Common.Label.DeleteItems'),
+        content:  this.translate.instant('Common.Label.YourSelectedItems', {value: name}),
+        lBtn: {btnText: this.translate.instant('Common.Button.Close')},
+        rBtn: {btnText: this.translate.instant('Common.Button.Confirm')},
+        modalClass: ['pop-confirm-btn dialog-confirm'],
+        callback: response => {
+          console.log('response', response);
+          if (response.text === 'Confirm') {
+            this.doDelete();
+          }
+        }
+      });
+    } else {
+      this.modalService.alert({
+        title: this.translate.instant('Common.Label.DeleteItems'),
+        content: '<h2>Please select Item(s) that you want to delete.</h2>',
+        btnText: this.translate.instant('Common.Button.Confirm'),
+        callback: response => {}
+      });
+    }
+  }
+
+  getNameById(val: number): string {
+    let name = '';
+    this.categories.forEach(element => {
+      if (element.id === val) {
+        name = element.name ; // + '(' + element.id + ')';
+      }
     });
-    this.rows.push(...temp);
+    return name;
   }
 
-  searchStatus(val) {
-    this.rows.splice(0, this.rows.length);
-    let temp = this.srch.filter(function (d) {
-      val = val.toLowerCase();
-      return d.status.toLowerCase().indexOf(val) !== -1 || !val;
+  edit(dataItems: any): void {
+    this.modalService.open({
+      content: ProductEditComponent,
+      message: dataItems,
+      callback: response => {
+        if (response.close === ButtonRoles.edit) {
+          this.inquiry();
+        }
+      }
     });
-    this.rows.push(...temp);
   }
 
-  //search by purchase
-  searchByFrom(val) {
-    let mySimpleFormat = this.pipe.transform(val, "dd-MM-yyyy");
-    this.rows.splice(0, this.rows.length);
-    let temp = this.srch.filter(function (d) {
-      return d.from.indexOf(mySimpleFormat) !== -1 || !mySimpleFormat;
+  add(): void {
+    this.modalService.open({
+      content: ProductAddComponent,
+      callback: response => {
+        if (response.close === ButtonRoles.save) {
+          this.inquiry();
+        }
+      }
     });
-    this.rows.push(...temp);
-    $(".floating")
-      .on("focus blur", function (e) {
-        $(this)
-          .parents(".form-focus")
-          .toggleClass("focused", e.type === "focus" || this.value.length > 0);
-      })
-      .trigger("blur");
   }
 
-  //search by warranty
-  searchByTo(val) {
-    let mySimpleFormat = this.pipe.transform(val, "dd-MM-yyyy");
-    this.rows.splice(0, this.rows.length);
-    let temp = this.srch.filter(function (d) {
-      return d.to.indexOf(mySimpleFormat) !== -1 || !mySimpleFormat;
+
+  doDelete(): void {
+    const data = {
+      body: this.itemsID
+    };
+    console.log( );
+    const api = '/api/category/v1/delete';
+    this.httpService.Post(api, data).then(resp => {
+      const response   = resp as Message;
+      if (response.status === ResponseStatus.Y) {
+       this.inquiry();
+      }
     });
-    this.rows.push(...temp);
-    $(".floating")
-      .on("focus blur", function (e) {
-        $(this)
-          .parents(".form-focus")
-          .toggleClass("focused", e.type === "focus" || this.value.length > 0);
-      })
-      .trigger("blur");
   }
 
-  //getting the status value
-  getStatus(data) {
-    this.statusValue = data;
-  }
 }
 
-const employeeleaves = [
-  {
-    id: 1,
-    employeeName: "John Doe",
-    designation: "web developer",
-    leaveType: "Casual Leave",
-    from: "08-03-2019",
-    to: "09-04-2019",
-    noofDays: "2 days",
-    remainleaves: "12",
-    reason: "Going to Hospital",
-    status: "New",
-  },
-  {
-    id: 2,
-    employeeName: "John Smith",
-    designation: "web developer",
-    leaveType: "LOP",
-    from: "24-02-2019",
-    to: "25-02-2019",
-    noofDays: "2 days",
-    remainleaves: "4",
-    reason: "Personnal",
-    status: "Approved",
-  },
-  {
-    id: 3,
-    employeeName: "Mike Litorus",
-    designation: "Android developer",
-    leaveType: "Paternity Leave",
-    from: "13-02-2019",
-    to: "17-02-2019",
-    noofDays: "5 days",
-    remainleaves: "10",
-    reason: "Personnal",
-    status: "Declined",
-  },
-  {
-    id: 4,
-    employeeName: "Mike Litorus",
-    designation: "web developer",
-    leaveType: "Paternity Leave",
-    from: "13-02-2019",
-    to: "17-02-2019",
-    noofDays: "5 days",
-    remainleaves: "6",
-    reason: "Medical leave",
-    status: "Declined",
-  },
-  {
-    id: 5,
-    employeeName: "Catherine Manseau",
-    designation: "web designer",
-    leaveType: "Casual Leave",
-    from: "13-02-2019",
-    to: "17-02-2019",
-    noofDays: "5 days",
-    remainleaves: "7",
-    reason: "Going to Hospital",
-    status: "Approved",
-  },
-  {
-    id: 6,
-    employeeName: "Mike Litorus",
-    designation: "web developer",
-    leaveType: "Paternity Leave",
-    from: "13-02-2019",
-    to: "17-02-2019",
-    noofDays: "5 days",
-    remainleaves: "6",
-    reason: "Medical leave",
-    status: "Declined",
-  },
-  {
-    id: 7,
-    employeeName: "John Smith",
-    designation: "web developer",
-    leaveType: "LOP",
-    from: "13-02-2019",
-    to: "17-02-2019",
-    noofDays: "2 days",
-    remainleaves: "4",
-    reason: "Personnal",
-    status: "Approved",
-  },
-  {
-    id: 8,
-    employeeName: "John Doe",
-    designation: "web developer",
-    leaveType: "Casual Leave",
-    from: "08-03-2019",
-    to: "09-04-2019",
-    noofDays: "2 days",
-    remainleaves: "12",
-    reason: "Going to Hospital",
-    status: "New",
-  },
-  {
-    id: 9,
-    employeeName: "John Smith",
-    designation: "web developer",
-    leaveType: "LOP",
-    from: "24-02-2019",
-    to: "25-02-2019",
-    noofDays: "2 days",
-    remainleaves: "4",
-    reason: "Personnal",
-    status: "Approved",
-  },
-  {
-    id: 10,
-    employeeName: "Mike Litorus",
-    designation: "Android developer",
-    leaveType: "Paternity Leave",
-    from: "13-02-2019",
-    to: "17-02-2019",
-    noofDays: "5 days",
-    remainleaves: "10",
-    reason: "Personnal",
-    status: "Declined",
-  },
-  {
-    id: 11,
-    employeeName: "Mike Litorus",
-    designation: "web developer",
-    leaveType: "Paternity Leave",
-    from: "13-02-2019",
-    to: "17-02-2019",
-    noofDays: "5 days",
-    remainleaves: "6",
-    reason: "Medical leave",
-    status: "Declined",
-  },
-  {
-    id: 12,
-    employeeName: "Catherine Manseau",
-    designation: "web designer",
-    leaveType: "Casual Leave",
-    from: "13-02-2019",
-    to: "17-02-2019",
-    noofDays: "5 days",
-    remainleaves: "7",
-    reason: "Going to Hospital",
-    status: "Approved",
-  },
-  {
-    id: 13,
-    employeeName: "Mike Litorus",
-    designation: "web developer",
-    leaveType: "Paternity Leave",
-    from: "13-02-2019",
-    to: "17-02-2019",
-    noofDays: "5 days",
-    remainleaves: "6",
-    reason: "Medical leave",
-    status: "Declined",
-  },
-  {
-    id: 14,
-    employeeName: "John Smith",
-    designation: "web developer",
-    leaveType: "LOP",
-    from: "13-02-2019",
-    to: "17-02-2019",
-    noofDays: "2 days",
-    remainleaves: "4",
-    reason: "Personnal",
-    status: "Approved",
-  },
-];

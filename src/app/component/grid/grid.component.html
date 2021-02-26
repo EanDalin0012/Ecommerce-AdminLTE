@@ -1,261 +1,138 @@
-<!--Page Content-->
+<!-- Page Content -->
 <div class="content container-fluid">
 
   <!-- Page Header -->
   <div class="page-header">
-      <div class="row">
+      <div class="row align-items-center">
           <div class="col">
-              <h3 class="page-title">Data Tables</h3>
+              <h3 class="page-title">Leaves</h3>
               <ul class="breadcrumb">
                   <li class="breadcrumb-item"><a href="index.html">Dashboard</a></li>
-                  <li class="breadcrumb-item active">Data Tables</li>
+                  <li class="breadcrumb-item active">Leaves</li>
               </ul>
+          </div>
+          <div class="col-auto float-right ml-auto">
+              <a class="btn add-btn" data-toggle="modal" data-target="#add_leave"><i class="fa fa-plus"></i>
+                  Add Leave</a>
           </div>
       </div>
   </div>
   <!-- /Page Header -->
 
+  <!-- Leave Statistics -->
   <div class="row">
-      <div class="col-sm-12">
-          <div class="card mb-0">
-              <div class="card-header">
-                  <h4 class="card-title mb-0">Default Datatable</h4>
-                  <p class="card-text">
-                      This is the most basic example of the datatables with zero configuration. Use the
-                      <code>.datatable</code> class to initialize datatables.
-                  </p>
-              </div>
-              <div class="card-body">
-
-                  <div class="table-responsive">
-                      <table datatable [attr.dtOptions]="dtOptions" class="datatable table table-stripped mb-0">
-                          <thead>
-                              <tr>
-                                  <th>Name</th>
-                                  <th>Position</th>
-                                  <th>Office</th>
-                                  <th>Age</th>
-                                  <th>Salary</th>
-                              </tr>
-                          </thead>
-                          <tbody>
-                              <tr>
-                                  <td>Tiger Nixon</td>
-                                  <td>System Architect</td>
-                                  <td>Edinburgh</td>
-                                  <td>61</td>
-                                  <td>$320,800</td>
-                              </tr>
-                              <tr>
-                                  <td>Garrett Winters</td>
-                                  <td>Accountant</td>
-                                  <td>Tokyo</td>
-                                  <td>63</td>
-                                  <td>$170,750</td>
-                              </tr>
-                              <tr>
-                                  <td>Ashton Cox</td>
-                                  <td>Junior Technical Author</td>
-                                  <td>San Francisco</td>
-                                  <td>66</td>
-                                  <td>$86,000</td>
-                              </tr>
-                              <tr>
-                                  <td>Cedric Kelly</td>
-                                  <td>Senior Javascript Developer</td>
-                                  <td>Edinburgh</td>
-                                  <td>22</td>
-                                  <td>$433,060</td>
-                              </tr>
-                              <tr>
-                                  <td>Airi Satou</td>
-                                  <td>Accountant</td>
-                                  <td>Tokyo</td>
-                                  <td>33</td>
-                                  <td>$162,700</td>
-                              </tr>
-                              <tr>
-                                  <td>Brielle Williamson</td>
-                                  <td>Integration Specialist</td>
-                                  <td>New York</td>
-                                  <td>61</td>
-                                  <td>$372,000</td>
-                              </tr>
-                              <tr>
-                                  <td>Herrod Chandler</td>
-                                  <td>Sales Assistant</td>
-                                  <td>San Francisco</td>
-                                  <td>59</td>
-                                  <td>$137,500</td>
-                              </tr>
-                              <tr>
-                                  <td>Rhona Davidson</td>
-                                  <td>Integration Specialist</td>
-                                  <td>Tokyo</td>
-                                  <td>55</td>
-                                  <td>$327,900</td>
-                              </tr>
-                              <tr>
-                                  <td>Colleen Hurst</td>
-                                  <td>Javascript Developer</td>
-                                  <td>San Francisco</td>
-                                  <td>39</td>
-                                  <td>$205,500</td>
-                              </tr>
-                              <tr>
-                                  <td>Sonya Frost</td>
-                                  <td>Software Engineer</td>
-                                  <td>Edinburgh</td>
-                                  <td>23</td>
-                                  <td>$103,600</td>
-                              </tr>
-                              <tr>
-                                  <td>Jena Gaines</td>
-                                  <td>Office Manager</td>
-                                  <td>London</td>
-                                  <td>30</td>
-                                  <td>$90,560</td>
-                              </tr>
-                              <tr>
-                                  <td>Quinn Flynn</td>
-                                  <td>Support Lead</td>
-                                  <td>Edinburgh</td>
-                                  <td>22</td>
-                                  <td>$342,000</td>
-                              </tr>
-                              <tr>
-                                  <td>Charde Marshall</td>
-                                  <td>Regional Director</td>
-                                  <td>San Francisco</td>
-                                  <td>36</td>
-                                  <td>$470,600</td>
-                              </tr>
-                              <tr>
-                                  <td>Haley Kennedy</td>
-                                  <td>Senior Marketing Designer</td>
-                                  <td>London</td>
-                                  <td>43</td>
-                                  <td>$313,500</td>
-                              </tr>
-                              <tr>
-                                  <td>Tatyana Fitzpatrick</td>
-                                  <td>Regional Director</td>
-                                  <td>London</td>
-                                  <td>19</td>
-                                  <td>$385,750</td>
-                              </tr>
-                              <tr>
-                                  <td>Michael Silva</td>
-                                  <td>Marketing Designer</td>
-                                  <td>London</td>
-                                  <td>66</td>
-                                  <td>$198,500</td>
-                              </tr>
-                              <tr>
-                                  <td>Paul Byrd</td>
-                                  <td>Chief Financial Officer (CFO)</td>
-                                  <td>New York</td>
-                                  <td>64</td>
-                                  <td>$725,000</td>
-                              </tr>
-                              <tr>
-                                  <td>Gloria Little</td>
-                                  <td>Systems Administrator</td>
-                                  <td>New York</td>
-                                  <td>59</td>
-                                  <td>$237,500</td>
-                              </tr>
-                              <tr>
-                                  <td>Bradley Greer</td>
-                                  <td>Software Engineer</td>
-                                  <td>London</td>
-                                  <td>41</td>
-                                  <td>$132,000</td>
-                              </tr>
-                              <tr>
-                                  <td>Dai Rios</td>
-                                  <td>Personnel Lead</td>
-                                  <td>Edinburgh</td>
-                                  <td>35</td>
-                                  <td>$217,500</td>
-                              </tr>
-                              <tr>
-                                  <td>Jenette Caldwell</td>
-                                  <td>Development Lead</td>
-                                  <td>New York</td>
-                                  <td>30</td>
-                                  <td>$345,000</td>
-                              </tr>
-                              <tr>
-                                  <td>Yuri Berry</td>
-                                  <td>Chief Marketing Officer (CMO)</td>
-                                  <td>New York</td>
-                                  <td>40</td>
-                                  <td>$675,000</td>
-                              </tr>
-                              <tr>
-                                  <td>Caesar Vance</td>
-                                  <td>Pre-Sales Support</td>
-                                  <td>New York</td>
-                                  <td>21</td>
-                                  <td>$106,450</td>
-                              </tr>
-                              <tr>
-                                  <td>Doris Wilder</td>
-                                  <td>Sales Assistant</td>
-                                  <td>Sidney</td>
-                                  <td>23</td>
-                                  <td>$85,600</td>
-                              </tr>
-                              <tr>
-                                  <td>Angelica Ramos</td>
-                                  <td>Chief Executive Officer (CEO)</td>
-                                  <td>London</td>
-                                  <td>47</td>
-                                  <td>$1,200,000</td>
-                              </tr>
-                              <tr>
-                                  <td>Gavin Joyce</td>
-                                  <td>Developer</td>
-                                  <td>Edinburgh</td>
-                                  <td>42</td>
-                                  <td>$92,575</td>
-                              </tr>
-                              <tr>
-                                  <td>Jennifer Chang</td>
-                                  <td>Regional Director</td>
-                                  <td>Singapore</td>
-                                  <td>28</td>
-                                  <td>$357,650</td>
-                              </tr>
-                              <tr>
-                                  <td>Brenden Wagner</td>
-                                  <td>Software Engineer</td>
-                                  <td>San Francisco</td>
-                                  <td>28</td>
-                                  <td>$206,850</td>
-                              </tr>
-                              <tr>
-                                  <td>Fiona Green</td>
-                                  <td>Chief Operating Officer (COO)</td>
-                                  <td>San Francisco</td>
-                                  <td>48</td>
-                                  <td>$850,000</td>
-                              </tr>
-                              <tr>
-                                  <td>Shou Itou</td>
-                                  <td>Regional Marketing</td>
-                                  <td>Tokyo</td>
-                                  <td>20</td>
-                                  <td>$163,000</td>
-                              </tr>
-                          </tbody>
-                      </table>
-                  </div>
-              </div>
+      <div class="col-md-3">
+          <div class="stats-info">
+              <h6>Today Presents</h6>
+              <h4>12 / 5</h4>
+          </div>
+      </div>
+      <div class="col-md-3">
+          <div class="stats-info">
+              <h6>Planned Leaves</h6>
+              <h4>8 <span>Today</span></h4>
+          </div>
+      </div>
+      <div class="col-md-3">
+          <div class="stats-info">
+              <h6>Unplanned Leaves</h6>
+              <h4>1 <span>Today</span></h4>
+          </div>
+      </div>
+      <div class="col-md-3">
+          <div class="stats-info">
+              <h6>Pending Requests</h6>
+              <h4>12</h4>
           </div>
       </div>
   </div>
+  <!-- /Leave Statistics -->
 
+  <!-- Search Filter -->
+  <div class="row filter-row">
+      <div class="col-sm-6 col-md-3 col-lg-3 col-xl-2 col-12">
+          <div class="form-group form-focus">
+              <input type="text" class="form-control floating" (input)="searchName($event.target.value)">
+              <label class="focus-label">Employee Name</label>
+          </div>
+      </div>
+
+      <div class="col-sm-6 col-md-3 col-lg-3 col-xl-2 col-12">
+          <a class="btn btn-success btn-block"> Search {{lstLeave.length}}</a>
+      </div>
+  </div>
+  <!-- /Search Filter -->
+
+  <div class="row">
+      <div class="col-md-12">
+          <div class="table-responsive">
+              <table datatable [dtOptions]="dtOptions" [dtTrigger]="dtTrigger" id="datatable"
+                  class="table table-striped custom-table mb-0 datatable">
+                  <thead>
+                      <tr>
+                          <th>Employee</th>
+                          <th>Leave Type</th>
+                          <th>From</th>
+                          <th>To</th>
+                          <th>No of Days</th>
+                          <th>Reason</th>
+                          <th class="text-center">Status</th>
+                          <th class="text-right">Actions</th>
+                      </tr>
+                  </thead>
+                  <tbody>
+                      <tr *ngFor="let row of lstLeave;let i = index">
+                          <td>
+                              <h2 class="table-avatar">
+                                  <a routerLink="/employees/employeeprofile" class="avatar"><img alt=""
+                                          src="assets/img/profiles/avatar-0{{i+ 1}}.jpg"></a>
+                                  <a
+                                      routerLink="/employees/employeeprofile">{{row.employeeName}}<span>{{row.designation}}</span></a>
+                              </h2>
+                          </td>
+                          <td>{{row.leaveType}}</td>
+                          <td>{{row.from | customDate}}</td>
+                          <td>{{row.to | customDate}}</td>
+                          <td>{{row.noofDays}}</td>
+                          <td>{{row.reason}}</td>
+                          <td class="text-center">
+                              <div class="dropdown action-label">
+                                  <a class="btn btn-white btn-sm btn-rounded dropdown-toggle" data-toggle="dropdown"
+                                      aria-expanded="false">
+                                      <i class="fa fa-dot-circle-o text-purple"></i>{{row.status || statusValue}}
+                                  </a>
+                                  <div class="dropdown-menu dropdown-menu-right">
+                                      <a class="dropdown-item" (click)="getStatus('New')"><i
+                                              class="fa fa-dot-circle-o text-purple"></i>
+                                          New</a>
+                                      <a class="dropdown-item" (click)="getStatus('Pending')"><i
+                                              class="fa fa-dot-circle-o text-danger"></i>
+                                          Pending</a>
+                                      <a class="dropdown-item" (click)="getStatus('Approved')"><i
+                                              class="fa fa-dot-circle-o text-success"></i> Approved</a>
+                                      <a class="dropdown-item" (click)="getStatus('Declined')"><i
+                                              class="fa fa-dot-circle-o text-danger"></i>
+                                          Declined</a>
+                                  </div>
+                              </div>
+                          </td>
+                          <td class="text-right">
+                              <div class="dropdown dropdown-action">
+                                  <a class="action-icon dropdown-toggle" data-toggle="dropdown"
+                                      aria-expanded="false"><i class="material-icons">more_vert</i></a>
+                                  <div class="dropdown-menu dropdown-menu-right">
+                                      <a class="dropdown-item" data-toggle="modal" data-target="#edit_leave"
+                                          (click)="edit(row.id)"><i class="fa fa-pencil m-r-5"></i> Edit</a>
+                                      <a class="dropdown-item" data-toggle="modal" data-target="#delete_approve"
+                                          (click)="tempId = row.id"><i class="fa fa-trash-o m-r-5"></i> Delete</a>
+                                  </div>
+                              </div>
+                          </td>
+                      </tr>
+                  </tbody>
+              </table>
+          </div>
+      </div>
+  </div>
 </div>
-<!--/Page Content-->
+<!-- /Page Content -->

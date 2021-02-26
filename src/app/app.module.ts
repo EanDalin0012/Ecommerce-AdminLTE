@@ -48,7 +48,7 @@ export function createTranslateLoader(http: HttpClient): TranslateHttpLoader  {
       }
     ),
     BrowserAnimationsModule,
-    DataTablesModule
+    // DataTablesModule
   ],
   providers: [
     {

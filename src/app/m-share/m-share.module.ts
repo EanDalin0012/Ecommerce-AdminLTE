@@ -50,10 +50,12 @@ import { TooltipModule } from '@progress/kendo-angular-tooltip';
 import { TreeListModule } from '@progress/kendo-angular-treelist';
 import { UploadsModule } from '@progress/kendo-angular-upload';
 import { FileSelectModule } from '@progress/kendo-angular-upload';
+import { ImagePipe } from './pipe/image.pipe';
 @NgModule({
   declarations: [
     CustomDatePipe,
-    ModalComponent
+    ModalComponent,
+    ImagePipe
   ],
   imports: [
     CommonModule
@@ -112,7 +114,8 @@ import { FileSelectModule } from '@progress/kendo-angular-upload';
     ExcelModule,
     ButtonsModule,
     // End Kendo
-    CustomDatePipe
+    CustomDatePipe,
+    ImagePipe
 
   ],
   entryComponents: [
