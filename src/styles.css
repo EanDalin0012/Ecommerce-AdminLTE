@@ -8758,9 +8758,6 @@ body::-webkit-scrollbar-thumb {
   border: none;
 }
 
-.k-grid-content::-webkit-scrollbar-thumb {
-  background: red !important;
-}
 
 .table_control {
     padding: 10px 0;
@@ -9383,9 +9380,9 @@ div.dataTables_paginate {
   border-radius: 10px;
 }
 
-.k-grid-content::-webkit-scrollbar-thumb:hover {
+/* .k-grid-content::-webkit-scrollbar-thumb:hover {
   background: #a69c90 !important;
-}
+} */
 /*
 .k-grid-content::-webkit-scrollbar-thumb:horizontal {
   width: 12px !important;
@@ -9395,4 +9392,8 @@ div.dataTables_paginate {
 
 .k-grid-content {
   overflow: scroll;
+}
+
+.dropdown-toggle {
+  cursor: pointer;
 }

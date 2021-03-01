@@ -17,3 +17,12 @@
   overflow: hidden !important;
   text-overflow: clip !important;
 } */
+
+.dropdown-item {
+  cursor: pointer;
+
+}
+
+.dropdown-menu-right {
+  padding: 0;
+}

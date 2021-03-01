@@ -13,6 +13,8 @@ import { ModalService } from '../../m-share/service/modal.service';
 import { TranslateService } from '@ngx-translate/core';
 import { Category } from '../../m-share/model/category';
 import { ID } from '../../m-share/model/id';
+import { ProductDetail } from '../../m-share/model/product-detail';
+import { SwitchProduct } from '../../m-share/model/switch-product';
 declare const $: any;
 @Component({
   selector: 'app-product',
@@ -47,10 +49,11 @@ export class ProductComponent implements OnInit {
 // end Declaring grid
 
   totalRecord = 0;
-  categories = new Array<Category>();
+  productDetails = new Array<ProductDetail>();
   itemsID = new Array<ID>();
   public data  = Array<Category>();
   menu = '';
+  public statusValue: string;
 
   constructor(
     private subscribeMessageService: SubscribeMessageService,
@@ -70,15 +73,15 @@ export class ProductComponent implements OnInit {
   }
 
   inquiry(): void {
-    const api = '/api/category/v1/list';
+    const api = '/api/product/v1/list';
     this.httpService.Get(api).then(resp => {
       const response   = resp as any;
       console.log(response);
       if (response) {
-        this.categories = response;
+        this.productDetails = response;
         this.data          = response;
-        this.gridData      = this.categories;
-        this.loadingData(this.categories);
+        this.gridData      = this.productDetails;
+        this.loadingData(this.productDetails);
       }
     });
   }
@@ -139,9 +142,9 @@ export class ProductComponent implements OnInit {
   searchChange(event): void {
     if (event) {
       console.log(event.target.value);
-      const resultSearch  = this.categories.filter( data => data.name.toLowerCase().includes(event.target.value));
+      const resultSearch  = this.productDetails.filter( data => data.name.toLowerCase().includes(event.target.value));
       this.totalRecord    = resultSearch.length;
-      this.categories     = resultSearch;
+      this.productDetails     = resultSearch;
       this.loadingData(resultSearch);
     }
   }
@@ -149,7 +152,7 @@ export class ProductComponent implements OnInit {
 
   deleteTextSearch(): void {
     this.search = undefined;
-    this.loadingData(this.categories);
+    this.loadingData(this.productDetails);
   }
 
   excelExportExcel(component): void {
@@ -186,7 +189,6 @@ export class ProductComponent implements OnInit {
               name += mainCategoryName  + ', ';
             }
           }
-
           this.itemsID.push({
             id: element
           });
@@ -219,7 +221,7 @@ export class ProductComponent implements OnInit {
 
   getNameById(val: number): string {
     let name = '';
-    this.categories.forEach(element => {
+    this.productDetails.forEach(element => {
       if (element.id === val) {
         name = element.name ; // + '(' + element.id + ')';
       }
@@ -263,6 +265,88 @@ export class ProductComponent implements OnInit {
        this.inquiry();
       }
     });
+  }
+
+  mobileShow(data: string, dataItem: any): void {
+    this.statusValue = data;
+    const productId = dataItem.id;
+    this.modalService.confirm({
+      title: this.translate.instant('Common.Label.DeleteItems'),
+      content:  'Do you change to ' + data,
+      lBtn: {btnText: this.translate.instant('Common.Button.Close')},
+      rBtn: {btnText: this.translate.instant('Common.Button.Confirm')},
+      modalClass: ['pop-confirm-btn dialog-confirm'],
+      callback: response => {
+        console.log('response', response);
+        if (response.text === 'Confirm') {
+          console.log('productId', productId);
+
+          if (this.statusValue === 'Active') {
+            this.switchMobile(true, productId);
+          } else if (this.statusValue === 'Declined') {
+            this.switchMobile(false, productId);
+          }
+        }
+      }
+    });
+  }
+
+  webShow(data: string, dataItem: any): void {
+    this.statusValue = data;
+    const productId = dataItem.id;
+    this.modalService.confirm({
+      title: this.translate.instant('Common.Label.DeleteItems'),
+      content:  'Do you change to ' + data,
+      lBtn: {btnText: this.translate.instant('Common.Button.Close')},
+      rBtn: {btnText: this.translate.instant('Common.Button.Confirm')},
+      modalClass: ['pop-confirm-btn dialog-confirm'],
+      callback: response => {
+        console.log('response', response);
+        if (response.text === 'Confirm') {
+          console.log('productId', productId);
+
+          if (this.statusValue === 'Active') {
+            this.switchWeb(true, productId);
+          } else if (this.statusValue === 'Declined') {
+            this.switchWeb(false, productId);
+          }
+        }
+      }
+    });
+  }
+
+  switchWeb(b: boolean, productId: number): void {
+    if (b !== undefined && productId) {
+      const switchsRequest = new SwitchProduct();
+      switchsRequest.value = b;
+      switchsRequest.productId = productId;
+      const api = '/api/product/v1/switch_web';
+      this.httpService.Post(api, switchsRequest).then( res => {
+        if ( res && res.status === ResponseStatus.Y) {
+          // this.modalService.showNotificationService(this.translateService.instant('RegiPro.Message.Pro_Show_On_Web_Success'));
+          this.inquiry();
+        }
+      });
+    }
+
+  }
+
+  switchMobile(b: boolean, productId: number): void {
+    if (b !== undefined && productId) {
+      const switchsRequest = new SwitchProduct();
+      switchsRequest.value = b;
+      switchsRequest.productId = productId;
+      const api = '/api/product/v1/switch_mobile';
+      console.log('switchsRequest', switchsRequest);
+
+      this.httpService.Post(api, switchsRequest).then( res => {
+        console.log('res', res);
+        if ( res && res.status === ResponseStatus.Y) {
+          // this.modalService.showNotificationService(this.translateService.instant('RegiPro.Message.Pro_Show_On_Mobile_Success'));
+          this.inquiry();
+        }
+      });
+    }
   }
 
 }

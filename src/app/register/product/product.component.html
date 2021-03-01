@@ -20,7 +20,7 @@
       <div>
 
           <kendo-grid
-          [kendoGridBinding]="categories"
+          [kendoGridBinding]="productDetails"
           kendoGridSelectBy="id"
           [selectedKeys]="mySelection"
           [pageSize]="pageSize"
@@ -63,6 +63,71 @@
                   </div>
               </ng-template>
 
+
+
+              <kendo-grid-checkbox-column class="cen" [width]="40" [resizable]="false" [columnMenu]="true" showSelectAll="true"></kendo-grid-checkbox-column>
+
+              <kendo-grid-column width="40" class="cen" [sortable]="false" field="no" title="{{'Common.Label.No' | translate}}">
+                  <ng-template kendoGridCellTemplate let-dataItem let-rowIndex="rowIndex">
+                      <p>{{rowIndex + 1}}</p>
+                  </ng-template>
+              </kendo-grid-column>
+
+              <kendo-grid-column width="150" class="subj" field="categoryName" title="{{'Category.Label.Name' | translate}}"></kendo-grid-column>
+
+              <kendo-grid-column width="80" class="subj" field="mobileShow" title="mobile Show">
+                <ng-template kendoGridCellTemplate let-dataItem let-rowIndex="rowIndex">
+                  <div class="dropdown action-label">
+
+                    <a class="btn btn-white btn-sm btn-rounded dropdown-toggle" data-toggle="dropdown"
+                        aria-expanded="false">
+                        <i class="fa fa-dot-circle-o {{dataItem.mobileShow ? 'text-purple':'text-danger'}}"></i>
+                        {{dataItem.mobileShow ? 'Active':'Declined'}}
+                    </a>
+
+                    <div class="dropdown-menu dropdown-menu-right">
+                        <a *ngIf = "!dataItem.mobileShow" class="dropdown-item" (click)="mobileShow('Active', dataItem)">
+                          <i class="fa fa-dot-circle-o text-purple"></i>
+                          Active
+                        </a>
+                        <a *ngIf = "dataItem.mobileShow" class="dropdown-item" (click)="mobileShow('Declined', dataItem)">
+                          <i class="fa fa-dot-circle-o text-danger"></i>
+                            Declined
+                        </a>
+                    </div>
+                </div>
+                </ng-template>
+              </kendo-grid-column>
+
+              <kendo-grid-column width="80" class="subj" field="webShow" title="web Show">
+                <ng-template kendoGridCellTemplate let-dataItem let-rowIndex="rowIndex">
+                  <div class="dropdown action-label">
+
+                    <a class="btn btn-white btn-sm btn-rounded dropdown-toggle" data-toggle="dropdown"
+                        aria-expanded="false">
+                        <i class="fa fa-dot-circle-o {{dataItem.webShow ? 'text-purple':'text-danger'}}"></i>
+                        {{dataItem.webShow ? 'Active':'Declined'}}
+                    </a>
+
+                    <div class="dropdown-menu dropdown-menu-right">
+                        <a *ngIf = "!dataItem.mobileShow" class="dropdown-item" (click)="webShow('Active', dataItem)">
+                          <i class="fa fa-dot-circle-o text-purple"></i>
+                          Active
+                        </a>
+                        <a *ngIf = "dataItem.mobileShow" class="dropdown-item" (click)="webShow('Declined', dataItem)">
+                          <i class="fa fa-dot-circle-o text-danger"></i>
+                            Declined
+                        </a>
+                    </div>
+                </div>
+                </ng-template>
+              </kendo-grid-column>
+
+              <kendo-grid-column width="150" class="subj" field="name" title="{{'Category.Label.Name' | translate}}"></kendo-grid-column>
+
+              <kendo-grid-column width="190" class="subj" field="description" title="{{'Category.Label.Description' | translate}}"></kendo-grid-column>
+
+
               <kendo-grid-column width="50" class="cen" [sortable]="false" field="edit" title="{{'Common.Button.Edit' | translate}}">
                 <ng-template kendoGridCellTemplate let-dataItem let-rowIndex="rowIndex">
                   <div class="dropdown dropdown-action">
@@ -77,41 +142,6 @@
                 </div>
               </ng-template>
               </kendo-grid-column>
-
-              <kendo-grid-checkbox-column class="cen" [width]="45" [resizable]="false" [columnMenu]="true" showSelectAll="true"></kendo-grid-checkbox-column>
-
-              <kendo-grid-column width="50" class="cen" [sortable]="false" field="no" title="{{'Common.Label.No' | translate}}">
-                  <ng-template kendoGridCellTemplate let-dataItem let-rowIndex="rowIndex">
-                      <p>{{rowIndex + 1}}</p>
-                  </ng-template>
-              </kendo-grid-column>
-
-              <kendo-grid-column width="150" class="subj" field="name" title="{{'Category.Label.Name' | translate}}"></kendo-grid-column>
-
-              <kendo-grid-column width="190" class="subj" field="description" title="{{'Category.Label.Description' | translate}}"></kendo-grid-column>
-              <kendo-grid-column width="190" class="subj" field="description" title="{{'Category.Label.Description' | translate}}"></kendo-grid-column>
-
-              <kendo-grid-column width="190" class="subj" field="description" title="{{'Category.Label.Description' | translate}}"></kendo-grid-column>
-              <kendo-grid-column width="190" class="subj" field="description" title="{{'Category.Label.Description' | translate}}"></kendo-grid-column>
-
-
-              <kendo-grid-column width="190" class="subj" field="description" title="{{'Category.Label.Description' | translate}}"></kendo-grid-column>
-              <kendo-grid-column width="190" class="subj" field="description" title="{{'Category.Label.Description' | translate}}"></kendo-grid-column>
-
-              <kendo-grid-column width="190" class="subj font-khmer-cursive" field="create_by" title="{{'Common.Label.CreateBy' | translate}}"></kendo-grid-column>
-              <kendo-grid-column width="190" class="subj font-khmer-cursive" field="modify_by" title="{{'Common.Label.ModifyBy' | translate}}"></kendo-grid-column>
-
-
-              <kendo-grid-column width="50" class="cen" [sortable]="false" field="edit" title="{{'Common.Button.Edit' | translate}}">
-                  <ng-template kendoGridCellTemplate let-dataItem let-rowIndex="rowIndex">
-                      <button class="k-button k-button-edit btn-w100px-h35px font-khmer-cursive btn-add-00 v-card-identy k-float-left" (click)="edit(dataItem)">
-                          <span class="k-icon k-i-track-changes i-font"></span>
-                          <!-- <span style="margin-left: 5px;">edit</span> -->
-                      </button>
-                  </ng-template>
-              </kendo-grid-column>
-
-
 
               <kendo-grid-pdf fileName="categories.pdf" [allPages]="true" paperSize="A3" [repeatHeaders]="true" [landscape]="true">
                   <kendo-grid-pdf-margin top="2cm" left="1cm" right="1cm" bottom="2cm"></kendo-grid-pdf-margin>
