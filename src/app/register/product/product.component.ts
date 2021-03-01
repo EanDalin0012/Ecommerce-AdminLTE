@@ -15,6 +15,7 @@ import { Category } from '../../m-share/model/category';
 import { ID } from '../../m-share/model/id';
 import { ProductDetail } from '../../m-share/model/product-detail';
 import { SwitchProduct } from '../../m-share/model/switch-product';
+import { environment } from '../../../environments/environment.prod';
 declare const $: any;
 @Component({
   selector: 'app-product',
@@ -54,7 +55,9 @@ export class ProductComponent implements OnInit {
   public data  = Array<Category>();
   menu = '';
   public statusValue: string;
-
+  src: string;
+  active: string;
+  declined: string;
   constructor(
     private subscribeMessageService: SubscribeMessageService,
     private httpService: HttpService,
@@ -62,8 +65,11 @@ export class ProductComponent implements OnInit {
     private modalService: ModalService,
     private translate: TranslateService
     ) {
-      this.titleService.setTitle('Category');
+      this.titleService.setTitle(this.translate.instant('Product.Label.Product'));
+      this.active = this.translate.instant('Common.Label.Active');
+      this.declined = this.translate.instant('Common.Label.Declined');
       this.setSelectableSettings();
+      this.src = environment.serverURL;
     }
 
   ngOnInit(): void {

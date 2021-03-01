@@ -8,7 +8,9 @@
       "ModifyBy":"Modify By",
       "Edit": "edit",
       "'DeleteItems":"'Delete Item(s)",
-      "YourSelectedItems":"Your selected item(s) is : {{value}}"
+      "YourSelectedItems":"Your selected item(s) is : {{value}}",
+      "Active":"Active",
+      "Declined":"Declined"
     },
     "Button": {
       "ExcelExport": "Excel Export",
@@ -49,6 +51,17 @@
     },
     "Placeholder":{
       "EnterCategoryName":"Enter category name ..."
+    }
+  },
+  "Product":{
+    "Label": {
+      "Product": "Product",
+      "CategoryName":"Category Name",
+      "Name":"Name",
+      "WebShow":"Web Show",
+      "MobileShow":"Mobile Show",
+      "Description":"Description",
+      "Edit":"Edit"
     }
   }
 

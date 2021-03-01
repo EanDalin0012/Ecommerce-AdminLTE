@@ -5,7 +5,7 @@
             <div class="page_navi">
                 <span class="font-khmer-cursive">{{'Common.Label.Register' | translate}}</span>
             </div>
-            <h3 class="margin-00"><span class="font-khmer-cursive">{{'Category.Label.Category' | translate}}</span></h3>
+            <h3 class="margin-00"><span class="font-khmer-cursive">{{'Product.Label.Product' | translate}}</span></h3>
         </div>
     </div>
 
@@ -73,57 +73,68 @@
                   </ng-template>
               </kendo-grid-column>
 
-              <kendo-grid-column width="150" class="subj" field="categoryName" title="{{'Category.Label.Name' | translate}}"></kendo-grid-column>
+              <kendo-grid-column width="150" class="subj" field="categoryName" title="{{'Product.Label.CategoryName' | translate}}"></kendo-grid-column>
 
-              <kendo-grid-column width="80" class="subj" field="mobileShow" title="mobile Show">
+              <kendo-grid-column width="150" class="subj" field="name" title="{{'Product.Label.Name' | translate}}">
+                <ng-template kendoGridCellTemplate let-dataItem let-rowIndex="rowIndex">
+                    <h4>
+                      <a class="avatar" style = "border-radius: 5%;">
+                        <img alt="" [src]="src+'/api/web/reader/v1/read/'+dataItem.resourceImgId">
+                      </a>
+                      <a >{{dataItem.name}} </a>
+                  </h4>
+                </ng-template>
+              </kendo-grid-column>
+
+              <kendo-grid-column width="80" class="subj" field="mobileShow" title="{{'Product.Label.MobileShow' | translate}}">
                 <ng-template kendoGridCellTemplate let-dataItem let-rowIndex="rowIndex">
                   <div class="dropdown action-label">
 
                     <a class="btn btn-white btn-sm btn-rounded dropdown-toggle" data-toggle="dropdown"
                         aria-expanded="false">
                         <i class="fa fa-dot-circle-o {{dataItem.mobileShow ? 'text-purple':'text-danger'}}"></i>
-                        {{dataItem.mobileShow ? 'Active':'Declined'}}
+                        {{dataItem.mobileShow ? active : declined}}
                     </a>
 
                     <div class="dropdown-menu dropdown-menu-right">
                         <a *ngIf = "!dataItem.mobileShow" class="dropdown-item" (click)="mobileShow('Active', dataItem)">
                           <i class="fa fa-dot-circle-o text-purple"></i>
-                          Active
+                          {{'Common.Label.Active' | translate}}
                         </a>
                         <a *ngIf = "dataItem.mobileShow" class="dropdown-item" (click)="mobileShow('Declined', dataItem)">
                           <i class="fa fa-dot-circle-o text-danger"></i>
-                            Declined
+                          {{'Common.Label.Declined' | translate}}
                         </a>
                     </div>
                 </div>
                 </ng-template>
               </kendo-grid-column>
 
-              <kendo-grid-column width="80" class="subj" field="webShow" title="web Show">
+              <kendo-grid-column width="80" class="subj" field="webShow" title="{{'Product.Label.WebShow' | translate}}">
                 <ng-template kendoGridCellTemplate let-dataItem let-rowIndex="rowIndex">
                   <div class="dropdown action-label">
 
                     <a class="btn btn-white btn-sm btn-rounded dropdown-toggle" data-toggle="dropdown"
                         aria-expanded="false">
                         <i class="fa fa-dot-circle-o {{dataItem.webShow ? 'text-purple':'text-danger'}}"></i>
-                        {{dataItem.webShow ? 'Active':'Declined'}}
+                        {{dataItem.webShow ? active : declined}}
                     </a>
 
                     <div class="dropdown-menu dropdown-menu-right">
-                        <a *ngIf = "!dataItem.mobileShow" class="dropdown-item" (click)="webShow('Active', dataItem)">
+                        <a *ngIf = "!dataItem.webShow" class="dropdown-item" (click)="webShow('Active', dataItem)">
                           <i class="fa fa-dot-circle-o text-purple"></i>
-                          Active
+                          {{'Common.Label.Active' | translate}}
                         </a>
-                        <a *ngIf = "dataItem.mobileShow" class="dropdown-item" (click)="webShow('Declined', dataItem)">
+                        <a *ngIf = "dataItem.webShow" class="dropdown-item" (click)="webShow('Declined', dataItem)">
                           <i class="fa fa-dot-circle-o text-danger"></i>
-                            Declined
+                          {{'Common.Label.Declined' | translate}}
                         </a>
                     </div>
                 </div>
                 </ng-template>
               </kendo-grid-column>
 
-              <kendo-grid-column width="150" class="subj" field="name" title="{{'Category.Label.Name' | translate}}"></kendo-grid-column>
+
 
               <kendo-grid-column width="190" class="subj" field="description" title="{{'Category.Label.Description' | translate}}"></kendo-grid-column>
 
