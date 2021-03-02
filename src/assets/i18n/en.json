@@ -10,7 +10,9 @@
       "'DeleteItems":"'Delete Item(s)",
       "YourSelectedItems":"Your selected item(s) is : {{value}}",
       "Active":"Active",
-      "Declined":"Declined"
+      "Declined":"Declined",
+      "PreView":"Pre-View",
+      "Page":"Page {{pageNum}} of {{totalPages}}"
     },
     "Button": {
       "ExcelExport": "Excel Export",
@@ -21,7 +23,8 @@
       "Save":"Save",
       "Update":"Update",
       "Close":"Close",
-      "Confirm":"Confirm"
+      "Confirm":"Confirm",
+      "PreView":"Pre-View"
     },
     "Message": {
       "Message":"Message"

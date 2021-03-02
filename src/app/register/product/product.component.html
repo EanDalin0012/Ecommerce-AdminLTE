@@ -142,13 +142,20 @@
               <kendo-grid-column width="50" class="cen" [sortable]="false" field="edit" title="{{'Common.Button.Edit' | translate}}">
                 <ng-template kendoGridCellTemplate let-dataItem let-rowIndex="rowIndex">
                   <div class="dropdown dropdown-action">
-                    <a class="action-icon dropdown-toggle" data-toggle="dropdown"
-                        aria-expanded="false"><i class="material-icons">more_vert</i></a>
+                    <a class="action-icon dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                      <i class="material-icons">more_vert</i>
+                    </a>
                     <div class="dropdown-menu dropdown-menu-right">
-                        <a class="dropdown-item" data-toggle="modal" data-target="#edit_leave"
-                            ><i class="fa fa-pencil m-r-5"></i> Edit</a>
-                        <a class="dropdown-item" data-toggle="modal" data-target="#delete_approve"
-                            ><i class="fa fa-trash-o m-r-5"></i> Delete</a>
+                      <a class="dropdown-item" data-toggle="modal">
+                        <i class="fa fa-trash-o m-r-5"></i>
+                        {{'Common.Button.PreView'| translate}}
+                      </a>
+
+                        <a class="dropdown-item" data-toggle="modal">
+                          <i class="fa fa-pencil m-r-5"></i>
+                          {{'Common.Button.Edit'| translate}}
+                        </a>
+
                     </div>
                 </div>
               </ng-template>
@@ -159,10 +166,12 @@
                   <ng-template kendoGridPDFTemplate let-pageNum="pageNum" let-totalPages="totalPages">
                       <div class="page-template">
                           <div class="header">
-                              <div style="float: right">Page {{ pageNum }} of {{ totalPages }}</div>
+                              <div style="float: right">
+                                {{'Common.Label.Page'| translate: {'pageNum': pageNum, totalPages: totalPages} }}
+                              </div>
                           </div>
                           <div class="footer">
-                              Page {{ pageNum }} of {{ totalPages }}
+                            {{'Common.Label.Page'| translate: {'pageNum': pageNum, totalPages: totalPages} }}
                           </div>
                       </div>
                   </ng-template>

@@ -26,3 +26,8 @@
 .dropdown-menu-right {
   padding: 0;
 }
+
+.dropdown-item:focus, .dropdown-item:hover {
+  background-color: #3f496d !important;
+  color: white;
+}
