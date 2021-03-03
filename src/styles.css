@@ -9397,3 +9397,21 @@ div.dataTables_paginate {
 .dropdown-toggle {
   cursor: pointer;
 }
+
+.dialog-confirm div kendo-dialog-titlebar{
+  background-color: #3f496d;
+}
+
+.dialog-confirm div kendo-dialog-titlebar div:nth-child(2) a span{
+  color: white !important;
+}
+
+kendo-dropdownlist {
+  width: 100% !important;
+  background-color: rgb(232, 240, 254) !important;
+  height: 34px !important;
+}
+
+.contentsWrap {
+  max-height: 85vh;
+}

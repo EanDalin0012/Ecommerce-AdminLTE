@@ -277,7 +277,7 @@ export class ProductComponent implements OnInit {
     this.statusValue = data;
     const productId = dataItem.id;
     this.modalService.confirm({
-      title: this.translate.instant('Common.Label.DeleteItems'),
+      title: this.translate.instant('Common.Label.Confirmation'),
       content:  'Do you change to ' + data,
       lBtn: {btnText: this.translate.instant('Common.Button.Close')},
       rBtn: {btnText: this.translate.instant('Common.Button.Confirm')},
@@ -301,7 +301,7 @@ export class ProductComponent implements OnInit {
     this.statusValue = data;
     const productId = dataItem.id;
     this.modalService.confirm({
-      title: this.translate.instant('Common.Label.DeleteItems'),
+      title: this.translate.instant('Common.Label.Confirmation'),
       content:  'Do you change to ' + data,
       lBtn: {btnText: this.translate.instant('Common.Button.Close')},
       rBtn: {btnText: this.translate.instant('Common.Button.Confirm')},

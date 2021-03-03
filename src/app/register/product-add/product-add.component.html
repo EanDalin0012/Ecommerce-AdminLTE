@@ -1,1 +1,95 @@
-<p>product-add works!</p>
+<div class="contentsWrap">
+  <div class="container01 padding-top-20px">
+      <div class="web_container">
+          <!-- header -->
+          <div class="pop_header font-khmer-cursive">
+              <h4 class="font-khmer-cursive">{{'Product.Label.AddNewProduct' | translate}}</h4>
+
+              <button type="button" tabindex=-1 class="btn_popclose" (click)="close()"><span>close</span></button>
+          </div>
+          <!-- //header -->
+          <div class="web_Wrap">
+
+              <div class="form-row">
+                  <div class="form-group col-md-6">
+                      <label class="font-khmer-cursive">{{'Product.Label.Category' | translate}}</label>
+                      <kendo-dropdownlist [ngClass] = "{'active-input' : categoryModel}" [data]="categoryList" [filterable]="true" [textField]="'name'" [valueField]="'id'" [kendoDropDownFilter]="filterSettings" [popupSettings]="{ popupClass: 'search_filter_pop' }" [(ngModel)]="categoryModel" [ngModelOptions]="{standalone:
+                          true}" [defaultItem]="defaultCountry">
+                              <ng-template kendoDropDownListValueTemplate let-dataItem>
+                                  <span class="template font-khmer-cursive">{{ dataItem.name}}</span>
+                              </ng-template>
+                              <ng-template kendoDropDownListItemTemplate let-dataItem>
+                                  <span class="template font-khmer-cursive">{{ dataItem.name}}</span>
+                              </ng-template>
+                          </kendo-dropdownlist>
+                  </div>
+                  <div class="form-group col-md-6">
+                      <label class="font-khmer-cursive">{{'Product.Label.Name' | translate}}</label>
+                      <input type="text" [ngClass]="productName? 'active-input' : ''" class="form-control font-khmer-cursive" [(ngModel)]="productName" placeholder="{{'Product.Holder.EnterProductName' | translate}}">
+
+                      <div class="in_box">
+                          <button type="button" [ngClass]="productName? 'btn_del' : ''" (click)="buttonX('productName')" tabindex=-1 class="btn" tabindex=-1 tabindex=-1></button>
+                      </div>
+
+                  </div>
+              </div>
+
+              <div class="form-row">
+                  <div class="form-group form-group-last col-md-12">
+                      <label class="font-khmer-cursive">{{'Product.Label.Description' | translate}}</label>
+                      <input type="text" [ngClass]="description? 'active-input' : ''" [(ngModel)]="description" placeholder="{{'Product.Holder.EnterDescription' | translate}}" class="form-control font-khmer-cursive">
+                      <div class="in_box">
+                          <button type="button" [ngClass]="description? 'btn_del' : ''" (click)="buttonX('description')" tabindex=-1 class="btn" tabindex=-1 tabindex=-1></button>
+                      </div>
+                  </div>
+              </div>
+
+              <div class="form-row">
+                  <div class="form-group form-group-last col-md-12">
+                      <label class="font-khmer-cursive">{{'Product.Label.UploadImage' | translate}}</label>
+
+                      <kendo-fileselect
+                      [restrictions]="fileRestrictions"
+                      [multiple] = "false"
+                      class="font-khmer-cursive kendo-fileselect-t"
+                      (select)="selectEventHandler($event)"
+                              #myFileSelect="kendoFileSelect">
+                              <ng-template kendoFileSelectFileTemplate let-files let-state="state">
+                                  <div class="font-khmer-cursive">Name: {{files[0].name}} <strong class="chipe-00">Size: {{files[0].size}} bytes</strong></div>
+                                  <button [ngClass]="{right0px: imageUploaded == true}" class="k-button"  style="position: absolute; right: 6.2em; height: 30px;" *ngIf="showButton(state)"  kendoButton (click)="remove(myFileSelect, files[0].uid)" [icon]="'x'" [look]="'outline'">{{'COMMON.BUTTON.Remove' | translate}}</button>
+                                  <button *ngIf="!imageUploaded" class="k-button"  style="position: absolute; right: .2em; height: 30px;"  kendoButton (click)="upload(files[0].uid);" [icon]="'upload'" [look]="'outline'">{{'COMMON.BUTTON.Upload' | translate}}</button>
+                              </ng-template>
+                      </kendo-fileselect>
+
+
+                      <div *ngIf="imagePreviews.length" class="img-preview example-config">
+                          <h3 class="font-khmer-cursive">Preview selected images</h3>
+                          <img *ngFor="let image of imagePreviews"
+                          [src]="image.src"
+                          alt="image preview"
+                          style="width: 200px; margin: 10px;" />
+                      </div>
+
+
+                  </div>
+              </div>
+          </div>
+
+      </div>
+
+
+      <div class="c_btn">
+
+          <button (click)="close()" class="k-button btn-w100px-h35px font-khmer-cursive"  kendoButton [look]="'outline'">
+              <span class="k-icon k-i-close-circle k-i-x-circle margin-top-1px font-size-20px"></span>
+              <span class="margin-top-5px margin-left-5px">{{'Common.Button.Close'|translate}}</span>
+          </button>
+
+          <button  (click)="save()" class="k-button btn-w100px-h35px font-khmer-cursive"  kendoButton [look]="'outline'">
+              <span class="k-icon k-i-download margin-top-1px font-size-20px"></span>
+              <span class="margin-top-5px margin-left-5px">{{'Common.Button.Save'|translate}}</span>
+          </button>
+
+      </div>
+  </div>
+</div>

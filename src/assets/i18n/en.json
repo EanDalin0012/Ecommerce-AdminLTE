@@ -7,12 +7,13 @@
       "CreateBy":"Create By",
       "ModifyBy":"Modify By",
       "Edit": "edit",
-      "'DeleteItems":"'Delete Item(s)",
+      "DeleteItems":"Delete Item(s)",
       "YourSelectedItems":"Your selected item(s) is : {{value}}",
       "Active":"Active",
       "Declined":"Declined",
       "PreView":"Pre-View",
-      "Page":"Page {{pageNum}} of {{totalPages}}"
+      "Page":"Page {{pageNum}} of {{totalPages}}",
+      "Confirmation":"Confirmation"
     },
     "Button": {
       "ExcelExport": "Excel Export",
@@ -64,7 +65,14 @@
       "WebShow":"Web Show",
       "MobileShow":"Mobile Show",
       "Description":"Description",
-      "Edit":"Edit"
+      "Edit":"Edit",
+      "AddNewProduct":"Add New Product",
+      "Category":"Category",
+      "UploadImage":"Upload Image"
+    },
+    "Holder": {
+      "EnterProductName":"Enter product name",
+      "EnterDescription":"Enter Description"
     }
   }
 
