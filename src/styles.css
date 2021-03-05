@@ -8613,7 +8613,7 @@ input:focus, textarea:focus, select:focus {
 }
 
 .web_container+.c_btn {
-  padding-top: 24px;
+  padding-top: 5px;
   border-top: 1px solid #e4e2de;
 }
 .c_btn:last-child {
@@ -8621,7 +8621,7 @@ input:focus, textarea:focus, select:focus {
 }
 
 .c_btn {
-  margin: 24px 0;
+  margin: 5px 0;
   text-align: center;
   overflow: hidden;
   width: 100%;
@@ -9522,4 +9522,27 @@ kendo-fileselect ul li > button:nth-child(1){
 
 .cen {
   text-align: center;
+}
+
+kendo-pager-page-sizes.k-pager-sizes kendo-dropdownlist {
+  width: 5em !important;
+}
+
+.contentsWrap {
+  height: 100%;
+  min-height: 100%;
+  max-height: 100%;
+}
+
+footer {
+  position: fixed;
+    bottom: 0;
+    width: 100%;
+    display: block;
+    background: #f7f7f7;
+    z-index: 99;
+}
+
+.container01 {
+  margin-bottom: 60px;
 }

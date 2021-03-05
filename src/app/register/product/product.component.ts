@@ -51,13 +51,12 @@ export class ProductComponent implements OnInit {
 
   totalRecord = 0;
   productDetails = new Array<ProductDetail>();
+  productDetailsTmp = new Array<ProductDetail>();
   itemsID = new Array<ID>();
   public data  = Array<Category>();
   menu = '';
   public statusValue: string;
   src: string;
-  active: string;
-  declined: string;
   constructor(
     private subscribeMessageService: SubscribeMessageService,
     private httpService: HttpService,
@@ -66,8 +65,6 @@ export class ProductComponent implements OnInit {
     private translate: TranslateService
     ) {
       this.titleService.setTitle(this.translate.instant('Product.Label.Product'));
-      this.active = this.translate.instant('Common.Label.Active');
-      this.declined = this.translate.instant('Common.Label.Declined');
       this.setSelectableSettings();
       this.src = environment.serverURL;
     }
@@ -82,9 +79,9 @@ export class ProductComponent implements OnInit {
     const api = '/api/product/v1/list';
     this.httpService.Get(api).then(resp => {
       const response   = resp as any;
-      console.log(response);
       if (response) {
         this.productDetails = response;
+        this.productDetailsTmp = this.productDetails;
         this.data          = response;
         this.gridData      = this.productDetails;
         this.loadingData(this.productDetails);
@@ -148,9 +145,10 @@ export class ProductComponent implements OnInit {
   searchChange(event): void {
     if (event) {
       console.log(event.target.value);
-      const resultSearch  = this.productDetails.filter( data => data.name.toLowerCase().includes(event.target.value));
+      const resultSearch  = this.productDetailsTmp.filter( data => data.name.toLowerCase().includes(event.target.value));
       this.totalRecord    = resultSearch.length;
       this.productDetails     = resultSearch;
+      console.log(resultSearch);
       this.loadingData(resultSearch);
     }
   }
@@ -158,6 +156,7 @@ export class ProductComponent implements OnInit {
 
   deleteTextSearch(): void {
     this.search = undefined;
+    this.productDetails = this.productDetailsTmp;
     this.loadingData(this.productDetails);
   }
 
@@ -209,7 +208,6 @@ export class ProductComponent implements OnInit {
         rBtn: {btnText: this.translate.instant('Common.Button.Confirm')},
         modalClass: ['pop-confirm-btn dialog-confirm'],
         callback: response => {
-          console.log('response', response);
           if (response.text === 'Confirm') {
             this.doDelete();
           }
@@ -263,7 +261,6 @@ export class ProductComponent implements OnInit {
     const data = {
       body: this.itemsID
     };
-    console.log( );
     const api = '/api/product/v1/delete';
     this.httpService.Post(api, data).then(resp => {
       const response   = resp as Message;
@@ -282,7 +279,6 @@ export class ProductComponent implements OnInit {
       const api = '/api/product/v1/switch_web';
       this.httpService.Post(api, switchsRequest).then( res => {
         if ( res && res.status === ResponseStatus.Y) {
-          // this.modalService.showNotificationService(this.translateService.instant('RegiPro.Message.Pro_Show_On_Web_Success'));
           this.inquiry();
         }
       });
@@ -296,12 +292,8 @@ export class ProductComponent implements OnInit {
       switchsRequest.value = b;
       switchsRequest.productId = productId;
       const api = '/api/product/v1/switch_mobile';
-      console.log('switchsRequest', switchsRequest);
-
       this.httpService.Post(api, switchsRequest).then( res => {
-        console.log('res', res);
         if ( res && res.status === ResponseStatus.Y) {
-          // this.modalService.showNotificationService(this.translateService.instant('RegiPro.Message.Pro_Show_On_Mobile_Success'));
           this.inquiry();
         }
       });
@@ -309,7 +301,6 @@ export class ProductComponent implements OnInit {
   }
 
   checkboxChangeMobile(value: boolean, dataItem: any): void {
-    console.log(value, dataItem);
     let text = this.translate.instant('Common.Label.enable');
     if (value === false) {
       text = this.translate.instant('Common.Label.disable');
@@ -323,7 +314,6 @@ export class ProductComponent implements OnInit {
       modalClass: ['pop-confirm-btn dialog-confirm'],
       callback: response => {
         if (response.text === 'Confirm') {
-          console.log('productId', dataItem.id);
           this.switchMobile(value, dataItem.id);
         }
       }
@@ -332,7 +322,6 @@ export class ProductComponent implements OnInit {
 
 
   checkboxChangeWeb(value: boolean, dataItem: any): void {
-    console.log(value, dataItem);
     let text = this.translate.instant('Common.Label.enable');
     if (value === false) {
       text = this.translate.instant('Common.Label.disable');
@@ -346,7 +335,6 @@ export class ProductComponent implements OnInit {
       modalClass: ['pop-confirm-btn dialog-confirm'],
       callback: response => {
         if (response.text === 'Confirm') {
-          console.log('productId', dataItem.id);
           this.switchWeb(value, dataItem.id);
         }
       }

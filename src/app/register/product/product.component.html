@@ -43,7 +43,7 @@
               <ng-template kendoGridToolbarTemplate>
                   <div class="form-row" style="width: 100%; border-left: none !important;">
                       <div class="form-group col-md-8">
-                          <input type="text" style="height: 34px;" [ngClass]="search? 'active-input' : ''" class="form-control" [(ngModel)]="search" (input)="searchChange($event)" placeholder="Please enter suplier name...">
+                          <input type="text" style="height: 34px;" [ngClass]="search? 'active-input' : ''" class="form-control" [(ngModel)]="search" (input)="searchChange($event)" placeholder="{{'Product.Label.Search' | translate}} ...">
                           <div class="in_box">
                               <button type="button" style="top: 5px;" [ngClass]="search? 'btn_del' : ''" (click)="deleteTextSearch()" tabindex=-1 class="btn" tabindex=-1 tabindex=-1></button>
                           </div>
