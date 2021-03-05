@@ -24,6 +24,7 @@ export class InputComponent implements OnInit {
   public srch = [];
   input: string;
   selected: string;
+  checkbox: boolean;
   // kendo
   public imagePreviews: any[] = [];
   public fileRestrictions: FileRestrictions = {
@@ -57,6 +58,7 @@ export class InputComponent implements OnInit {
 
     this.subscribeMessageService.visitMessage(url[4]);
     this.countryList = CountryData;
+    this.checkbox = false;
   }
 
   //search by purchase
@@ -186,4 +188,9 @@ export class InputComponent implements OnInit {
     this.toggleText = this.show ? 'Hide' : 'Show';
   }
 
+
+  checkboxChange(value) {
+    console.log(value);
+
+  }
 }

@@ -264,7 +264,7 @@ export class ProductComponent implements OnInit {
       body: this.itemsID
     };
     console.log( );
-    const api = '/api/category/v1/delete';
+    const api = '/api/product/v1/delete';
     this.httpService.Post(api, data).then(resp => {
       const response   = resp as Message;
       if (response.status === ResponseStatus.Y) {
@@ -273,53 +273,6 @@ export class ProductComponent implements OnInit {
     });
   }
 
-  mobileShow(data: string, dataItem: any): void {
-    this.statusValue = data;
-    const productId = dataItem.id;
-    this.modalService.confirm({
-      title: this.translate.instant('Common.Label.Confirmation'),
-      content:  'Do you change to ' + data,
-      lBtn: {btnText: this.translate.instant('Common.Button.Close')},
-      rBtn: {btnText: this.translate.instant('Common.Button.Confirm')},
-      modalClass: ['pop-confirm-btn dialog-confirm'],
-      callback: response => {
-        console.log('response', response);
-        if (response.text === 'Confirm') {
-          console.log('productId', productId);
-
-          if (this.statusValue === 'Active') {
-            this.switchMobile(true, productId);
-          } else if (this.statusValue === 'Declined') {
-            this.switchMobile(false, productId);
-          }
-        }
-      }
-    });
-  }
-
-  webShow(data: string, dataItem: any): void {
-    this.statusValue = data;
-    const productId = dataItem.id;
-    this.modalService.confirm({
-      title: this.translate.instant('Common.Label.Confirmation'),
-      content:  'Do you change to ' + data,
-      lBtn: {btnText: this.translate.instant('Common.Button.Close')},
-      rBtn: {btnText: this.translate.instant('Common.Button.Confirm')},
-      modalClass: ['pop-confirm-btn dialog-confirm'],
-      callback: response => {
-        console.log('response', response);
-        if (response.text === 'Confirm') {
-          console.log('productId', productId);
-
-          if (this.statusValue === 'Active') {
-            this.switchWeb(true, productId);
-          } else if (this.statusValue === 'Declined') {
-            this.switchWeb(false, productId);
-          }
-        }
-      }
-    });
-  }
 
   switchWeb(b: boolean, productId: number): void {
     if (b !== undefined && productId) {
@@ -354,6 +307,52 @@ export class ProductComponent implements OnInit {
       });
     }
   }
+
+  checkboxChangeMobile(value: boolean, dataItem: any): void {
+    console.log(value, dataItem);
+    let text = this.translate.instant('Common.Label.enable');
+    if (value === false) {
+      text = this.translate.instant('Common.Label.disable');
+    }
+
+    this.modalService.confirm({
+      title: this.translate.instant('Common.Label.Confirm'),
+      content:  this.translate.instant('Product.Label.Q1', {value: text, productName: dataItem.name}),
+      lBtn: {btnText: this.translate.instant('Common.Button.Close')},
+      rBtn: {btnText: this.translate.instant('Common.Button.Confirm')},
+      modalClass: ['pop-confirm-btn dialog-confirm'],
+      callback: response => {
+        if (response.text === 'Confirm') {
+          console.log('productId', dataItem.id);
+          this.switchMobile(value, dataItem.id);
+        }
+      }
+    });
+  }
+
+
+  checkboxChangeWeb(value: boolean, dataItem: any): void {
+    console.log(value, dataItem);
+    let text = this.translate.instant('Common.Label.enable');
+    if (value === false) {
+      text = this.translate.instant('Common.Label.disable');
+    }
+
+    this.modalService.confirm({
+      title: this.translate.instant('Common.Label.Confirm'),
+      content:  this.translate.instant('Product.Label.Q2', {value: text, productName: dataItem.name}),
+      lBtn: {btnText: this.translate.instant('Common.Button.Close')},
+      rBtn: {btnText: this.translate.instant('Common.Button.Confirm')},
+      modalClass: ['pop-confirm-btn dialog-confirm'],
+      callback: response => {
+        if (response.text === 'Confirm') {
+          console.log('productId', dataItem.id);
+          this.switchWeb(value, dataItem.id);
+        }
+      }
+    });
+  }
+
 
 }
 

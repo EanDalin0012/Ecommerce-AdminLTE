@@ -13,7 +13,9 @@
       "Declined":"Declined",
       "PreView":"Pre-View",
       "Page":"Page {{pageNum}} of {{totalPages}}",
-      "Confirmation":"Confirmation"
+      "Confirm":"Confirm",
+      "enable":"enable",
+      "disable":"disable"
     },
     "Button": {
       "ExcelExport": "Excel Export",
@@ -25,7 +27,9 @@
       "Update":"Update",
       "Close":"Close",
       "Confirm":"Confirm",
-      "PreView":"Pre-View"
+      "PreView":"Pre-View",
+      "Remove":"Remove",
+      "Upload":"Upload"
     },
     "Message": {
       "Message":"Message"
@@ -68,7 +72,9 @@
       "Edit":"Edit",
       "AddNewProduct":"Add New Product",
       "Category":"Category",
-      "UploadImage":"Upload Image"
+      "UploadImage":"Upload Image",
+      "Q1":"Do you want to {{value}} product : {{productName}} to Show on Mobile ? ",
+      "Q2":"Do you want to {{value}} product : {{productName}} to Show on Web ? "
     },
     "Holder": {
       "EnterProductName":"Enter product name",

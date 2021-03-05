@@ -86,58 +86,33 @@
                 </ng-template>
               </kendo-grid-column>
 
-              <kendo-grid-column width="80" class="subj" field="mobileShow" title="{{'Product.Label.MobileShow' | translate}}">
+              <kendo-grid-column width="70" class="cen" field="mobileShow" title="{{'Product.Label.MobileShow' | translate}}">
                 <ng-template kendoGridCellTemplate let-dataItem let-rowIndex="rowIndex">
-                  <div class="dropdown action-label">
 
-                    <a class="btn btn-white btn-sm btn-rounded dropdown-toggle" data-toggle="dropdown"
-                        aria-expanded="false">
-                        <i class="fa fa-dot-circle-o {{dataItem.mobileShow ? 'text-purple':'text-danger'}}"></i>
-                        {{dataItem.mobileShow ? active : declined}}
-                    </a>
-
-                    <div class="dropdown-menu dropdown-menu-right">
-                        <a *ngIf = "!dataItem.mobileShow" class="dropdown-item" (click)="mobileShow('Active', dataItem)">
-                          <i class="fa fa-dot-circle-o text-purple"></i>
-                          {{'Common.Label.Active' | translate}}
-                        </a>
-                        <a *ngIf = "dataItem.mobileShow" class="dropdown-item" (click)="mobileShow('Declined', dataItem)">
-                          <i class="fa fa-dot-circle-o text-danger"></i>
-                          {{'Common.Label.Declined' | translate}}
-                        </a>
+                  <div class= "_88ly _8t9g">
+                    <input role="switch" [checked] = "dataItem.mobileShow" type="checkbox" (change)="checkboxChangeMobile($event.target.checked, dataItem)">
+                    <div class="_7q1e" [ngClass] ="dataItem.mobileShow ? 'swich-true': 'swich-false'">
+                      <div class="_79d2" [ngClass] ="{'_7q1f': dataItem.mobileShow == true}"></div>
+                      <span class="_7q1t"></span>
                     </div>
-                </div>
+                  </div>
                 </ng-template>
               </kendo-grid-column>
 
-              <kendo-grid-column width="80" class="subj" field="webShow" title="{{'Product.Label.WebShow' | translate}}">
+              <kendo-grid-column width="70" class="cen" field="mobileShow" title="{{'Product.Label.WebShow' | translate}}">
                 <ng-template kendoGridCellTemplate let-dataItem let-rowIndex="rowIndex">
-                  <div class="dropdown action-label">
 
-                    <a class="btn btn-white btn-sm btn-rounded dropdown-toggle" data-toggle="dropdown"
-                        aria-expanded="false">
-                        <i class="fa fa-dot-circle-o {{dataItem.webShow ? 'text-purple':'text-danger'}}"></i>
-                        {{dataItem.webShow ? active : declined}}
-                    </a>
-
-                    <div class="dropdown-menu dropdown-menu-right">
-                        <a *ngIf = "!dataItem.webShow" class="dropdown-item" (click)="webShow('Active', dataItem)">
-                          <i class="fa fa-dot-circle-o text-purple"></i>
-                          {{'Common.Label.Active' | translate}}
-                        </a>
-                        <a *ngIf = "dataItem.webShow" class="dropdown-item" (click)="webShow('Declined', dataItem)">
-                          <i class="fa fa-dot-circle-o text-danger"></i>
-                          {{'Common.Label.Declined' | translate}}
-                        </a>
+                  <div class= "_88ly _8t9g">
+                    <input role="switch" [checked] = "dataItem.webShow" type="checkbox" (change)="checkboxChangeWeb($event.target.checked, dataItem)">
+                    <div class="_7q1e" [ngClass] ="dataItem.webShow ? 'swich-true': 'swich-false'">
+                      <div class="_79d2" [ngClass] ="{'_7q1f': dataItem.webShow == true}"></div>
+                      <span class="_7q1t"></span>
                     </div>
-                </div>
+                  </div>
                 </ng-template>
               </kendo-grid-column>
-
-
 
               <kendo-grid-column width="190" class="subj" field="description" title="{{'Category.Label.Description' | translate}}"></kendo-grid-column>
-
 
               <kendo-grid-column width="50" class="cen" [sortable]="false" field="edit" title="{{'Common.Button.Edit' | translate}}">
                 <ng-template kendoGridCellTemplate let-dataItem let-rowIndex="rowIndex">

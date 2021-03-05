@@ -32,7 +32,7 @@ export class UploadService {
         console.log('data', dataBody);
         const encryptionData = this.cryptoService.encrypt(dataBody);
         this.httpService.Post(api, data).then(resp => {
-          if ( resp && resp.body.status === ResponseStatus.Y) {
+          if ( resp && resp.status === ResponseStatus.Y) {
               resolve(true);
           } else {
             resolve(false);

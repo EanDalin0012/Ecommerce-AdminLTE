@@ -155,5 +155,26 @@
       </kendo-popup>
 
       </div>
+
+      <div class="_7q1e swich-true">
+        <div class="_79d2 _7q1f"></div>
+        <span class="_7q1t"></span>
+      </div>
+
+
+
+      <div class="_7q1e swich-false">
+        <div class="_79d2"></div>
+        <span class="_7q1t"></span>
+      </div>
+
+      <div class= "_88ly _8t9g">
+        <input aria-checked="true" role="switch" type="checkbox" [(ngModel)] = "checkbox" (change)="checkboxChange($event.target.checked)">
+        <div class="_7q1e" [ngClass] ="{'swich-false': checkbox == true, 'swich-true': checkbox == false}">
+          <div class="_79d2" [ngClass] ="{'_7q1f': checkbox == false}"></div>
+          <span class="_7q1t"></span>
+        </div>
+      </div>
+
   </div>
 </div>

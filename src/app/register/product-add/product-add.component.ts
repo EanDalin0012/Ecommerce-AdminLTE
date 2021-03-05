@@ -81,6 +81,7 @@ export class ProductAddComponent implements OnInit {
       product.resourceImageId     = this.resourceImageId;
 
       const api = '/api/product/v1/save';
+      console.log('product', product);
 
       this.httpService.Post(api, product).then(response => {
         const responseData = response as Message;
@@ -92,13 +93,13 @@ export class ProductAddComponent implements OnInit {
   }
 
   private isValid(): boolean {
-    if (!this.productName || this.productName && this.productName.trim() === '' || this.productName && this.productName === null) {
-      this.alertMessage(this.translate.instant('Common.Label.DeleteItems'), 'Product Name is empty || null');
-      return false;
-    } else if (!this.categoryModel) {
+    if (!this.categoryModel) {
       this.alertMessage(this.translate.instant('Common.Label.DeleteItems'), 'Select Category');
       return false;
-    } else {
+    } else if (!this.productName || this.productName && this.productName.trim() === '' || this.productName && this.productName === null) {
+      this.alertMessage(this.translate.instant('Common.Label.DeleteItems'), 'Product Name is empty || null');
+      return false;
+    }  else {
       return true;
     }
   }

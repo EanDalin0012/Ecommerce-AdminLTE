@@ -56,8 +56,8 @@
                               #myFileSelect="kendoFileSelect">
                               <ng-template kendoFileSelectFileTemplate let-files let-state="state">
                                   <div class="font-khmer-cursive">Name: {{files[0].name}} <strong class="chipe-00">Size: {{files[0].size}} bytes</strong></div>
-                                  <button [ngClass]="{right0px: imageUploaded == true}" class="k-button"  style="position: absolute; right: 6.2em; height: 30px;" *ngIf="showButton(state)"  kendoButton (click)="remove(myFileSelect, files[0].uid)" [icon]="'x'" [look]="'outline'">{{'COMMON.BUTTON.Remove' | translate}}</button>
-                                  <button *ngIf="!imageUploaded" class="k-button"  style="position: absolute; right: .2em; height: 30px;"  kendoButton (click)="upload(files[0].uid);" [icon]="'upload'" [look]="'outline'">{{'COMMON.BUTTON.Upload' | translate}}</button>
+                                  <button [ngClass]="{right0px: imageUploaded == true}" class="k-button"  style="position: absolute; right: 6.2em; height: 30px; margin-right: 15px;" *ngIf="showButton(state)"  kendoButton (click)="remove(myFileSelect, files[0].uid)" [icon]="'x'" [look]="'outline'">{{'Common.Button.Remove' | translate}}</button>
+                                  <button *ngIf="!imageUploaded" class="k-button"  style="position: absolute; right: .2em; height: 30px;"  kendoButton (click)="upload(files[0].uid);" [icon]="'upload'" [look]="'outline'">{{'Common.Button.Upload' | translate}}</button>
                               </ng-template>
                       </kendo-fileselect>
 
