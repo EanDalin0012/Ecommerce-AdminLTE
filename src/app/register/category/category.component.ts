@@ -48,6 +48,7 @@ export class CategoryComponent implements OnInit {
 
   totalRecord = 0;
   categories = new Array<Category>();
+  categoriesTmp = new Array<Category>();
   itemsID = new Array<ID>();
   public data  = Array<Category>();
   menu = '';
@@ -59,7 +60,7 @@ export class CategoryComponent implements OnInit {
     private modalService: ModalService,
     private translate: TranslateService
     ) {
-      this.titleService.setTitle('Category');
+      this.titleService.setTitle(this.translate.instant('Category.Label.Category'));
       this.setSelectableSettings();
     }
 
@@ -76,6 +77,7 @@ export class CategoryComponent implements OnInit {
       console.log(response);
       if (response) {
         this.categories = response;
+        this.categoriesTmp = this.categories;
         this.data          = response;
         this.gridData      = this.categories;
         this.loadingData(this.categories);
@@ -139,8 +141,9 @@ export class CategoryComponent implements OnInit {
   searchChange(event): void {
     if (event) {
       console.log(event.target.value);
-      const resultSearch  = this.categories.filter( data => data.name.toLowerCase().includes(event.target.value));
+      const resultSearch  = this.categoriesTmp.filter( data => data.name.toLowerCase().includes(event.target.value));
       this.totalRecord    = resultSearch.length;
+      this.categories     = resultSearch;
       this.loadingData(resultSearch);
     }
   }
@@ -148,6 +151,7 @@ export class CategoryComponent implements OnInit {
 
   deleteTextSearch(): void {
     this.search = undefined;
+    this.categories = this.categoriesTmp;
     this.loadingData(this.categories);
   }
 

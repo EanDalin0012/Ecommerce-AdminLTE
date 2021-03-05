@@ -52,7 +52,8 @@
       "AddNewCategory":"Add New Category",
       "UpdateCategory":"Update Category",
       "Name":"Name",
-      "Description":"Description"
+      "Description":"Description",
+      "Search":"Search by name"
     },
     "Message": {
       "NameIsEmpty":"Category name is empty || null"
