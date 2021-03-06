@@ -199,7 +199,7 @@ export class CategoryComponent implements OnInit {
 
       this.modalService.confirm({
         title: this.translate.instant('Common.Label.DeleteItems'),
-        content:  this.translate.instant('Common.Label.YourSelectedItems', {value: name}),
+        content:  this.translate.instant('Category.Label.Q1', {categoryName: name}),
         lBtn: {btnText: this.translate.instant('Common.Button.Close')},
         rBtn: {btnText: this.translate.instant('Common.Button.Confirm')},
         modalClass: ['pop-confirm-btn dialog-confirm'],
@@ -213,7 +213,7 @@ export class CategoryComponent implements OnInit {
     } else {
       this.modalService.alert({
         title: this.translate.instant('Common.Label.DeleteItems'),
-        content: '<h2>Please select Item(s) that you want to delete.</h2>',
+        content: 'Please select item(s) that you want to delete !',
         btnText: this.translate.instant('Common.Button.Confirm'),
         callback: response => {}
       });

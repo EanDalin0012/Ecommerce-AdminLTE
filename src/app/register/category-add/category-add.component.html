@@ -1,5 +1,5 @@
 <div class="contentsWrap">
-  <div class="container01">
+  <div class="container02">
       <div class="web_container">
           <!-- header -->
           <div class="pop_header">
@@ -11,7 +11,7 @@
 
               <div class="row">
                   <div class="form-group col-md-6">
-                      <label for="inputPassword4">Name</label>
+                      <label for="inputPassword4">{{'Category.Label.Name' | translate}}</label>
                       <input type="text" [ngClass]="name? 'active-input' : ''" class="form-control" [(ngModel)]="name" placeholder="{{'Category.Placeholder.EnterCategoryName' | translate}}">
                       <div class="in_box">
                           <button (click)="undefinedValue('name')" type="button" [ngClass]="name? 'btn_del' : ''" tabindex=-1 class="btn" tabindex=-1 tabindex=-1></button>
@@ -20,7 +20,7 @@
 
 
                   <div class="form-group col-md-6">
-                    <label for="inputPassword4">Description</label>
+                    <label for="inputPassword4">{{'Category.Label.Description' | translate}}</label>
                     <input type="text" [ngClass]="description? 'active-input' : ''" class="form-control" [(ngModel)]="description" placeholder="{{'Common.Placeholder.EnterDescription' | translate}}">
                     <div class="in_box">
                         <button (click)="undefinedValue('description')" type="button" [ngClass]="description? 'btn_del' : ''" tabindex=-1 class="btn" tabindex=-1 tabindex=-1></button>

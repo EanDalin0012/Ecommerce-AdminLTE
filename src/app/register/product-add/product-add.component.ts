@@ -67,7 +67,6 @@ export class ProductAddComponent implements OnInit {
 
   inquiryCategory(): void {
     this.dataService.inquiryCategory().then(resp => {
-      console.log('resp', resp);
       this.categoryList = resp as any;
     });
   }
@@ -81,7 +80,6 @@ export class ProductAddComponent implements OnInit {
       product.resourceImageId     = this.resourceImageId;
 
       const api = '/api/product/v1/save';
-      console.log('product', product);
 
       this.httpService.Post(api, product).then(response => {
         const responseData = response as Message;

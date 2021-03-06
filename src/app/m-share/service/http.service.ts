@@ -134,7 +134,6 @@ export class HttpService {
       $('body').removeClass('loaded');
       const userInfo = Utils.getSecureStorage(LocalStorage.USER_INFO);
       const lang = Utils.getSecureStorage(LocalStorage.I18N);
-      console.log('lang', lang);
 
       const uri = this.url + api + '?userId=' + userInfo.id + '&lang=' + lang;
 
@@ -157,8 +156,6 @@ export class HttpService {
         Authorization: 'Bearer ' + access_token
       };
 
-      console.log(uri);
-
       this.httpClient.get(uri, {headers}).subscribe(rest => {
 
         $('body').addClass('loaded');
@@ -168,8 +165,6 @@ export class HttpService {
         if (responseDataFromServer.result === false) {
           return;
         } else {
-          console.log(responseDataFromServer);
-
           const responseData = JSON.parse(responseDataFromServer);
           const rawData = responseData.body;
           const decryptData = JSON.parse(this.cryptoService.decrypt(String(rawData)));

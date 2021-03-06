@@ -203,7 +203,7 @@ export class ProductComponent implements OnInit {
 
       this.modalService.confirm({
         title: this.translate.instant('Common.Label.DeleteItems'),
-        content:  this.translate.instant('Common.Label.YourSelectedItems', {value: name}),
+        content:  this.translate.instant('Product.Label.Q3', {productName: name}),
         lBtn: {btnText: this.translate.instant('Common.Button.Close')},
         rBtn: {btnText: this.translate.instant('Common.Button.Confirm')},
         modalClass: ['pop-confirm-btn dialog-confirm'],
@@ -216,7 +216,7 @@ export class ProductComponent implements OnInit {
     } else {
       this.modalService.alert({
         title: this.translate.instant('Common.Label.DeleteItems'),
-        content: '<h2>Please select Item(s) that you want to delete.</h2>',
+        content: 'Please select item(s) that you want to delete !',
         btnText: this.translate.instant('Common.Button.Confirm'),
         callback: response => {}
       });
@@ -239,6 +239,8 @@ export class ProductComponent implements OnInit {
       message: dataItems,
       callback: response => {
         if (response.close === ButtonRoles.edit) {
+          console.log(response);
+
           this.inquiry();
         }
       }

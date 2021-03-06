@@ -53,7 +53,8 @@
       "UpdateCategory":"Update Category",
       "Name":"Name",
       "Description":"Description",
-      "Search":"Search by name"
+      "Search":"Search by name",
+      "Q1":"Do you want to delete category : {{categoryName}}"
     },
     "Message": {
       "NameIsEmpty":"Category name is empty || null"
@@ -76,6 +77,7 @@
       "UploadImage":"Upload Image",
       "Q1":"Do you want to {{value}} product : {{productName}} to Show on Mobile ? ",
       "Q2":"Do you want to {{value}} product : {{productName}} to Show on Web ? ",
+      "Q3":"Do you want to delete product : {{productName}} ?",
       "Search":"Search by product name"
     },
     "Holder": {
