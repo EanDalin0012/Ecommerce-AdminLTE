@@ -70,8 +70,6 @@ export class ProductEditComponent implements OnInit {
 
   ngOnInit(): void {
     if (this.modal.message) {
-      console.log(this.modal.message);
-
       this.id               = this.modal.message.id;
       this.productName      = this.modal.message.name;
       this.description      = this.modal.message.description;
@@ -88,8 +86,6 @@ export class ProductEditComponent implements OnInit {
       this.categories.forEach(element => {
         if(element.id === this.categoryId) {
           this.categoryModel = element;
-          console.log('this.categoryModel', this.categoryModel);
-
         }
       });
     });
@@ -210,12 +206,9 @@ export class ProductEditComponent implements OnInit {
               base64WriteImage.fileType  = element.type;
               base64WriteImage.fileSize  = element.size + '';
               base64WriteImage.fileExtension = element.extension;
-              console.log(base64WriteImage);
               this.uploadService.upload(base64WriteImage).then(resp => {
                 if(resp === true) {
                   this.resourceImageId = base64WriteImage.id;
-                  console.log(base64WriteImage.id);
-
                   this.imageUploaded = true;
                 }
               });

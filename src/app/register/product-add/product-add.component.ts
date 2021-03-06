@@ -186,7 +186,6 @@ export class ProductAddComponent implements OnInit {
               base64WriteImage.fileType  = element.type;
               base64WriteImage.fileSize  = element.size + '';
               base64WriteImage.fileExtension = element.extension;
-              console.log(base64WriteImage);
               this.uploadService.upload(base64WriteImage).then(resp => {
                 if(resp === true) {
                   this.resourceImageId = base64WriteImage.id;

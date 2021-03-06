@@ -239,8 +239,6 @@ export class ProductComponent implements OnInit {
       message: dataItems,
       callback: response => {
         if (response.close === ButtonRoles.edit) {
-          console.log(response);
-
           this.inquiry();
         }
       }
