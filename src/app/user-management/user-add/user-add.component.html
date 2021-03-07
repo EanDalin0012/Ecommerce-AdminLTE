@@ -114,71 +114,64 @@
               <ng-container *ngIf="currentStep === 1">
                 <div class="form-row">
                   <div class="form-group col-md-6  margin-bottom-0">
-                      <label class="font-khmer-cursive">Institution</label>
+                      <label class="font-khmer-cursive">{{'UserAdd.Label.Institution' | translate}}</label>
                       <span class="text-danger"> *</span>
-                      <input type="text" [ngClass]="productName? 'active-input' : ''" class="form-control font-khmer-cursive" [(ngModel)]="productName" placeholder="{{'Product.Holder.EnterProductName' | translate}}">
+                      <input type="text" [ngClass]="educationInformation.institution? 'active-input' : ''" class="form-control font-khmer-cursive" [(ngModel)]="educationInformation.institution" placeholder="{{'UserAdd.Holder.EnterInstitution' | translate}}">
 
                       <div class="in_box">
-                          <button type="button" [ngClass]="productName? 'btn_del' : ''" (click)="buttonX('productName')" tabindex=-1 class="btn" tabindex=-1 tabindex=-1></button>
+                          <button type="button" [ngClass]="educationInformation.institution ? 'btn_del' : ''" (click)="buttonX('institution')" tabindex=-1 class="btn" tabindex=-1 tabindex=-1></button>
                       </div>
                   </div>
                   <div class="form-group col-md-6 margin-bottom-0">
-                      <label class="font-khmer-cursive">Subject</label>
+                      <label class="font-khmer-cursive">{{'UserAdd.Label.Subject' | translate}}</label>
                       <span class="text-danger"> *</span>
-                      <input type="text" [ngClass]="productName? 'active-input' : ''" class="form-control font-khmer-cursive" [(ngModel)]="productName" placeholder="{{'Product.Holder.EnterProductName' | translate}}">
+                      <input type="text" [ngClass]="educationInformation.subject" class="form-control font-khmer-cursive" [(ngModel)]="educationInformation.subject" placeholder="{{'UserAdd.Holder.EnterSubject' | translate}}">
 
                       <div class="in_box">
-                          <button type="button" [ngClass]="productName? 'btn_del' : ''" (click)="buttonX('productName')" tabindex=-1 class="btn" tabindex=-1 tabindex=-1></button>
+                          <button type="button" [ngClass]="educationInformation.subject ? 'btn_del' : ''" (click)="buttonX('subject')" tabindex=-1 class="btn" tabindex=-1 tabindex=-1></button>
                       </div>
 
-                  </div>
-                </div>
-
-                <div class="form-row ">
-                  <div class="form-group col-md-6 margin-bottom-0">
-                      <label class="font-khmer-cursive">Starting Date</label>
-                      <span class="text-danger"> *</span>
-                      <input type="text" [ngClass]="productName? 'active-input' : ''" class="form-control font-khmer-cursive" [(ngModel)]="productName" placeholder="{{'Product.Holder.EnterProductName' | translate}}">
-
-                      <div class="in_box">
-                          <button type="button" [ngClass]="productName? 'btn_del' : ''" (click)="buttonX('productName')" tabindex=-1 class="btn" tabindex=-1 tabindex=-1></button>
-                      </div>
-                  </div>
-                  <div class="form-group col-md-6 margin-bottom-0">
-                      <label class="font-khmer-cursive">Complete Date</label>
-                      <span class="text-danger"> *</span>
-                      <input type="text" [ngClass]="productName? 'active-input' : ''" class="form-control font-khmer-cursive" [(ngModel)]="productName" placeholder="{{'Product.Holder.EnterProductName' | translate}}">
-
-                      <div class="in_box">
-                          <button type="button" [ngClass]="productName? 'btn_del' : ''" (click)="buttonX('productName')" tabindex=-1 class="btn" tabindex=-1 tabindex=-1></button>
-                      </div>
                   </div>
                 </div>
 
-                <div class="form-row ">
+                <div class="form-row margin-bottom-15px">
                   <div class="form-group col-md-6 margin-bottom-0">
-                      <label class="font-khmer-cursive">Degree</label>
+                      <label class="font-khmer-cursive">{{'UserAdd.Label.StartingDate' | translate}}</label>
                       <span class="text-danger"> *</span>
-                      <input type="text" [ngClass]="productName? 'active-input' : ''" class="form-control font-khmer-cursive" [(ngModel)]="productName" placeholder="{{'Product.Holder.EnterProductName' | translate}}">
+                      <kendo-datepicker [format]="'dd/MM/yyyy'" [topView]="'year'" [navigation]="false" [(value)]="startingDate"></kendo-datepicker>
+                  </div>
+
+                  <div class="form-group col-md-6 margin-bottom-0">
+                      <label class="font-khmer-cursive">{{'UserAdd.Label.CompleteDate' | translate}}</label>
+                      <span class="text-danger"> *</span>
+                      <kendo-datepicker [format]="'dd/MM/yyyy'" [topView]="'year'" [navigation]="false" [(value)]="completeDate"></kendo-datepicker>
+                  </div>
+                </div>
+
+                <div class="form-row">
+                  <div class="form-group col-md-6 margin-bottom-0">
+                      <label class="font-khmer-cursive">{{'UserAdd.Label.Degree' | translate}}</label>
+                      <span class="text-danger"> *</span>
+                      <input type="text" [ngClass]="educationInformation.degree" class="form-control font-khmer-cursive" [(ngModel)]="educationInformation.degree" placeholder="{{'UserAdd.Holder.EnterDegree' | translate}}">
 
                       <div class="in_box">
-                          <button type="button" [ngClass]="productName? 'btn_del' : ''" (click)="buttonX('productName')" tabindex=-1 class="btn" tabindex=-1 tabindex=-1></button>
+                          <button type="button" [ngClass]="educationInformation.degree? 'btn_del' : ''" (click)="buttonX('degree')" tabindex=-1 class="btn" tabindex=-1 tabindex=-1></button>
                       </div>
                   </div>
                   <div class="form-group col-md-6 margin-bottom-0">
-                      <label class="font-khmer-cursive">Grade</label>
-                      <input type="text" [ngClass]="productName? 'active-input' : ''" class="form-control font-khmer-cursive" [(ngModel)]="productName" placeholder="{{'Product.Holder.EnterProductName' | translate}}">
+                      <label class="font-khmer-cursive">{{'UserAdd.Label.Grade' | translate}}</label>
+                      <input type="text" [ngClass]="educationInformation.grade" class="form-control font-khmer-cursive" [(ngModel)]="educationInformation.grade" placeholder="{{'UserAdd.Holder.EnterGrade' | translate}}">
 
                       <div class="in_box">
-                          <button type="button" [ngClass]="productName? 'btn_del' : ''" (click)="buttonX('productName')" tabindex=-1 class="btn" tabindex=-1 tabindex=-1></button>
+                          <button type="button" [ngClass]="educationInformation.grade? 'btn_del' : ''" (click)="buttonX('grade')" tabindex=-1 class="btn" tabindex=-1 tabindex=-1></button>
                       </div>
                   </div>
                 </div>
 
                 <div class="c_btn">
-                  <button  (click)="save()" class="k-button btn-w100px-h35px font-khmer-cursive float-right"  kendoButton [look]="'outline'">
+                  <button  (click)="addEducation()" class="k-button btn-w100px-h35px font-khmer-cursive float-right"  kendoButton [look]="'outline'">
                     <span class="k-icon k-i-download margin-top-1px font-size-20px"></span>
-                    <span class="margin-top-5px margin-left-5px">Add</span>
+                    <span class="margin-top-5px margin-left-5px" >Add</span>
                   </button>
                 </div>
                 <!-- grid  -->

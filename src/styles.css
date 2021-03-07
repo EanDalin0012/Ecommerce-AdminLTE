@@ -9570,3 +9570,320 @@ footer {
 .text-danger {
   color: #dc3545!important;
 }
+
+kendo-datepicker {
+  width: 100% !important;
+}
+
+
+
+kendo-datepicker {
+  width: 100% !important;
+  height: 40px !important;
+  border-bottom: 1px solid #afa79d !important;
+  border-radius: 4px !important;
+}
+
+kendo-datepicker:focus {
+  border-bottom: 2px solid #3f496d !important;
+}
+
+kendo-datepicker .k-picker-wrap .k-dateinput-wrap kendo-dateinput input {
+  border-bottom: 1px solid #afa79d !important;
+  border-top: none !important;
+  border-left: none !important;
+  border-right: none !important;
+  display: inline-block !important;
+  border-radius: 4px !important;
+  width: 100%;
+  background-color: red !important;
+}
+
+.k-dateinput .k-dateinput-wrap .k-input,
+.k-dateinput .k-picker-wrap .k-input,
+.k-datepicker .k-dateinput-wrap .k-input,
+.k-datepicker .k-picker-wrap .k-input,
+.k-datetimepicker .k-dateinput-wrap .k-input,
+.k-datetimepicker .k-picker-wrap .k-input,
+.k-timepicker .k-dateinput-wrap .k-input,
+.k-timepicker .k-picker-wrap .k-input {
+  height: 40px !important;
+  border-bottom: none !important;
+}
+
+.k-dateinput .k-dateinput-wrap .k-input,
+.k-dateinput .k-picker-wrap .k-input,
+.k-datepicker .k-dateinput-wrap .k-input,
+.k-datepicker .k-picker-wrap .k-input,
+.k-datetimepicker .k-dateinput-wrap .k-input,
+.k-datetimepicker .k-picker-wrap .k-input,
+.k-timepicker .k-dateinput-wrap .k-input,
+.k-timepicker .k-picker-wrap .k-input {
+  height: 40px !important;
+}
+
+.kendo-datepicker-value {
+  border-bottom: 2px solid #3f496d !important;
+  border-radius: 4px !important;
+}
+
+
+
+/***** Calendar *****/
+
+input.inp_cal {
+  padding-right: 35px !important;
+  background-image: url("assets/images/ico_calendar01.png") !important;
+  background-repeat: no-repeat !important;
+  background-position: right center !important;
+}
+
+input.inp_cal:focus {
+  padding-right: 33px !important;
+  background-position: right -2px center !important;
+}
+
+.k-datepicker:only-child {
+  width: 100% !important;
+}
+
+.k-datepicker .k-picker-wrap {
+  border: none !important;
+  box-shadow: none !important;
+}
+
+.k-dateinput {
+  margin: 0 !important;
+}
+
+.k-dateinput .k-dateinput-wrap {
+  background: #eff2f5 !important;
+  border-radius: 4px 0 0 4px !important;
+}
+
+.k-dateinput-wrap .k-input {
+  height: 40px !important;
+  padding: 4px 12px !important;
+}
+
+.k-dateinput-wrap .k-input:focus {
+  padding: 0 10px !important;
+}
+
+.k-datepicker .k-select,
+.k-datepicker .k-state-focused .k-select {
+  width: 40px !important;
+  background: #eff2f5 url("assets/images/ico_calendar01.png") no-repeat right center !important;
+  border-radius: 0 4px 4px 0 !important;
+}
+
+.k-datepicker .k-select .k-icon {
+  opacity: 0 !important;
+}
+
+.k-calendar-infinite .k-calendar-view {
+  width: 366px !important;
+  min-height: 350px !important;
+  padding: 0 24px !important;
+}
+
+.k-calendar-header {
+  font-size: 1.125rem !important;
+  color: #000 !important;
+}
+
+.k-calendar .k-calendar-header .k-title {
+  padding: 4px 15px 4px 15px;
+  background: url("assets/images/ico_down05.png") no-repeat right center !important;
+}
+
+.k-calendar .k-footer .k-nav-today:hover,
+.k-calendar .k-calendar-header .k-today:hover {
+  font-weight: 700 !important;
+}
+
+.k-calendar th {
+  font-size: .875rem !important;
+  color: #020219 !important;
+  line-height: 1.5 !important;
+}
+
+.k-calendar .k-content th {
+  padding-left: 15px !important;
+  color: #020219 !important;
+}
+
+.k-calendar .k-calendar-monthview td:first-child {
+  color: #ff464d !important;
+}
+
+.k-calendar .k-calendar-monthview td:last-child {
+  color: #1d6cde !important;
+}
+
+.k-calendar .k-calendar-monthview .k-link {
+  width: 53px !important;
+  height: 42px !important;
+}
+
+.k-calendar .k-calendar-monthview .k-today {
+  font-weight: 700 !important;
+  color: #7a6d5c !important;
+}
+
+.k-calendar .k-calendar-monthview .k-today:hover {
+  font-weight: 700 !important;
+  color: #7a6d5c !important;
+}
+
+.k-calendar .k-footer .k-nav-today,
+.k-calendar .k-calendar-header .k-today {
+  font-size: .875rem;
+  color: #514432 !important;
+}
+
+.k-calendar .k-state-selected .k-link {
+  background: #7a6d5c !important;
+  border-radius: 25px !important;
+}
+
+.calendar_footer {
+  padding: 20px !important;
+  text-align: center !important;
+  background: #fff !important;
+}
+
+.calendar_footer button {
+  min-width: 128px !important;
+}
+
+
+/* Range */
+
+.inp_box_period {
+  position: relative !important;
+  display: inline-block !important;
+  padding-right: 40px !important;
+  vertical-align: middle !important;
+  background: #eff2f5 url("assets/images/ico_calendar01.png") no-repeat right center !important;
+  border-radius: 4px !important;
+  cursor: pointer !important;
+}
+
+.inp_box_period kendo-daterange {
+  display: block !important;
+}
+
+.inp_box_period .k-dateinput {
+  float: left !important;
+  width: 47% !important;
+}
+
+.inp_box_period .k-dateinput:last-of-type:after {
+  content: "";
+  position: absolute;
+  left: 100% !important;
+  top: 0 !important;
+  width: 40px !important;
+  height: 100% !important;
+  cursor: pointer !important;
+}
+
+.inp_box_period .txt {
+  float: left !important;
+  width: 6% !important;
+  height: 40px !important;
+  line-height: 40px !important;
+  text-align: center !important;
+}
+
+.inp_box_period label .label {
+  position: absolute !important;
+  left: -999em !important;
+  top: -999em !important;
+  opacity: 0 !important;
+}
+
+.inp_box_period .k-dateinput .k-dateinput-wrap {
+  width: 100% !important;
+  border: none !important;
+  box-shadow: none !important;
+}
+
+.inp_box_period .k-dateinput input {
+  width: 100% !important;
+  height: 40px !important;
+  background: none !important;
+  border: none !important;
+}
+
+.inp_box_period .k-dateinput:first-of-type input {
+  text-align: right !important;
+}
+
+.inp_box_period .k-dateinput input:focus {
+  padding: 4px 12px !important;
+  border: none !important;
+}
+
+.inp_box_period .txt+.k-dateinput .k-dateinput-wrap {
+  border-radius: 0 4px 4px 0 !important;
+}
+
+.inp_box_period .txt+.k-dateinput input {
+  border-radius: 0 4px 4px 0 !important;
+}
+
+.calendar_title {
+  position: relative !important;
+  padding: 15px 50px 15px 25px;
+  color: #7a6d5c !important;
+  background: #fff !important;
+  border-bottom: 1px solid #d7d3ce !important;
+}
+
+.calendar_title .btn_popclose {
+  width: 44px;
+  background: url("assets/images/btn_popclose02.png") no-repeat center center !important;
+}
+
+.calendar_title+.k-calendar {
+  border-width: 0 0 1px !important;
+}
+
+.k-calendar .k-content th {
+  font-weight: normal !important;
+  color: #000 !important;
+  opacity: 1 !important;
+}
+
+.k-calendar.k-calendar-range .k-range-start .k-link {
+  background: #7a6d5c !important;
+  border-radius: 2px 20px 20px 2px !important;
+  box-shadow: none !important;
+}
+
+.k-calendar.k-calendar-range .k-range-end .k-link {
+  background: #7a6d5c !important;
+  border-radius: 20px 2px 2px 20px !important;
+  box-shadow: none !important;
+}
+
+.k-calendar.k-calendar-range .k-range-start,
+.k-calendar.k-calendar-range .k-range-end,
+.k-calendar.k-calendar-range .k-range-mid {
+  background: #f5f4f2 !important;
+}
+
+.k-calendar.k-calendar-range .k-range-mid {
+  background: #f5f4f2 !important;
+}
+
+.k-calendar.k-calendar-range .k-range-split-end::after,
+.k-calendar.k-calendar-range .k-range-split-start::after {
+  display: none !important;
+}
+
+.margin-bottom-15px {
+  margin-bottom: 15px;
+}

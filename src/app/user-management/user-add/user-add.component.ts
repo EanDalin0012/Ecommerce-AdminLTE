@@ -14,6 +14,9 @@ import * as moment from 'moment';
 import { Base64WriteImage } from '../../m-share/model/base64-write-image';
 import { StepperActivateEvent } from '@progress/kendo-angular-layout';
 import { MaritalStatus } from '../../m-share/model/marital-status';
+import { EducationInformation } from '../../m-share/model/education-information';
+import { FamilyInformation } from '../../m-share/model/family-informations';
+import { EmergencyContact } from '../../m-share/model/emergency-contact';
 @Component({
   selector: 'app-user-add',
   templateUrl: './user-add.component.html',
@@ -58,6 +61,14 @@ export class UserAddComponent implements OnInit {
   ];
   currentStep = 0;
 
+  educationInformations = new Array<EducationInformation>();
+  educationInformation  = new EducationInformation();
+  familyInformations    =  new Array<FamilyInformation>();
+  FamilyInformation     = new FamilyInformation();
+  emergencyContacts     = new Array<EmergencyContact>();
+  emergencyContact      = new EmergencyContact();
+  startingDate = new Date();
+  completeDate = new Date();
   constructor(
     private translate: TranslateService,
     private httpService: HttpService,
@@ -251,6 +262,11 @@ export class UserAddComponent implements OnInit {
 
   public prev(): void {
       this.currentStep -= 1;
+  }
+
+  addEducation(): void {
+    console.log(this.educationInformation);
+
   }
 
 }

@@ -96,6 +96,22 @@
       "EnterProductName":"Enter product name",
       "EnterDescription":"Enter Description"
     }
+  },
+  "UserAdd": {
+    "Label": {
+        "Institution":"Institution",
+        "Subject":"Subject",
+        "StartingDate":"Starting Date",
+        "CompleteDate":"Complete Date",
+        "Degree":"Degree",
+        "Grade":"Grade"
+    },
+    "Holder": {
+      "EnterInstitution":"Enter Institution",
+      "EnterSubject":"Enter Subject",
+      "EnterDegree":"Enter Degree",
+      "EnterGrade":"Enter Grade"
+    }
   }
 
 }
