@@ -1,3 +1,5 @@
+import { MaritalStatus } from "../model/marital-status";
+
 export enum ModalStoreKey {
   ModalStoreKey = 'Modal_Store_object_dialog'
 }
@@ -49,7 +51,10 @@ export enum UrlCode {
   'vendor'              = 'vendor',
   'product'             = 'product',
   'componentInput'      = '',
-  'adminDashboard'      = 'index'
+  'adminDashboard'      = 'index',
+  'user'                = 'user',
+  'user-role'           = 'user-role',
+  'user-account'        = 'user-account'
 
 }
 
@@ -57,3 +62,23 @@ export enum ResponseStatus {
   Y = 'Y',
   N = 'N'
 }
+
+export const maritalStatus: MaritalStatus[] = [
+  {
+    text: 'Single',
+    code: 'S'
+  },
+  {
+    text: 'Married',
+    code: 'M'
+  },
+  {
+    text: 'Widowed',
+    code: 'W'
+  },
+  {
+    text: 'Divorced',
+    code: 'D'
+  }
+];
+

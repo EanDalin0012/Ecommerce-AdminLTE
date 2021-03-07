@@ -6,6 +6,7 @@ import { NavComponent } from './nav/nav.component';
 import { PerfectScrollbarModule } from 'ngx-perfect-scrollbar';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import { MShareModule } from '../m-share/m-share.module';
 @NgModule({
   declarations: [
      HeaderComponent,
@@ -17,6 +18,7 @@ import { HttpClientModule } from '@angular/common/http';
     PerfectScrollbarModule,
     FormsModule,
     HttpClientModule,
+    MShareModule
   ],
   exports: [
     HeaderComponent,

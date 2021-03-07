@@ -27,21 +27,56 @@
                   <li class="submenu" [ngClass]="{ 'active' : urlComplete.mainUrl === 'register' }">
                     <a href="javascript:" [ngClass]="{ 'subdrop' : urlComplete.mainUrl === 'register' }">
                         <i class="la la-dashboard"></i>
-                        <span>Register</span>
+                        <span>{{'Nav.Label.Register' | translate}}</span>
                         <span class="menu-arrow"></span>
                     </a>
                     <ul style="display: none;" [ngStyle]="{ 'display' : urlComplete.mainUrl === 'register' ? 'block' : 'none' }">
                         <li (click)="openPage('category')">
-                          <a [ngClass]="{ 'active' : urlComplete.subUrl === 'category' }" href="javascript:">Category</a>
+                          <a [ngClass]="{ 'active' : urlComplete.subUrl === 'category' }" href="javascript:">{{'Nav.Label.Category' | translate}}</a>
                         </li>
                         <li (click)="openPage('vendor')">
-                          <a [ngClass]="{ 'active' : urlComplete.subUrl === 'vendor' }" href="javascript:">Vendor</a>
+                          <a [ngClass]="{ 'active' : urlComplete.subUrl === 'vendor' }" href="javascript:">{{'Nav.Label.Vendor' | translate}}</a>
                         </li>
 
                         <li (click)="openPage('product')">
-                          <a [ngClass]="{ 'active' : urlComplete.subUrl === 'product' }" href="javascript:">Product</a>
+                          <a [ngClass]="{ 'active' : urlComplete.subUrl === 'product' }" href="javascript:">{{'Nav.Label.Product' | translate}}</a>
                         </li>
                     </ul>
+                </li>
+
+                <li class="submenu" [ngClass]="{ 'active' : urlComplete.mainUrl === 'user-management' }">
+                  <a href="javascript:" [ngClass]="{ 'subdrop' : urlComplete.mainUrl === 'user-management' }">
+                    <i class="la la-share-alt"></i>
+                    <span>{{'Nav.Label.UserManagement' | translate}}</span>
+                    <span class="menu-arrow"></span>
+                  </a>
+                  <ul [ngStyle]="{ 'display' : urlComplete.mainUrl === 'user-management' ? 'block' : 'none' }">
+                      <li class="submenu" style="display: block;">
+                          <a href="javascript:" class="submenu" [ngStyle]="{ 'display' : urlComplete.subUrl === 'user' ? 'block' : '' }">
+                            <span>{{'Nav.Label.User' | translate}}</span>
+                            <span class="menu-arrow"></span>
+                          </a>
+                          <ul [ngStyle]="{ 'display' : urlComplete.subUrl === 'user' ? 'block' : 'none' }">
+                              <li (click)="openPage('user')">
+                                <a href="javascript:" [ngClass]="{ 'active' : urlComplete.subUrl === 'user' }"><span>User Info</span></a>
+                              </li>
+                              <li class="submenu">
+                                  <a href="javascript:">
+                                    <span> Level 2</span>
+                                    <span class="menu-arrow"></span>
+                                  </a>
+                                  <ul style="display: none;">
+                                      <li><a href="javascript:">Level 3</a></li>
+                                      <li><a href="javascript:">Level 3</a></li>
+                                  </ul>
+                              </li>
+                              <li><a href="javascript:"> <span>Level 2</span></a></li>
+                          </ul>
+                      </li>
+                      <li>
+                          <a href="javascript:"> <span>Level 1</span></a>
+                      </li>
+                  </ul>
                 </li>
 
                   <li class="submenu" [ngClass]="{ 'active' : urlComplete.mainUrl === 'apps' }">

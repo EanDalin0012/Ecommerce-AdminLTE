@@ -29,13 +29,25 @@
       "Confirm":"Confirm",
       "PreView":"Pre-View",
       "Remove":"Remove",
-      "Upload":"Upload"
+      "Upload":"Upload",
+      "Next":"Next",
+      "Previous":"Previous"
     },
     "Message": {
       "Message":"Message"
     },
     "Placeholder":{
       "EnterDescription":"Enter description ..."
+    }
+  },
+  "Nav":{
+    "Label": {
+      "Register":"Register",
+      "Category":"Category",
+      "Vendor":"Vendor",
+      "Product":"Product",
+      "UserManagement":"User Management",
+      "User":"User"
     }
   },
   "Login": {

@@ -20,6 +20,10 @@ const routes: Routes = [
       {
         path: 'register',
         loadChildren: './register/register.module#RegisterModule'
+      },
+      {
+        path: 'user-management',
+        loadChildren: './user-management/user-management.module#UserManagementModule'
       }
     ]
   },

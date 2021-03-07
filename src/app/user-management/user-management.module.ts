@@ -9,6 +9,8 @@ import { UserAccountEditComponent } from './user-account-edit/user-account-edit.
 import { UserRoleComponent } from './user-role/user-role.component';
 import { UserRoleAddComponent } from './user-role-add/user-role-add.component';
 import { UserRoleEditComponent } from './user-role-edit/user-role-edit.component';
+import { MShareModule } from '../m-share/m-share.module';
+import { UserManagementRoutingModule } from './user-management-routing.module';
 
 
 
@@ -25,7 +27,9 @@ import { UserRoleEditComponent } from './user-role-edit/user-role-edit.component
     UserRoleEditComponent
   ],
   imports: [
-    CommonModule
+    CommonModule,
+    MShareModule,
+    UserManagementRoutingModule
   ]
 })
 export class UserManagementModule { }

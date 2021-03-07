@@ -95,6 +95,7 @@ export class NavComponent implements OnInit {
   }
 
   setVisitList(path: string): void {
+    console.log('path', path);
     switch (path) {
       case 'index':
         this.urlComplete.mainUrl = 'dashboard';
@@ -116,7 +117,14 @@ export class NavComponent implements OnInit {
         this.urlComplete.mainUrl = 'register';
         this.urlComplete.subUrl  = 'product';
         break;
+      case 'user':
+          this.urlComplete.mainUrl = 'user-management';
+          this.urlComplete.subUrl  = 'user';
+          console.log(this.urlComplete.mainUrl, this.urlComplete.subUrl);
+          break;
     }
+
+
   }
 
   openPage(urlCode: string): void {
@@ -134,10 +142,10 @@ export class NavComponent implements OnInit {
       case '3000': // setting
         url += `home/${UrlCode[urlCode]}`;
         break;
-      case 'User1000': // setting
-      case 'UserMngAcc': // setting Set-Price-Product
+      case 'user':
+      case 'user-role':
       case 'User-Info':
-      case 'Set-Price-Product':
+      case 'user-account':
         url += `user-management/${UrlCode[urlCode]}`;
         break;
     }
