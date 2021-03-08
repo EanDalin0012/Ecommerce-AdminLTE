@@ -9579,8 +9579,8 @@ kendo-datepicker {
 
 kendo-datepicker {
   width: 100% !important;
-  height: 40px !important;
-  border-bottom: 1px solid #afa79d !important;
+  height: 34px !important;
+  /* border-bottom: 1px solid #afa79d !important; */
   border-radius: 4px !important;
 }
 
@@ -9657,7 +9657,8 @@ input.inp_cal:focus {
 }
 
 .k-dateinput .k-dateinput-wrap {
-  background: #eff2f5 !important;
+  background: rgb(232, 240, 254) !important;
+  /* #eff2f5 !important; */
   border-radius: 4px 0 0 4px !important;
 }
 
@@ -9673,7 +9674,7 @@ input.inp_cal:focus {
 .k-datepicker .k-select,
 .k-datepicker .k-state-focused .k-select {
   width: 40px !important;
-  background: #eff2f5 url("assets/images/ico_calendar01.png") no-repeat right center !important;
+  background: rgb(232, 240, 254) url("assets/images/ico_calendar01.png") no-repeat right center !important;
   border-radius: 0 4px 4px 0 !important;
 }
 

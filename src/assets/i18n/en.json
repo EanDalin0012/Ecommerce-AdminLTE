@@ -104,13 +104,27 @@
         "StartingDate":"Starting Date",
         "CompleteDate":"Complete Date",
         "Degree":"Degree",
-        "Grade":"Grade"
+        "Grade":"Grade",
+        "FirstName":"First Name",
+        "LastName":"Last Name",
+        "Gender":"Gender",
+        "BirthDate":"Birth Date",
+        "Phone":"Phone",
+        "Email":"Email",
+        "NationalID":"National ID",
+        "Nationality":"Nationality",
+        "Religion":"Religion",
+        "MaritalStatus":"Marital status"
     },
     "Holder": {
-      "EnterInstitution":"Enter Institution",
-      "EnterSubject":"Enter Subject",
-      "EnterDegree":"Enter Degree",
-      "EnterGrade":"Enter Grade"
+      "EnterInstitution":"Enter institution",
+      "EnterSubject":"Enter subject",
+      "EnterDegree":"Enter degree",
+      "EnterGrade":"Enter grade",
+      "EnterFirstName":"Enter first name",
+      "EnterLastName":"Enter last name",
+      "EnterPhone":"Enter phone",
+      "EnterEmail":"Enter email"
     }
   }
 

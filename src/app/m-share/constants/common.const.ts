@@ -82,3 +82,18 @@ export const maritalStatus: MaritalStatus[] = [
   }
 ];
 
+export const gender = [
+  {
+    text: 'Male',
+    code: 'M'
+  },
+  {
+    text: 'Female',
+    code: 'F'
+  },
+  {
+    text: 'Other',
+    code: 'O'
+  },
+];
+

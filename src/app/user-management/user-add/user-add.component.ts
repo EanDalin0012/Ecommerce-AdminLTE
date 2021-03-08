@@ -9,7 +9,7 @@ import { UploadService } from '../../m-share/service/upload.service';
 import { CommonHttpService } from '../../m-share/service/common-http.service';
 import { Product } from '../../m-share/model/product';
 import { Message } from '../../m-share/model/message';
-import { ResponseStatus, ButtonRoles, maritalStatus } from '../../m-share/constants/common.const';
+import { ResponseStatus, ButtonRoles, maritalStatus, gender } from '../../m-share/constants/common.const';
 import * as moment from 'moment';
 import { Base64WriteImage } from '../../m-share/model/base64-write-image';
 import { StepperActivateEvent } from '@progress/kendo-angular-layout';
@@ -41,10 +41,17 @@ export class UserAddComponent implements OnInit {
       allowedExtensions: ['.jpg', '.png']
   };
 
-  defaultCountry = {
+  defaultMaritalStatus = {
     text: 'Select Marital Status',
     code: 'NA'
   };
+
+  defaultGender = {
+    text: 'Select Gender',
+    code: 'NA'
+  };
+  genders = gender;
+  gender: any;
 
   filterSettings: DropDownFilterSettings = {
     caseSensitive: false,
@@ -65,24 +72,24 @@ export class UserAddComponent implements OnInit {
 
   personalInfo = new PersonalInformation();
 
-  educationInformations = new Array<EducationInformation>();
-  educationInformationId = 0;
-  educationInformation  = new EducationInformation();
+  educationInformations     = new Array<EducationInformation>();
+  educationInformationId    = 0;
+  educationInformation      = new EducationInformation();
   educationInformationCount = 0;
 
-  familyInformations    =  new Array<FamilyInformation>();
-  familyInformation     = new FamilyInformation();
-  familyInformationId   = 0;
-  familyInformationCount = 0;
+  familyInformations        =  new Array<FamilyInformation>();
+  familyInformation         = new FamilyInformation();
+  familyInformationId       = 0;
+  familyInformationCount    = 0;
 
-  emergencyContacts     = new Array<EmergencyContact>();
-  emergencyContact      = new EmergencyContact();
-  emergencyContactId    = 0;
-  emergencyContactCount = 0;
+  emergencyContacts         = new Array<EmergencyContact>();
+  emergencyContact          = new EmergencyContact();
+  emergencyContactId        = 0;
+  emergencyContactCount     = 0;
 
   startingDate = new Date();
   completeDate = new Date();
-
+  birthDate    = new Date();
   // start Declaration grid
   info = true;
   buttonCount = 5;
