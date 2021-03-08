@@ -9887,3 +9887,6 @@ input.inp_cal:focus {
 .margin-bottom-15px {
   margin-bottom: 15px;
 }
+.float-left {
+  float: left !important;
+}

@@ -51,11 +51,13 @@ import { TreeListModule } from '@progress/kendo-angular-treelist';
 import { UploadsModule } from '@progress/kendo-angular-upload';
 import { FileSelectModule } from '@progress/kendo-angular-upload';
 import { ImagePipe } from './pipe/image.pipe';
+import { DateFormatPipe } from './pipe/date-format.pipe';
 @NgModule({
   declarations: [
     CustomDatePipe,
     ModalComponent,
-    ImagePipe
+    ImagePipe,
+    DateFormatPipe
   ],
   imports: [
     CommonModule
@@ -115,7 +117,8 @@ import { ImagePipe } from './pipe/image.pipe';
     ButtonsModule,
     // End Kendo
     CustomDatePipe,
-    ImagePipe
+    ImagePipe,
+    DateFormatPipe
 
   ],
   entryComponents: [

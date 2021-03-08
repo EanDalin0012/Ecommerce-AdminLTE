@@ -1,4 +1,5 @@
 export class EducationInformation {
+  id: number;
   institution: string;
   subject: string;
   startingDate: string;

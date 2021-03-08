@@ -1,7 +1,7 @@
+import { PersonalInformation } from './../../m-share/model/personal-info';
 import { Component, OnInit } from '@angular/core';
 import { DropDownFilterSettings } from '@progress/kendo-angular-dropdowns';
 import { FileRestrictions, FileState, SelectEvent } from '@progress/kendo-angular-upload';
-import { Category } from 'src/app/m-share/model/category';
 import { TranslateService } from '@ngx-translate/core';
 import { HttpService } from '../../m-share/service/http.service';
 import { ModalService } from '../../m-share/service/modal.service';
@@ -17,6 +17,8 @@ import { MaritalStatus } from '../../m-share/model/marital-status';
 import { EducationInformation } from '../../m-share/model/education-information';
 import { FamilyInformation } from '../../m-share/model/family-informations';
 import { EmergencyContact } from '../../m-share/model/emergency-contact';
+import { GridDataResult, RowClassArgs, PageChangeEvent, SelectableSettings } from '@progress/kendo-angular-grid';
+import { orderBy, SortDescriptor } from '@progress/kendo-data-query';
 @Component({
   selector: 'app-user-add',
   templateUrl: './user-add.component.html',
@@ -61,24 +63,69 @@ export class UserAddComponent implements OnInit {
   ];
   currentStep = 0;
 
+  personalInfo = new PersonalInformation();
+
   educationInformations = new Array<EducationInformation>();
+  educationInformationId = 0;
   educationInformation  = new EducationInformation();
+  educationInformationCount = 0;
+
   familyInformations    =  new Array<FamilyInformation>();
-  FamilyInformation     = new FamilyInformation();
+  familyInformation     = new FamilyInformation();
+  familyInformationId   = 0;
+  familyInformationCount = 0;
+
   emergencyContacts     = new Array<EmergencyContact>();
   emergencyContact      = new EmergencyContact();
+  emergencyContactId    = 0;
+  emergencyContactCount = 0;
+
   startingDate = new Date();
   completeDate = new Date();
+
+  // start Declaration grid
+  info = true;
+  buttonCount = 5;
+  type: 'numeric' | 'input' = 'numeric';
+  previousNext = false;
+  pageSizes: any[] = [10, 20, 30, 50, 100];
+  multiple = false;
+  allowUnsort = true;
+  height = 'auto';
+  search: string;
+  sort: SortDescriptor[] = [{
+    field: 'id',
+    dir: 'asc'
+  }];
+  gridView: GridDataResult;
+  gridData: any[];
+  checkboxOnly = false;
+  mode = 'multiple';
+  gridHeight = screen.height * 0.5;
+  selectedCallback = (args) => args.dataItem;
+  selectableSettings: SelectableSettings;
+  skip = 0;
+  pageSize = 10;
+  mySelection: any[] = [];
+  totalRecord = 0;
+  // end Declaring grid
+
   constructor(
     private translate: TranslateService,
     private httpService: HttpService,
     private modalService: ModalService,
     private uploadService: UploadService,
     private dataService: CommonHttpService
-  ) { }
+  ) {
+    this.setSelectableSettings();
+   }
 
   ngOnInit(): void {
     this.inquiryCategory();
+    // this.educationInformationId += 1;
+    // this.educationInformations.push( { id: this.educationInformationId, institution: 'RUPP', subject: 'Computer', startingDate: '20210308', completeDate: '20210308', degree: '20210308', grade: 'A'});
+    // this.gridData      = this.educationInformations;
+    // this.loadingData(this.educationInformations);
   }
 
   inquiryCategory(): void {
@@ -189,7 +236,7 @@ export class UserAddComponent implements OnInit {
 
   upload(state): void {
     if(this.imagePreviews.length > 0) {
-      this.imagePreviews.forEach(element =>{
+      this.imagePreviews.forEach(element => {
         if (element.uid === state) {
             const splitted = element.src.split(',');
             const base64WriteImage = new Base64WriteImage();
@@ -265,8 +312,132 @@ export class UserAddComponent implements OnInit {
   }
 
   addEducation(): void {
-    console.log(this.educationInformation);
+    this.educationInformationId += 1;
+    this.educationInformation.id  = this.educationInformationId;
+    this.educationInformation.startingDate = this.dateForm(this.startingDate);
+    this.educationInformation.completeDate = this.dateForm(this.completeDate);
+    if (this.educationInformation != null) {
+        this.educationInformations.push({
+              id: this.educationInformationId,
+              institution: this.educationInformation.institution,
+              subject: this.educationInformation.subject,
+              startingDate: this.educationInformation.startingDate,
+              completeDate: this.educationInformation.completeDate,
+              degree: this.educationInformation.degree,
+              grade: this.educationInformation.grade
+            });
+        this.gridData      = this.educationInformations;
+        this.educationInformationCount = this.educationInformations.length;
+        this.loadingData(this.educationInformations);
+        this.educationInformation = new EducationInformation();
+    }
+  }
+
+
+  sliceEducation(dataItem: any, index): void {
+    this.educationInformations.splice(index, 1);
+  }
+
+  addEmergencyContacts(): void {
+      this.emergencyContactId += 1;
+      this.emergencyContact.id = this.emergencyContactId;
+      if (this.emergencyContact != null) {
+        this.emergencyContacts.push({
+          id: this.emergencyContactId,
+          name: this.emergencyContact.name,
+          relationship: this.emergencyContact.relationship,
+          phone: this.emergencyContact.phone,
+          phone2: this.emergencyContact.phone2
+        });
+        this.emergencyContactCount = this.emergencyContacts.length;
+        this.emergencyContact = new EmergencyContact();
+      }
+  }
+
+  sliceEmergencyContact(dataItem: any, index): void {
+    this.emergencyContacts.splice(index, 1);
+  }
+
+  addFamilyInformation(): void {
+    this.familyInformationId += 1;
+    this.familyInformation.id = this.familyInformationId;
+    if (this.familyInformation != null) {
+      this.familyInformations.push({
+        id: this.familyInformationId,
+        name: this.familyInformation.name,
+        relationship: this.familyInformation.relationship,
+        phone: this.familyInformation.phone,
+        description: this.familyInformation.description
+      });
+    }
+  }
+
+  sliceFamilyInformation(dataItem: any, index): void {
+    this.familyInformations.splice(index, 1);
+  }
+
+  edit(dataItem: any): void {
 
   }
 
+  dateForm(date): any {
+    const year = date.getFullYear();
+    const month = ('0' + (date.getMonth() + 1)).slice(-2);
+    const day = ('0' + date.getDate()).slice(-2);
+    return year + month + day;
+  }
+
+
+  // Declaration  function gride
+  setSelectableSettings(): void {
+    this.selectableSettings = {
+        checkboxOnly: this.checkboxOnly,
+        mode: 'multiple'
+    };
+  }
+
+  loadingData(data: any): void {
+    if (data) {
+      this.gridView = {
+        data: orderBy(data.slice(this.skip, this.skip + this.pageSize), this.sort),
+        total: data.length
+      };
+    }
+    this.totalRecord = data.length;
+  }
+
+  loadData(): void {
+    this.gridView = {
+      data: orderBy(this.gridData.slice(this.skip, this.skip + this.pageSize), this.sort),
+      total: this.gridData.length
+    };
+  }
+
+  pageChange({ skip, take }: PageChangeEvent): void {
+    this.skip = skip;
+    this.pageSize = take;
+    this.paging();
+  }
+
+  public rowCallback = (context: RowClassArgs) => {
+      switch (context.dataItem.serviceStatusDesc) {
+        case 'Deactivated':
+          return {dormant: true};
+        default:
+          return {};
+       }
+  }
+
+  private paging(): void {
+    this.gridView = {
+      data: this.gridData.slice(this.skip, this.skip + this.pageSize),
+      total: this.gridData.length
+    };
+  }
+
+  sortChange(sort: SortDescriptor[]): void {
+    this.sort = sort;
+    this.loadData();
+  }
+  // end gride function
 }

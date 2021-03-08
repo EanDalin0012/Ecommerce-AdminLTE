@@ -41,7 +41,7 @@ export class LoginComponent implements OnInit, OnDestroy {
 
   login(): void {
     if (this.rememberMe) {
-      Utils.setSecureStorage('user_id', this.rememberMe)
+      Utils.setSecureStorage('user_id', this.rememberMe);
     }
 
     const authenticationObj: Authentcation = {

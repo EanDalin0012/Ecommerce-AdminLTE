@@ -169,11 +169,66 @@
                 </div>
 
                 <div class="c_btn">
+
+                  <strong class = "float-left">{{'Common.Label.Items' | translate: {'value': educationInformationCount} }}</strong>
+
                   <button  (click)="addEducation()" class="k-button btn-w100px-h35px font-khmer-cursive float-right"  kendoButton [look]="'outline'">
-                    <span class="k-icon k-i-download margin-top-1px font-size-20px"></span>
+                    <span class="k-icon k-i-plus-circle "></span>
                     <span class="margin-top-5px margin-left-5px" >Add</span>
                   </button>
                 </div>
+
+                <kendo-grid
+                  [data]="educationInformations"
+                  kendoGridSelectBy="id"
+                  [selectedKeys]="mySelection"
+                  [pageSize]="pageSize"
+                  [rowClass]="rowCallback"
+                  [skip]="skip"
+                  [pageable]="true"
+                  [sortable]="true"
+                  [groupable]="false"
+                  [reorderable]="true"
+                  [resizable]="true"
+                  [pageable]="{
+                    buttonCount: buttonCount,
+                    info: info,
+                    type: type,
+                    pageSizes: pageSizes,
+                    previousNext: previousNext}"
+                    (pageChange)="pageChange($event)"
+                  [height]="250"
+                >
+                    <kendo-grid-checkbox-column class="cen" [width]="45" [resizable]="false" [columnMenu]="true" showSelectAll="true"></kendo-grid-checkbox-column>
+
+                    <kendo-grid-column width="50" class="cen" [sortable]="false" field="no" title="{{'Common.Label.No' | translate}}">
+                        <ng-template kendoGridCellTemplate let-dataItem let-rowIndex="rowIndex">
+                            <span>{{rowIndex + 1}}</span>
+                        </ng-template>
+                    </kendo-grid-column>
+
+                    <kendo-grid-column width="150" class="subj" field="institution" title="{{'UserAdd.Label.Institution' | translate}}">
+                      <ng-template kendoGridCellTemplate let-dataItem let-rowIndex="rowIndex">
+                        <span>{{dataItem.institution}}</span>
+                      </ng-template>
+                    </kendo-grid-column>
+                    <kendo-grid-column width="190" class="subj" field="subject" title="{{'UserAdd.Label.Subject' | translate}}"></kendo-grid-column>
+                    <kendo-grid-column width="190" class="subj font-khmer-cursive" field="startingDate" title="{{'UserAdd.Label.StartingDate' | translate}}"></kendo-grid-column>
+                    <kendo-grid-column width="190" class="subj font-khmer-cursive" field="completeDate" title="{{'UserAdd.Label.CompleteDate' | translate}}"></kendo-grid-column>
+                    <kendo-grid-column width="190" class="subj font-khmer-cursive" field="degree" title="{{'UserAdd.Label.Degree' | translate}}"></kendo-grid-column>
+                    <kendo-grid-column width="190" class="subj font-khmer-cursive" field="grade" title="{{'UserAdd.Label.Grade' | translate}}"></kendo-grid-column>
+
+
+                    <kendo-grid-column width="50" class="cen" [sortable]="false" field="edit" title="{{'Common.Button.Edit' | translate}}">
+                        <ng-template kendoGridCellTemplate let-dataItem let-rowIndex="rowIndex">
+                            <button (click)="sliceEducation(dataItem, rowIndex)" class="k-button k-button-edit btn-w100px-h35px font-khmer-cursive btn-add-00 v-card-identy k-float-left" (click)="edit(dataItem)" style = "border-radius: 50% !important;">
+                                <span class="k-icon k-i-minus-circle i-font"></span>
+                            </button>
+                        </ng-template>
+                    </kendo-grid-column>
+
+                  </kendo-grid>
+
                 <!-- grid  -->
               </ng-container>
 
@@ -183,19 +238,19 @@
                   <div class="form-group col-md-6  margin-bottom-0">
                       <label class="font-khmer-cursive">Name</label>
                       <span class="text-danger"> *</span>
-                      <input type="text" [ngClass]="productName? 'active-input' : ''" class="form-control font-khmer-cursive" [(ngModel)]="productName" placeholder="{{'Product.Holder.EnterProductName' | translate}}">
+                      <input type="text" [ngClass]="emergencyContact.name" class="form-control font-khmer-cursive" [(ngModel)]="emergencyContact.name" placeholder="{{'Product.Holder.EnterProductName' | translate}}">
 
                       <div class="in_box">
-                          <button type="button" [ngClass]="productName? 'btn_del' : ''" (click)="buttonX('productName')" tabindex=-1 class="btn" tabindex=-1 tabindex=-1></button>
+                          <button type="button" [ngClass]="emergencyContact.name" (click)="buttonX('productName')" tabindex=-1 class="btn" tabindex=-1 tabindex=-1></button>
                       </div>
                   </div>
                   <div class="form-group col-md-6 margin-bottom-0">
                       <label class="font-khmer-cursive">Relationship</label>
                       <span class="text-danger"> *</span>
-                      <input type="text" [ngClass]="productName? 'active-input' : ''" class="form-control font-khmer-cursive" [(ngModel)]="productName" placeholder="{{'Product.Holder.EnterProductName' | translate}}">
+                      <input type="text" [ngClass]="emergencyContact.relationship" class="form-control font-khmer-cursive" [(ngModel)]="emergencyContact.relationship" placeholder="{{'Product.Holder.EnterProductName' | translate}}">
 
                       <div class="in_box">
-                          <button type="button" [ngClass]="productName? 'btn_del' : ''" (click)="buttonX('productName')" tabindex=-1 class="btn" tabindex=-1 tabindex=-1></button>
+                          <button type="button" [ngClass]="emergencyContact.relationship" (click)="buttonX('productName')" tabindex=-1 class="btn" tabindex=-1 tabindex=-1></button>
                       </div>
 
                   </div>
@@ -205,28 +260,80 @@
                   <div class="form-group col-md-6 margin-bottom-0">
                       <label class="font-khmer-cursive">Phone </label>
                       <span class="text-danger"> *</span>
-                      <input type="text" [ngClass]="productName? 'active-input' : ''" class="form-control font-khmer-cursive" [(ngModel)]="productName" placeholder="{{'Product.Holder.EnterProductName' | translate}}">
+                      <input type="text" [ngClass]="emergencyContact.phone" class="form-control font-khmer-cursive" [(ngModel)]="emergencyContact.phone" placeholder="{{'Product.Holder.EnterProductName' | translate}}">
 
                       <div class="in_box">
-                          <button type="button" [ngClass]="productName? 'btn_del' : ''" (click)="buttonX('productName')" tabindex=-1 class="btn" tabindex=-1 tabindex=-1></button>
+                          <button type="button" [ngClass]="emergencyContact.phone" (click)="buttonX('productName')" tabindex=-1 class="btn" tabindex=-1 tabindex=-1></button>
                       </div>
                   </div>
                   <div class="form-group col-md-6 margin-bottom-0">
                       <label class="font-khmer-cursive">Phone 2</label>
-                      <input type="text" [ngClass]="productName? 'active-input' : ''" class="form-control font-khmer-cursive" [(ngModel)]="productName" placeholder="{{'Product.Holder.EnterProductName' | translate}}">
+                      <input type="text" [ngClass]="emergencyContact.phone2" class="form-control font-khmer-cursive" [(ngModel)]="emergencyContact.phone2" placeholder="{{'Product.Holder.EnterProductName' | translate}}">
 
                       <div class="in_box">
-                          <button type="button" [ngClass]="productName? 'btn_del' : ''" (click)="buttonX('productName')" tabindex=-1 class="btn" tabindex=-1 tabindex=-1></button>
+                          <button type="button" [ngClass]="emergencyContact.phone2" (click)="buttonX('productName')" tabindex=-1 class="btn" tabindex=-1 tabindex=-1></button>
                       </div>
                   </div>
                 </div>
 
                 <div class="c_btn">
-                  <button  (click)="save()" class="k-button btn-w100px-h35px font-khmer-cursive float-right"  kendoButton [look]="'outline'">
-                    <span class="k-icon k-i-download margin-top-1px font-size-20px"></span>
+
+                  <strong class = "float-left">{{'Common.Label.Items' | translate: {'value': emergencyContactCount} }}</strong>
+
+                  <button  (click)="addEmergencyContacts()" class="k-button btn-w100px-h35px font-khmer-cursive float-right"  kendoButton [look]="'outline'">
+                    <span class="k-icon k-i-plus-circle "></span>
                     <span class="margin-top-5px margin-left-5px">Add</span>
                   </button>
                 </div>
+
+                <kendo-grid
+                  [data]="emergencyContacts"
+                  kendoGridSelectBy="id"
+                  [selectedKeys]="mySelection"
+                  [pageSize]="pageSize"
+                  [rowClass]="rowCallback"
+                  [skip]="skip"
+                  [pageable]="true"
+                  [sortable]="true"
+                  [groupable]="false"
+                  [reorderable]="true"
+                  [resizable]="true"
+                  [pageable]="{
+                    buttonCount: buttonCount,
+                    info: info,
+                    type: type,
+                    pageSizes: pageSizes,
+                    previousNext: previousNext}"
+                    (pageChange)="pageChange($event)"
+                  [height]="250"
+                >
+                    <kendo-grid-checkbox-column class="cen" [width]="45" [resizable]="false" [columnMenu]="true" showSelectAll="true"></kendo-grid-checkbox-column>
+
+                    <kendo-grid-column width="50" class="cen" [sortable]="false" field="no" title="{{'Common.Label.No' | translate}}">
+                        <ng-template kendoGridCellTemplate let-dataItem let-rowIndex="rowIndex">
+                            <span>{{rowIndex + 1}}</span>
+                        </ng-template>
+                    </kendo-grid-column>
+
+                    <kendo-grid-column width="150" class="subj" field="name" title="{{'UserAdd.Label.Institution' | translate}}">
+                      <ng-template kendoGridCellTemplate let-dataItem let-rowIndex="rowIndex">
+                        <span>{{dataItem.institution}}</span>
+                      </ng-template>
+                    </kendo-grid-column>
+                    <kendo-grid-column width="190" class="subj" field="relationship" title="{{'UserAdd.Label.Subject' | translate}}"></kendo-grid-column>
+                    <kendo-grid-column width="190" class="subj font-khmer-cursive" field="phone" title="{{'UserAdd.Label.StartingDate' | translate}}"></kendo-grid-column>
+                    <kendo-grid-column width="190" class="subj font-khmer-cursive" field="phone2" title="{{'UserAdd.Label.CompleteDate' | translate}}"></kendo-grid-column>
+
+                    <kendo-grid-column width="50" class="cen" [sortable]="false" field="edit" title="{{'Common.Button.Edit' | translate}}">
+                        <ng-template kendoGridCellTemplate let-dataItem let-rowIndex="rowIndex">
+                            <button (click)="sliceEmergencyContact(dataItem, rowIndex)" class="k-button k-button-edit btn-w100px-h35px font-khmer-cursive btn-add-00 v-card-identy k-float-left" (click)="edit(dataItem)" style = "border-radius: 50% !important;">
+                                <span class="k-icon k-i-minus-circle i-font"></span>
+                            </button>
+                        </ng-template>
+                    </kendo-grid-column>
+
+                  </kendo-grid>
+
                 <!-- grid  -->
               </ng-container>
 
@@ -236,19 +343,19 @@
                   <div class="form-group col-md-6  margin-bottom-0">
                       <label class="font-khmer-cursive">Name</label>
                       <span class="text-danger"> *</span>
-                      <input type="text" [ngClass]="productName? 'active-input' : ''" class="form-control font-khmer-cursive" [(ngModel)]="productName" placeholder="{{'Product.Holder.EnterProductName' | translate}}">
+                      <input type="text" [ngClass]="familyInformation.name" class="form-control font-khmer-cursive" [(ngModel)]="familyInformation.name" placeholder="{{'Product.Holder.EnterProductName' | translate}}">
 
                       <div class="in_box">
-                          <button type="button" [ngClass]="productName? 'btn_del' : ''" (click)="buttonX('productName')" tabindex=-1 class="btn" tabindex=-1 tabindex=-1></button>
+                          <button type="button" [ngClass]="familyInformation.name" (click)="buttonX('productName')" tabindex=-1 class="btn" tabindex=-1 tabindex=-1></button>
                       </div>
                   </div>
                   <div class="form-group col-md-6 margin-bottom-0">
                       <label class="font-khmer-cursive">Relationship </label>
                       <span class="text-danger"> *</span>
-                      <input type="text" [ngClass]="productName? 'active-input' : ''" class="form-control font-khmer-cursive" [(ngModel)]="productName" placeholder="{{'Product.Holder.EnterProductName' | translate}}">
+                      <input type="text" [ngClass]="familyInformation.relationship" class="form-control font-khmer-cursive" [(ngModel)]="familyInformation.relationship" placeholder="{{'Product.Holder.EnterProductName' | translate}}">
 
                       <div class="in_box">
-                          <button type="button" [ngClass]="productName? 'btn_del' : ''" (click)="buttonX('productName')" tabindex=-1 class="btn" tabindex=-1 tabindex=-1></button>
+                          <button type="button" [ngClass]="familyInformation.relationship" (click)="buttonX('productName')" tabindex=-1 class="btn" tabindex=-1 tabindex=-1></button>
                       </div>
 
                   </div>
@@ -257,30 +364,78 @@
                 <div class="form-row ">
                   <div class="form-group col-md-6 margin-bottom-0">
                       <label class="font-khmer-cursive">Phone </label>
-                      <input type="text" [ngClass]="productName? 'active-input' : ''" class="form-control font-khmer-cursive" [(ngModel)]="productName" placeholder="{{'Product.Holder.EnterProductName' | translate}}">
+                      <input type="text" [ngClass]="familyInformation.phone" class="form-control font-khmer-cursive" [(ngModel)]="familyInformation.phone" placeholder="{{'Product.Holder.EnterProductName' | translate}}">
 
                       <div class="in_box">
-                          <button type="button" [ngClass]="productName? 'btn_del' : ''" (click)="buttonX('productName')" tabindex=-1 class="btn" tabindex=-1 tabindex=-1></button>
+                          <button type="button" [ngClass]="familyInformation.phone" (click)="buttonX('productName')" tabindex=-1 class="btn" tabindex=-1 tabindex=-1></button>
                       </div>
                   </div>
                   <div class="form-group col-md-6 margin-bottom-0">
                       <label class="font-khmer-cursive">Description</label>
-                      <input type="text" [ngClass]="productName? 'active-input' : ''" class="form-control font-khmer-cursive" [(ngModel)]="productName" placeholder="{{'Product.Holder.EnterProductName' | translate}}">
+                      <input type="text" [ngClass]="familyInformation.description" class="form-control font-khmer-cursive" [(ngModel)]="familyInformation.description" placeholder="{{'Product.Holder.EnterProductName' | translate}}">
 
                       <div class="in_box">
-                          <button type="button" [ngClass]="productName? 'btn_del' : ''" (click)="buttonX('productName')" tabindex=-1 class="btn" tabindex=-1 tabindex=-1></button>
+                          <button type="button" [ngClass]="familyInformation.description" (click)="buttonX('productName')" tabindex=-1 class="btn" tabindex=-1 tabindex=-1></button>
                       </div>
                   </div>
                 </div>
 
                 <div class="c_btn">
-                  <button  (click)="save()" class="k-button btn-w100px-h35px font-khmer-cursive float-right"  kendoButton [look]="'outline'">
-                    <span class="k-icon k-i-download margin-top-1px font-size-20px"></span>
+                  <strong class = "float-left">{{'Common.Label.Items' | translate: {'value': familyInformationCount} }}</strong>
+                  <button  (click)="addFamilyInformation()" class="k-button btn-w100px-h35px font-khmer-cursive float-right"  kendoButton [look]="'outline'">
+                    <span class="k-icon k-i-plus-circle"></span>
                     <span class="margin-top-5px margin-left-5px">Add</span>
                   </button>
                 </div>
+
+
+                <kendo-grid
+                [data]="familyInformations"
+                kendoGridSelectBy="id"
+                [selectedKeys]="mySelection"
+                [pageSize]="pageSize"
+                [rowClass]="rowCallback"
+                [skip]="skip"
+                [pageable]="true"
+                [sortable]="true"
+                [groupable]="false"
+                [reorderable]="true"
+                [resizable]="true"
+                [pageable]="{
+                  buttonCount: buttonCount,
+                  info: info,
+                  type: type,
+                  pageSizes: pageSizes,
+                  previousNext: previousNext}"
+                  (pageChange)="pageChange($event)"
+                [height]="250"
+              >
+                  <kendo-grid-checkbox-column class="cen" [width]="45" [resizable]="false" [columnMenu]="true" showSelectAll="true"></kendo-grid-checkbox-column>
+
+                  <kendo-grid-column width="50" class="cen" [sortable]="false" field="no" title="{{'Common.Label.No' | translate}}">
+                      <ng-template kendoGridCellTemplate let-dataItem let-rowIndex="rowIndex">
+                          <span>{{rowIndex + 1}}</span>
+                      </ng-template>
+                  </kendo-grid-column>
+
+                  <kendo-grid-column width="150" class="subj" field="name" title="{{'UserAdd.Label.Institution' | translate}}"></kendo-grid-column>
+                  <kendo-grid-column width="190" class="subj" field="relationship" title="{{'UserAdd.Label.Subject' | translate}}"></kendo-grid-column>
+                  <kendo-grid-column width="190" class="subj font-khmer-cursive" field="phone" title="{{'UserAdd.Label.StartingDate' | translate}}"></kendo-grid-column>
+                  <kendo-grid-column width="190" class="subj font-khmer-cursive" field="description" title="{{'UserAdd.Label.CompleteDate' | translate}}"></kendo-grid-column>
+
+                  <kendo-grid-column width="50" class="cen" [sortable]="false" field="edit" title="{{'Common.Button.Edit' | translate}}">
+                      <ng-template kendoGridCellTemplate let-dataItem let-rowIndex="rowIndex">
+                          <button (click)="sliceFamilyInformation(dataItem, rowIndex)" class="k-button k-button-edit btn-w100px-h35px font-khmer-cursive btn-add-00 v-card-identy k-float-left" (click)="edit(dataItem)" style = "border-radius: 50% !important;">
+                              <span class="k-icon k-i-minus-circle i-font"></span>
+                          </button>
+                      </ng-template>
+                  </kendo-grid-column>
+
+                </kendo-grid>
+
                 <!-- grid  -->
               </ng-container>
+
 
             <!-- </div> -->
           </div>
@@ -295,7 +450,7 @@
               <span class="margin-top-5px margin-left-5px">{{'Common.Button.Close'|translate}}</span>
           </button>
 
-          <button  (click)="save()" class="k-button btn-w100px-h35px font-khmer-cursive"  kendoButton [look]="'outline'">
+          <button  (click)="save()" class="k-button btn-w100px-h35px font-khmer-cursive"  kendoButton [look]="'outline'" *ngIf="currentStep == 3">
               <span class="k-icon k-i-download margin-top-1px font-size-20px"></span>
               <span class="margin-top-5px margin-left-5px">{{'Common.Button.Save'|translate}}</span>
           </button>
@@ -308,6 +463,7 @@
                   <span class="k-icon k-i-arrow-left margin-top-1px font-size-20px"></span>
                     <span class="margin-lef-5px">{{'Common.Button.Previous' | translate}}</span>
                 </button>
+
                 <button class="k-button btn-w100px-h35px font-khmer-cursive btn-add-00" (click)="next(currentStep)" *ngIf="currentStep !== 3">
                   <span class="margin-lef-5px">{{'Common.Button.Next' | translate}}</span>
                   <span class="k-icon k-i-arrow-right margin-top-1px font-size-20px"></span>
