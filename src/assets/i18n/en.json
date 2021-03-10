@@ -126,6 +126,16 @@
       "EnterPhone":"Enter phone",
       "EnterEmail":"Enter email"
     }
+  },
+  "UserAuthentication":{
+    "Label": {
+      "UserID":"User ID",
+      "UserName":"User Name",
+      "Password":"Password",
+      "ConfirmPassword":"Confirm Password",
+      "Role":"Role",
+      "Part":"Part"
+    }
   }
 
 }

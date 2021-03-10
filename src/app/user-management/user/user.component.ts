@@ -11,6 +11,7 @@ import { Message } from '../../m-share/model/message';
 import { ID } from '../../m-share/model/id';
 import { TranslateService } from '@ngx-translate/core';
 import { UserAddComponent } from '../user-add/user-add.component';
+import { UserAuthenticationAddComponent } from '../user-authentication-add/user-authentication-add.component';
 declare const $: any;
 @Component({
   selector: 'app-user',
@@ -39,6 +40,17 @@ export class UserComponent implements OnInit {
   add(): void {
     this.modalService.open({
       content: UserAddComponent,
+      callback: response => {
+        if (response.close === ButtonRoles.save) {
+          // this.inquiry();
+        }
+      }
+    });
+  }
+
+  addUser(): void {
+    this.modalService.open({
+      content: UserAuthenticationAddComponent,
       callback: response => {
         if (response.close === ButtonRoles.save) {
           // this.inquiry();

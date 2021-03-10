@@ -161,13 +161,16 @@ export class HttpService {
         $('body').addClass('loaded');
         $('div.loading').addClass('none');
         const responseDataFromServer = rest as any;
+        console.log('responseDataFromServer', responseDataFromServer);
+
         // interceptor ready alert message mean that error 401
         if (responseDataFromServer.result === false) {
           return;
-        } else {
+        } else if (responseDataFromServer.result != false) {
           const responseData = JSON.parse(responseDataFromServer);
           const rawData = responseData.body;
           const decryptData = JSON.parse(this.cryptoService.decrypt(String(rawData)));
+          console.log('responseDataFromServer', decryptData);
           if (decryptData.error && decryptData.error.code === 'N') {
             this.message(responseDataFromServer.error.message);
             reject();

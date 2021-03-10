@@ -11,6 +11,7 @@ import { UserRoleAddComponent } from './user-role-add/user-role-add.component';
 import { UserRoleEditComponent } from './user-role-edit/user-role-edit.component';
 import { MShareModule } from '../m-share/m-share.module';
 import { UserManagementRoutingModule } from './user-management-routing.module';
+import { UserAuthenticationAddComponent } from './user-authentication-add/user-authentication-add.component';
 
 
 
@@ -24,7 +25,8 @@ import { UserManagementRoutingModule } from './user-management-routing.module';
     UserAccountEditComponent,
     UserRoleComponent,
     UserRoleAddComponent,
-    UserRoleEditComponent
+    UserRoleEditComponent,
+    UserAuthenticationAddComponent
   ],
   imports: [
     CommonModule,

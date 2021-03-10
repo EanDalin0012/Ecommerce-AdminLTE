@@ -1,0 +1,10 @@
+.in{
+  position: relative !important;
+  opacity: 1 !important;
+}
+.white {
+  background: white;
+}
+.border-right {
+  border-right: 1px solid #e0dcd7;
+}
