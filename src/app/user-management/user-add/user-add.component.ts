@@ -128,14 +128,10 @@ export class UserAddComponent implements OnInit {
    }
 
   ngOnInit(): void {
-    this.inquiryCategory();
-    // this.educationInformationId += 1;
-    // this.educationInformations.push( { id: this.educationInformationId, institution: 'RUPP', subject: 'Computer', startingDate: '20210308', completeDate: '20210308', degree: '20210308', grade: 'A'});
-    // this.gridData      = this.educationInformations;
-    // this.loadingData(this.educationInformations);
+    this.init();
   }
 
-  inquiryCategory(): void {
+  init(): void {
       this.maritalStatusList = maritalStatus;
   }
 
@@ -290,6 +286,9 @@ export class UserAddComponent implements OnInit {
 
   public next(value: number): void {
     console.log(value);
+    if (this.isValidPersonalInfo() === true){
+      this.currentStep += 1;
+    }
     // if(value === 0) {
     //   if(this.checkUserInfo()) {
     //     this.stepsIcons[0].isValid =  true;
@@ -311,14 +310,51 @@ export class UserAddComponent implements OnInit {
     //   this.currentStep += 1;
     // }
 
-    this.currentStep += 1;
+    // this.currentStep += 1;
   }
 
   public prev(): void {
       this.currentStep -= 1;
   }
 
+  valueChangeMaritalStatus($event) {
+    console.log($event);
+  }
+
+  isValidPersonalInfo(): boolean {
+    console.log(this.personalInfo);
+    console.log(this.maritalStatus);
+    if (!this.personalInfo.firstName) {
+      this.modalService.alert({
+        content: this.translate.instant('UserAdd.Message.InvalidFirstName'),
+        btnText: this.translate.instant('Common.Button.Confirm'),
+        callback: response => {
+        }
+      });
+      return false;
+    } else if (!this.personalInfo.lastName) {
+      this.modalService.alert({
+        content: this.translate.instant('UserAdd.Message.InvalidLastName'),
+        btnText: this.translate.instant('Common.Button.Confirm'),
+        callback: response => { }
+      });
+      return false;
+    } else if (!this.maritalStatus){
+      console.log(!this.maritalStatus);
+
+      this.modalService.alert({
+        content: this.translate.instant('UserAdd.Message.SelectMaritalStatus'),
+        btnText: this.translate.instant('Common.Button.Confirm'),
+        callback: response => { }
+      });
+    }
+    else {
+      return true;
+    }
+  }
+
   addEducation(): void {
+
     this.educationInformationId += 1;
     this.educationInformation.id  = this.educationInformationId;
     this.educationInformation.startingDate = this.dateForm(this.startingDate);
@@ -343,6 +379,16 @@ export class UserAddComponent implements OnInit {
 
   sliceEducation(dataItem: any, index): void {
     this.educationInformations.splice(index, 1);
+  }
+
+  educationValid(): boolean {
+    if (this.educationInformation.institution != (null || undefined || '')) {
+      return false;
+    } else if (this.educationInformation.subject != (null || undefined || '')) {
+      return false;
+    } else {
+      return true;
+    }
   }
 
   addEmergencyContacts(): void {

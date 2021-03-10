@@ -47,8 +47,17 @@
                   <div class="form-group col-md-6  margin-bottom-15px">
                       <label class="font-khmer-cursive">{{'UserAdd.Label.Gender' | translate}}</label>
                       <span class="text-danger"> *</span>
-                      <kendo-dropdownlist [ngClass] = "{'active-input' : maritalStatus}" [data]="genders" [filterable]="false" [textField]="'name'" [valueField]="'id'" [kendoDropDownFilter]="filterSettings" [popupSettings]="{ popupClass: 'search_filter_pop' }" [(ngModel)]="maritalStatus" [ngModelOptions]="{standalone:
-                        true}" [defaultItem]="defaultGender">
+                      <kendo-dropdownlist
+                        [ngClass] = "{'active-input' : maritalStatus}"
+                        [data]="genders"
+                        [filterable]="false"
+                        [textField]="'name'"
+                        [valueField]="'id'"
+                        [kendoDropDownFilter]="filterSettings"
+                        [popupSettings]="{ popupClass: 'search_filter_pop' }"
+                        [(value)]="maritalStatus"
+                        [defaultItem]="defaultGender"
+                        (valueChange) ="valueChangeMaritalStatus($event)">
                             <ng-template kendoDropDownListValueTemplate let-dataItem>
                                 <span class="template font-khmer-cursive">{{ dataItem.text}}</span>
                             </ng-template>

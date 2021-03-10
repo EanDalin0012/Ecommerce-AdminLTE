@@ -125,6 +125,11 @@
       "EnterLastName":"Enter last name",
       "EnterPhone":"Enter phone",
       "EnterEmail":"Enter email"
+    },
+    "Message": {
+      "InvalidFirstName":"First Name is empty | null.",
+      "InvalidLastName":"Last Name is empty | null.",
+      "SelectMaritalStatus":"Marital Status invalid."
     }
   },
   "UserAuthentication":{
