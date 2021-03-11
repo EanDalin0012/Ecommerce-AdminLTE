@@ -41,26 +41,16 @@ export class UserAddComponent implements OnInit {
       allowedExtensions: ['.jpg', '.png']
   };
 
-  defaultMaritalStatus = {
-    text: 'Select Marital Status',
-    code: 'NA'
-  };
+  maritalStatusList: any [];
+  maritalStatusValue: string;
 
-  defaultGender = {
-    text: 'Select Gender',
-    code: 'NA'
-  };
-  genders = gender;
+  genders: any [];
   gender: any;
-
+  genderValue: string;
   filterSettings: DropDownFilterSettings = {
     caseSensitive: false,
     operator: 'startsWith'
   };
-
-  maritalStatusList = new Array<MaritalStatus>();
-  maritalStatus: MaritalStatus;
-
 
   stepsIcons = [
     { label: 'Personal Info',  isValid: true },
@@ -132,7 +122,10 @@ export class UserAddComponent implements OnInit {
   }
 
   init(): void {
-      this.maritalStatusList = maritalStatus;
+      this.genders = [ {text: '-- Select Gender --', code: 'NA'}, ...gender];
+      this.genderValue = this.genders[0].code;
+      this.maritalStatusList = [{text: '-- Select Marital Status --', code: 'NA'}, ...maritalStatus];
+      this.maritalStatusValue = this.maritalStatusList[0].code;
   }
 
   save(): void {
@@ -155,7 +148,7 @@ export class UserAddComponent implements OnInit {
   }
 
   private isValid(): boolean {
-    if (!this.maritalStatus) {
+    if (!this.maritalStatusValue) {
       this.alertMessage(this.translate.instant('Common.Label.DeleteItems'), 'Select Category');
       return false;
     } else if (!this.productName || this.productName && this.productName.trim() === '' || this.productName && this.productName === null) {
@@ -264,18 +257,24 @@ export class UserAddComponent implements OnInit {
   }
 
   public onStepActivate(ev: StepperActivateEvent): void {
-    if (ev.index === this.stepsIcons.length - 1) {
+    if(ev) {
+      if (ev.index === this.stepsIcons.length - 1) {
+        console.log(ev.index, this.stepsIcons.length - 1);
+
         ev.preventDefault();
         this.currentStep =  this.stepsIcons.length - 1;
         console.log('Please fill previous steps');
+      }
+      this.stepsIcons[0].isValid = this.checkUserInfoActivated();
+      this.stepsIcons[2].isValid = this.checkCardIdentyfyActivated();
+      console.log(`Step ${ev.index} was activated`);
+      console.log(ev.index, ev);
+      this.currentStep = ev.index;
     }
-    this.stepsIcons[0].isValid = this.checkUserInfoActivated();
-    this.stepsIcons[2].isValid = this.checkCardIdentyfyActivated();
-    console.log(`Step ${ev.index} was activated`);
-    console.log(ev);
+
   }
 
-  checkUserInfoActivated():boolean {
+  checkUserInfoActivated(): boolean {
     return true;
   }
 
@@ -286,8 +285,10 @@ export class UserAddComponent implements OnInit {
 
   public next(value: number): void {
     console.log(value);
-    if (this.isValidPersonalInfo() === true){
-      this.currentStep += 1;
+    if (this.currentStep === 0){
+      if (this.isValidPersonalInfo() === true) {
+        this.currentStep += 1;
+      }
     }
     // if(value === 0) {
     //   if(this.checkUserInfo()) {
@@ -315,15 +316,25 @@ export class UserAddComponent implements OnInit {
 
   public prev(): void {
       this.currentStep -= 1;
+      console.log(this.genderValue);
   }
 
-  valueChangeMaritalStatus($event) {
-    console.log($event);
+  changeValueMaritalStatus(event): void {
+    if (event) {
+      this.maritalStatusValue = event.target.value;
+    }
+  }
+
+  changeValueGender(event): void {
+    if (event) {
+      this.genderValue = event.target.value;
+      console.log(this.genderValue);
+    }
   }
 
   isValidPersonalInfo(): boolean {
     console.log(this.personalInfo);
-    console.log(this.maritalStatus);
+    console.log(this.maritalStatusValue);
     if (!this.personalInfo.firstName) {
       this.modalService.alert({
         content: this.translate.instant('UserAdd.Message.InvalidFirstName'),
@@ -339,40 +350,81 @@ export class UserAddComponent implements OnInit {
         callback: response => { }
       });
       return false;
-    } else if (!this.maritalStatus){
-      console.log(!this.maritalStatus);
-
+    } else if (this.genderValue === 'NA'){
+      this.modalService.alert({
+        content: this.translate.instant('UserAdd.Message.SelectGender'),
+        btnText: this.translate.instant('Common.Button.Confirm'),
+        callback: response => { }
+      });
+      return false;
+    } else if (!this.personalInfo.phone) {
+      this.modalService.alert({
+        content: this.translate.instant('UserAdd.Message.InValidPhone'),
+        btnText: this.translate.instant('Common.Button.Confirm'),
+        callback: response => { }
+      });
+      return false;
+    } else if (!this.personalInfo.nationalID){
+      this.modalService.alert({
+        content: this.translate.instant('UserAdd.Message.InValidNationalID'),
+        btnText: this.translate.instant('Common.Button.Confirm'),
+        callback: response => { }
+      });
+      return false;
+    } else if (!this.personalInfo.nationality){
+      this.modalService.alert({
+        content: this.translate.instant('UserAdd.Message.InValidNationality'),
+        btnText: this.translate.instant('Common.Button.Confirm'),
+        callback: response => { }
+      });
+      return false;
+    } else if (!this.personalInfo.religion){
+      this.modalService.alert({
+        content: this.translate.instant('UserAdd.Message.InValidReligion'),
+        btnText: this.translate.instant('Common.Button.Confirm'),
+        callback: response => { }
+      });
+      return false;
+    } else if (this.maritalStatusValue === 'NA'){
       this.modalService.alert({
         content: this.translate.instant('UserAdd.Message.SelectMaritalStatus'),
         btnText: this.translate.instant('Common.Button.Confirm'),
         callback: response => { }
       });
-    }
-    else {
+      return false;
+    } else if (!this.birthDate) {
+      this.modalService.alert({
+        content: this.translate.instant('UserAdd.Message.InValidBirthDate'),
+        btnText: this.translate.instant('Common.Button.Confirm'),
+        callback: response => { }
+      });
+      return false;
+    } else {
       return true;
     }
   }
 
   addEducation(): void {
-
-    this.educationInformationId += 1;
-    this.educationInformation.id  = this.educationInformationId;
-    this.educationInformation.startingDate = this.dateForm(this.startingDate);
-    this.educationInformation.completeDate = this.dateForm(this.completeDate);
-    if (this.educationInformation != null) {
-        this.educationInformations.push({
-              id: this.educationInformationId,
-              institution: this.educationInformation.institution,
-              subject: this.educationInformation.subject,
-              startingDate: this.educationInformation.startingDate,
-              completeDate: this.educationInformation.completeDate,
-              degree: this.educationInformation.degree,
-              grade: this.educationInformation.grade
-            });
-        this.gridData      = this.educationInformations;
-        this.educationInformationCount = this.educationInformations.length;
-        this.loadingData(this.educationInformations);
-        this.educationInformation = new EducationInformation();
+    if (this.educationValid() === true) {
+      this.educationInformationId += 1;
+      this.educationInformation.id  = this.educationInformationId;
+      this.educationInformation.startingDate = this.dateForm(this.startingDate);
+      this.educationInformation.completeDate = this.dateForm(this.completeDate);
+      if (this.educationInformation != null) {
+          this.educationInformations.push({
+                id: this.educationInformationId,
+                institution: this.educationInformation.institution,
+                subject: this.educationInformation.subject,
+                startingDate: this.educationInformation.startingDate,
+                completeDate: this.educationInformation.completeDate,
+                degree: this.educationInformation.degree,
+                grade: this.educationInformation.grade
+              });
+          this.gridData      = this.educationInformations;
+          this.educationInformationCount = this.educationInformations.length;
+          this.loadingData(this.educationInformations);
+          this.educationInformation = new EducationInformation();
+      }
     }
   }
 
@@ -382,9 +434,40 @@ export class UserAddComponent implements OnInit {
   }
 
   educationValid(): boolean {
-    if (this.educationInformation.institution != (null || undefined || '')) {
+    if (!this.educationInformation.institution) {
+      this.modalService.alert({
+        content: this.translate.instant('UserAdd.Message.InValidInstitution'),
+        btnText: this.translate.instant('Common.Button.Confirm'),
+        callback: response => { }
+      });
       return false;
-    } else if (this.educationInformation.subject != (null || undefined || '')) {
+    } else if (!this.educationInformation.subject) {
+      this.modalService.alert({
+        content: this.translate.instant('UserAdd.Message.InValidSubject'),
+        btnText: this.translate.instant('Common.Button.Confirm'),
+        callback: response => { }
+      });
+      return false;
+    } else if (!this.startingDate) {
+      this.modalService.alert({
+        content: this.translate.instant('UserAdd.Message.InValidStartingDate'),
+        btnText: this.translate.instant('Common.Button.Confirm'),
+        callback: response => { }
+      });
+      return false;
+    } else if (!this.completeDate) {
+      this.modalService.alert({
+        content: this.translate.instant('UserAdd.Message.InValidCompleteDate'),
+        btnText: this.translate.instant('Common.Button.Confirm'),
+        callback: response => { }
+      });
+      return false;
+    } else if (!this.educationInformation.degree) {
+      this.modalService.alert({
+        content: this.translate.instant('UserAdd.Message.InValidDegree'),
+        btnText: this.translate.instant('Common.Button.Confirm'),
+        callback: response => { }
+      });
       return false;
     } else {
       return true;

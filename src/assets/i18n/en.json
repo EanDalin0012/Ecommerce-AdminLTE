@@ -124,12 +124,26 @@
       "EnterFirstName":"Enter first name",
       "EnterLastName":"Enter last name",
       "EnterPhone":"Enter phone",
-      "EnterEmail":"Enter email"
+      "EnterEmail":"Enter email",
+      "EnterNationalID":"Enter national ID",
+      "EnterNationality":"Enter nationality",
+      "EnterReligion":"Enter religion"
     },
     "Message": {
       "InvalidFirstName":"First Name is empty | null.",
       "InvalidLastName":"Last Name is empty | null.",
-      "SelectMaritalStatus":"Marital Status invalid."
+      "SelectMaritalStatus":"Marital Status invalid.",
+      "SelectGender":"Gender invalid.",
+      "InValidBirthDate":"Birth date is empty | null.",
+      "InValidPhone":"Phone is empty | null.",
+      "InValidNationalID":"National ID is empty | null.",
+      "InValidNationality":"Nationality is empty | null.",
+      "InValidReligion":"Religion is empty | null.",
+      "InValidInstitution":"Institution is empty | null.",
+      "InValidSubject":"Subject is empty | null.",
+      "InValidStartingDate":"Starting Date is empty | null.",
+      "InValidCompleteDate":"Complete Date is empty | null.",
+      "InValidDegree":"Degree is empty | null."
     }
   },
   "UserAuthentication":{

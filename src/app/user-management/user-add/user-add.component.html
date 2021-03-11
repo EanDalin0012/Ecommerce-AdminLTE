@@ -47,24 +47,9 @@
                   <div class="form-group col-md-6  margin-bottom-15px">
                       <label class="font-khmer-cursive">{{'UserAdd.Label.Gender' | translate}}</label>
                       <span class="text-danger"> *</span>
-                      <kendo-dropdownlist
-                        [ngClass] = "{'active-input' : maritalStatus}"
-                        [data]="genders"
-                        [filterable]="false"
-                        [textField]="'name'"
-                        [valueField]="'id'"
-                        [kendoDropDownFilter]="filterSettings"
-                        [popupSettings]="{ popupClass: 'search_filter_pop' }"
-                        [(value)]="maritalStatus"
-                        [defaultItem]="defaultGender"
-                        (valueChange) ="valueChangeMaritalStatus($event)">
-                            <ng-template kendoDropDownListValueTemplate let-dataItem>
-                                <span class="template font-khmer-cursive">{{ dataItem.text}}</span>
-                            </ng-template>
-                            <ng-template kendoDropDownListItemTemplate let-dataItem>
-                                <span class="template font-khmer-cursive">{{ dataItem.text}}</span>
-                            </ng-template>
-                        </kendo-dropdownlist>
+                      <select class="select floating form-control" [ngClass] = "{'active-input' : genderValue}" (change)="changeValueGender($event)">
+                        <option *ngFor = "let gender of genders" [value]="gender.code" [selected] = "gender.code == genderValue"> {{gender.text}} </option>
+                      </select>
                   </div>
                   <div class="form-group col-md-6 margin-bottom-15px">
                       <label class="font-khmer-cursive">{{'UserAdd.Label.BirthDate' | translate}}</label>
@@ -78,7 +63,7 @@
                   <div class="form-group col-md-6  margin-bottom-0">
                       <label class="font-khmer-cursive">{{'UserAdd.Label.Phone' | translate}}</label>
                       <span class="text-danger"> *</span>
-                      <input type="text" [ngClass]="personalInfo.phone" class="form-control font-khmer-cursive" [(ngModel)]="personalInfo.phone" placeholder="{{'Product.Holder.EnterProductName' | translate}}">
+                      <input type="text" [ngClass]="personalInfo.phone" class="form-control font-khmer-cursive" [(ngModel)]="personalInfo.phone" placeholder="{{'UserAdd.Holder.EnterPhone' | translate}}">
 
                       <div class="in_box">
                           <button type="button" [ngClass]="personalInfo.phone? 'btn_del' : ''" (click)="buttonX('productName')" tabindex=-1 class="btn" tabindex=-1 tabindex=-1></button>
@@ -86,8 +71,7 @@
                   </div>
                   <div class="form-group col-md-6 margin-bottom-0">
                       <label class="font-khmer-cursive">{{'UserAdd.Label.Email' | translate}}</label>
-                      <span class="text-danger"> *</span>
-                      <input type="text" [ngClass]="personalInfo.email" class="form-control font-khmer-cursive" [(ngModel)]="personalInfo.email" placeholder="{{'Product.Holder.EnterProductName' | translate}}">
+                      <input type="text" [ngClass]="personalInfo.email" class="form-control font-khmer-cursive" [(ngModel)]="personalInfo.email" placeholder="{{'UserAdd.Holder.EnterEmail' | translate}}">
 
                       <div class="in_box">
                           <button type="button" [ngClass]="personalInfo.email? 'btn_del' : ''" (click)="buttonX('productName')" tabindex=-1 class="btn" tabindex=-1 tabindex=-1></button>
@@ -100,19 +84,19 @@
                   <div class="form-group col-md-6  margin-bottom-0">
                       <label class="font-khmer-cursive">{{'UserAdd.Label.NationalID' | translate}}</label>
                       <span class="text-danger"> *</span>
-                      <input type="text" [ngClass]="productName? 'active-input' : ''" class="form-control font-khmer-cursive" [(ngModel)]="productName" placeholder="{{'Product.Holder.EnterProductName' | translate}}">
+                      <input type="text" [ngClass]="personalInfo.nationalID" class="form-control font-khmer-cursive" [(ngModel)]="personalInfo.nationalID" placeholder="{{'UserAdd.Holder.EnterNationalID' | translate}}">
 
                       <div class="in_box">
-                          <button type="button" [ngClass]="productName? 'btn_del' : ''" (click)="buttonX('productName')" tabindex=-1 class="btn" tabindex=-1 tabindex=-1></button>
+                          <button type="button" [ngClass]="personalInfo.nationalID? 'btn_del' : ''" (click)="buttonX('productName')" tabindex=-1 class="btn" tabindex=-1 tabindex=-1></button>
                       </div>
                   </div>
                   <div class="form-group col-md-6 margin-bottom-0">
                       <label class="font-khmer-cursive">{{'UserAdd.Label.Nationality' | translate}}</label>
                       <span class="text-danger"> *</span>
-                      <input type="text" [ngClass]="productName? 'active-input' : ''" class="form-control font-khmer-cursive" [(ngModel)]="productName" placeholder="{{'Product.Holder.EnterProductName' | translate}}">
+                      <input type="text" [ngClass]="personalInfo.nationality" class="form-control font-khmer-cursive" [(ngModel)]="personalInfo.nationality" placeholder="{{'UserAdd.Holder.EnterNationality' | translate}}">
 
                       <div class="in_box">
-                          <button type="button" [ngClass]="productName? 'btn_del' : ''" (click)="buttonX('productName')" tabindex=-1 class="btn" tabindex=-1 tabindex=-1></button>
+                          <button type="button" [ngClass]="personalInfo.nationality? 'btn_del' : ''" (click)="buttonX('productName')" tabindex=-1 class="btn" tabindex=-1 tabindex=-1></button>
                       </div>
                   </div>
                 </div>
@@ -121,24 +105,18 @@
                   <div class="form-group col-md-6 margin-bottom-0">
                       <label class="font-khmer-cursive">{{'UserAdd.Label.Religion' | translate}}</label>
                       <span class="text-danger"> *</span>
-                      <input type="text" [ngClass]="productName? 'active-input' : ''" class="form-control font-khmer-cursive" [(ngModel)]="productName" placeholder="{{'Product.Holder.EnterProductName' | translate}}">
+                      <input type="text" [ngClass]="personalInfo.religion" class="form-control font-khmer-cursive" [(ngModel)]="personalInfo.religion" placeholder="{{'UserAdd.Holder.EnterReligion' | translate}}">
 
                       <div class="in_box">
-                          <button type="button" [ngClass]="productName? 'btn_del' : ''" (click)="buttonX('productName')" tabindex=-1 class="btn" tabindex=-1 tabindex=-1></button>
+                          <button type="button" [ngClass]="personalInfo.religion? 'btn_del' : ''" (click)="buttonX('productName')" tabindex=-1 class="btn" tabindex=-1 tabindex=-1></button>
                       </div>
                   </div>
                   <div class="form-group col-md-6 margin-bottom-0">
                       <label class="font-khmer-cursive">{{'UserAdd.Label.MaritalStatus' | translate}}</label>
                       <span class="text-danger"> *</span>
-                      <kendo-dropdownlist [ngClass] = "{'active-input' : maritalStatus}" [data]="maritalStatusList" [filterable]="false" [textField]="'name'" [valueField]="'id'" [kendoDropDownFilter]="filterSettings" [popupSettings]="{ popupClass: 'search_filter_pop' }" [(ngModel)]="maritalStatus" [ngModelOptions]="{standalone:
-                        true}" [defaultItem]="defaultMaritalStatus">
-                            <ng-template kendoDropDownListValueTemplate let-dataItem>
-                                <span class="template font-khmer-cursive">{{ dataItem.text}}</span>
-                            </ng-template>
-                            <ng-template kendoDropDownListItemTemplate let-dataItem>
-                                <span class="template font-khmer-cursive">{{ dataItem.text}}</span>
-                            </ng-template>
-                        </kendo-dropdownlist>
+                      <select class="select floating form-control" [ngClass] = "{'active-input' : maritalStatusValue}" (change)="changeValueMaritalStatus($event)">
+                        <option *ngFor = "let maritalStatus of maritalStatusList" [value]="maritalStatus.code" [selected] = "maritalStatus.code == maritalStatusValue"> {{maritalStatus.text}} </option>
+                      </select>
 
                   </div>
                 </div>
@@ -146,9 +124,9 @@
                 <div class="form-row">
                   <div class="form-group form-group-last col-md-12">
                       <label class="font-khmer-cursive">{{'Product.Label.Description' | translate}}</label>
-                      <input type="text" [ngClass]="description? 'active-input' : ''" [(ngModel)]="description" placeholder="{{'Product.Holder.EnterDescription' | translate}}" class="form-control font-khmer-cursive">
+                      <input type="text" [ngClass]="personalInfo.description" [(ngModel)]="personalInfo.description" placeholder="{{'Product.Holder.EnterDescription' | translate}}" class="form-control font-khmer-cursive">
                       <div class="in_box">
-                          <button type="button" [ngClass]="description? 'btn_del' : ''" (click)="buttonX('description')" tabindex=-1 class="btn" tabindex=-1 tabindex=-1></button>
+                          <button type="button" [ngClass]="personalInfo.description? 'btn_del' : ''" (click)="buttonX('description')" tabindex=-1 class="btn" tabindex=-1 tabindex=-1></button>
                       </div>
                   </div>
                 </div>
