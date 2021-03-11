@@ -110,7 +110,8 @@ export class HttpService {
               const rawData = responseData.body;
               const decryptData = JSON.parse(this.cryptoService.decrypt(String(rawData)));
               console.log(decryptData);
-              if ( decryptData.error != null && decryptData.error.code === 'N') {
+              if ( decryptData.error && decryptData.error.code === 'N') {
+                console.log(decryptData.error);
                 this.message(decryptData.error.message);
                 reject();
               } else {
@@ -172,7 +173,7 @@ export class HttpService {
           const decryptData = JSON.parse(this.cryptoService.decrypt(String(rawData)));
           console.log('responseDataFromServer', decryptData);
           if (decryptData.error && decryptData.error.code === 'N') {
-            this.message(responseDataFromServer.error.message);
+            this.message(decryptData.error.message);
             reject();
           } else {
             resolve(decryptData.body);
@@ -186,7 +187,7 @@ export class HttpService {
 
    private message(message: string): void {
     this.modalService.alert({
-      content:  '<h2>' + message + '</h2>',
+      content:  '<h4>' + message + '</h4>',
       modalClass: ['pop_confirm open-alert'],
       btnText: 'Confirm',
       callback: (res) => {

@@ -21,13 +21,6 @@ export class LoginComponent implements OnInit, OnDestroy {
     this.password = 'admin1234';
     this.userName = 'admin';
     $('body').addClass('hold-transition login-page');
-    $(() => {
-      $('input').iCheck({
-        checkboxClass: 'icheckbox_square-blue',
-        radioClass: 'iradio_square-blue',
-        increaseArea: '20%' /* optional */
-      });
-    });
     this.rememberMe = Utils.getSecureStorage('remember_me');
     if (this.rememberMe === true) {
       this.userName = Utils.getSecureStorage('user_id');

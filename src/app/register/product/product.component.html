@@ -69,7 +69,7 @@
 
               <kendo-grid-column width="40" class="cen" [sortable]="false" field="no" title="{{'Common.Label.No' | translate}}">
                   <ng-template kendoGridCellTemplate let-dataItem let-rowIndex="rowIndex">
-                      <p>{{rowIndex + 1}}</p>
+                      <span>{{rowIndex + 1}}</span>
                   </ng-template>
               </kendo-grid-column>
 
