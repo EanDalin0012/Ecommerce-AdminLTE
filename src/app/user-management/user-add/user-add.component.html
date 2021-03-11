@@ -288,18 +288,18 @@
               <ng-container *ngIf="currentStep === 2">
                 <div class="form-row">
                   <div class="form-group col-md-6  margin-bottom-0">
-                      <label class="font-khmer-cursive">Name</label>
+                      <label class="font-khmer-cursive">{{'UserAdd.Label.Name' | translate}}</label>
                       <span class="text-danger"> *</span>
-                      <input type="text" [ngClass]="emergencyContact.name" class="form-control font-khmer-cursive" [(ngModel)]="emergencyContact.name" placeholder="{{'Product.Holder.EnterProductName' | translate}}">
+                      <input type="text" [ngClass]="emergencyContact.name" class="form-control font-khmer-cursive" [(ngModel)]="emergencyContact.name" placeholder="{{'UserAdd.Holder.EnterName' | translate}}">
 
                       <div class="in_box">
                           <button type="button" [ngClass]="emergencyContact.name" (click)="buttonX('productName')" tabindex=-1 class="btn" tabindex=-1 tabindex=-1></button>
                       </div>
                   </div>
                   <div class="form-group col-md-6 margin-bottom-0">
-                      <label class="font-khmer-cursive">Relationship</label>
+                      <label class="font-khmer-cursive">{{'UserAdd.Label.Relationship' | translate}}</label>
                       <span class="text-danger"> *</span>
-                      <input type="text" [ngClass]="emergencyContact.relationship" class="form-control font-khmer-cursive" [(ngModel)]="emergencyContact.relationship" placeholder="{{'Product.Holder.EnterProductName' | translate}}">
+                      <input type="text" [ngClass]="emergencyContact.relationship" class="form-control font-khmer-cursive" [(ngModel)]="emergencyContact.relationship" placeholder="{{'UserAdd.Holder.EnterRelationship' | translate}}">
 
                       <div class="in_box">
                           <button type="button" [ngClass]="emergencyContact.relationship" (click)="buttonX('productName')" tabindex=-1 class="btn" tabindex=-1 tabindex=-1></button>
@@ -310,17 +310,17 @@
 
                 <div class="form-row ">
                   <div class="form-group col-md-6 margin-bottom-0">
-                      <label class="font-khmer-cursive">Phone </label>
+                      <label class="font-khmer-cursive">{{'UserAdd.Label.Phone' | translate}} </label>
                       <span class="text-danger"> *</span>
-                      <input type="text" [ngClass]="emergencyContact.phone" class="form-control font-khmer-cursive" [(ngModel)]="emergencyContact.phone" placeholder="{{'Product.Holder.EnterProductName' | translate}}">
+                      <input type="text" [ngClass]="emergencyContact.phone" class="form-control font-khmer-cursive" [(ngModel)]="emergencyContact.phone" placeholder="{{'UserAdd.Holder.EnterPhone' | translate}}">
 
                       <div class="in_box">
                           <button type="button" [ngClass]="emergencyContact.phone" (click)="buttonX('productName')" tabindex=-1 class="btn" tabindex=-1 tabindex=-1></button>
                       </div>
                   </div>
                   <div class="form-group col-md-6 margin-bottom-0">
-                      <label class="font-khmer-cursive">Phone 2</label>
-                      <input type="text" [ngClass]="emergencyContact.phone2" class="form-control font-khmer-cursive" [(ngModel)]="emergencyContact.phone2" placeholder="{{'Product.Holder.EnterProductName' | translate}}">
+                      <label class="font-khmer-cursive">{{'UserAdd.Label.Phone2' | translate}}</label>
+                      <input type="text" [ngClass]="emergencyContact.phone2" class="form-control font-khmer-cursive" [(ngModel)]="emergencyContact.phone2" placeholder="{{'UserAdd.Holder.EnterPhone2' | translate}}">
 
                       <div class="in_box">
                           <button type="button" [ngClass]="emergencyContact.phone2" (click)="buttonX('productName')" tabindex=-1 class="btn" tabindex=-1 tabindex=-1></button>
@@ -393,18 +393,18 @@
               <ng-container *ngIf="currentStep === 3">
                 <div class="form-row">
                   <div class="form-group col-md-6  margin-bottom-0">
-                      <label class="font-khmer-cursive">Name</label>
+                      <label class="font-khmer-cursive">{{'UserAdd.Label.Name' | translate}}</label>
                       <span class="text-danger"> *</span>
-                      <input type="text" [ngClass]="familyInformation.name" class="form-control font-khmer-cursive" [(ngModel)]="familyInformation.name" placeholder="{{'Product.Holder.EnterProductName' | translate}}">
+                      <input type="text" [ngClass]="familyInformation.name" class="form-control font-khmer-cursive" [(ngModel)]="familyInformation.name" placeholder="{{'UserAdd.Holder.EnterName' | translate}}">
 
                       <div class="in_box">
                           <button type="button" [ngClass]="familyInformation.name" (click)="buttonX('productName')" tabindex=-1 class="btn" tabindex=-1 tabindex=-1></button>
                       </div>
                   </div>
                   <div class="form-group col-md-6 margin-bottom-0">
-                      <label class="font-khmer-cursive">Relationship </label>
+                      <label class="font-khmer-cursive">{{'UserAdd.Label.Relationship' | translate}} </label>
                       <span class="text-danger"> *</span>
-                      <input type="text" [ngClass]="familyInformation.relationship" class="form-control font-khmer-cursive" [(ngModel)]="familyInformation.relationship" placeholder="{{'Product.Holder.EnterProductName' | translate}}">
+                      <input type="text" [ngClass]="familyInformation.relationship" class="form-control font-khmer-cursive" [(ngModel)]="familyInformation.relationship" placeholder="{{'UserAdd.Holder.EnterRelationship' | translate}}">
 
                       <div class="in_box">
                           <button type="button" [ngClass]="familyInformation.relationship" (click)="buttonX('productName')" tabindex=-1 class="btn" tabindex=-1 tabindex=-1></button>
@@ -415,16 +415,16 @@
 
                 <div class="form-row ">
                   <div class="form-group col-md-6 margin-bottom-0">
-                      <label class="font-khmer-cursive">Phone </label>
-                      <input type="text" [ngClass]="familyInformation.phone" class="form-control font-khmer-cursive" [(ngModel)]="familyInformation.phone" placeholder="{{'Product.Holder.EnterProductName' | translate}}">
+                      <label class="font-khmer-cursive">{{'UserAdd.Label.Phone' | translate}} </label>
+                      <input type="text" [ngClass]="familyInformation.phone" class="form-control font-khmer-cursive" [(ngModel)]="familyInformation.phone" placeholder="{{'UserAdd.Holder.EnterPhone' | translate}}">
 
                       <div class="in_box">
                           <button type="button" [ngClass]="familyInformation.phone" (click)="buttonX('productName')" tabindex=-1 class="btn" tabindex=-1 tabindex=-1></button>
                       </div>
                   </div>
                   <div class="form-group col-md-6 margin-bottom-0">
-                      <label class="font-khmer-cursive">Description</label>
-                      <input type="text" [ngClass]="familyInformation.description" class="form-control font-khmer-cursive" [(ngModel)]="familyInformation.description" placeholder="{{'Product.Holder.EnterProductName' | translate}}">
+                      <label class="font-khmer-cursive">{{'Common.Label.Description' | translate}}</label>
+                      <input type="text" [ngClass]="familyInformation.description" class="form-control font-khmer-cursive" [(ngModel)]="familyInformation.description" placeholder="{{'Common.Placeholder.EnterDescription' | translate}}">
 
                       <div class="in_box">
                           <button type="button" [ngClass]="familyInformation.description" (click)="buttonX('productName')" tabindex=-1 class="btn" tabindex=-1 tabindex=-1></button>

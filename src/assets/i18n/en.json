@@ -15,7 +15,8 @@
       "Page":"Page {{pageNum}} of {{totalPages}}",
       "Confirm":"Confirm",
       "enable":"enable",
-      "disable":"disable"
+      "disable":"disable",
+      "Description":"Description"
     },
     "Button": {
       "ExcelExport": "Excel Export",
@@ -37,7 +38,7 @@
       "Message":"Message"
     },
     "Placeholder":{
-      "EnterDescription":"Enter description ..."
+      "EnterDescription":"Enter description"
     }
   },
   "Nav":{
@@ -114,7 +115,10 @@
         "NationalID":"National ID",
         "Nationality":"Nationality",
         "Religion":"Religion",
-        "MaritalStatus":"Marital status"
+        "MaritalStatus":"Marital status",
+        "Name":"Name",
+        "Relationship":"Relationship",
+        "Phone2":"Phone 2"
     },
     "Holder": {
       "EnterInstitution":"Enter institution",
@@ -127,7 +131,10 @@
       "EnterEmail":"Enter email",
       "EnterNationalID":"Enter national ID",
       "EnterNationality":"Enter nationality",
-      "EnterReligion":"Enter religion"
+      "EnterReligion":"Enter religion",
+      "EnterName":"Enter name",
+      "EnterRelationship":"Enter relationship",
+      "EnterPhone2":"Enter Phone 2"
     },
     "Message": {
       "InvalidFirstName":"First Name is empty | null.",
@@ -143,7 +150,9 @@
       "InValidSubject":"Subject is empty | null.",
       "InValidStartingDate":"Starting Date is empty | null.",
       "InValidCompleteDate":"Complete Date is empty | null.",
-      "InValidDegree":"Degree is empty | null."
+      "InValidDegree":"Degree is empty | null.",
+      "InValidName":"Name is empty | null.",
+      "InValidRelationship":"Relationship is empty | null."
     }
   },
   "UserAuthentication":{
