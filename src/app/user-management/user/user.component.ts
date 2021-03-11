@@ -21,6 +21,7 @@ declare const $: any;
 export class UserComponent implements OnInit {
 
   totalRecord = 0;
+
   constructor(
     private subscribeMessageService: SubscribeMessageService,
     private httpService: HttpService,
