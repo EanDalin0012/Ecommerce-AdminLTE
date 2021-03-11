@@ -19,6 +19,7 @@ import { FamilyInformation } from '../../m-share/model/family-informations';
 import { EmergencyContact } from '../../m-share/model/emergency-contact';
 import { GridDataResult, RowClassArgs, PageChangeEvent, SelectableSettings } from '@progress/kendo-angular-grid';
 import { orderBy, SortDescriptor } from '@progress/kendo-data-query';
+import { UserAdd } from '../../m-share/model/user-add';
 @Component({
   selector: 'app-user-add',
   templateUrl: './user-add.component.html',
@@ -127,15 +128,20 @@ export class UserAddComponent implements OnInit {
   }
 
   save(): void {
-      const product               = new Product();
-      product.resourceImageId     = this.resourceImageId;
-      const api = '/api/product/v1/save';
-      this.httpService.Post(api, product).then(response => {
-        const responseData = response as Message;
-        if ( responseData && responseData.status === ResponseStatus.Y) {
-          this.modal.close( {close: ButtonRoles.save});
-        }
-      });
+      if (this.isValidPersonalInfo() === true) {
+        const userAdd                 = new UserAdd();
+        userAdd.personalInfo          = this.personalInfo;
+        userAdd.educationInformations = this.educationInformations;
+        userAdd.emergencyContacts     = this.emergencyContacts;
+        userAdd.familyInformations    = this.familyInformations;
+        const api = '/api/product/v1/save';
+        this.httpService.Post(api, userAdd).then(response => {
+          const responseData = response as Message;
+          if ( responseData && responseData.status === ResponseStatus.Y) {
+            this.modal.close( {close: ButtonRoles.save});
+          }
+        });
+      }
   }
 
 
@@ -169,10 +175,8 @@ export class UserAddComponent implements OnInit {
     this.imagePreviews = [];
     const that = this;
     e.files.forEach((file) => {
-
     if (!file.validationErrors) {
         const reader = new FileReader();
-
         reader.onload = function (ev) {
         const image = {
             src: ev.target['result'] + '',
@@ -183,9 +187,7 @@ export class UserAddComponent implements OnInit {
             type: file.rawFile.type,
             extension: file.extension
         };
-
         that.imagePreviews.unshift(image);
-
         };
         reader.readAsDataURL(file.rawFile);
     }
@@ -530,14 +532,14 @@ export class UserAddComponent implements OnInit {
   }
 
   isValidFamilyInformation(): boolean {
-    if (this.familyInformation.name) {
+    if (!this.familyInformation.name) {
       this.modalService.alert({
         content: this.translate.instant('UserAdd.Message.InValidName'),
         btnText: this.translate.instant('Common.Button.Confirm'),
         callback: response => { }
       });
       return false;
-    } else if (this.familyInformation.relationship) {
+    } else if (!this.familyInformation.relationship) {
       this.modalService.alert({
         content: this.translate.instant('UserAdd.Message.InValidRelationship'),
         btnText: this.translate.instant('Common.Button.Confirm'),
