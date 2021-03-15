@@ -118,7 +118,8 @@
         "MaritalStatus":"Marital status",
         "Name":"Name",
         "Relationship":"Relationship",
-        "Phone2":"Phone 2"
+        "Phone2":"Phone 2",
+        "Address":"Address"
     },
     "Holder": {
       "EnterInstitution":"Enter institution",
@@ -134,7 +135,8 @@
       "EnterReligion":"Enter religion",
       "EnterName":"Enter name",
       "EnterRelationship":"Enter relationship",
-      "EnterPhone2":"Enter Phone 2"
+      "EnterPhone2":"Enter Phone 2",
+      "EnterAddress":"Enter address"
     },
     "Message": {
       "InvalidFirstName":"First Name is empty | null.",

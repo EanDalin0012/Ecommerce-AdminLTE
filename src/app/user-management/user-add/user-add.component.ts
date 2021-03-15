@@ -134,7 +134,7 @@ export class UserAddComponent implements OnInit {
         userAdd.educationInformations = this.educationInformations;
         userAdd.emergencyContacts     = this.emergencyContacts;
         userAdd.familyInformations    = this.familyInformations;
-        const api = '/api/product/v1/save';
+        const api = '/api/user/v1/info';
         this.httpService.Post(api, userAdd).then(response => {
           const responseData = response as Message;
           if ( responseData && responseData.status === ResponseStatus.Y) {
@@ -227,6 +227,7 @@ export class UserAddComponent implements OnInit {
               this.uploadService.upload(base64WriteImage).then(resp => {
                 if(resp === true) {
                   this.resourceImageId = base64WriteImage.id;
+                  this.personalInfo.resourceImageID = this.resourceImageId;
                   this.imageUploaded = true;
                 }
               });
@@ -270,19 +271,23 @@ export class UserAddComponent implements OnInit {
       if (this.isValidPersonalInfo() === true) {
         this.currentStep += 1;
       }
-    } else if (this.currentStep === 1){
-      if (this.isValidEducation() === true) {
-        this.currentStep += 1;
-      }
-    } else if (this.currentStep === 2){
-      if (this.isValidEmergencyContact() === true) {
-        this.currentStep += 1;
-      }
-    } else if (this.currentStep === 3){
-      if (this.isValidFamilyInformation() === true) {
-        this.currentStep += 1;
-      }
+    } else {
+      this.currentStep += 1;
     }
+    // else if (this.currentStep === 1){
+    //   if (this.isValidEducation() === true) {
+    //     this.currentStep += 1;
+    //   }
+    // } else if (this.currentStep === 2){
+    //   if (this.isValidEmergencyContact() === true) {
+    //     this.currentStep += 1;
+    //   }
+    // } else if (this.currentStep === 3){
+    //   if (this.isValidFamilyInformation() === true) {
+    //     this.currentStep += 1;
+    //   }
+    //   this.currentStep += 1;
+    // }
     // if(value === 0) {
     //   if(this.checkUserInfo()) {
     //     this.stepsIcons[0].isValid =  true;
@@ -303,8 +308,6 @@ export class UserAddComponent implements OnInit {
     // }else if (value === 3) {
     //   this.currentStep += 1;
     // }
-
-    // this.currentStep += 1;
   }
 
   public prev(): void {
@@ -389,6 +392,10 @@ export class UserAddComponent implements OnInit {
       });
       return false;
     } else {
+      this.personalInfo.birthday = this.dateForm(this.birthDate);
+      this.personalInfo.gender   = this.genderValue;
+      this.personalInfo.maritalStatus = this.maritalStatusValue;
+      this.personalInfo.resourceImageID = this.resourceImageId;
       return true;
     }
   }

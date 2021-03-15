@@ -122,7 +122,14 @@
                 </div>
 
                 <div class="form-row">
-                  <div class="form-group form-group-last col-md-12">
+                  <div class="form-group form-group-last col-md-6">
+                    <label class="font-khmer-cursive">{{'UserAdd.Label.Address' | translate}}</label>
+                    <input type="text" [ngClass]="personalInfo.address" [(ngModel)]="personalInfo.address" placeholder="{{'UserAdd.Holder.EnterAddress' | translate}}" class="form-control font-khmer-cursive">
+                    <div class="in_box">
+                        <button type="button" [ngClass]="personalInfo.address? 'btn_del' : ''" (click)="buttonX('description')" tabindex=-1 class="btn" tabindex=-1 tabindex=-1></button>
+                    </div>
+                </div>
+                  <div class="form-group form-group-last col-md-6">
                       <label class="font-khmer-cursive">{{'Product.Label.Description' | translate}}</label>
                       <input type="text" [ngClass]="personalInfo.description" [(ngModel)]="personalInfo.description" placeholder="{{'Product.Holder.EnterDescription' | translate}}" class="form-control font-khmer-cursive">
                       <div class="in_box">
