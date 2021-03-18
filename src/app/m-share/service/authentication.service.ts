@@ -174,6 +174,41 @@ export class AuthenticationService {
     });
   }
 
+  public revokeToken(): Promise<any> {
+    return new Promise((resolve, reject) => {
+      const userInfo = Utils.getSecureStorage(LocalStorage.USER_INFO);
+      const lang = Utils.getSecureStorage(localStorage.I18N);
+      const api  = '/api/user/v1/oauth/revoke-token';
+      const uri = this.baseUrl + api + '?userId=' + userInfo.id + '&lang=' + lang;
+      const authorize = Utils.getSecureStorage(LocalStorage.Authorization);
+      const accessToken = authorize.access_token;
+
+      const headers = {
+        Authorization: 'Bearer ' + accessToken
+      };
+
+      this.httpClient.get(uri, {headers}).subscribe(rest => {
+        const result = rest as any;
+        if (result) {
+          const responseData = JSON.parse(result);
+          const rawData = responseData.body;
+          const decryptData = JSON.parse(this.cryptoService.decrypt(String(rawData)));
+          console.log('decryptData', decryptData);
+
+          if (decryptData.error != null) {
+            reject();
+            this.message(result.error.message);
+          } else {
+            resolve(decryptData.body.status);
+          }
+        } else {
+          reject();
+        }
+      });
+
+    });
+  }
+
   private message(message: string): void {
     this.modalService.alert({
       // tslint:disable-next-line:max-line-length

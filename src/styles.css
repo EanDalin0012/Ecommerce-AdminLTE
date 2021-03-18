@@ -134,15 +134,53 @@ Version      : 3.6
 	src: local('Circular Std Black Italic'), url('assets/fonts/CircularStd-BlackItalic.woff') format('woff');
 }
 
+@font-face {
+  font-family: "Noto Sans CJK TC";
+  font-style: normal;
+  font-weight: 500;
+  src: local("Noto Sans Khmer CJKtc"), local("Noto-SansCJKtc-Medium"), url("assets/font/NotoSansCJKtc-Medium.ttf") format("truetype");
+}
+
+/* Noto Khmer font */
+
+@font-face {
+  font-family: "Noto Sans Khmer";
+  font-style: normal;
+  font-weight: 300;
+  src: local("Noto Sans Khmer"), local("Noto-SansKhmer-Light"), url("assets/font/NotoSansKhmer-Light.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "Noto Sans Khmer";
+  font-style: normal;
+  font-weight: 400;
+  src: local("Noto Sans Khmer"), local("Noto-SansKhmer-Regular"), url("assets/font/NotoSansKhmer-Regular.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "Noto Sans Khmer";
+  font-style: normal;
+  font-weight: 500;
+  src: local("Noto Sans Khmer Bold"), local("Noto-SansKhmer-Medium"), url("assets/font/NotoSansKhmer-Medium.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "Noto Sans Khmer";
+  font-style: normal;
+  font-weight: 700;
+  src: local("Noto Sans Khmer Bold"), local("Noto-SansKhmer-Bold"), url("assets/font/NotoSansKhmer-Bold.ttf") format("truetype");
+}
+
 /*-----------------
 	1. General
 -----------------------*/
 
 html {
 	height: 100%;
+  font: normal 16px  'Noto Sans Khmer', 'Verdana', 'Geneva', 'Tahoma', 'sans-serif', 'Khmer', cursive !important;
 }
 body {
-	font-family: 'CircularStd', sans-serif;
+	font: normal 16px 'Noto Sans Khmer', 'Verdana', 'Geneva', 'Tahoma', 'sans-serif', 'Khmer', cursive !important;
 	font-size: .9375rem;
 	color: #1f1f1f;
 	background-color: #f7f7f7;

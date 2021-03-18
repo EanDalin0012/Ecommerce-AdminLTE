@@ -44,21 +44,27 @@
       <!-- Flag -->
       <li class="nav-item dropdown has-arrow flag-nav">
           <a href="javascript:" class="nav-link dropdown-toggle" data-toggle="dropdown">
-              <img src="assets/img/flags/us.png" alt="" height="20"> <span>English</span>
+              <img [src] ="langData[langCode].src" alt="" height="20"> <span>{{ langData[langCode].text }}</span>
           </a>
           <div class="dropdown-menu dropdown-menu-right">
-              <a  class="dropdown-item">
-                  <img src="assets/img/flags/us.png" alt="" height="16"> English
+              <a  class="dropdown-item" (click)="onChangeLanguage('kh')">
+                  <img src="assets/img/flags/kh.png" alt="" height="16"> ខ្មែរ
               </a>
-              <a  class="dropdown-item">
-                  <img src="assets/img/flags/fr.png" alt="" height="16"> French
+              <a  class="dropdown-item" (click)="onChangeLanguage('en')">
+                <img src="assets/img/flags/us.png" alt="" height="16"> English
+              </a>
+              <a  class="dropdown-item" (click)="onChangeLanguage('ch')">
+                <img src="assets/img/flags/cn.png" alt="" height="16"> 中文
+              </a>
+              <!-- <a  class="dropdown-item">
+                    <img src="assets/img/flags/fr.png" alt="" height="16"> French
               </a>
               <a  class="dropdown-item">
                   <img src="assets/img/flags/es.png" alt="" height="16"> Spanish
               </a>
               <a  class="dropdown-item">
                   <img src="assets/img/flags/de.png" alt="" height="16"> German
-              </a>
+              </a> -->
           </div>
       </li>
       <!-- /Flag -->
@@ -145,7 +151,7 @@
           <div class="dropdown-menu">
               <a class="dropdown-item" routerLink="/employees/employeeprofile">My Profile</a>
               <a class="dropdown-item" routerLink="/settings/company-settings">Settings</a>
-              <a class="dropdown-item" routerLink="/login">Logout</a>
+              <a class="dropdown-item" (click)="logout()">Logout</a>
           </div>
       </li>
   </ul>

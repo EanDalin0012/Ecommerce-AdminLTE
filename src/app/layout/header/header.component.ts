@@ -1,5 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { AuthenticationService } from '../../m-share/service/authentication.service';
+import { LocalStorage, ResponseStatus } from '../../m-share/constants/common.const';
+import { Utils } from '../../m-share/utils/utils.static';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-header',
@@ -15,7 +19,18 @@ export class HeaderComponent implements OnInit {
   notifications: any;
   messagesData: any;
 
-  constructor(private router: Router) {}
+  langCode          = this.translate.currentLang;
+  langData          = {
+    en: { class: 'eng', text: 'English', src: 'assets/img/flags/us.png'},
+    kh: { class: 'khmer', text: 'ខ្មែរ', src: 'assets/img/flags/kh.png'},
+    ch: { class: 'china', text: '中文', src: 'assets/img/flags/cn.png'},
+  };
+
+  constructor(
+    private router: Router,
+    private authenticationService: AuthenticationService,
+    private translate: TranslateService,
+    ) {}
 
   ngOnInit(): void {
     this.notifications = [
@@ -100,6 +115,23 @@ export class HeaderComponent implements OnInit {
   }
   onSubmit(): void {
     this.router.navigate(['/pages/search']);
+  }
+
+  logout(): void {
+    this.authenticationService.revokeToken().then(resp => {
+      if (resp === ResponseStatus.Y) {
+        Utils.removeSecureStorage(LocalStorage.USER_INFO);
+        Utils.removeSecureStorage(LocalStorage.Authorization);
+        this.router.navigate(['/login']);
+      }
+    });
+  }
+
+  onChangeLanguage(code: string): void {
+    this.langCode = code;
+    console.log(this.langCode, LocalStorage.I18N, code);
+    Utils.setSecureStorage(LocalStorage.I18N, this.langCode );
+    this.translate.use( this.langCode );
   }
 
 }

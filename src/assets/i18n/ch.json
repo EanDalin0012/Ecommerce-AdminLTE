@@ -1,13 +1,54 @@
 {
   "Common": {
     "Label": {
-      "label1":"label1"
+      "Register":"ចុះឈ្មោះ",
+      "Items": "Items: {{value}}",
+      "No":"No",
+      "CreateBy":"Create By",
+      "ModifyBy":"Modify By",
+      "Edit": "edit",
+      "DeleteItems":"Delete Item(s)",
+      "YourSelectedItems":"Your selected item(s) is : {{value}}",
+      "Active":"Active",
+      "Declined":"Declined",
+      "PreView":"Pre-View",
+      "Page":"Page {{pageNum}} of {{totalPages}}",
+      "Confirm":"Confirm",
+      "enable":"enable",
+      "disable":"disable",
+      "Description":"Description"
     },
     "Button": {
-      "Button": "Button"
+      "ExcelExport": "Excel Export",
+      "ExcelPDF": "Excel PDF",
+      "Edit": "Edit",
+      "New": "New",
+      "Delete":"Delete",
+      "Save":"Save",
+      "Update":"Update",
+      "Close":"Close",
+      "Confirm":"Confirm",
+      "PreView":"Pre-View",
+      "Remove":"Remove",
+      "Upload":"Upload",
+      "Next":"Next",
+      "Previous":"Previous"
     },
     "Message": {
       "Message":"Message"
+    },
+    "Placeholder":{
+      "EnterDescription":"Enter description"
+    }
+  },
+  "Nav":{
+    "Label": {
+      "Register":"登记",
+      "Category":"Category",
+      "Vendor":"Vendor",
+      "Product":"Product",
+      "UserManagement":"User Management",
+      "User":"User"
     }
   },
   "Login": {
@@ -17,5 +58,115 @@
     "Button": {
       "Login":"Login"
     }
+  },
+  "Category": {
+    "Label": {
+      "Category":"Category",
+      "AddNewCategory":"Add New Category",
+      "UpdateCategory":"Update Category",
+      "Name":"Name",
+      "Description":"Description",
+      "Search":"Search by name",
+      "Q1":"Do you want to delete category : {{categoryName}}"
+    },
+    "Message": {
+      "NameIsEmpty":"Category name is empty || null"
+    },
+    "Placeholder":{
+      "EnterCategoryName":"Enter category name ..."
+    }
+  },
+  "Product":{
+    "Label": {
+      "Product": "Product",
+      "CategoryName":"Category Name",
+      "Name":"Name",
+      "WebShow":"Web Show",
+      "MobileShow":"Mobile Show",
+      "Description":"Description",
+      "Edit":"Edit",
+      "AddNewProduct":"Add New Product",
+      "Category":"Category",
+      "UploadImage":"Upload Image",
+      "Q1":"Do you want to {{value}} product : {{productName}} to Show on Mobile ? ",
+      "Q2":"Do you want to {{value}} product : {{productName}} to Show on Web ? ",
+      "Q3":"Do you want to delete product : {{productName}} ?",
+      "Search":"Search by product name"
+    },
+    "Holder": {
+      "EnterProductName":"Enter product name",
+      "EnterDescription":"Enter Description"
+    }
+  },
+  "UserAdd": {
+    "Label": {
+        "Institution":"Institution",
+        "Subject":"Subject",
+        "StartingDate":"Starting Date",
+        "CompleteDate":"Complete Date",
+        "Degree":"Degree",
+        "Grade":"Grade",
+        "FirstName":"First Name",
+        "LastName":"Last Name",
+        "Gender":"Gender",
+        "BirthDate":"Birth Date",
+        "Phone":"Phone",
+        "Email":"Email",
+        "NationalID":"National ID",
+        "Nationality":"Nationality",
+        "Religion":"Religion",
+        "MaritalStatus":"Marital status",
+        "Name":"Name",
+        "Relationship":"Relationship",
+        "Phone2":"Phone 2",
+        "Address":"Address",
+        "UserInformation":"User Information"
+    },
+    "Holder": {
+      "EnterInstitution":"Enter institution",
+      "EnterSubject":"Enter subject",
+      "EnterDegree":"Enter degree",
+      "EnterGrade":"Enter grade",
+      "EnterFirstName":"Enter first name",
+      "EnterLastName":"Enter last name",
+      "EnterPhone":"Enter phone",
+      "EnterEmail":"Enter email",
+      "EnterNationalID":"Enter national ID",
+      "EnterNationality":"Enter nationality",
+      "EnterReligion":"Enter religion",
+      "EnterName":"Enter name",
+      "EnterRelationship":"Enter relationship",
+      "EnterPhone2":"Enter Phone 2",
+      "EnterAddress":"Enter address"
+    },
+    "Message": {
+      "InvalidFirstName":"First Name is empty | null.",
+      "InvalidLastName":"Last Name is empty | null.",
+      "SelectMaritalStatus":"Marital Status invalid.",
+      "SelectGender":"Gender invalid.",
+      "InValidBirthDate":"Birth date is empty | null.",
+      "InValidPhone":"Phone is empty | null.",
+      "InValidNationalID":"National ID is empty | null.",
+      "InValidNationality":"Nationality is empty | null.",
+      "InValidReligion":"Religion is empty | null.",
+      "InValidInstitution":"Institution is empty | null.",
+      "InValidSubject":"Subject is empty | null.",
+      "InValidStartingDate":"Starting Date is empty | null.",
+      "InValidCompleteDate":"Complete Date is empty | null.",
+      "InValidDegree":"Degree is empty | null.",
+      "InValidName":"Name is empty | null.",
+      "InValidRelationship":"Relationship is empty | null."
+    }
+  },
+  "UserAuthentication":{
+    "Label": {
+      "UserID":"User ID",
+      "UserName":"User Name",
+      "Password":"Password",
+      "ConfirmPassword":"Confirm Password",
+      "Role":"Role",
+      "Part":"Part"
+    }
   }
+
 }

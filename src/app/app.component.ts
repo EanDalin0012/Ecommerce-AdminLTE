@@ -1,10 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Utils } from './m-share/utils/utils.static';
 import { Language, LocalStorage } from './m-share/constants/common.const';
-import { TranslateService } from '@ngx-translate/core';
 import { DeviceInfoService } from './m-share/service/device-info.service';
 import { JsonIPService } from './m-share/service/json-ip.service';
-
+import { TranslateService } from '@ngx-translate/core';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -28,8 +27,6 @@ export class AppComponent implements OnInit {
 
   setInitialAppLanguage(): void {
     const i18n = Utils.getSecureStorage(LocalStorage.I18N );
-    console.log("i18n", i18n);
-
     if ( !i18n ) {
       Utils.setSecureStorage(LocalStorage.I18N, Language.I18N_EN.toString());
       this.translate.setDefaultLang( Language.I18N_EN.toString() );
