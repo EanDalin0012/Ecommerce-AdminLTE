@@ -44,11 +44,12 @@
   "Nav":{
     "Label": {
       "Register":"ចុះឈ្មោះ",
-      "Category":"Category",
-      "Vendor":"Vendor",
-      "Product":"Product",
-      "UserManagement":"User Management",
-      "User":"User"
+      "Category":"ប្រភេទ",
+      "Vendor":"អ្នកលក់",
+      "Product":"ផលិតផល",
+      "UserManagement":"ការគ្រប់គ្រងអ្នកប្រើប្រាស់",
+      "User":"អ្នក​ប្រើ",
+      "UserInformation":"ព័ត៌មានអ្នកប្រើប្រាស់"
     }
   },
   "Login": {

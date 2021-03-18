@@ -48,7 +48,8 @@
       "Vendor":"Vendor",
       "Product":"Product",
       "UserManagement":"User Management",
-      "User":"User"
+      "User":"User",
+      "UserInformation":"User Information"
     }
   },
   "Login": {

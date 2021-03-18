@@ -44,11 +44,12 @@
   "Nav":{
     "Label": {
       "Register":"登记",
-      "Category":"Category",
-      "Vendor":"Vendor",
-      "Product":"Product",
-      "UserManagement":"User Management",
-      "User":"User"
+      "Category":"类别",
+      "Vendor":"小贩",
+      "Product":"产品",
+      "UserManagement":"用户管理",
+      "User":"用户",
+      "UserInformation":"用户信息"
     }
   },
   "Login": {

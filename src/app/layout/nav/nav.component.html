@@ -58,7 +58,7 @@
                           </a>
                           <ul [ngStyle]="{ 'display' : urlComplete.subUrl === 'user' ? 'block' : 'none' }">
                               <li (click)="openPage('user')">
-                                <a href="javascript:" [ngClass]="{ 'active' : urlComplete.subUrl === 'user' }"><span>User Info</span></a>
+                                <a href="javascript:" [ngClass]="{ 'active' : urlComplete.subUrl === 'user' }"><span> {{'Nav.Label.UserInformation' | translate}}</span></a>
                               </li>
                               <li class="submenu">
                                   <a href="javascript:">
