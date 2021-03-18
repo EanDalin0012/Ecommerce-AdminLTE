@@ -4,7 +4,7 @@ export class PersonalInformation{
   lastName: string;
   phone: string;
   email: string;
-  birthday: string;
+  birthDate: string;
   gender: string;
   address: string;
   reportsTo: number;

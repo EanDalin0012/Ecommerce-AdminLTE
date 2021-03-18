@@ -119,7 +119,8 @@
         "Name":"Name",
         "Relationship":"Relationship",
         "Phone2":"Phone 2",
-        "Address":"Address"
+        "Address":"Address",
+        "UserInformation":"User Information"
     },
     "Holder": {
       "EnterInstitution":"Enter institution",

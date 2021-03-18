@@ -5,7 +5,7 @@
             <div class="page_navi">
                 <span class="font-khmer-cursive">{{'Common.Label.Register' | translate}}</span>
             </div>
-            <h3 class="margin-00"><span class="font-khmer-cursive">{{'Category.Label.Category' | translate}}</span></h3>
+            <h3 class="margin-00"><span class="font-khmer-cursive">{{'UserAdd.Label.UserInformation' | translate}}</span></h3>
         </div>
     </div>
 
@@ -19,8 +19,8 @@
 
       <div>
 
-          <!-- <kendo-grid
-          [kendoGridBinding]="categories"
+          <kendo-grid
+          [kendoGridBinding]="personalInformations"
           kendoGridSelectBy="id"
           [selectedKeys]="mySelection"
           [pageSize]="pageSize"
@@ -67,22 +67,81 @@
 
               <kendo-grid-column width="50" class="cen" [sortable]="false" field="no" title="{{'Common.Label.No' | translate}}">
                   <ng-template kendoGridCellTemplate let-dataItem let-rowIndex="rowIndex">
-                      <p>{{rowIndex + 1}}</p>
+                      <span>{{rowIndex + 1}}</span>
                   </ng-template>
               </kendo-grid-column>
 
-              <kendo-grid-column width="150" class="subj" field="name" title="{{'Category.Label.Name' | translate}}"></kendo-grid-column>
-              <kendo-grid-column width="190" class="subj" field="description" title="{{'Category.Label.Description' | translate}}"></kendo-grid-column>
-              <kendo-grid-column width="190" class="subj font-khmer-cursive" field="create_by" title="{{'Common.Label.CreateBy' | translate}}"></kendo-grid-column>
-              <kendo-grid-column width="190" class="subj font-khmer-cursive" field="modify_by" title="{{'Common.Label.ModifyBy' | translate}}"></kendo-grid-column>
+              <kendo-grid-column width="250" class="subj" field="name" title="{{'Product.Label.Name' | translate}}">
+                <ng-template kendoGridCellTemplate let-dataItem let-rowIndex="rowIndex">
+                  <div class="k-hbox">
+                    <kendo-avatar class="avatar" [border]="true" [shape]="'circle'"  [imageSrc]="src+'/api/web/reader/v1/read/'+dataItem.resourceImageID"></kendo-avatar>
+                        <span style="padding-top: 8px;margin-left: 10px;">{{ dataItem.firstName }}  {{ dataItem.lastName }}</span>
+                </div>
+                </ng-template>
+              </kendo-grid-column>
+
+              <kendo-grid-column width="90" class="cen" field="gender" title="{{'UserAdd.Label.Gender' | translate}}">
+                  <ng-template kendoGridCellTemplate let-dataItem let-rowIndex="rowIndex">
+                      <span> {{dataItem.gender | gender }}</span>
+                  </ng-template>
+              </kendo-grid-column>
+              <kendo-grid-column width="120" class="subj" field="maritalStatus" title="{{'UserAdd.Label.MaritalStatus' | translate}}">
+                <ng-template kendoGridCellTemplate let-dataItem let-rowIndex="rowIndex">
+                  <span> {{dataItem.maritalStatus | maritalStatus }}</span>
+                </ng-template>
+              </kendo-grid-column>
+              <kendo-grid-column width="120" class="subj" field="birthDate" title="{{'UserAdd.Label.BirthDate' | translate}}">
+                <ng-template kendoGridCellTemplate let-dataItem let-rowIndex="rowIndex">
+                  <span> {{dataItem.birthDate | dateFormat }}</span>
+                </ng-template>
+              </kendo-grid-column>
+              <kendo-grid-column width="190" class="subj" field="phone" title="{{'UserAdd.Label.Phone' | translate}}"></kendo-grid-column>
+              <kendo-grid-column width="190" class="subj" field="email" title="{{'UserAdd.Label.Email' | translate}}"></kendo-grid-column>
+              <kendo-grid-column width="190" class="subj" field="nationalID" title="{{'UserAdd.Label.NationalID' | translate}}"></kendo-grid-column>
+              <kendo-grid-column width="190" class="subj" field="nationality" title="{{'UserAdd.Label.Nationality' | translate}}"></kendo-grid-column>
+              <kendo-grid-column width="190" class="subj" field="religion" title="{{'UserAdd.Label.Religion' | translate}}"></kendo-grid-column>
+
+              <kendo-grid-column width="190" class="subj" field="address" title="{{'UserAdd.Label.Address' | translate}}"></kendo-grid-column>
+              <kendo-grid-column width="190" class="subj" field="description" title="{{'Common.Label.Description' | translate}}"></kendo-grid-column>
+
+              <kendo-grid-column width="190" class="subj font-khmer-cursive" field="createBy" title="{{'Common.Label.CreateBy' | translate}}"></kendo-grid-column>
+              <kendo-grid-column width="120" class="subj font-khmer-cursive" field="createDate" title="{{'Common.Label.ModifyBy' | translate}}">
+                <ng-template kendoGridCellTemplate let-dataItem let-rowIndex="rowIndex">
+                  <span> {{dataItem.createDate | dateFormat }}</span>
+                </ng-template>
+              </kendo-grid-column>
 
 
               <kendo-grid-column width="50" class="cen" [sortable]="false" field="edit" title="{{'Common.Button.Edit' | translate}}">
-                  <ng-template kendoGridCellTemplate let-dataItem let-rowIndex="rowIndex">
-                      <button class="k-button k-button-edit btn-w100px-h35px font-khmer-cursive btn-add-00 v-card-identy k-float-left" (click)="edit(dataItem)">
-                          <span class="k-icon k-i-track-changes i-font"></span>
-                      </button>
-                  </ng-template>
+                <ng-template kendoGridCellTemplate let-dataItem let-rowIndex="rowIndex">
+                  <div class="dropdown dropdown-action">
+                    <a class="action-icon dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                      <i class="material-icons">more_vert</i>
+                    </a>
+                    <div class="dropdown-menu dropdown-menu-right">
+                      <a class="dropdown-item" data-toggle="modal">
+                        <i class="fa fa-trash-o m-r-5"></i>
+                        {{'Common.Button.PreView'| translate}}
+                      </a>
+
+                        <a class="dropdown-item" data-toggle="modal" (click)="edit(dataItem)">
+                          <i class="fa fa-pencil m-r-5"></i>
+                          {{'Common.Button.Edit'| translate}}
+                        </a>
+
+                        <a class="dropdown-item" data-toggle="modal" (click)="addUser()">
+                          <i class="fa fa-pencil m-r-5"></i>
+                          Add User Account
+                        </a>
+
+                        <a class="dropdown-item" data-toggle="modal" (click)="edit(dataItem)">
+                          <i class="fa fa-pencil m-r-5"></i>
+                          Edit User Account
+                        </a>
+
+                    </div>
+                </div>
+              </ng-template>
               </kendo-grid-column>
 
 
@@ -110,7 +169,7 @@
                   <kendo-excelexport-column field="description" title="{{'Category.Label.Description' | translate}}" [width]="350"></kendo-excelexport-column>
               </kendo-excelexport>
 
-          </kendo-grid> -->
+          </kendo-grid>
       </div>
 
       <div class="table_control">
@@ -127,12 +186,6 @@
                 <span class="k-icon k-i-plus-circle "></span>
                 <span class="margin-left-5px">{{'Common.Button.New' | translate}}</span>
             </button>
-
-            <button class="k-button btn-w100px-h35px font-khmer-cursive btn-add-00" (click)="addUser()">
-              <span class="k-icon k-i-plus-circle "></span>
-              <span class="margin-left-5px">{{'Common.Button.New' | translate}}</span>
-          </button>
-
         </div>
 
       </div>

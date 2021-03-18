@@ -102,3 +102,13 @@
   width: 100%;
   z-index: 1;
 }
+
+.wrap {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  width: 250px;
+}
+h5 {
+  margin-top: 10px;
+}

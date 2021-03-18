@@ -43,7 +43,7 @@ export class InputComponent implements OnInit {
 
   public toggleText = 'Show';
     public show = false;
-
+    public imageSrc = 'https://demos.telerik.com/kendo-ui/content/web/Customers/GOURL.jpg';
   constructor(
     private modalService: ModalService,
     private subscribeMessageService: SubscribeMessageService

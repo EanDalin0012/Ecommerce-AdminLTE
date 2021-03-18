@@ -52,12 +52,16 @@ import { UploadsModule } from '@progress/kendo-angular-upload';
 import { FileSelectModule } from '@progress/kendo-angular-upload';
 import { ImagePipe } from './pipe/image.pipe';
 import { DateFormatPipe } from './pipe/date-format.pipe';
+import { GenderPipe } from './pipe/gender.pipe';
+import { MaritalStatusPipe } from './pipe/marital-status.pipe';
 @NgModule({
   declarations: [
     CustomDatePipe,
     ModalComponent,
     ImagePipe,
-    DateFormatPipe
+    DateFormatPipe,
+    GenderPipe,
+    MaritalStatusPipe
   ],
   imports: [
     CommonModule
@@ -118,7 +122,9 @@ import { DateFormatPipe } from './pipe/date-format.pipe';
     // End Kendo
     CustomDatePipe,
     ImagePipe,
-    DateFormatPipe
+    DateFormatPipe,
+    GenderPipe,
+    MaritalStatusPipe
 
   ],
   entryComponents: [

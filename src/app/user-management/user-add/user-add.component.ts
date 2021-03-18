@@ -7,13 +7,11 @@ import { HttpService } from '../../m-share/service/http.service';
 import { ModalService } from '../../m-share/service/modal.service';
 import { UploadService } from '../../m-share/service/upload.service';
 import { CommonHttpService } from '../../m-share/service/common-http.service';
-import { Product } from '../../m-share/model/product';
 import { Message } from '../../m-share/model/message';
 import { ResponseStatus, ButtonRoles, maritalStatus, gender } from '../../m-share/constants/common.const';
 import * as moment from 'moment';
 import { Base64WriteImage } from '../../m-share/model/base64-write-image';
 import { StepperActivateEvent } from '@progress/kendo-angular-layout';
-import { MaritalStatus } from '../../m-share/model/marital-status';
 import { EducationInformation } from '../../m-share/model/education-information';
 import { FamilyInformation } from '../../m-share/model/family-informations';
 import { EmergencyContact } from '../../m-share/model/emergency-contact';
@@ -392,7 +390,7 @@ export class UserAddComponent implements OnInit {
       });
       return false;
     } else {
-      this.personalInfo.birthday = this.dateForm(this.birthDate);
+      this.personalInfo.birthDate = this.dateForm(this.birthDate);
       this.personalInfo.gender   = this.genderValue;
       this.personalInfo.maritalStatus = this.maritalStatusValue;
       this.personalInfo.resourceImageID = this.resourceImageId;
