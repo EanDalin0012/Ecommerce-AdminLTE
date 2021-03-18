@@ -1,5 +1,5 @@
 <div class="contentsWrap">
-  <div class="container02">
+  <div class="container02 padding-top-20px">
       <div class="web_container">
           <!-- header -->
           <div class="pop_header">
@@ -12,23 +12,23 @@
               <div class="row">
                   <div class="form-group col-md-6">
                       <label for="inputPassword4">{{'UserAuthentication.Label.UserID' | translate}}</label>
-                      <input disabled type="text" [ngClass]="name? 'active-input' : ''" class="form-control" [(ngModel)]="name" placeholder="{{'Category.Placeholder.EnterCategoryName' | translate}}">
+                      <input disabled type="text" class="form-control active-input" [(ngModel)]="id + ': ' +firstName + ' ' + lastName" placeholder="{{'Category.Placeholder.EnterCategoryName' | translate}}">
                       <div class="in_box">
                           <button (click)="undefinedValue('name')" type="button" [ngClass]="name? 'btn_del' : ''" tabindex=-1 class="btn" tabindex=-1 tabindex=-1></button>
                       </div>
                   </div>
 
-                  <div class="form-group col-md-6">
-                    <label for="inputPassword4">{{'UserAuthentication.Label.UserName' | translate}}</label>
+                  <!-- <div class="form-group col-md-6">
+                    <label for="inputPassword4">{{'UserAuthentication.Label.UserName' | translate}} (User Login)</label>
                     <input type="text" [ngClass]="name? 'active-input' : ''" class="form-control" [(ngModel)]="name" placeholder="{{'Category.Placeholder.EnterCategoryName' | translate}}">
                     <div class="in_box">
                         <button (click)="undefinedValue('name')" type="button" [ngClass]="name? 'btn_del' : ''" tabindex=-1 class="btn" tabindex=-1 tabindex=-1></button>
                     </div>
-                  </div>
+                  </div> -->
 
               </div>
 
-              <div class="row">
+              <!-- <div class="row">
                 <div class="form-group col-md-6">
                     <label for="inputPassword4">{{'UserAuthentication.Label.Part' | translate}}</label>
                     <input type="text" [ngClass]="name? 'active-input' : ''" class="form-control" [(ngModel)]="name" placeholder="{{'Category.Placeholder.EnterCategoryName' | translate}}">
@@ -43,9 +43,9 @@
                       <button (click)="undefinedValue('description')" type="button" [ngClass]="description? 'btn_del' : ''" tabindex=-1 class="btn" tabindex=-1 tabindex=-1></button>
                   </div>
                 </div>
-              </div>
+              </div> -->
 
-              <div class="row">
+              <!-- <div class="row">
                 <div class="form-group col-md-6">
                     <label for="inputPassword4">{{'UserAuthentication.Label.Password' | translate}}</label>
                     <input type="text" [ngClass]="name? 'active-input' : ''" class="form-control" [(ngModel)]="name" placeholder="{{'Category.Placeholder.EnterCategoryName' | translate}}">
@@ -60,10 +60,10 @@
                       <button (click)="undefinedValue('description')" type="button" [ngClass]="description? 'btn_del' : ''" tabindex=-1 class="btn" tabindex=-1 tabindex=-1></button>
                   </div>
                 </div>
-              </div>
+              </div> -->
 
               <div class="table-responsive m-t-15">
-
+                <h4>Authorities</h4>
                 <table class="table02">
                   <colgroup>
                       <col style="width:16.666%;" span="6" />
@@ -71,46 +71,53 @@
                   <thead>
                     <tr>
                       <th class = "border-right">Feature</th>
-                      <th  colspan="6" style = "width: 100%;" class="text-center">Module Permission</th>
+                      <th  colspan="8" style = "width: 100%;" class="text-center">Module Permission</th>
                     </tr>
                   </thead>
                   <tbody>
                       <tr>
-                          <th class = "defualt-font border-right" scope="row">Category</th>
-                          <th class = "defualt-font" scope="row">
-                            READ
-                            <input class="in" checked="" type="checkbox">
-                          </th>
-                          <th class = "defualt-font" scope="row">
-                            CREATE
-                            <input class="in" checked="" type="checkbox">
-                          </th>
-                          <th class = "defualt-font" scope="row">
-                            UPDATE
-                            <input class="in" checked="" type="checkbox">
-                          </th>
-                          <th class = "defualt-font" scope="row">
-                            DELETE
-                            <input class="in" checked="" type="checkbox">
-                          </th>
-                          <th class = "defualt-font" scope="row"></th>
-                          <th class = "defualt-font" scope="row"></th>
+                        <th class = "defualt-font border-right" scope="row">Category</th>
+                        <th class = "defualt-font" scope="row">
+                          READ
+                          <input class="in" checked="" type="checkbox">
+                        </th>
+                        <th class = "defualt-font" scope="row">
+                          CREATE
+                          <input class="in" checked="" type="checkbox">
+                        </th>
+                        <th class = "defualt-font" scope="row">
+                          UPDATE
+                          <input class="in" checked="" type="checkbox">
+                        </th>
+                        <th class = "defualt-font" scope="row">
+                          DELETE
+                          <input class="in" checked="" type="checkbox">
+                        </th>
+                        <th class = "defualt-font" scope="row"></th>
+                        <th class = "defualt-font" scope="row"></th>
+                        <th class = "defualt-font" scope="row"></th>
+                        <th class = "defualt-font" scope="row"></th>
                       </tr>
 
                       <tr>
                         <th class = "defualt-font border-right" scope="row">Product</th>
                         <th class = "defualt-font" scope="row">
-                          Add
+                          READ
                           <input class="in" checked="" type="checkbox">
                         </th>
                         <th class = "defualt-font" scope="row">
-                          Edit
+                          CREATE
                           <input class="in" checked="" type="checkbox">
                         </th>
                         <th class = "defualt-font" scope="row">
-                          Delete
+                          UPDATE
                           <input class="in" checked="" type="checkbox">
                         </th>
+                        <th class = "defualt-font" scope="row">
+                          DELETE
+                          <input class="in" checked="" type="checkbox">
+                        </th>
+                        <th class = "defualt-font" scope="row"></th>
                         <th class = "defualt-font" scope="row"></th>
                         <th class = "defualt-font" scope="row"></th>
                         <th class = "defualt-font" scope="row"></th>
@@ -119,17 +126,46 @@
                       <tr>
                         <th class = "defualt-font border-right" scope="row">Vendor</th>
                         <th class = "defualt-font" scope="row">
-                          Add
+                          READ
                           <input class="in" checked="" type="checkbox">
                         </th>
                         <th class = "defualt-font" scope="row">
-                          Edit
+                          CREATE
                           <input class="in" checked="" type="checkbox">
                         </th>
                         <th class = "defualt-font" scope="row">
-                          Delete
+                          UPDATE
                           <input class="in" checked="" type="checkbox">
                         </th>
+                        <th class = "defualt-font" scope="row">
+                          DELETE
+                          <input class="in" checked="" type="checkbox">
+                        </th>
+                        <th class = "defualt-font" scope="row"></th>
+                        <th class = "defualt-font" scope="row"></th>
+                        <th class = "defualt-font" scope="row"></th>
+                        <th class = "defualt-font" scope="row"></th>
+                      </tr>
+
+                      <tr>
+                        <th class = "defualt-font border-right" scope="row">User Info</th>
+                        <th class = "defualt-font" scope="row">
+                          READ
+                          <input class="in" checked="" type="checkbox">
+                        </th>
+                        <th class = "defualt-font" scope="row">
+                          CREATE
+                          <input class="in" checked="" type="checkbox">
+                        </th>
+                        <th class = "defualt-font" scope="row">
+                          UPDATE
+                          <input class="in" checked="" type="checkbox">
+                        </th>
+                        <th class = "defualt-font" scope="row">
+                          DELETE
+                          <input class="in" checked="" type="checkbox">
+                        </th>
+                        <th class = "defualt-font" scope="row"></th>
                         <th class = "defualt-font" scope="row"></th>
                         <th class = "defualt-font" scope="row"></th>
                         <th class = "defualt-font" scope="row"></th>

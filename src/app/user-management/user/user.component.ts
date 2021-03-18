@@ -100,9 +100,10 @@ export class UserComponent implements OnInit {
     });
   }
 
-  addUser(): void {
+  addUser(dataItem): void {
     this.modalService.open({
       content: UserAuthenticationAddComponent,
+      message: dataItem,
       callback: response => {
         if (response.close === ButtonRoles.save) {
           this.inquiry();

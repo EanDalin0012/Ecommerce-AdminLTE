@@ -34,6 +34,7 @@ export class CategoryAddComponent implements OnInit {
       const category          = new Category();
       category.name               = this.name;
       category.description        = this.description;
+      console.log(category);
       const api = '/api/category/v1/save';
       this.httpService.Post(api, category).then(response => {
         const responseData = response as Message;

@@ -16,7 +16,9 @@ export class UserAuthenticationAddComponent implements OnInit {
   modal;
   name: string;
   description: string;
-
+  id: number;
+  firstName; string;
+  lastName: string;
   constructor(
     private translate: TranslateService,
     private httpService: HttpService,
@@ -24,6 +26,12 @@ export class UserAuthenticationAddComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+    if (this.modal) {
+      console.log(this.modal.message);
+      this.id = this.modal.message.id;
+      this.firstName = this.modal.message.firstName;
+      this.lastName =  this.modal.message.lastName;
+    }
   }
 
   save(): void {
