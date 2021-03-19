@@ -40,17 +40,15 @@ export class AuthenticationService {
       if (decryptData.access_token) {
           Utils.setSecureStorage(LocalStorage.LAST_EVENT_TIME, String(new Date().getTime()));
           Utils.setSecureStorage(LocalStorage.Authorization, decryptData);
-          this.loadUserByUserName(auth.user_name).then(userResponse => {
-          console.log(userResponse);
-          Utils.setSecureStorage(LocalStorage.USER_INFO, userResponse);
-          if (userResponse) {
-            if (userResponse.is_first_login === true) {
+          this.loadUserByUserName(auth.user_name).then(response => {
+          if (response) {
+            if (response.is_first_login === true) {
               this.router.navigate(['/login/first']);
             } else {
               this.router.navigate(['/main/component/index']);
             }
-            console.log(userResponse);
-            resolve(userResponse);
+            Utils.setSecureStorage(LocalStorage.USER_INFO, response);
+            resolve(response);
           }
           });
       }
@@ -111,7 +109,6 @@ export class AuthenticationService {
 
   private loadUserByUserName(userName: string): Promise<any> {
     return new Promise((resolve, reject) => {
-
       const loadUserInfo = new LoadUserInfo();
       const device = this.storeInMemory.get(LocalStorage.DeviceInfo);
       const networkIp = this.storeInMemory.get(LocalStorage.networkIP);

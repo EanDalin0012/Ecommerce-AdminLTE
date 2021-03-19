@@ -98,7 +98,7 @@ export class AuthInterceptor implements HttpInterceptor {
       }
       if (error && error.status === 0) {
           this.modalService.alert({
-            content:  'message : <span>Connection faile</span> status: ' + error.statusText,
+            content:  '<span>Connection failed</span> status: ' + error.statusText,
             modalClass: ['message-alert testing, open-alert'],
             btnText: 'Confirm',
             callback: (res) => {
@@ -106,7 +106,7 @@ export class AuthInterceptor implements HttpInterceptor {
             }
           });
       }
-      environment.production ? (() => '')() : console.log(req.url + ' reqeusting failed. ' );
+      environment.production ? (() => '')() : console.log(req.url + ' requesting failed. ' );
       let httpErrorCode;
       if (error.status){
         httpErrorCode = error.status;

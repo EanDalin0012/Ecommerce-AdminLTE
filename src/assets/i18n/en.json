@@ -75,6 +75,13 @@
       "EnterCurrentPassword":"Enter current password",
       "EnterNewPassword":"Enter new password",
       "EnterConfirmPassword":"Enter confirm password"
+    },
+    "Message": {
+      "InvalidUserName":"User name is empty || null.",
+      "InvalidCurrentPassword":"Current password is empty || null.",
+      "InvalidNewPassword":"New password is empty || null.",
+      "InvalidConfirmPassword":"Confirm password is empty || null.",
+      "PasswordNotMatch":"New Password and Confirm password do not match."
     }
   },
   "Category": {

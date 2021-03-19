@@ -1,7 +1,13 @@
 import { Component, OnInit } from '@angular/core';
-import { Event } from '@angular/router';
 import { Title } from '@angular/platform-browser';
 import { TranslateService } from '@ngx-translate/core';
+import { Utils } from '../../m-share/utils/utils.static';
+import { LocalStorage, ResponseStatus, ButtonRoles } from '../../m-share/constants/common.const';
+import { FirstLogIn } from '../../m-share/model/first-log';
+import { HttpService } from '../../m-share/service/http.service';
+import { Message } from '../../m-share/model/message';
+import { Router } from '@angular/router';
+import { ModalService } from '../../m-share/service/modal.service';
 
 @Component({
   selector: 'app-first-login',
@@ -10,19 +16,21 @@ import { TranslateService } from '@ngx-translate/core';
 })
 export class FirstLoginComponent implements OnInit {
 
-  password: string;
-  rememberMe: boolean;
-  userName: string;
-  currentPassword: string;
-  newPassword: string;
-  confirmPassword: string;
+  firstLogIn = new FirstLogIn();
   constructor(
     private titleService: Title,
-    private translate: TranslateService) {
+    private translate: TranslateService,
+    private router: Router,
+    private modalService: ModalService,
+    private httpService: HttpService) {
     this.titleService.setTitle(this.translate.instant('FirstLogin.Label.FirstLogin'));
    }
 
   ngOnInit(): void {
+    const userInfo = Utils.getSecureStorage(LocalStorage.USER_INFO);
+    if (userInfo) {
+      this.firstLogIn.userName = userInfo.user_name;
+    }
   }
 
   remember(): void {
@@ -37,8 +45,69 @@ export class FirstLoginComponent implements OnInit {
 
   }
 
-  login(): void {
+  change(): void {
+    if ( this.isValid() === true) {
+      const api = '';
+      this.httpService.Post(api, this.firstLogIn).then(response => {
+        const responseData = response as Message;
+        if ( responseData && responseData.status === ResponseStatus.Y) {
+          this.router.navigate(['/login']);
+        }
+      });
+    }
+  }
 
+  isValid(): boolean {
+    if (!this.firstLogIn.userName || this.firstLogIn.userName.trim() === '') {
+          const message = this.translate.instant('FirstLogin.Message.InvalidUserName');
+          this.modalService.alert({
+            content:  '<span>' + message + '</span>',
+            modalClass: ['message-alert testing, open-alert'],
+            btnText: 'Confirm',
+            callback: (res) => {
+            }
+          });
+          return false;
+    } else if (!this.firstLogIn.currentPassword){
+      this.modalService.alert({
+        content:  '<span>' + this.translate.instant('FirstLogin.Message.InvalidCurrentPassword') + '</span>',
+        modalClass: ['message-alert testing, open-alert'],
+        btnText: 'Confirm',
+        callback: (res) => {
+        }
+      });
+      return false;
+    } else if (!this.firstLogIn.newPassword){
+      this.modalService.alert({
+        content:  '<span>' + this.translate.instant('FirstLogin.Message.InvalidNewPassword') + '</span>',
+        modalClass: ['message-alert testing, open-alert'],
+        btnText: 'Confirm',
+        callback: (res) => {
+        }
+      });
+      return false;
+    } else if (!this.firstLogIn.confirmPassword){
+      this.modalService.alert({
+        content:  '<span>' + this.translate.instant('FirstLogin.Message.InvalidConfirmPassword') + '</span>',
+        modalClass: ['message-alert testing, open-alert'],
+        btnText: 'Confirm',
+        callback: (res) => {
+        }
+      });
+      return false;
+    } else if (this.firstLogIn.confirmPassword !== this.firstLogIn.newPassword){
+      this.modalService.alert({
+        content:  '<span>' + this.translate.instant('FirstLogin.Message.PasswordNotMatch') + '</span>',
+        modalClass: ['message-alert testing, open-alert'],
+        btnText: 'Confirm',
+        callback: (res) => {
+        }
+      });
+      return false;
+    }
+    else {
+      return true;
+    }
   }
 
 }

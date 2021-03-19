@@ -57,10 +57,7 @@ export class NavComponent implements OnInit {
     });
 
     this.groups = { ...this.allModulesService.groups };
-    console.log(this.groups);
     this.members = { ...this.allModulesService.members };
-    console.log(this.members );
-
   }
 
   ngOnInit(): void {

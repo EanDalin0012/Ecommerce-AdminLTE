@@ -102,14 +102,12 @@ export class HttpService {
 
             const responseDataFromServer = res as any;
             // interceptor ready alert message mean that error 401
-            if (responseDataFromServer.result === false) {
+            if (responseDataFromServer.result.result === false) {
               return;
             } else {
-              console.log(res);
               const responseData = JSON.parse(responseDataFromServer);
               const rawData = responseData.body;
               const decryptData = JSON.parse(this.cryptoService.decrypt(String(rawData)));
-              console.log(decryptData);
               if ( decryptData.error && decryptData.error.code === 'N') {
                 console.log(decryptData.error);
                 this.message(decryptData.error.message);
@@ -167,7 +165,7 @@ export class HttpService {
         // interceptor ready alert message mean that error 401
         if (responseDataFromServer.result === false) {
           return;
-        } else if (responseDataFromServer.result != false) {
+        } else if (responseDataFromServer.result !== false) {
           const responseData = JSON.parse(responseDataFromServer);
           const rawData = responseData.body;
           const decryptData = JSON.parse(this.cryptoService.decrypt(String(rawData)));

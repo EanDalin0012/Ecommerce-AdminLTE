@@ -49,6 +49,7 @@ export class LoginComponent implements OnInit, OnDestroy {
       user_name: this.userName,
       password: this.password
     };
+    console.log(authenticationObj);
     this.authentcationService.login(authenticationObj);
   }
 
