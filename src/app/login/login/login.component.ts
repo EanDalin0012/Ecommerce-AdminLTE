@@ -2,6 +2,8 @@ import { Component, ElementRef, OnDestroy, OnInit, ViewChild } from '@angular/co
 import { Authentcation } from 'src/app/m-share/model/authentcation';
 import { Utils } from 'src/app/m-share/utils/utils.static';
 import { AuthenticationService } from '../../m-share/service/authentication.service';
+import { Title } from '@angular/platform-browser';
+import { TranslateService } from '@ngx-translate/core';
 declare var $;
 @Component({
   selector: 'app-login',
@@ -15,7 +17,13 @@ export class LoginComponent implements OnInit, OnDestroy {
   rememberMe = false;
   @ViewChild('passwordElement') passwordElement: ElementRef;
 
-  constructor( private authentcationService: AuthenticationService) { }
+  constructor(
+    private authentcationService: AuthenticationService,
+    private titleService: Title,
+    private translate: TranslateService
+    ) {
+    this.titleService.setTitle(this.translate.instant('Login.Label.Login'));
+   }
 
   ngOnInit(): void {
     this.password = 'admin1234';

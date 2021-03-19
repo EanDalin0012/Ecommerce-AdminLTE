@@ -23,6 +23,19 @@
               <ng-container *ngIf="currentStep === 0">
 
                 <div class="form-row">
+                  <div class="form-group col-md-12  margin-bottom-0">
+                      <label class="font-khmer-cursive">{{'UserAdd.Label.UserNameLogin' | translate}}</label>
+                      <span class="text-danger"> *</span>
+                      <input type="text" [ngClass]="personalInfo.firstName" class="form-control font-khmer-cursive" [(ngModel)]="personalInfo.firstName" placeholder="{{'UserAdd.Holder.EnterUserName' | translate}}">
+
+                      <div class="in_box">
+                          <button type="button" [ngClass]="personalInfo.firstName? 'btn_del' : ''" (click)="buttonX('productName')" tabindex=-1 class="btn" tabindex=-1 tabindex=-1></button>
+                      </div>
+                  </div>
+
+                </div>
+
+                <div class="form-row">
                   <div class="form-group col-md-6  margin-bottom-0">
                       <label class="font-khmer-cursive">{{'UserAdd.Label.FirstName' | translate}}</label>
                       <span class="text-danger"> *</span>

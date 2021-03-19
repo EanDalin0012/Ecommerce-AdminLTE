@@ -121,7 +121,8 @@
         "Relationship":"Relationship",
         "Phone2":"Phone 2",
         "Address":"Address",
-        "UserInformation":"User Information"
+        "UserInformation":"User Information",
+        "UserNameLogin":"User Name (Login)"
     },
     "Holder": {
       "EnterInstitution":"Enter institution",
@@ -138,7 +139,8 @@
       "EnterName":"Enter name",
       "EnterRelationship":"Enter relationship",
       "EnterPhone2":"Enter Phone 2",
-      "EnterAddress":"Enter address"
+      "EnterAddress":"Enter address",
+      "EnterUserName":"Enter user name (login)"
     },
     "Message": {
       "InvalidFirstName":"First Name is empty | null.",
