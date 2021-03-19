@@ -60,6 +60,23 @@
       "Login":"Login"
     }
   },
+  "FirstLogin": {
+    "Label": {
+      "FirstLogin":"First Login",
+      "UserName":"User Name",
+      "CurrentPassword":"Current Password",
+      "NewPassword":"New Password",
+      "ConfirmPassword":"Confirm Password"
+    },
+    "Button": {
+      "Change":"Change"
+    },
+    "Holder": {
+      "EnterCurrentPassword":"Enter current password",
+      "EnterNewPassword":"Enter new password",
+      "EnterConfirmPassword":"Enter confirm password"
+    }
+  },
   "Category": {
     "Label": {
       "Category":"Category",

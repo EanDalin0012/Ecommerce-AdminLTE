@@ -1,0 +1,64 @@
+body {
+  min-height: 100%;
+  color: #000;
+  letter-spacing: -.05em;
+  word-wrap: normal;
+  word-break: keep-all;
+  height: 100%;
+  min-height: 100%;
+  overflow: hidden !important;
+  background: #d2d6de;
+}
+
+
+.i {
+  background: #cfd1d5b0;
+  display: inline-block;
+  margin-top: 4px;
+  margin-left: 6px;
+  width: 31px;
+  height: 30px;
+  padding: 5px 0px 0px 5px;
+  border-radius: 31px;
+}
+
+.l {
+  float: right;
+  padding: 0px;
+  margin-right: 15px;
+  width: 128px;
+  border-color: #008cff;
+}
+
+.ic {
+  color: #0061ffed;
+}
+
+.red {
+  color: red;
+}
+
+.f {
+  font-size: 25px;
+}
+
+.cu:hover {
+  cursor: pointer;
+}
+
+
+.row {
+  display: block;
+  flex-wrap: wrap;
+  margin: 0
+}
+
+.pointer_cursor {
+  cursor: pointer;
+  margin-top: 10px;
+}
+
+.login-box, .register-box {
+  width: 400px;
+  margin: 0 auto;
+}

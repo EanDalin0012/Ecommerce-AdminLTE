@@ -30,33 +30,36 @@ export class AuthenticationService {
     this.baseUrl = environment.serverURL;
    }
 
-   public login(auth: Authentcation, basicAuth?: BasicAuth): void {
+   public login(auth: Authentcation, basicAuth?: BasicAuth): Promise<any> {
+    return new Promise((resolve) => {
     this.accessTokenRequest(auth, basicAuth).then(response => {
       console.log(response);
-
       const authorization = JSON.parse(response);
       const rawData = authorization.body;
       const decryptData = JSON.parse(this.cryptoService.decrypt(String(rawData)));
-
       if (decryptData.access_token) {
           Utils.setSecureStorage(LocalStorage.LAST_EVENT_TIME, String(new Date().getTime()));
           Utils.setSecureStorage(LocalStorage.Authorization, decryptData);
           this.loadUserByUserName(auth.user_name).then(userResponse => {
           console.log(userResponse);
-
+          Utils.setSecureStorage(LocalStorage.USER_INFO, userResponse);
           if (userResponse) {
-            Utils.setSecureStorage(LocalStorage.USER_INFO, userResponse);
-            this.router.navigate(['/main/component/index']);
+            if (userResponse.is_first_login === true) {
+              this.router.navigate(['/login/first']);
+            } else {
+              this.router.navigate(['/main/component/index']);
+            }
             console.log(userResponse);
+            resolve(userResponse);
           }
           });
       }
-
+      });
     });
   }
 
   private accessTokenRequest(auth: Authentcation, basicAuth?: BasicAuth): Promise<any> {
-    return new Promise((resovle) => {
+    return new Promise((resolve) => {
       $('div.loading').removeClass('none');
 
       if (!auth.user_name || auth.user_name === null) {
@@ -101,7 +104,7 @@ export class AuthenticationService {
         })
         .subscribe((auth) => {
           $('div.loading').addClass('none');
-          resovle(auth);
+          resolve(auth);
         });
     });
   }

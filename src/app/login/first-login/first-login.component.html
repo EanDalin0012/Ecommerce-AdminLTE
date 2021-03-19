@@ -1,1 +1,56 @@
-<p>first-login works!</p>
+<div class="login-box">
+  <div class="login-logo">
+      <a href="#" class="font-khmer-cursive"><b>Admin</b>LTE</a>
+  </div>
+
+  <div class="login-box-body">
+      <p class="login-box-msg font-khmer-cursive"><b>{{'FirstLogin.Label.FirstLogin'| translate}}</b></p>
+
+
+      <div class="form-group has-feedback">
+        <label class="font-khmer-cursive">{{'FirstLogin.Label.UserName'| translate}}</label>
+          <input type="text" disabled class="form-control" [ngClass]="userName? 'active-input' : ''" placeholder="Email" [(ngModel)]="userName" (keypress)="enterLoginHandler($event)" (keydown)="tapfocus($event)">
+          <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
+      </div>
+
+      <div class="form-group has-feedback">
+        <label class="font-khmer-cursive">{{'FirstLogin.Label.CurrentPassword'| translate}}</label>
+        <span class="text-danger"> *</span>
+        <input type="password" class="form-control" [ngClass]="currentPassword? 'active-input' : ''" placeholder="{{'FirstLogin.Holder.EnterCurrentPassword'| translate}}" [(ngModel)]="currentPassword" (keypress)="enterLoginHandler($event)" (keydown)="tapfocus($event)">
+        <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
+      </div>
+
+      <div class="form-group has-feedback">
+        <label class="font-khmer-cursive">{{'FirstLogin.Label.NewPassword'| translate}}</label>
+        <span class="text-danger"> *</span>
+        <input type="password" class="form-control" [ngClass]="newPassword? 'active-input' : ''" placeholder="{{'FirstLogin.Holder.EnterNewPassword'| translate}}" [(ngModel)]="newPassword" (keypress)="enterLoginHandler($event)" (keydown)="tapfocus($event)">
+        <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
+      </div>
+
+      <div class="form-group has-feedback">
+        <label class="font-khmer-cursive">{{'FirstLogin.Label.ConfirmPassword'| translate}}</label>
+        <span class="text-danger"> *</span>
+        <input class="form-control" [ngClass]="password? 'active-input' : ''" placeholder="{{'FirstLogin.Holder.EnterConfirmPassword'| translate}}" type="password" [(ngModel)]="confirmPassword" (keypress)="enterLoginHandler($event)" #passwordElement>
+        <span class="glyphicon glyphicon-lock form-control-feedback"></span>
+      </div>
+
+      <div class="row">
+          <div class="form-group col-md-12" style = "padding-right: 0px;">
+                  <label class = "pointer_cursor">
+                      <!-- <span [ngClass]="{'k-i-close-circle red': !rememberMe, 'k-i-check-circle ic': rememberMe}" class="k-icon" style="margin: -3px 0px 0px 0px; font-size: 20px;"></span>
+                       <span style="margin: 0px 1px 0px 5px;" class="font-khmer-cursive">Remember Me</span> -->
+                  </label>
+
+                <button style ="margin-right: 0;" class="k-button btn-w100px-h35px font-khmer-cursive btn-add-00 l" (click) ="login()">
+                    <span class="k-icon k-i-login"></span>
+                    <span style="margin-left: 5px;">{{'FirstLogin.Button.Change'| translate}}</span>
+                </button>
+
+          </div>
+
+
+      </div>
+
+      <span class="fi-expand-down"></span>
+  </div>
+</div>

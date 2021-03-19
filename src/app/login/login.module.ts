@@ -5,8 +5,6 @@ import { LoginRoutingModule } from './login-routing.module';
 import { MShareModule } from '../m-share/m-share.module';
 import { FirstLoginComponent } from './first-login/first-login.component';
 
-
-
 @NgModule({
   declarations: [LoginComponent, FirstLoginComponent],
   imports: [

@@ -5,7 +5,7 @@ import { FirstLoginComponent } from './first-login/first-login.component';
 
 const routes: Routes = [
   {path: '', component: LoginComponent},
-  {path: 'first-login', component: FirstLoginComponent}
+  {path: 'first', component: FirstLoginComponent}
 ];
 
 @NgModule({
