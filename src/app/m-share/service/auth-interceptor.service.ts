@@ -15,6 +15,7 @@ import { environment } from 'src/environments/environment';
 import { LocalStorage } from '../constants/common.const';
 import { ModalService } from './modal.service';
 import { Utils } from '../utils/utils.static';
+import { CryptoService } from './crypto.service';
 
 declare let CryptoJS: any;
 
@@ -28,6 +29,7 @@ export class AuthInterceptor implements HttpInterceptor {
  constructor(
     private translate: TranslateService,
     private modal: ModalService,
+    private cryptoService: CryptoService,
     private modalService: ModalService,
     private router: Router
   ) {
@@ -106,7 +108,7 @@ export class AuthInterceptor implements HttpInterceptor {
             }
           });
       }
-      environment.production ? (() => '')() : console.log(req.url + ' requesting failed. ' );
+
       let httpErrorCode;
       if (error.status){
         httpErrorCode = error.status;
@@ -114,11 +116,18 @@ export class AuthInterceptor implements HttpInterceptor {
         httpErrorCode = '999999';
       }
 
-
       console.log(typeof error.status + ' : ' + error.statusText);
       environment.production ? (() => '')() : console.log(error.name + ' : ' + error.message);
-
-      return Observable.of(new HttpResponse({body: { result: {result: false, resultCode: httpErrorCode }, body: {}} }));
+      const data = {
+        result: {
+          code: 'N',
+          message: error.statusText,
+          status: error.status,
+          httpErrorCode
+        }
+      };
+      const rawData = this.cryptoService.encrypt(JSON.stringify(data));
+      return Observable.of(new HttpResponse({body: rawData }));
     }) as any;
   }
 

@@ -8,6 +8,7 @@ import { HttpService } from '../../m-share/service/http.service';
 import { Message } from '../../m-share/model/message';
 import { Router } from '@angular/router';
 import { ModalService } from '../../m-share/service/modal.service';
+import { AuthenticationService } from '../../m-share/service/authentication.service';
 
 @Component({
   selector: 'app-first-login',
@@ -22,6 +23,7 @@ export class FirstLoginComponent implements OnInit {
     private translate: TranslateService,
     private router: Router,
     private modalService: ModalService,
+    private authenticationService: AuthenticationService,
     private httpService: HttpService) {
     this.titleService.setTitle(this.translate.instant('FirstLogin.Label.FirstLogin'));
    }
@@ -47,11 +49,12 @@ export class FirstLoginComponent implements OnInit {
 
   change(): void {
     if ( this.isValid() === true) {
-      const api = '';
+      const api = '/api/user/v1/first/login';
       this.httpService.Post(api, this.firstLogIn).then(response => {
+        console.log('responseresponseresponseresponse', response);
         const responseData = response as Message;
         if ( responseData && responseData.status === ResponseStatus.Y) {
-          this.router.navigate(['/login']);
+          this.logout();
         }
       });
     }
@@ -68,15 +71,6 @@ export class FirstLoginComponent implements OnInit {
             }
           });
           return false;
-    } else if (!this.firstLogIn.currentPassword){
-      this.modalService.alert({
-        content:  '<span>' + this.translate.instant('FirstLogin.Message.InvalidCurrentPassword') + '</span>',
-        modalClass: ['message-alert testing, open-alert'],
-        btnText: 'Confirm',
-        callback: (res) => {
-        }
-      });
-      return false;
     } else if (!this.firstLogIn.newPassword){
       this.modalService.alert({
         content:  '<span>' + this.translate.instant('FirstLogin.Message.InvalidNewPassword') + '</span>',
@@ -108,6 +102,16 @@ export class FirstLoginComponent implements OnInit {
     else {
       return true;
     }
+  }
+
+  logout(): void {
+    this.authenticationService.revokeToken().then(resp => {
+      if (resp === ResponseStatus.Y) {
+        Utils.removeSecureStorage(LocalStorage.USER_INFO);
+        Utils.removeSecureStorage(LocalStorage.Authorization);
+        this.router.navigate(['/login']);
+      }
+    });
   }
 
 }
