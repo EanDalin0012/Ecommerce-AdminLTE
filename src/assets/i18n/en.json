@@ -189,10 +189,7 @@
     "Label": {
       "UserInformation":"User Information",
       "UserName":"User Name",
-      "Password":"Password",
-      "ConfirmPassword":"Confirm Password",
-      "Role":"Role",
-      "Part":"Part"
+      "DefaultPassword":"Default Password"
     },
     "Holder": {
       "EnterUserName":"Enter user name",

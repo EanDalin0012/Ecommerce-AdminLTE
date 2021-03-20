@@ -1,5 +1,6 @@
 export class PersonalInformation{
   id: number;
+  userInfoId?: number;
   firstName: string;
   lastName: string;
   phone: string;

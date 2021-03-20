@@ -19,7 +19,7 @@ export class UserAuthenticationAddComponent implements OnInit {
   id: number;
   firstName; string;
   lastName: string;
-
+  password: string;
   constructor(
     private translate: TranslateService,
     private httpService: HttpService,
@@ -34,6 +34,7 @@ export class UserAuthenticationAddComponent implements OnInit {
       this.firstName = this.modal.message.firstName;
       this.lastName =  this.modal.message.lastName;
     }
+    this.password = this.passwordGenerator.generatePassword();
     console.log(this.passwordGenerator.generatePassword());
   }
 

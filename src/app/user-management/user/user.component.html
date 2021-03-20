@@ -129,12 +129,12 @@
                           {{'Common.Button.Edit'| translate}}
                         </a>
 
-                        <a class="dropdown-item" data-toggle="modal" (click)="addUser(dataItem)">
-                          <i class="fa fa-pencil m-r-5"></i>
+                        <a *ngIf="!dataItem.userInfoId" class="dropdown-item" data-toggle="modal" (click)="addUser(dataItem)">
+                          <i class="fa fa-plus-circle m-r-5"></i>
                           Add User Authorities
                         </a>
 
-                        <a class="dropdown-item" data-toggle="modal" (click)="edit(dataItem)">
+                        <a *ngIf="dataItem.userInfoId" class="dropdown-item" data-toggle="modal" (click)="edit(dataItem)">
                           <i class="fa fa-pencil m-r-5"></i>
                           Edit User Authorities
                         </a>
