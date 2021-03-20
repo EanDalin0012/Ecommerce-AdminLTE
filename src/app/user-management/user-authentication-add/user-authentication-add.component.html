@@ -11,39 +11,39 @@
 
               <div class="row">
                   <div class="form-group col-md-6">
-                      <label for="inputPassword4">{{'UserAuthentication.Label.UserID' | translate}}</label>
+                      <label for="inputPassword4">{{'UserAuthentication.Label.UserInformation' | translate}}</label>
                       <input disabled type="text" class="form-control active-input" [(ngModel)]="id + ': ' +firstName + ' ' + lastName" placeholder="{{'Category.Placeholder.EnterCategoryName' | translate}}">
                       <div class="in_box">
                           <button (click)="undefinedValue('name')" type="button" [ngClass]="name? 'btn_del' : ''" tabindex=-1 class="btn" tabindex=-1 tabindex=-1></button>
                       </div>
                   </div>
 
-                  <!-- <div class="form-group col-md-6">
+                  <div class="form-group col-md-6">
                     <label for="inputPassword4">{{'UserAuthentication.Label.UserName' | translate}} (User Login)</label>
-                    <input type="text" [ngClass]="name? 'active-input' : ''" class="form-control" [(ngModel)]="name" placeholder="{{'Category.Placeholder.EnterCategoryName' | translate}}">
+                    <input type="text" [ngClass]="name? 'active-input' : ''" class="form-control" [(ngModel)]="name" placeholder="{{'UserAuthentication.Holder.EnterUserName' | translate}}">
                     <div class="in_box">
                         <button (click)="undefinedValue('name')" type="button" [ngClass]="name? 'btn_del' : ''" tabindex=-1 class="btn" tabindex=-1 tabindex=-1></button>
                     </div>
-                  </div> -->
+                  </div>
 
               </div>
 
-              <!-- <div class="row">
+              <div class="row">
                 <div class="form-group col-md-6">
-                    <label for="inputPassword4">{{'UserAuthentication.Label.Part' | translate}}</label>
-                    <input type="text" [ngClass]="name? 'active-input' : ''" class="form-control" [(ngModel)]="name" placeholder="{{'Category.Placeholder.EnterCategoryName' | translate}}">
+                    <label for="inputPassword4">{{'UserAuthentication.Label.Password' | translate}}</label>
+                    <input type="text" [ngClass]="name? 'active-input' : ''" class="form-control" [(ngModel)]="name" placeholder="{{'UserAuthentication.Holder.EnterPassword' | translate}}">
                     <div class="in_box">
                         <button (click)="undefinedValue('name')" type="button" [ngClass]="name? 'btn_del' : ''" tabindex=-1 class="btn" tabindex=-1 tabindex=-1></button>
                     </div>
                 </div>
                 <div class="form-group col-md-6">
-                  <label for="inputPassword4">{{'UserAuthentication.Label.Role' | translate}}</label>
-                  <input type="text" [ngClass]="description? 'active-input' : ''" class="form-control" [(ngModel)]="description" placeholder="{{'Common.Placeholder.EnterDescription' | translate}}">
+                  <label for="inputPassword4">{{'UserAuthentication.Label.ConfirmPassword' | translate}}</label>
+                  <input type="text" [ngClass]="description? 'active-input' : ''" class="form-control" [(ngModel)]="description" placeholder="{{'UserAuthentication.Holder.EnterConfirmPassword' | translate}}">
                   <div class="in_box">
                       <button (click)="undefinedValue('description')" type="button" [ngClass]="description? 'btn_del' : ''" tabindex=-1 class="btn" tabindex=-1 tabindex=-1></button>
                   </div>
                 </div>
-              </div> -->
+              </div>
 
               <!-- <div class="row">
                 <div class="form-group col-md-6">

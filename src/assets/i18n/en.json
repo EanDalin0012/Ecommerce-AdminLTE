@@ -187,12 +187,17 @@
   },
   "UserAuthentication":{
     "Label": {
-      "UserID":"User ID",
+      "UserInformation":"User Information",
       "UserName":"User Name",
       "Password":"Password",
       "ConfirmPassword":"Confirm Password",
       "Role":"Role",
       "Part":"Part"
+    },
+    "Holder": {
+      "EnterUserName":"Enter user name",
+      "EnterPassword":"Enter password",
+      "EnterConfirmPassword":"Enter confirm password"
     }
   }
 

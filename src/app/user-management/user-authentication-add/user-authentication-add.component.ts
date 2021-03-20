@@ -5,7 +5,7 @@ import { ModalService } from '../../m-share/service/modal.service';
 import { TranslateService } from '@ngx-translate/core';
 import { Category } from '../../m-share/model/category';
 import { Message } from '../../m-share/model/message';
-
+import { PasswordGeneratorService } from '../../m-share/service/password-generator.service';
 @Component({
   selector: 'app-user-authentication-add',
   templateUrl: './user-authentication-add.component.html',
@@ -19,10 +19,12 @@ export class UserAuthenticationAddComponent implements OnInit {
   id: number;
   firstName; string;
   lastName: string;
+
   constructor(
     private translate: TranslateService,
     private httpService: HttpService,
-    private modalService: ModalService
+    private modalService: ModalService,
+    private passwordGenerator: PasswordGeneratorService
   ) { }
 
   ngOnInit(): void {
@@ -32,6 +34,7 @@ export class UserAuthenticationAddComponent implements OnInit {
       this.firstName = this.modal.message.firstName;
       this.lastName =  this.modal.message.lastName;
     }
+    console.log(this.passwordGenerator.generatePassword());
   }
 
   save(): void {
